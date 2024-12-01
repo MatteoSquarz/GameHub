@@ -1,0 +1,311 @@
+*{
+    padding: 0em;
+    margin: 0em;
+}
+
+:root{
+    --bgcolor: #115AA2;
+    --txtcolor: #FFF;
+    --breadcolor: #000000;
+    --homeboxcolor: #ADD8E6;
+    --newscolor: #F3C42B;
+    --contenttxtcolor: #000;
+    --contentbgcolor: #F3C42B;
+    --linktxtcolor: #FFF;
+    --bglinkcolor: #547A2C;
+    --bgvisitedcolor: #1A1B41;
+}
+
+html, body{
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bgcolor);
+
+}
+
+/* SEZIONE HEADER */
+
+header{
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+header h1{
+    text-indent: -9999px;
+}
+
+header #logo{
+    background-image: url('assets/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50px;
+    margin: 0.2em 0.4em;
+    padding: 0em;
+    width: 4.5em; /* Add a specific width to contain the icon */
+    height: 4.5em; /* Match the width for a square icon */
+}
+
+header .menuList{
+    display: inline-flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+header .menuList li{
+    margin-right: 2.5em;
+}
+
+header .menuList a{
+    text-decoration: none;
+    color: #c8c4c4;
+    text-transform: uppercase;
+}
+
+header .currentMenu{
+    font-weight: bold;
+    color: var(--txtcolor) !important;
+}
+header .menuList a:visited{
+    color: var(--visitedcolor);
+}
+
+header .menuList a:hover{
+    text-decoration: underline;
+    color: var(--txtcolor);
+}
+
+header #profile {
+    line-height: 1.5em;
+    cursor: pointer;
+    margin-right: 2em;
+    border-radius: 20px;
+    background-image: url('assets/profileIcon.png ');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    text-indent: -9999px; /* This will hide the text while keeping the icon visible */
+    width: 2em; /* Add a specific width to contain the icon */
+    height: 2em; /* Match the width for a square icon */
+    display: inline-block;
+}
+
+
+
+
+/* SEZIONE BREADCUMB */
+
+#breadcumb{
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+    padding: 0.5em;
+    border-top: 1px solid var(--homeboxcolor);
+    border-bottom: 1px solid var(--homeboxcolor);
+}
+
+.stickyScroll {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* SEZIONE MAIN */
+
+.intro {
+    color: var(--txtcolor);
+    padding: 3em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    height: 10em;
+}
+
+.intro p{
+    font-size: 1.25em;
+}
+
+.background{
+    background: url('assets/royalty-free-music-for-videogames.png') no-repeat center center/cover;
+    background-color: var(--bgcolor);
+}
+
+.blur{
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.blurBackground{
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.intro h2 {
+    font-size: 2.5em;
+}
+
+
+/* SEZIONE VIDEOGAMES */
+.infoVideogames{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: left;
+    color: black;
+    width: 100%;
+}
+
+.videogames{
+    display: flex;
+    flex-direction: row;
+    margin: 2em 10% 3em 0em;
+    gap: 1em;
+    background-color: var(--homeboxcolor);
+    justify-content: space-around;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 1em;
+    padding-left: 3em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
+}
+
+.videogames:hover{
+    transform:translateX(20px);
+}
+
+.videogames img{
+    width: 60%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.infoVideogames a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.infoVideogames a:visited{
+    background-color: var(--bgvisitedcolor);
+}
+
+.infoAbbonamenti{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: left;
+    color: black;
+    width: 100%;
+}
+
+.abbonamenti{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 3em 0em 3em 10%;
+    gap: 1em;
+    background-color: var(--homeboxcolor);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 1em;
+    padding-right: 3em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
+}
+
+.abbonamenti:hover{
+    transform: translateX(-20px);
+}
+
+.abbonamenti img{
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+
+}
+
+.infoAbbonamenti a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.infoAbbonamenti a:visited{
+    background-color: var(--bgvisitedcolor);
+} 
+
+
+
+/*FOOTER*/
+footer {
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5em;
+    gap: 2em;
+}
+
+
+.contact-info h3, .social-links h3 {
+    margin-bottom: 1em;
+    color: #fff;
+}
+
+.contact-info p {
+    margin: 0.5em 0;
+}
+
+
+.social-links a {
+    color: var(--linktxtcolor);
+    font-size: 1.5em;
+    margin-right: 1em;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #add8e6;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    vertical-align: middle;
+    padding: 0.5em;
+}
