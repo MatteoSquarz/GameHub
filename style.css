@@ -106,7 +106,24 @@ header #profile {
     display: inline-block;
 }
 
+#mobile-menu{
+    display: none;
+}
 
+#mobile-menu .bar{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    margin: 5px 1.5em;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
 
 
 /* SEZIONE BREADCUMB */
@@ -277,7 +294,7 @@ footer {
 .footer-content {
     display: flex;
     justify-content: space-around;
-    padding: 1.5em;
+    padding: 1.0em;
     gap: 2em;
 }
 
@@ -299,6 +316,7 @@ footer {
     text-decoration: none;
 }
 
+
 .social-links a:hover {
     color: #add8e6;
 }
@@ -308,4 +326,10 @@ footer {
     border-top: 1px solid #333;
     vertical-align: middle;
     padding: 0.5em;
+}
+
+
+#hamburgerMenu{
+    height: 100%;
+    margin-bottom: 40%;
 }

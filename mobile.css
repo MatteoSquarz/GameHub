@@ -1,0 +1,28 @@
+#mobile-menu{
+    display: block;
+}
+
+
+header .menuList{
+    display: none;
+}
+
+header #profile{
+    display: none;
+}
+
+.videogames:hover{
+    transform: translateX(0px);
+}
+
+.abbonamenti:hover{
+    transform: translateX(0px);
+}
+
+.videogames img{
+    display: none;
+}
+
+.abbonamenti img{
+    display: none;
+}
