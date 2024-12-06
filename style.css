@@ -312,9 +312,9 @@ footer {
 
 
 
-/*******************/
-/* PAGINA CATALOGO */
-/*******************/
+/**************************************/
+/* PAGINA CATALOGO                    */
+/**************************************/
 
 /* Search Bar */
 /* Container for the search bar */
@@ -368,22 +368,56 @@ footer {
 }
 
 /* Sections */
-/* Game cards container */
-.game-cards-container {
-    display: grid;
-    grid-template-columns: repeat(3, 300px); /* 3 equal columns */
-    grid-template-rows: repeat(3, 200px);    /* 3 equal rows */
-    gap: 30px; /* Space between grid items */
-    width: 100%;  /* Make the grid container responsive */
-    height: auto; /* Adjust the height automatically */
-    justify-content: center;
+.left-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    margin: 2em 10% 3em 0em;
+    gap: 1em;
+    background-color: var(--homeboxcolor);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 1em;
+    padding-left: 3em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
 }
 
 /* Section Title */
-.section-title {
-    align-self: center;
-    justify-self: center;
-    margin: 1em;
+.left-section .section-title {
+    flex: 1 1 100%; /* Grow, shrink, and take up 100% of the container width */
+    align-self: flex-start; /* Align to the top of the container */
+    margin: 1em 0; /* Adjust margin as needed */
+}
+
+.right-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    margin: 3em 0em 3em 10%;
+    gap: 1em;
+    background-color: var(--homeboxcolor);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 1em;
+    padding-right: 3em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
+}
+
+/* Section Title */
+.right-section .section-title {
+    flex: 1 1 100%; /* Grow, shrink, and take up 100% of the container width */
+    align-self: flex-start; /* Align to the top of the container */
+    margin: 1em 0; /* Adjust margin as needed */
 }
 
 /* Game card link*/
@@ -396,10 +430,14 @@ footer {
 .game-card {
     overflow: hidden; /* Hide overflow if the image is larger */
     position: relative;
-    width: 300px;  /* Fixed width */
-    height: 200px; /* Fixed height */
-    margin: 5px;
 
+    flex: 1 1 calc(33.333% - 1em); /* Default size, allows resizing */
+    max-width: 300px; /* Maximum size for cards */
+    min-width: 150px; /* Minimum size for cards */
+    box-sizing: border-box; /* Ensure padding and border are included in size */
+
+
+    margin: 5px;
     background-color: #f0f0f0; /* Background color for each grid item */
     text-align: center;
     font-size: 20px;
@@ -409,18 +447,17 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
 
-/* Discount percentage styling */
-.discount-percentage {
-    position: absolute;  /* Position relative to the game-card */
-    top: 5px;  /* Distance from the bottom */
-    left: 5px;  /* Distance from the left */
-    background-color: red;  /* Red background */
-    color: white;  /* White text color */
-    padding: 5px 10px;  /* Padding for a small rectangle */
-    border-radius: 10px;  /* Rounded corners */
-    font-weight: bold;  /* Bold text */
-    font-size: 14px;  /* Adjust font size */
-}
+@media (max-width: 768px) {
+    .card {
+      flex: 1 1 calc(50% - 1em); /* Adjust to two columns */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      flex: 1 1 100%; /* Adjust to a single column */
+    }
+  }
 
 .game-card:hover {
     transform: scale(1.1); /* Increase size by 10% */
@@ -445,41 +482,15 @@ footer {
     background-color: rgba(255, 255, 255, 0.8); /* Optional: Make the text stand out */
 }
 
-
-/* Sections size mods */
-@media (max-width: 1000px) {
-    .game-cards-container {
-        display: grid;
-        grid-template-columns: repeat(2, 300px); /* 2 equal columns */
-        grid-template-rows: repeat(5, 200px);    /* 5 equal rows */
-        gap: 30px; /* Space between grid items */
-        width: 100%;  /* Make the grid container responsive */
-        height: auto; /* Adjust the height automatically */
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .game-cards-container {
-        display: grid;
-        grid-auto-flow: column;            /* Arrange items in a single horizontal row */
-        grid-template-columns: repeat(auto-fill, 330px); /* Fixed column size */
-        grid-template-rows: 260px;         /* Fixed row height */
-        overflow-x: auto;                  /* Enable horizontal scrolling */
-        gap: 20px;
-        white-space: nowrap;               /* Prevent wrapping */
-        justify-content: left;
-        justify-items: center;
-        align-items: center;
-    }
-
-    /* Style to make the scrollbar look better (optional) */
-    .game-cards-container::-webkit-scrollbar {
-        height: 8px; /* Adjust scrollbar height */
-    }
-
-    .game-cards-container::-webkit-scrollbar-thumb {
-        background-color: #888;  /* Scrollbar color */
-        border-radius: 4px;
-    }
+/* Discount percentage styling */
+.discount-percentage {
+    position: absolute;  /* Position relative to the game-card */
+    top: 5px;  /* Distance from the bottom */
+    left: 5px;  /* Distance from the left */
+    background-color: red;  /* Red background */
+    color: white;  /* White text color */
+    padding: 5px 10px;  /* Padding for a small rectangle */
+    border-radius: 10px;  /* Rounded corners */
+    font-weight: bold;  /* Bold text */
+    font-size: 14px;  /* Adjust font size */
 }
