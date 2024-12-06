@@ -1,31 +1,33 @@
 // -----------------------------------------------------------------
 // Carousel scrolling buttons
 // -----------------------------------------------------------------
-let currentIndex = 0;
+let currentIndex = 0; // Starting index
 
-function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-item');
-    const totalSlides = slides.length;
+// Get all the carousel items
+const items = document.querySelectorAll('.carousel-item');
 
-    if (index >= totalSlides) {
-    currentIndex = 0;
-    } else if (index < 0) {
-    currentIndex = totalSlides - 1;
-    } else {
-    currentIndex = index;
-    }
-
-    const offset = -currentIndex * 100;
-    document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
-}
-
-function nextSlide() {
-    showSlide(currentIndex + 1);
-}
-
+// Function to move to the previous slide
 function prevSlide() {
-    showSlide(currentIndex - 1);
+    currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
+    updateCarousel();
 }
+
+// Function to move to the next slide
+function nextSlide() {
+    currentIndex = (currentIndex === items.length - 1) ? 0 : currentIndex + 1;
+    updateCarousel();
+}
+
+// Function to update the carousel position
+function updateCarousel() {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const offset = -currentIndex * 100; // Calculate the offset for the current slide
+    carouselInner.style.transform = `translateX(${offset}%)`; // Move the items horizontally
+}
+
+// Auto-scroll every 10 seconds
+setInterval(nextSlide, 5000);
+
 
 // -----------------------------------------------------------------
 // Dynamically calculate header size and set content margin
