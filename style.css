@@ -5,6 +5,9 @@
 
 :root{
     --bgcolor: #115AA2;
+    --loginbgcolor: #222121;
+    --loginformcolor: #3D8FC0;
+    --logintextcolor: #000;
     --txtcolor: #FFF;
     --breadcolor: #000000;
     --homeboxcolor: #ADD8E6;
@@ -160,33 +163,49 @@ header #profile {
     font-size: 2.5em;
 }
 
-/*SEZIONE MAIN*/
-#loginForm {
+/*PAGINA LOGIN/REGISTRAZIONE*/
+#mainLogin{
+    background-color: var(--loginbgcolor);
+}
+
+/*SEZIONE LOGIN*/
+#login{
     border: 2px solid #000;
     width: 85%;
-    margin: 10%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0;
+    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
+    border-radius: 1em;
+    background-color: var(--loginformcolor);
+}
+
+#loginForm {
+    width: 85%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-main h2{
+#login h2{
     margin: 2% 0%;
+    color: var(--logintextcolor);
 }
 
-form{
-    width: 85%;
-}
-
-#subText{
+.subText{
     font-size: x-small;
     margin-bottom: 3%;
+    
 }
 
 label {
     display: block;
     margin-bottom: 0.5%;
     font-weight: bold;
+    color: var(--logintextcolor);
+    align-self: flex-start;
 }
 
 input {
@@ -199,15 +218,86 @@ button {
     border-radius: 10px;
     padding: 1em 2em;
     margin-bottom: 5%;
+
 }
 
 hr{
     width: 85%;
     margin-bottom: 2%;
+    background-color: #000;
 }
 
-main p{
+#login p{
     margin-bottom: 2%;
+    color: var(--logintextcolor);
+}
+
+/*SEZIONE REGISTRAZIONE*/
+#mainRegistrazione{
+    background-color: var(--loginbgcolor);
+}
+
+#registrazione{
+    border: 2px solid #000;
+    width: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0;
+    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
+    border-radius: 1em;
+    background-color: var(--loginformcolor);
+}
+
+#registrazioneForm {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#registrazione h2{
+    margin: 2% 0%;
+    color: var(--logintextcolor);
+}
+
+.subText{
+    font-size: x-small;
+    margin-bottom: 3%;
+    
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5%;
+    font-weight: bold;
+    color: var(--logintextcolor);
+    align-self: flex-start;
+}
+
+input {
+    width: 100%;
+    padding: 0.7em;
+    border-radius: 10px;
+}
+
+button {
+    border-radius: 10px;
+    padding: 1em 2em;
+    margin-bottom: 5%;
+
+}
+
+hr{
+    width: 85%;
+    margin-bottom: 2%;
+    background-color: #000;
+}
+
+#registrazione p{
+    margin-bottom: 2%;
+    color: var(--logintextcolor);
 }
 
 /*FOOTER*/
