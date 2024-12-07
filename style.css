@@ -29,8 +29,10 @@ main{
     display: flex;
     flex-direction: column;
     background-color: var(--bgcolor);
-
+    min-height: calc(100vh - 12em); /*da capire se potrebbe essere giusto*/
 }
+
+
 
 /* SEZIONE HEADER */
 
@@ -61,8 +63,8 @@ header #logo{
     border-radius: 50px;
     margin: 0.2em 0.4em;
     padding: 0em;
-    width: 4.5em; /* Add a specific width to contain the icon */
-    height: 4.5em; /* Match the width for a square icon */
+    width: 4.5em; 
+    height: 4.5em; 
 }
 
 header .menuList{
@@ -117,9 +119,9 @@ header #profile {
     background-repeat: no-repeat;
     background-position: center;
     vertical-align: middle;
-    text-indent: -9999px; /* This will hide the text while keeping the icon visible */
-    width: 2em; /* Add a specific width to contain the icon */
-    height: 2em; /* Match the width for a square icon */
+    text-indent: -9999px; 
+    width: 2em; 
+    height: 2em;
     display: inline-block;
 }
 
@@ -171,7 +173,7 @@ header #profile {
     justify-content: center;
     align-items: center;
     gap: 1em;
-    height: 10em;
+    height: 20vh;
 }
 
 .intro p{
@@ -224,6 +226,7 @@ header #profile {
     border: #000 solid 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s;
+
 }
 
 /*
@@ -310,11 +313,11 @@ header #profile {
     display: none;
 }
 
-/*FOOTER*/
 footer {
     background-color: var(--breadcolor);
     color: var(--txtcolor);
 }
+
 
 .footer-content {
     display: flex;
