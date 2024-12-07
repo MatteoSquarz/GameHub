@@ -11,62 +11,22 @@
         <title>GameHub</title>
     </head>
     <body>
-        <div class="stickyScroll">
-            <header>
-                <div class="logoName">
-                    <a href="index.php" id="logo"></a>
-                    <h1>GameHub</h1>
-                </div>
-                <nav id="menu">
-                    <ul class="menuList">
-                        <li><a href="index.php" class="currentMenu">Home</a></li>
-                        <li><a href="list.php">Catalogo</a></li>
-                        <li><a href="search.php">Abbonamenti</a></li>
-                        <li><a href="insert.php">Chi siamo</a></li>
-                    </ul>
-                    <a id="profile" href="#menu">Profile</a>
-                </nav>
-            </header>
-            <nav id="breadcumb">
-                <p>Ti trovi in: <span lang="en">Login</span></p>
-            </nav>
-        </div>
         <main id="mainLogin">
             <div id="login">
                 <h2>Login</h2>
                 <form id="loginForm">
-                    <label>Username</label>
-                    <input type="text" placeholder="Inserisci lo username" required>
+                    <label class="labelForm">Username</label>
+                    <input class="inputForm" type="text" placeholder="Inserisci lo username" required>
                     <label class="subText">Es: gigi123</label>
-                    <label>Password</label>
-                    <input type="password" placeholder="Inserisci la password" required>
+                    <label class="labelForm">Password</label>
+                    <input class="inputForm" type="password" placeholder="Inserisci la password" required>
                     <label class="subText">Es: A123aC%#</label>
-                    <button type="submit">Accedi</button>
+                    <button class="buttonForm" type="submit">Accedi</button>
                 </form>                
                 <hr>
                 <p>Oppure</p>
                 <p>Se non hai ancora un account: <a href="registrazione.html">Registrati ora</a></p>
             </div>
         </main>
-        <footer>
-            <div class="footer-content">
-                <div class="contact-info">
-                    <h3>Contattaci</h3>
-                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
-                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
-                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
-                </div>
-                <div class="social-links">
-                    <h3>Seguici</h3>
-                    <a href="#"><span class="fa-brands fa-facebook"></span></a>
-                    <a href="#"><span class="fa-brands fa-twitter"></span></a>
-                    <a href="#"><span class="fa-brands fa-instagram"></span></a>
-                    <a href="#"><span class="fa-brands fa-youtube"></span></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
-            </div>
-        </footer>
     </body>
 </html>

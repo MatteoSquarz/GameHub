@@ -5,7 +5,7 @@
 
 :root{
     --bgcolor: #115AA2;
-    --loginbgcolor: #222121;
+    --loginbgcolor: #000;
     --loginformcolor: #3D8FC0;
     --logintextcolor: #000;
     --txtcolor: #FFF;
@@ -109,6 +109,9 @@ header #profile {
     display: inline-block;
 }
 
+
+
+
 /* SEZIONE BREADCUMB */
 
 #breadcumb{
@@ -163,142 +166,110 @@ header #profile {
     font-size: 2.5em;
 }
 
-/*PAGINA LOGIN/REGISTRAZIONE*/
-#mainLogin{
-    background-color: var(--loginbgcolor);
-}
 
-/*SEZIONE LOGIN*/
-#login{
-    border: 2px solid #000;
-    width: 85%;
-    align-self: center;
+/* SEZIONE VIDEOGAMES */
+.infoVideogames{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 2em 0;
-    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
-    border-radius: 1em;
-    background-color: var(--loginformcolor);
-}
-
-#loginForm {
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#login h2{
-    margin: 2% 0%;
-    color: var(--logintextcolor);
-}
-
-.subText{
-    font-size: x-small;
-    margin-bottom: 3%;
-    
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5%;
-    font-weight: bold;
-    color: var(--logintextcolor);
-    align-self: flex-start;
-}
-
-input {
+    justify-content: center;
+    gap: 1em;
+    align-items: left;
+    color: black;
     width: 100%;
-    padding: 0.7em;
-    border-radius: 10px;
 }
 
-button {
-    border-radius: 10px;
-    padding: 1em 2em;
-    margin-bottom: 5%;
-
+.videogames{
+    display: flex;
+    flex-direction: row;
+    margin: 2em 10% 3em 0em;
+    gap: 1em;
+    background-color: var(--homeboxcolor);
+    justify-content: space-around;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 1em;
+    padding-left: 3em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
 }
 
-hr{
-    width: 85%;
-    margin-bottom: 2%;
-    background-color: #000;
+.videogames:hover{
+    transform:translateX(20px);
 }
 
-#login p{
-    margin-bottom: 2%;
-    color: var(--logintextcolor);
+.videogames img{
+    width: 60%;
+    height: auto;
+    border-radius: 20px;
 }
 
-/*SEZIONE REGISTRAZIONE*/
-#mainRegistrazione{
-    background-color: var(--loginbgcolor);
+.infoVideogames a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
 }
 
-#registrazione{
-    border: 2px solid #000;
-    width: 85%;
-    align-self: center;
+.infoVideogames a:visited{
+    background-color: var(--bgvisitedcolor);
+}
+
+.infoAbbonamenti{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 2em 0;
-    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
-    border-radius: 1em;
-    background-color: var(--loginformcolor);
-}
-
-#registrazioneForm {
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#registrazione h2{
-    margin: 2% 0%;
-    color: var(--logintextcolor);
-}
-
-.subText{
-    font-size: x-small;
-    margin-bottom: 3%;
-    
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5%;
-    font-weight: bold;
-    color: var(--logintextcolor);
-    align-self: flex-start;
-}
-
-input {
+    justify-content: center;
+    gap: 1em;
+    align-items: left;
+    color: black;
     width: 100%;
-    padding: 0.7em;
-    border-radius: 10px;
 }
 
-button {
-    border-radius: 10px;
-    padding: 1em 2em;
-    margin-bottom: 5%;
+.abbonamenti{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 3em 0em 3em 10%;
+    gap: 1em;
+    background-color: var(--homeboxcolor);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 1em;
+    padding-right: 3em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
+}
+
+.abbonamenti:hover{
+    transform: translateX(-20px);
+}
+
+.abbonamenti img{
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
 
 }
 
-hr{
-    width: 85%;
-    margin-bottom: 2%;
-    background-color: #000;
+.infoAbbonamenti a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
 }
 
-#registrazione p{
-    margin-bottom: 2%;
-    color: var(--logintextcolor);
-}
+.infoAbbonamenti a:visited{
+    background-color: var(--bgvisitedcolor);
+} 
+
+
 
 /*FOOTER*/
 footer {
@@ -313,6 +284,7 @@ footer {
     gap: 2em;
 }
 
+
 .contact-info h3, .social-links h3 {
     margin-bottom: 1em;
     color: #fff;
@@ -321,6 +293,7 @@ footer {
 .contact-info p {
     margin: 0.5em 0;
 }
+
 
 .social-links a {
     color: var(--linktxtcolor);
@@ -338,4 +311,107 @@ footer {
     border-top: 1px solid #333;
     vertical-align: middle;
     padding: 0.5em;
+}
+
+/*PAGINA LOGIN/REGISTRAZIONE*/
+
+.subText{
+    font-size: x-small;
+    margin-bottom: 3%;
+    align-self: flex-start;
+    color: var(--logintextcolor);
+}
+
+.labelForm {
+    display: block;
+    margin-bottom: 0.5%;
+    font-weight: bold;
+    color: var(--logintextcolor);
+    align-self: flex-start;
+}
+
+.inputForm {
+    width: 100%;
+    padding: 0.7em;
+    border-radius: 10px;
+}
+
+.buttonForm {
+    border-radius: 10px;
+    padding: 1em 2em;
+    margin-bottom: 5%;
+}
+
+hr{
+    width: 85%;
+    margin-bottom: 2%;
+}
+
+/*SEZIONE LOGIN*/
+#mainLogin{
+    background-color: var(--loginbgcolor);
+    min-height: 100vh;
+}
+
+#login{
+    border: 2px solid #000;
+    width: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5em 0;
+    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
+    border-radius: 1em;
+    background-color: var(--loginformcolor);
+    max-width: 800px;
+}
+
+#loginForm {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login h2{
+    margin: 2% 0%;
+    color: var(--logintextcolor);
+}
+
+#login p{
+    margin-bottom: 2%;
+    color: var(--logintextcolor);
+}
+
+/*SEZIONE REGISTRAZIONE*/
+#mainRegistrazione{
+    background-color: var(--loginbgcolor);
+    min-height: 100vh;
+}
+
+#registrazione{
+    border: 2px solid #000;
+    width: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3em 0;
+    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
+    border-radius: 1em;
+    background-color: var(--loginformcolor);
+    max-width: 800px;
+}
+
+#registrazioneForm {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#registrazione h2{
+    margin: 2% 0%;
+    color: var(--logintextcolor);
 }
