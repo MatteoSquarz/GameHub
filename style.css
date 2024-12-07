@@ -410,11 +410,11 @@ footer {
 .game-card {
     display: flex;
     flex-direction: column;
-    flex: 1 1 200px;
+    flex: 1 1 20vw;
 
-    position: relative;
+    position: relative;  /* non togliere che sminchi tutto*/
     
-    max-width: 25vw; /* Maximum size for cards */
+    /*max-width: 30vw; /* Maximum size for cards */
     min-width: 200px; /* Minimum size for cards */
     /*box-sizing: border-box; /* Ensure padding and border are included in size */
 
@@ -510,6 +510,8 @@ footer {
 
 
 /*******************************************************************************/
+/*** Da Confermare *************************************************************/
+/*******************************************************************************/
 
 .catalogo-main {
     background-image: url('assets/background-prova.jpg');
@@ -538,7 +540,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-    
+
     .left-section {
         border-radius: 20px;
         margin: 1em;
@@ -558,9 +560,35 @@ footer {
         scroll-snap-type: x mandatory;
     }
 
+    .card-container::-webkit-scrollbar {
+        width: 12px;  /* Width of the vertical scrollbar */
+        height: 12px; /* Height of the horizontal scrollbar */
+    }
+    
+    /* Style the scrollbar track (background of the scrollbar) */
+    .card-container::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Light background color */
+        border-radius: 10px;  /* Rounded corners */
+    }
+    
+    /* Style the scrollbar thumb (the draggable part) */
+    .card-container::-webkit-scrollbar-thumb {
+        background-color: #888;  /* Thumb color */
+        border-radius: 10px;  /* Rounded corners */
+    }
+    
+    /* Style the thumb on hover */
+    .card-container::-webkit-scrollbar-thumb:hover {
+        background-color: #555;  /* Darker color on hover */
+    }
+
     .game-card {
         scroll-snap-align: center;
         box-sizing: border-box;
         flex-shrink: 0;
+    }
+
+    .game-card:hover {
+        transform: scale(1);
     }
 }
