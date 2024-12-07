@@ -1,0 +1,72 @@
+#mobile-menu{
+    display: block;
+}
+
+
+header .menuList{
+    display: none;
+}
+
+header #profile{
+    display: none;
+}
+
+.videogames:hover{
+    transform: translateX(0px);
+}
+
+.abbonamenti:hover{
+    transform: translateX(0px);
+}
+
+.videogames img{
+    display: none;
+}
+
+.abbonamenti img{
+    display: none;
+}
+
+
+.menuListMobile{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+}
+
+.menuListMobile li{
+    padding: 1.5em;
+    border-bottom: 1px solid #333;
+}
+
+.menuListMobile li:last-child{
+    margin-bottom: 4em;
+    border-bottom: none;
+    align-self: flex-end;
+}
+
+
+.menuListMobile li:last-child a{
+    background-image: url('assets/arrow_up.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+    padding-right: 1.8em;
+    display: inline-flex;
+    align-items: center;
+}
+
+.menuListMobile a{
+    color: #c8c4c4;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menuListMobile .currentMenu{
+    font-weight: bold;
+    color: white !important;
+}
+
