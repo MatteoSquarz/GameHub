@@ -410,12 +410,12 @@ footer {
 .game-card {
     display: flex;
     flex-direction: column;
-    flex: 1 1 20vw;
+    flex: 1 1 220px;
 
     position: relative;  /* non togliere che sminchi tutto*/
     
-    /*max-width: 30vw; /* Maximum size for cards */
-    min-width: 200px; /* Minimum size for cards */
+    max-width: 400px; /* Maximum size for cards */
+    min-width: 220px; /* Minimum size for cards */
     /*box-sizing: border-box; /* Ensure padding and border are included in size */
 
     margin: 5px;
@@ -543,12 +543,12 @@ footer {
 
     .left-section {
         border-radius: 20px;
-        margin: 1em;
+        margin: 2vw;
     }
 
     .right-section {
         border-radius: 20px;
-        margin: 1em;
+        margin: 2vw;
     }
 
     .card-container {
