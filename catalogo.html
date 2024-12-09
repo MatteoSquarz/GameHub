@@ -35,16 +35,22 @@
         
 
         <main class="catalogo-main">
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" id="search" placeholder="Search for games..." />
-                <button class="search-btn">
-                    <i class="fa fa-search"></i>
-                </button>
+            <div class="background" id="catalogo-bg">
+                <div id="home" class="intro blur">
+                    <h2>Scopri il nostro catalogo</h2>
+                    <p>Scopri i giochi in tendenza</p>
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <input type="text" id="search" placeholder="Search for games..." />
+                        <button class="search-btn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- Sections -->
-            <section class="game-section left-section">
+            <section class="trends-section">
                 <h2 class="section-title">Tendenze</h2>
                 <div class="card-container">
                     <!------------------------------------->
@@ -99,6 +105,14 @@
                         <p class="discount-percentage">25%</p>
                     </div>
                     <!------------------------------------->
+                </div>
+            </section>
+            
+            <div class="allgames-bg">
+            <section class="allgames-section">
+                <h2 class="section-title">Tutti i giochi</h2>
+                <!------------------------------------->
+                <div class="card-container">
                     <div class="game-card" href="#GamePage">
                         <img class="game-card-image" src="assets/game-covers/dragon-ball-sparking-zero.jpg">
                         <div class="game-info">
@@ -149,11 +163,6 @@
                         </div>
                         <p class="discount-percentage">25%</p>
                     </div>
-            </section>
-
-            <section class="game-section right-section">
-                <h2 class="section-title">Offerte</h2>
-                <div class="card-container">
                     <!------------------------------------->
                     <div class="game-card" href="#GamePage">
                         <img class="game-card-image" src="assets/game-covers/final-fantasy-16.jpg">
@@ -221,13 +230,6 @@
                         </div>
                         <p class="discount-percentage">25%</p>
                     </div>
-                    <!------------------------------------->
-                </div>
-            </section>
-
-            <section class="game-section left-section">
-                <h2 class="section-title">Preordini</h2>
-                <div class="card-container">
                     <!------------------------------------->
                     <div class="game-card" href="#GamePage">
                         <img class="game-card-image" src="assets/game-covers/gta5.jpg">
@@ -298,6 +300,7 @@
                     <!------------------------------------->
                 </div>
             </section>
+            </div>
 
         </main>
 
