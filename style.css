@@ -341,12 +341,12 @@ footer {
     align-items: center;
 }
 
-.loginRegistrazione > h2{
+.loginRegistrazione h2{
     margin: 2% 0%;
     color: var(--logintextcolor);
 }
 
-.loginRegistrazione > p{
+.loginRegistrazione p{
     margin-bottom: 2%;
     color: var(--logintextcolor);
 }
