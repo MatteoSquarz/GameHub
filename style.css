@@ -339,6 +339,7 @@ footer {
     width: 100%;
     max-width: 600px; /* Adjust the max-width to fit your design */
     margin: 1em;
+    margin-bottom: 0;
 }
 
 /* Input field styling */
@@ -388,7 +389,7 @@ footer {
     width: 100%;
     font-size: 2em;
     color:white;
-    margin: 1em 0;
+    margin-bottom: 1em;
     text-align: center;
 }
 
@@ -396,18 +397,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-}
-
-.trends-section {
-    display: flex;
-    flex-direction: column;
-    /* flex-wrap: wrap;
     justify-content: center;
-    align-items: center; */
-    
-    padding-right: 4vw;
-    padding-left: 4vw;
-    padding-bottom: 3vw;
 }
 
 .catalogo-main-bg {  /* da cambiare */
@@ -429,9 +419,9 @@ footer {
 
 /*** Game cards ****************************************************************/
 .game-card {
-    flex: 1 1 220px;
-    position: relative;  /* non togliere che sminchi tutto*/
-    max-width: 30em;
+    flex: 1 1 250px;
+    max-width: 380px;  /* dimensione delle immagini */
+
     display: flex;
     flex-direction: column;
 
