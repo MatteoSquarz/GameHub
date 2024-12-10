@@ -112,3 +112,28 @@ header #profile{
 
 
 
+
+/* ============================
+        PAGINA CHI SIAMO       
+============================ */
+
+.containerCardFondatori{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.cardFondatore{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--homeboxcolor);
+    color: var(--contenttxtcolor);
+}

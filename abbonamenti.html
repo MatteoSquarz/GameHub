@@ -18,24 +18,36 @@
                     <a href="index.php" id="logo"></a>
                     <h1>GameHub</h1>
                 </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                </nav>
                 <nav id="menu">
                     <ul class="menuList">
-                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="list.php">Catalogo</a></li>
-                        <li><a href="search.php" class="currentMenu">Abbonamenti</a></li>
-                        <li><a href="insert.php">Chi siamo</a></li>
+                        <li><a href="abbonamenti.html" class="currentMenu">Abbonamenti</a></li>
+                        <li><a href="chiSiamo.html">Chi siamo</a></li>
+                        <li><a href="insert.php">Accedi</a></li>
                     </ul>
-                    <a id="profile" href="#menu">Profile</a>
+                    <!--<a id="profile" href="#menu">Profile</a>-->
                 </nav>
+                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle">
+                    <div role="button" class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
+                
             </header>
             <nav id="breadcumb">
-                <p>Ti trovi in: Abbonamenti</p>
+                <p>Ti trovi in: <span lang="en">Home</span> >> Abbonamenti</p>
             </nav>
         </div>
         <main>
             <div>
-                <div class="backgroundAbbonamenti">
-                    <div class="introAbbonamenti blurAbbonamenti">
+                <div class="background">
+                    <div class="intro blur">
                         <h2>Ti trovi nella sezione dedicata agli abbonamenti</h2>
                         <p>Scegli quello perfetto per te!</p>
                     </div>
@@ -75,6 +87,16 @@
                 </div>
             </div>
         </main>
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="list.php">Catalogo</a></li>
+                <li><a href="abbonamenti.html" class="currentMenu">Abbonamenti</a></li>
+                <li><a href="chiSiamo.html">Chi siamo</a></li>
+                <li><a href="insert.php">Accedi</a></li>
+                <li><a href=#content>Torna su</a></li>
+            </ul>
+        </nav>   
         <footer>
             <div class="footer-content">
                 <div class="contact-info">
