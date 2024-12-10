@@ -38,7 +38,6 @@
      padding-right: 1em;
     padding-bottom: 4em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-    transition: transform 0.3s;
     max-width: 100%;
     
 }
@@ -64,13 +63,16 @@
 .targhettaAbb strong{
     font-size: 1.5em;
 }
+.targhettaAbb p strong{
+    font-size: 1em;
+}
 .targhettaAbb img{   
     max-width: 40%;
     height: auto;
     border-radius: 20px;
 }
 
-button {
+.targhettaAbb button {
    
     background: linear-gradient(45deg, #115AA2,#000000);
     color: white;            
@@ -83,10 +85,14 @@ button {
     transition: background-color 0.3s, transform 0.2s; 
 }
 
-form{
+
+.targhettaAbb form{
     
     display: flex;
     flex-direction: column;
     align-items: center;
     align-self: center;
+    max-width: 100%;
+    width: 100%;
+    gap: 1em;
 }
