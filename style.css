@@ -310,7 +310,9 @@ footer {
     padding: 0.5em;
 }
 
-/* PAGINA ABBONAMENTO */
+/* ========================
+      PAGINA ABBONAMENTI
+=========================== */
 .backgroundAbbonamenti{
     background: url('assets/royalty-free-music-for-videogames.png') no-repeat center center/cover;
     background-color: var(--bgcolor);
@@ -344,7 +346,6 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /*gap: 2vw;*/
     gap: clamp(0.5em, 1.5vw, 3em);/*gap preferito: 2vw(1/100 larghezza schermo);gap minimo 1 em gap massimo 3 em  */
     padding: 2em;
     padding-bottom: 4em;
@@ -382,25 +383,13 @@ footer {
     font-size: 1em;
 }
 
-
-
-
-/*.targhettaAbb:hover{
-    transform: translateX(-10px);
-}*/
-
-.targhettaAbb img{
-    
+.targhettaAbb img{    
     max-width: 40%;
     height: auto;
     border-radius: 20px;
-    
-
 }
 
-
 .targhettaAbb button{
-   
     background: linear-gradient(45deg, #115AA2,#000000);
     color: white;            
     padding: 0.5em 1.5em;     
@@ -415,12 +404,9 @@ footer {
 }
 
 .targhettaAbb button:hover {
-
-    transform: scale(1.05);    
-
+    transform: scale(1.03);    
 }
-.targhettaAbb form{
-    
+.targhettaAbb form{ 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -429,26 +415,3 @@ footer {
     width: 100%;
     gap: 1em;
 }
-.targhettaAbb section{
-    max-width: 100%;
-    width: 100%;
-}
-/*@media (max-width: 900px) {
-    .abbonamentiAbb{
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        
-        gap: 3em;
-         padding: 2em;
-         padding-left: 5em;
-         padding-right: 5em;
-        padding-bottom: 4em;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-        transition: transform 0.3s;
-        max-width: 100%;
-        
-    }
-}*/
