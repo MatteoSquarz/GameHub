@@ -463,7 +463,8 @@ footer {
     font-weight: bold;
 }
 
-.game-systems li {
+/* TODO: togliere se non serve */
+/* .game-systems li {
     display: inline-block;
     padding: 0.3em;
     border-radius: 20px;
@@ -483,7 +484,7 @@ footer {
 .pc-tag {
     border: 1px solid navy;
     background-color: rgba(0, 0, 128, 0.2);
-}
+} */
 
 .game-purchase-button {
     align-self: flex-end;
