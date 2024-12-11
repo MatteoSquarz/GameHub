@@ -322,6 +322,13 @@ footer {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
+
+    background-image: url('assets/background-prova.jpg');
+
+    background-repeat: repeat-y; /* Repeat the image vertically */
+    background-size: 100% auto; /* Stretch the image to match the screen width */
+    background-position: top center; /* Align the image at the top and center */
+    margin: 0; /* Remove default margins */
 }
 /********************************************************************************/
 
@@ -374,7 +381,7 @@ footer {
 }
 
 /* Search icon inside the button */
-.search-btn i {
+.search-btn-icon {
     color: white;
     font-size: 1.3em;
 }
@@ -396,15 +403,6 @@ footer {
     flex-wrap: wrap;
     gap: 1em;
     justify-content: center;
-}
-
-.catalogo-main-bg {  /* da cambiare */
-    background-image: url('assets/background-prova.jpg');
-
-    background-repeat: repeat-y; /* Repeat the image vertically */
-    background-size: 100% auto; /* Stretch the image to match the screen width */
-    background-position: top center; /* Align the image at the top and center */
-    margin: 0; /* Remove default margins */
 }
 
 .allgames-section{
@@ -434,15 +432,14 @@ footer {
 }
 
 .game-card:hover {
-    transform: scale(1.03); /* Increase size by 10% */
+    transform: scale(1.03); /* Increase size by 3% */
     z-index: 1; /* Ensure the hovered card stays on top of others */
     transition: transform 0.6s ease; /* Slower transition (0.6 seconds) */
 }
 
 .game-card-image {
-    width: 100%; /* Ensures the image fills the cell's width */
-    height: 100%; /* Ensures the image fills the cell's height */
-    /* object-fit: cover; /* Prevents distortion while filling the cell */
+    width: 100%;
+    height: 100%;
 
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
@@ -494,10 +491,10 @@ footer {
     background-color: var(--bglinkcolor);
     color: var(--linktxtcolor);
     padding: 0.4em 0.8em; /* Top/Bottom and Left/Right padding */
-    border: none; /* Remove border */
-    border-radius: 8px; /* Rounded corners */
-    font-size: 16px; /* Adjust font size */
-    font-weight: bold; /* Make text bold */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer; /* Change cursor to pointer */
     transition: background-color 0.3s, transform 0.2s; /* Smooth hover effect */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow */
