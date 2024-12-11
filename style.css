@@ -332,40 +332,38 @@ footer {
 /* Container for the search bar */
 .search-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
     align-self: center;
     width: 100%;
-    max-width: 600px; /* Adjust the max-width to fit your design */
+    max-width: 600px;
     margin: 1em;
-    margin-bottom: 0;
 }
 
 /* Input field styling */
 #search {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ccc; /* Light border */
-    border-radius: 30px; /* Rounded corners */
-    outline: none; /* Remove default outline */
+    padding: 0.8em;
+    margin-left: 0.3em;
+    font-size: 1em;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    outline: none;  /* Remove default outline */
     transition: all 0.3s ease;
 }
 
 /* Focus effect */
 #search:focus {
-    border-color: #007bff; /* Change border color when focused */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus shadow */
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Button next to the input field */
 .search-btn {
-    background-color: #007bff; /* Blue background */
+    background-color: #007bff;
     border: none;
-    padding: 10px 15px;
+    padding: 1em 1.5em;
+    margin-right: 0.3em;
     border-radius: 30px;
-    margin-left: 10px;
+    margin-left: 0.5em;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -378,7 +376,7 @@ footer {
 /* Search icon inside the button */
 .search-btn i {
     color: white;
-    font-size: 18px; /* Adjust size of the icon */
+    font-size: 1.3em;
 }
 /********************************************************************************/
 
@@ -456,7 +454,7 @@ footer {
     align-items: flex-start;
     justify-content: left;
     color: black;
-    padding: 3px;
+    padding: 0.3em;
 
     font-size: 0.8em;
 
@@ -470,7 +468,7 @@ footer {
 
 .game-systems li {
     display: inline-block;
-    padding: 3px;
+    padding: 0.3em;
     border-radius: 20px;
 }
 .ps-tag {
@@ -495,7 +493,7 @@ footer {
 
     background-color: var(--bglinkcolor);
     color: var(--linktxtcolor);
-    padding: 4px 8px; /* Top/Bottom and Left/Right padding */
+    padding: 0.4em 0.8em; /* Top/Bottom and Left/Right padding */
     border: none; /* Remove border */
     border-radius: 8px; /* Rounded corners */
     font-size: 16px; /* Adjust font size */
