@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Questa pagina è dedicata alla pagina catalogo dei videogiochi di GameHub">
+        <meta name="keywords" content="videogioco, playstation, nintendo, pc, xbox, catalogo">
+        <meta name="author" content="Francesco Lapenna">  
+        <title>GameHub</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <div class="stickyScroll">
+            <header>
+                <div class="logoName">
+                    <a href="index.php" id="logo"></a>
+                    <h1>GameHub</h1>
+                </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                </nav>
+                <nav id="menu">
+                    <ul class="menuList">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#" class="currentMenu">Catalogo</a></li>
+                        <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                        <li><a href="chiSiamo.html">Chi siamo</a></li>
+                        <li><a href="insert.php">Accedi</a></li>
+                    </ul>
+                    <!--<a id="profile" href="#menu">Profile</a>-->
+                </nav>
+                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle">
+                    <div role="button" class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
+            </header>
+            <nav id="breadcumb">
+                <p>Ti trovi in: <span lang="en">Home</span> >> Catalogo</p>
+            </nav>
+        </div>
+        <main class="catalogo-main">
+            <div class="intro blur">
+                <h2>Scopri il nostro catalogo</h2>
+                <p>Scopri i giochi in tendenza</p>
+            </div>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search for games..." />
+                <button class="search-btn">
+                    <div class="fa fa-search search-btn-icon"></div>
+                </button>
+            </div>
+            <!-- Sections -->
+            <section class="allgames-section">
+                <h3 class="section-title">Tutti i giochi</h3>
+                <div class="card-container">
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/ac-ezio-trilogy.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/ac-mirage.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/ac-shadows.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/dragon-ball-sparking-zero.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/farming-simulator.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/fifa25.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/final-fantasy-16.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/flight-simulator.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/ghost.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/gow-ragnarock.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/gta5.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/hogwarts.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/spider-man-mm.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                    <div class="game-card" href="#GamePage">
+                        <img class="game-card-image" src="assets/game-covers/stalker.jpg">
+                        <div class="game-info">
+                            <h4 class="game-title">Game Title 1</h4>
+                            <a class="game-page-link" href="#GamePageTodo">Vai alla pagina dedicata</a>
+                        </div>
+                    </div>
+                    <!------------------------------------->
+                </div>
+            </section>
+        </main>
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalogo.html" class="currentMenu">Catalogo</a></li>
+                <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                <li><a href="chiSiamo.html">Chi siamo</a></li>
+                <li><a href="insert.php">Accedi</a></li>
+                <li><a href=#content>Torna su</a></li>
+            </ul>
+        </nav>
+        <footer>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contattaci</h3>
+                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+                </div>
+                <div class="social-links">
+                    <h3>Seguici</h3>
+                    <a href="#"><span class="fa-brands fa-facebook"></span></a>
+                    <a href="#"><span class="fa-brands fa-twitter"></span></a>
+                    <a href="#"><span class="fa-brands fa-instagram"></span></a>
+                    <a href="#"><span class="fa-brands fa-youtube"></span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+            </div>
+        </footer>
+
+        <script src="script.js"></script> <!-- Link to external JavaScript file -->
+    </body>
+</html>
