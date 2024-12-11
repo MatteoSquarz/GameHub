@@ -335,8 +335,6 @@ footer {
 
 
 /*** Hero & Search Bar **********************************************************/
-
-/* Container for the search bar */
 .search-container {
     display: flex;
     align-self: center;
@@ -344,8 +342,6 @@ footer {
     max-width: 600px;
     margin: 1em;
 }
-
-/* Input field styling */
 #search {
     width: 100%;
     padding: 0.8em;
@@ -357,13 +353,11 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* Focus effect */
 #search:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Button next to the input field */
 .search-btn {
     background-color: #007bff;
     border: none;
@@ -374,20 +368,14 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
-/* Change button background color on hover */
 .search-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
 }
 
-/* Search icon inside the button */
 .search-btn-icon {
     color: white;
     font-size: 1.3em;
 }
-/********************************************************************************/
-
-
 
 /*** Sections *******************************************************************/
 .section-title {
@@ -409,20 +397,15 @@ footer {
     padding: 1em;
     margin: 5%;
 }
-/********************************************************************************/
-
-
 
 /*** Game cards ****************************************************************/
 .game-card {
     flex: 1 1 250px;
-    max-width: 380px;  /* dimensione delle immagini */
+    max-width: 380px;
 
     display: flex;
     flex-direction: column;
-
-    /* margin: 5px; */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--homeboxcolor);
     text-align: center;
     font-size: 20px;
 
@@ -432,9 +415,9 @@ footer {
 }
 
 .game-card:hover {
-    transform: scale(1.03); /* Increase size by 3% */
-    z-index: 1; /* Ensure the hovered card stays on top of others */
-    transition: transform 0.6s ease; /* Slower transition (0.6 seconds) */
+    transform: scale(1.03); 
+    z-index: 1; 
+    transition: transform 0.6s ease;
 }
 
 .game-card-image {
@@ -464,36 +447,13 @@ footer {
     font-weight: bold;
 }
 
-/* TODO: togliere se non serve */
-/* .game-systems li {
-    display: inline-block;
-    padding: 0.3em;
-    border-radius: 20px;
-}
-.ps-tag {
-    border: 1px solid purple;
-    background-color: rgba(128, 0, 128, 0.2);
-}
-.xb-tag {
-    border: 1px solid lime;
-    background-color: rgba(0, 255, 0, 0.2);
-}
-.nintendo-tag {
-    border: 1px solid red;
-    background-color: rgba(255, 0, 0, 0.2);
-}
-.pc-tag {
-    border: 1px solid navy;
-    background-color: rgba(0, 0, 128, 0.2);
-} */
-
 .game-page-link{
     align-self: flex-end;
-    padding: 0.4em 0.8em; /* Top/Bottom and Left/Right padding */
+    padding: 0.4em 0.8em;
     font-size: 16px;
     font-weight: bold;
-    cursor: pointer; /* Change cursor to pointer */
-    
+    cursor: pointer;
+    margin-top: 2em;
     background-color: var(--bglinkcolor);
     color: var(--linktxtcolor);
     text-align: center;
