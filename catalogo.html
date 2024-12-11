@@ -8,32 +8,41 @@
         <meta name="author" content="Francesco Lapenna">  
         <title>GameHub</title>
         <link rel="stylesheet" href="style.css">
+        <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <a href="index.html" id="logo"></a>
+                    <a href="index.php" id="logo"></a>
                     <h1>GameHub</h1>
                 </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                </nav>
                 <nav id="menu">
                     <ul class="menuList">
-                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="#" class="currentMenu">Catalogo</a></li>
-                        <li><a href="search.php">Abbonamenti</a></li>
-                        <li><a href="insert.php">Chi siamo</a></li>
+                        <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                        <li><a href="chiSiamo.html">Chi siamo</a></li>
+                        <li><a href="insert.php">Accedi</a></li>
                     </ul>
-                    <a id="profile" href="#menu">Profile</a>
+                    <!--<a id="profile" href="#menu">Profile</a>-->
                 </nav>
+                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle">
+                    <div role="button" class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
             </header>
             <nav id="breadcumb">
-                <p>Ti trovi in: Catalogo</p>
+                <p>Ti trovi in: <span lang="en">Home</span> >> Catalogo</p>
             </nav>
         </div>
-
-        
-
         <main class="catalogo-main">
             <div class="intro blur">
                 <h2>Scopri il nostro catalogo</h2>
@@ -165,9 +174,17 @@
                     <!------------------------------------->
                 </div>
             </section>
-
         </main>
-
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalogo.html" class="currentMenu">Catalogo</a></li>
+                <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                <li><a href="chiSiamo.html">Chi siamo</a></li>
+                <li><a href="insert.php">Accedi</a></li>
+                <li><a href=#content>Torna su</a></li>
+            </ul>
+        </nav>
         <footer>
             <div class="footer-content">
                 <div class="contact-info">

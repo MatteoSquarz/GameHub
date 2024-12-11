@@ -16,17 +16,24 @@
     --bgvisitedcolor: #1A1B41;
 }
 
-html, body{
+body{
     background-color: var(--bgcolor);
     color: var(--txtcolor);
+}
+
+html {
+    scroll-padding-top: 7em; /* Adjust the value to match the height of your header */
+    background-color: #000;
 }
 
 main{
     display: flex;
     flex-direction: column;
     background-color: var(--bgcolor);
-
+    min-height: calc(100vh - 12em); /*da capire se potrebbe essere giusto*/
 }
+
+
 
 /* SEZIONE HEADER */
 
@@ -57,8 +64,8 @@ header #logo{
     border-radius: 50px;
     margin: 0.2em 0.4em;
     padding: 0em;
-    width: 4.5em; /* Add a specific width to contain the icon */
-    height: 4.5em; /* Match the width for a square icon */
+    width: 4.5em; 
+    height: 4.5em; 
 }
 
 header .menuList{
@@ -68,7 +75,23 @@ header .menuList{
 }
 
 header .menuList li{
-    margin-right: 2.5em;
+    margin-right: 2em;
+}
+
+header .menuList li:last-child{
+    margin-right: 1.5em;
+}
+
+header .menuList li:last-child a{
+    background-image: url('assets/loginIcon.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center right;
+    cursor: pointer;
+    padding-right: 1.8em;
+    display: inline-flex;
+    align-items: center;
 }
 
 header .menuList a{
@@ -80,9 +103,6 @@ header .menuList a{
 header .currentMenu{
     font-weight: bold;
     color: var(--txtcolor) !important;
-}
-header .menuList a:visited{
-    color: var(--visitedcolor);
 }
 
 header .menuList a:hover{
@@ -100,13 +120,30 @@ header #profile {
     background-repeat: no-repeat;
     background-position: center;
     vertical-align: middle;
-    text-indent: -9999px; /* This will hide the text while keeping the icon visible */
-    width: 2em; /* Add a specific width to contain the icon */
-    height: 2em; /* Match the width for a square icon */
+    text-indent: -9999px; 
+    width: 2em; 
+    height: 2em;
     display: inline-block;
 }
 
+#mobile-menu{
+    display: none;
+}
 
+#mobile-menu .bar{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    margin: 5px 1.5em;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
 
 
 /* SEZIONE BREADCUMB */
@@ -137,7 +174,7 @@ header #profile {
     justify-content: center;
     align-items: center;
     gap: 1em;
-    height: 10em;
+    height: 20vh;
 }
 
 .intro p{
@@ -178,22 +215,25 @@ header #profile {
 .videogames{
     display: flex;
     flex-direction: row;
-    margin: 2em 10% 3em 0em;
+    margin: 4em 10% 0em 0em;
     gap: 1em;
     background-color: var(--homeboxcolor);
     justify-content: space-around;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 1em;
-    padding-left: 3em;
+    padding-left: 2em;
+    padding-right: 2em;
     border: #000 solid 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s;
+
 }
 
+/*
 .videogames:hover{
     transform:translateX(20px);
-}
+}*/
 
 .videogames img{
     width: 60%;
@@ -229,24 +269,25 @@ header #profile {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 3em 0em 3em 10%;
+    margin: 4em 0em 2em 10%;
     gap: 1em;
     background-color: var(--homeboxcolor);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     padding: 1em;
-    padding-right: 3em;
+    padding-left: 2em;
+    padding-right: 2em;
     border: #000 solid 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s;
 }
-
+/*
 .abbonamenti:hover{
     transform: translateX(-20px);
-}
+}*/
 
 .abbonamenti img{
-    width: 50%;
+    width: 45%;
     height: auto;
     border-radius: 20px;
 
@@ -268,16 +309,21 @@ header #profile {
 
 
 
-/*FOOTER*/
+/* SEZIONE MENU MOBILE */
+.menuListMobile{
+    display: none;
+}
+
 footer {
     background-color: var(--breadcolor);
     color: var(--txtcolor);
 }
 
+
 .footer-content {
     display: flex;
     justify-content: space-around;
-    padding: 1.5em;
+    padding: 1.0em;
     gap: 2em;
 }
 
@@ -299,6 +345,7 @@ footer {
     text-decoration: none;
 }
 
+
 .social-links a:hover {
     color: #add8e6;
 }
@@ -308,6 +355,216 @@ footer {
     border-top: 1px solid #333;
     vertical-align: middle;
     padding: 0.5em;
+}
+
+/* AIUTI ALLA NAVIGAZIONE */
+.navHelper{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navHelper:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+.listHelp ul{
+    list-style-type: none;
+}
+
+.tornaSuButton{
+    align-self: flex-end;
+    display: inline-flex;
+    margin-right: 1em;
+}
+
+.tornaSuHelper{
+    margin-bottom: 2em;
+    text-indent: -999em;
+    background-color: #000;
+    border-radius: 10px;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    background-image: url('assets/arrow_up.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+
+    background-position: center;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tornaSuHelper:focus{
+    position: static;
+    text-indent: 0;
+    background-position: center right;
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* ========================
+      PAGINA ABBONAMENTI
+=========================== */
+.introAbbonamenti h2 {
+    font-size: 2.5em;
+}
+.introAbbonamenti p{
+    font-size: 1.25em;
+}
+.abbonamentiAbb{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(0.5em, 1.5vw, 3em);/*gap preferito: 2vw(1/100 larghezza schermo);gap minimo 1 em gap massimo 3 em  */
+    padding: 2em;
+    padding-bottom: 4em;
+    transition: transform 0.3s;
+    max-width: 100%;
+    align-items: stretch;
+    margin-left: 0,5em;
+    margin-right: 0,5em;
+}
+.targhettaAbb{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    text-align: center;
+    color: black;
+    max-width: 100%;
+    width: 100%;
+    padding: 2.3em 1.5em 2.3em 1.5em;
+    background-color: var(--homeboxcolor);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.targhettaAbb p{
+    font-size: 1em;
+}
+.targhettaAbb strong{
+    font-size: 1.5em;
+}
+.targhettaAbb p strong{
+    font-size: 1em;
+}
+
+.targhettaAbb img{    
+    max-width: 40%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.targhettaAbb button{
+    background: linear-gradient(45deg, #115AA2,#000000);
+    color: white;            
+    padding: 0.5em 1.5em;     
+    border: none;             
+    border-radius: 5px;       
+    font-size: 1em;           
+    cursor: pointer;         
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s, transform 0.2s; 
+    max-width: 100%;
+    width: 100%;
+}
+
+.targhettaAbb button:hover {
+    transform: scale(1.03);    
+}
+.targhettaAbb form{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    max-width: 100%;
+    width: 100%;
+    gap: 1em;
+}
+
+
+
+/* ============================
+        PAGINA CHI SIAMO       
+============================ */
+.chiSiamo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chiSiamo h3{
+    font-size: 1.8em;
+}
+.chiSiamo p{
+    font-size: 1.2em;
+}
+.infoObiettivi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 10%;
+    gap: 1em;
+    border: #000 solid 1px;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: var(--homeboxcolor);
+    color: var(--contenttxtcolor);
+}
+
+.infoFondatori {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 5%;
+    gap: 1em;
+    border: #000 solid 1px;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: var(--homeboxcolor);
+    color: var(--contenttxtcolor);
+}
+
+.containerCardFondatori{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cardFondatore{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--homeboxcolor);
+    color: var(--contenttxtcolor);
+}
+
+.cardFondatore img{
+    width: 8em;
+    height: auto;
+    border-radius: 20px;
+}
+
+#chiSiamoMain {
+    background: url('assets/looking-far-away-4k-lb.png') no-repeat center center/cover;
+    background-color: var(--bgcolor);
 }
 
 

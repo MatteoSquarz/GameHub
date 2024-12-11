@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Questa pagina è dedicata alla nazionale femminile di pallavolo che ha vinto l'oro alle olimpiadi di Parigi 2024.">
-        <meta name="keywords" content="pallavolo,nazionale,femminile,volley,olimpiadi,oro,Paola Egonu,Alessia Orro">
+        <meta name="description" content="Questa pagina è dedicata al sito GameHub, venditore di videogiochi dal 2020">
+        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento">
         <meta name="author" content="Matteo Squarzoni">    
         <link rel = "stylesheet" href = "style.css" media = "screen">
+        <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <title>GameHub</title>
     </head>
@@ -17,47 +18,69 @@
                     <a href="index.php" id="logo"></a>
                     <h1>GameHub</h1>
                 </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                </nav>
                 <nav id="menu">
                     <ul class="menuList">
                         <li><a href="index.php" class="currentMenu">Home</a></li>
-                        <li><a href="list.php">Catalogo</a></li>
-                        <li><a href="search.php">Abbonamenti</a></li>
-                        <li><a href="insert.php">Chi siamo</a></li>
+                        <li><a href="catalogo.html">Catalogo</a></li>
+                        <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                        <li><a href="chiSiamo.html">Chi siamo</a></li>
+                        <li><a href="insert.php">Accedi</a></li>
                     </ul>
-                    <a id="profile" href="#menu">Profile</a>
+                    <!--<a id="profile" href="#menu">Profile</a>-->
                 </nav>
+                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle">
+                    <div role="button" class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
             </header>
             <nav id="breadcumb">
                 <p>Ti trovi in: <span lang="en">Home</span></p>
             </nav>
         </div>
-        <main>
-            <div class="">
-                <div class="background">
-                    <div id="home" class="intro blur">
-                        <h2>Benvenuto nel nostro negozio di videogiochi</h2>
-                        <p>Trova i giochi migliori per ogni piattaforma!</p>
-                    </div>
-                </div>
-                
-                <div class="videogames">
-                    <div class="infoVideogames">
-                        <h2>Divertiti con i nostri giochi</h2>
-                        <p>Il nostro negozio offre una vasta gamma di giochi per tutte le piattaforme. Dai un'occhiata al nostro catalogo e trova il gioco che fa per te! Puoi acquistare un gioco anche singolarmente.</p>
-                        <a href="prova.html" class="hover-underline-animation left">Vai al catalogo</a>
-                    </div>
-                    <img src="assets/pngtree-playful-and-dynamic-video-game-controller-with-a-splash-of-colors-image_16485471.png">
-                </div>
-                <div class="abbonamenti">
-                    <img src="assets/istockphoto-1393551364-640x640.png">
-                    <div class="infoAbbonamenti">
-                        <h2>Scegli l'abbonamento più adatto a te</h2>
-                        <p>Trova l'abbonamento che ti permetta di godere della massima esperienza videoludica più adatta alle tue esigenze. Puoi trovare informazioni riguardo i prezzi alla pagina dedicata.</p>
-                        <a href="prova.html">Vai agli abbonamenti</a>
-                    </div>
+        <main id="content">
+            <div class="background">
+                <div id="home" class="intro blur">
+                    <h2>Benvenuto nel nostro negozio di videogiochi</h2>
+                    <p>Trova i giochi migliori per ogni piattaforma!</p>
                 </div>
             </div>
+            
+            <div class="videogames">
+                <div class="infoVideogames">
+                    <h2>Divertiti con i nostri giochi</h2>
+                    <p>Il nostro negozio offre una vasta gamma di giochi per tutte le piattaforme. Dai un'occhiata al nostro catalogo e trova il gioco che fa per te! Puoi acquistare un gioco anche singolarmente.</p>
+                    <a href="prova.html" class="hover-underline-animation left">Vai al catalogo</a>
+                </div>
+                <img src="assets/pngtree-playful-and-dynamic-video-game-controller-with-a-splash-of-colors-image_16485471.png">
+            </div>
+            <div class="abbonamenti">
+                <img src="assets/istockphoto-1393551364-640x640.png">
+                <div class="infoAbbonamenti">
+                    <h2>Scegli l'abbonamento più adatto a te</h2>
+                    <p>Trova l'abbonamento che ti permetta di godere della massima esperienza videoludica più adatta alle tue esigenze. Puoi trovare informazioni riguardo i prezzi alla pagina dedicata.</p>
+                    <a href="prova.html">Vai agli abbonamenti</a>
+                </div>
+            </div>
+            <div class="tornaSuButton">
+                <a href="#content" class="tornaSuHelper">Torna su</a>
+            </div>
         </main>
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li><a href="index.php" class="currentMenu">Home</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                <li><a href="chiSiamo.html">Chi siamo</a></li>
+                <li><a href="insert.php">Accedi</a></li>
+                <li><a href=#content>Torna su</a></li>
+            </ul>
+        </nav>    
         <footer>
             <div class="footer-content">
                 <div class="contact-info">
