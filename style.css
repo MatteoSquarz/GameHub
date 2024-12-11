@@ -460,6 +460,7 @@ footer {
 }
 
 .game-title {
+    font-size: 1.2em;
     font-weight: bold;
 }
 
@@ -486,19 +487,22 @@ footer {
     background-color: rgba(0, 0, 128, 0.2);
 } */
 
-.game-purchase-button {
+.game-page-link{
     align-self: flex-end;
-
-    background-color: var(--bglinkcolor);
-    color: var(--linktxtcolor);
     padding: 0.4em 0.8em; /* Top/Bottom and Left/Right padding */
-    border: none;
-    border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer; /* Change cursor to pointer */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth hover effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow */
+    
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.game-page-link:visited{
+    background-color: var(--bgvisitedcolor);
 }
 
 /********************************************************************************/
