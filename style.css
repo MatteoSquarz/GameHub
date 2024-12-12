@@ -5,6 +5,9 @@
 
 :root{
     --bgcolor: #115AA2;
+    --loginbgcolor: #000;
+    --loginformcolor: #3D8FC0;
+    --logintextcolor: #000;
     --txtcolor: #FFF;
     --breadcolor: #000000;
     --homeboxcolor: #ADD8E6;
@@ -428,8 +431,8 @@ footer {
     transition: transform 0.3s;
     max-width: 100%;
     align-items: stretch;
-    margin-left: 0,5em;
-    margin-right: 0,5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 .targhettaAbb{
     box-sizing: border-box;
@@ -723,3 +726,75 @@ footer {
 }
 
 /********************************************************************************/
+
+/*=============================
+   PAGINA LOGIN/REGISTRAZIONE
+===============================*/
+
+.mainLoginRegistrazione{
+    background-color: var(--loginbgcolor);
+    min-height: 100vh;
+}
+
+.loginRegistrazione{
+    border: 2px solid #000;
+    width: 85%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
+    border-radius: 1em;
+    background-color: var(--loginformcolor);
+    max-width: 800px;
+}
+
+.formLoginRegistrazione{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginRegistrazione h2{
+    margin: 2% 0%;
+    color: var(--logintextcolor);
+}
+
+.loginRegistrazione p{
+    margin-bottom: 2%;
+    color: var(--logintextcolor);
+}
+
+.subText{
+    font-size: x-small;
+    margin-bottom: 3%;
+    align-self: flex-start;
+    color: var(--logintextcolor);
+}
+
+.labelForm {
+    display: block;
+    margin-bottom: 0.5%;
+    font-weight: bold;
+    color: var(--logintextcolor);
+    align-self: flex-start;
+}
+
+.inputForm {
+    width: 100%;
+    padding: 0.7em;
+    border-radius: 10px;
+}
+
+.buttonForm {
+    border-radius: 10px;
+    padding: 1em 2em;
+    margin-bottom: 5%;
+}
+
+hr{
+    width: 85%;
+    margin-bottom: 2%;
+}
