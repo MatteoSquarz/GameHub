@@ -1,0 +1,139 @@
+#mobile-menu{
+    display: block;
+}
+
+
+header .menuList{
+    display: none;
+}
+
+header #profile{
+    display: none;
+}
+
+.videogames:hover{
+    transform: translateX(0px);
+}
+
+.abbonamenti:hover{
+    transform: translateX(0px);
+}
+
+.videogames img{
+    display: none;
+}
+
+.abbonamenti img{
+    display: none;
+}
+
+
+.menuListMobile{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+}
+
+.menuListMobile li{
+    padding: 1.5em;
+    border-bottom: 1px solid #333;
+}
+
+.menuListMobile li:last-child{
+    margin-bottom: 4em;
+    border-bottom: none;
+    align-self: flex-end;
+}
+
+
+.menuListMobile li:last-child a{
+    background-image: url('assets/arrow_up.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+    padding-right: 1.8em;
+    display: inline-flex;
+    align-items: center;
+}
+
+.menuListMobile a{
+    color: #c8c4c4;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menuListMobile .currentMenu{
+    font-weight: bold;
+    color: white !important;
+}
+
+/* ========================
+      PAGINA ABBONAMENTI
+=========================== */
+
+.introAbbonamenti h2 {
+    font-size: 2.3em;
+}
+
+.abbonamentiAbb{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2.3em;
+     padding: 2em;
+     padding-left: 1em;
+     padding-right: 1em;
+    padding-bottom: 4em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    max-width: 100%;
+    
+}
+.targhettaAbb{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    text-align: center;
+    color: black;
+    max-width: 100%;
+    padding: 2.5em 1.5em 2.5em 1.5em;
+    background-color: var(--homeboxcolor);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+
+
+/* ============================
+        PAGINA CHI SIAMO       
+============================ */
+
+.containerCardFondatori{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.cardFondatore{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--homeboxcolor);
+    color: var(--contenttxtcolor);
+}
