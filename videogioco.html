@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Questa pagina è dedicata alla sezione abbonamenti del negozio di videogiochi GameHub. Troverai abbonamenti  Base, Sistema e Premium">
-        <meta name="keywords" content="Abbonamenti, GameHub, Videogiochi, negozio, Base, Sistema, Premium">
+        <meta name="description" content="Questa pagina è dedicata ad un gioco specifico presente nel catalogo del sito GameHub">
+        <meta name="keywords" content="Videogioco, GameHub, negozio, dettagli, acquista">
         <meta name="author" content="Alessandro Damiani">    
         <link rel = "stylesheet" href = "style.css" media = "screen">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="mobile.css" media="only screen and (max-width: 768px)">
-        <title>GameHub - Abbonamenti</title>
+        <title>GameHub</title>
     </head>
     <body>
         <div class="stickyScroll">
@@ -24,8 +24,8 @@
                 <nav id="menu">
                     <ul class="menuList">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="catalogo.html">Catalogo</a></li>
-                        <li><a href="abbonamenti.html" class="currentMenu">Abbonamenti</a></li>
+                        <li><a href="catalogo.html" class="currentMenu">Catalogo</a></li>
+                        <li><a href="abbonamenti.html" >Abbonamenti</a></li>
                         <li><a href="chiSiamo.html">Chi siamo</a></li>
                         <li><a href="login.html">Accedi</a></li>
                     </ul>
@@ -41,48 +41,45 @@
                 
             </header>
             <nav id="breadcumb">
-                <p>Ti trovi in: <span lang="en">Home</span> >> Abbonamenti</p>
+                <p>Ti trovi in: <span lang="en">Home</span> >> Catalogo >> Videogioco</p>
             </nav>
         </div>
         <main>
-            <div>
-                <div class="background">
-                    <div class="intro blur">
-                        <h2>Ti trovi nella sezione dedicata agli abbonamenti</h2>
-                        <p>Scegli quello perfetto per te!</p>
+            <div class="divGrande">
+                <div class="backgroundPannelloVideogioco ">
+                     <div class = "pannelloVideogioco blur">
+                     <img src="assets/game-covers/dragon-ball-sparking-zero.jpg" alt="Immagine del videogioco: xxx" class="VideogiocoImm1">
+                     <div class="nomeVideogioco"><h2><span lang="en">DragonBall: sparking zero!</span></h2></div>
                     </div>
                 </div>
-                <div class="abbonamentiAbb">
-                    <div class="targhettaAbb">
-                        <h3><strong>BASE</strong></h3>
-                        <img src="assets/Designer.jpeg" alt="Icona abbonamento BASE">
-                        <p>L'abbonamento "BASE" fa schifo. Permette di giocare a 3 giochi a scelta ogni mese.(?)</p>
-                        <p><strong>Costo:</strong> 25€</p>
-                        <button onclick>Abbonati!</button>
+                <div class="videogiocoPegiEAcquisto">
+                    <div class="videogiocoPegi">
+                    <p><span lang="en">PEGI</span></p>
+                    <img src="assets/PEGI_18.svg" alt="icona PEGI X">
                     </div>
-                    <div class="targhettaAbb">
-                        <h3><strong>SISTEMA</strong></h3>
-                        <img src="assets/Designer (9).jpeg" alt="Icona abbonamento SISTEMA">
-                        <p>L'abbonamento "SISTEMA" permette di giocare tutti i giochi di una determianta piattaforma</p>
-                        <p><strong>Costo:</strong> 40€</p>
-                        <form action="/submit" method="post">
-                            <label for="piattaforma">Seleziona il sistema:</label>
-                            <select id="piattaforma" name="piattaforma" required>
-                                <option value="" disabled selected>Seleziona un'opzione</option>
-                                <option value="playstation">PlayStation</option>
-                                <option value="xbox">Xbox</option>
-                                <option value="pc">PC</option>
-                                <option value="Nintendo">Nintendo</option>
-                            </select>
-                            <button onclick>Abbonati!</button>
-                        </form>   
+                    <div class="videogiocoAcquisto">
+                        <button>Acquisto singolo</button>
+                        <p>Costo: 25,45€</p>
                     </div>
-                    <div class="targhettaAbb">
-                        <h3><span lang="en"><strong>PREMIUM</strong></span></h3>
-                        <img src="assets/Designer (3).jpeg" alt="Icona abbonamento PREMIUM">
-                        <p>L'abbonamento "PREMIUM" permette di giocare tutti i giochi presenti in catalogo, senza limitazioni</p>
-                        <p><strong>Costo:</strong> 50€</p>
-                        <button onclick>Abbonati!</button>
+                </div>
+                
+                <h3 id="scrittaDettagli">Dettagli</h3>
+                
+                <div class="boxDescrizioneECateorie">
+                    <div class="boxDescrizioneEInfo">
+                        
+                        <p><strong>Descrizione:</strong> <span lang="en">DragonBall</span> è finalmente tornato! Gioca combattimenti
+                            in un mondo 3D e diventa il miglior combattente del mondo di <span lang="en">dragonball</span></p>
+                        <div class="infoVideogioco">
+                            <p><strong>Pubblicato/Rilasciato:</strong> Bandai Namcoggggggggg gg</p>
+                            <p><strong>Data Uscita:</strong> 12/12/2012</p>
+                            
+                        </div>
+                    </div>
+                    <div class="boxCategorie">
+                        <p><strong>Categorie:</strong> Picchiaduro</p>
+                        <p><strong>Piattaforme:</strong> PS6</p>
+                        <p><strong>Abbonamenti:</strong> Sistema, <span lang="en">Premium</span></p>
                     </div>
                 </div>
             </div>

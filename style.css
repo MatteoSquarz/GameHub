@@ -798,3 +798,150 @@ hr{
     width: 85%;
     margin-bottom: 2%;
 }
+/*Sezione Videogioco*/
+
+.divGrande{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: var(--txtcolor);
+    width: 100%;
+    /* background: url(assets/background-prova.jpg) repeat-y ;
+    background-size: 100% auto;
+    background-position: top center;   */
+    background: #151517;  
+}
+.backgroundPannelloVideogioco{
+    background: url('assets/game-covers/dragon-ball-sparking-zero.jpg') no-repeat center center/cover;
+    background-color: var(--bgcolor);
+    width: 100%;
+    border-radius: 10px;
+}
+.pannelloVideogioco {
+    color: var(--txtcolor);
+    display: flex;
+    flex-direction: row;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 3em;
+    justify-content: left;
+    gap: 2em;
+    align-items:center; 
+    box-sizing: border-box; 
+    width: 100%;
+    height: 35vh;
+    border-radius: 10px;
+    
+}
+
+.pannelloVideogioco h2{
+    font-size: 2.3em;
+    max-width: 100%;
+    hyphens: auto;
+}
+
+.VideogiocoImm1{
+    width: 25%;
+    height: auto;
+    border-radius: 20px;
+}
+.videogiocoPegiEAcquisto{
+    box-sizing:border-box;
+    color: var(--txtcolor);
+    display: flex;
+    flex-direction: row;
+    gap: 0em;
+    justify-content: flex-start;
+    align-items: center;
+    width: 60%;
+     padding: 1em; 
+     padding-left: 1.5em;
+     padding-right: 1.5em;
+    height: 20vh;
+
+}
+.videogiocoPegiEAcquisto img{
+    width: 2.6em;
+    height: auto;
+    border-radius: 2px;
+}
+.videogiocoPegi {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    height: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 0.85em;
+    padding: 0.5em;
+    width: 40%;
+}
+.videogiocoAcquisto{
+    flex:3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    padding-left: 0em;
+    padding-top: 2em;
+    
+    
+}
+
+
+.videogiocoAcquisto button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+}
+
+
+
+#scrittaDettagli {
+    text-align: center; 
+    margin: 0 auto; 
+    width: 100%; 
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.boxDescrizioneECateorie{
+    display: flex;
+    flex-direction: row;
+    gap: 3em;    
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 3em;
+}
+.boxCategorie{
+    /*border: white solid 2px; da valutare*/
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    box-sizing: border-box;
+    
+    max-width: 50%;
+}
+.boxDescrizioneEInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    box-sizing: border-box;
+    padding: 1em;
+    /*border: white solid 2px; da valutare*/
+    max-width: 50%;
+}
+.infoVideogioco{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    box-sizing: border-box;
+    padding: 1em;
+    
+    
+}

@@ -137,3 +137,59 @@ header #profile{
     background-color: var(--homeboxcolor);
     color: var(--contenttxtcolor);
 }
+/*Pagina VIDEOGIOCO*/
+
+
+.pannelloVideogioco {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center; 
+    box-sizing: border-box; 
+    width: 100%;
+    height: 50vh;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 10px;   
+}
+.VideogiocoImm1{
+    width: 65%;
+    height: auto;
+    border-radius: 20px;
+    
+}
+.pannelloVideogioco h2{
+    font-size: 2em;
+    max-width: 100%;
+    hyphens: auto;
+}
+#scrittaDettagli {
+    text-align: center; 
+    margin: 0 auto; 
+    width: 100%; 
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.videogiocoPegiEAcquisto{
+    
+    gap: 1em;
+    padding-left: 1em;
+    pedding-right: 1em;
+}
+.boxDescrizioneECateorie{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.boxDescrizioneEInfo{
+    max-width: 100%;
+    padding: 0em;
+}
+.infoVideogioco{
+    
+    padding: 0em;
+    gap: 1em;
+    
+    
+}
