@@ -7,32 +7,111 @@
         <meta name="keywords" content="pallavolo,nazionale,femminile,volley,olimpiadi,oro,Paola Egonu,Alessia Orro">
         <meta name="author" content="Andrea Piola">    
         <link rel = "stylesheet" href = "style.css" media = "screen">
+        <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <script src="script.js"></script>
         <title>GameHub</title>
     </head>
-    <body>
+    <body onload="caricamento();">
+        <div class="stickyScroll">
+            <header>
+                <div class="logoName">
+                    <a href="index.php" id="logo"></a>
+                    <h1>GameHub</h1>
+                </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                </nav>
+                <nav id="menu">
+                    <ul class="menuList">
+                        <li><a href="index.php" class="currentMenu">Home</a></li>
+                        <li><a href="catalogo.html">Catalogo</a></li>
+                        <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                        <li><a href="chiSiamo.html">Chi siamo</a></li>
+                        <li><a href="login.html">Accedi</a></li>
+                    </ul>
+                    <!--<a id="profile" href="#menu">Profile</a>-->
+                </nav>
+                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle">
+                    <div role="button" class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
+            </header>
+            <nav id="breadcumb">
+                <p>Ti trovi in: Registrazione</p>
+            </nav>
+        </div>
         <main class="mainLoginRegistrazione">
             <div class="loginRegistrazione">
                 <h2>Registrazione</h2>
-                <form class="formLoginRegistrazione">
-                    <label class="labelForm">Nome</label>
-                    <input class="inputForm" type="text" placeholder="Inserisci il tuo nome" required>
-                    <label class="subText">Es: Gigi</label>
-                    <label class="labelForm">Cognome</label>
-                    <input class="inputForm" type="text" placeholder="Inserisci il tuo cognome" required>
-                    <label class="subText">Es: Rossi</label>
-                    <label class="labelForm">Email</label>
-                    <input class="inputForm" type="text" placeholder="Inserisci la tua email" required>
-                    <label class="subText">Es: nome.cognome@gmail.com</label>
-                    <label class="labelForm">Username</label>
-                    <input class="inputForm" type="text" placeholder="Inserisci lo username" required>
-                    <label class="subText">Es: gigi123</label>
-                    <label class="labelForm">Password</label>
-                    <input class="inputForm" type="password" placeholder="Inserisci la password" required>
-                    <label class="subText">Es: A123aC%#</label>
-                    <button class="buttonForm" type="submit">Registrati</button>
+                <form class="formLoginRegistrazione" method="post" action="registrazione.php" onsubmit="return validazioneForm();">
+                    <div>
+                        <label class="labelForm" for="nome">Nome</label>
+                        <input class="inputForm" type="text" placeholder="Inserisci il tuo nome" name="nome" id="nome" required>
+                    </div>
+
+                    <div>
+                        <label class="labelForm" for="cognome">Cognome</label>
+                        <input class="inputForm" type="text" placeholder="Inserisci il tuo cognome" name="cognome" id="cognome" required>
+                    </div>
+
+                    <div>
+                        <label class="labelForm" for="dataNascita">Data di nascita</label>
+                        <input class="inputForm" type="date" name="dataNascita" id="dataNascita" required>
+                    </div>
+
+                    <div>
+                        <label class="labelForm" for="email">Email</label>
+                        <input class="inputForm" type="text" placeholder="Inserisci la tua email" name="email" id="email" required>
+                    </div>
+
+                    <div>
+                        <label class="labelForm" for="username">Username</label>
+                        <input class="inputForm" type="text" placeholder="Inserisci lo username" name="username" id="username" required>
+                    </div>
+
+                    <div>
+                        <label class="labelForm" for="password">Password</label>
+                        <input class="inputForm" type="password" placeholder="Inserisci la password" name="password" id="password" required>
+                    </div>
+
+                    <button class="buttonForm" type="submit" name="registrati" id="registrati">Registrati</button>
+                    [messaggiForm]
                 </form>                
             </div>
         </main>
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li><a href="index.php" class="currentMenu">Home</a></li>
+                <li><a href="catalogo.html">Catalogo</a></li>
+                <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                <li><a href="chiSiamo.html">Chi siamo</a></li>
+                <li><a href="login.html">Accedi</a></li>
+                <li><a href=#content>Torna su</a></li>
+            </ul>
+        </nav>    
+        <footer>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contattaci</h3>
+                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+                </div>
+                <div class="social-links">
+                    <h3>Seguici</h3>
+                    <a href="#"><span class="fa-brands fa-facebook"></span></a>
+                    <a href="#"><span class="fa-brands fa-twitter"></span></a>
+                    <a href="#"><span class="fa-brands fa-instagram"></span></a>
+                    <a href="#"><span class="fa-brands fa-youtube"></span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+            </div>
+        </footer>
     </body>
 </html>
