@@ -44,46 +44,42 @@
                 <p>Ti trovi in: <span lang="en">Home</span> >> Abbonamenti</p>
             </nav>
         </div>
-        <main>
-            <div>
-                <div class="background">
-                    <div class="intro blur">
-                        <h2>Ti trovi nella sezione dedicata agli abbonamenti</h2>
-                        <p>Scegli quello perfetto per te!</p>
-                    </div>
+        <main class="background">
+            <div class="intro blur">
+                <h2>Ti trovi nella sezione dedicata agli abbonamenti</h2>
+                <p>Scegli quello perfetto per te!</p>
+            </div>
+            <div class="abbonamentiAbb">
+                <div class="targhettaAbb">
+                    <h3><strong>BASE</strong></h3>
+                    <img src="assets/Designer.jpeg" alt="Icona abbonamento BASE">
+                    <p>L'abbonamento "BASE" fa schifo. Permette di giocare a 3 giochi a scelta ogni mese.(?)</p>
+                    <p><strong>Costo:</strong> 25€</p>
+                    <button onclick>Abbonati!</button>
                 </div>
-                <div class="abbonamentiAbb">
-                    <div class="targhettaAbb">
-                        <h3><strong>BASE</strong></h3>
-                        <img src="assets/Designer.jpeg" alt="Icona abbonamento BASE">
-                        <p>L'abbonamento "BASE" fa schifo. Permette di giocare a 3 giochi a scelta ogni mese.(?)</p>
-                        <p><strong>Costo:</strong> 25€</p>
+                <div class="targhettaAbb">
+                    <h3><strong>SISTEMA</strong></h3>
+                    <img src="assets/Designer (9).jpeg" alt="Icona abbonamento SISTEMA">
+                    <p>L'abbonamento "SISTEMA" permette di giocare tutti i giochi di una determianta piattaforma</p>
+                    <p><strong>Costo:</strong> 40€</p>
+                    <form action="/submit" method="post">
+                        <label for="piattaforma">Seleziona il sistema:</label>
+                        <select id="piattaforma" name="piattaforma" required>
+                            <option value="" disabled selected>Seleziona un'opzione</option>
+                            <option value="playstation">PlayStation</option>
+                            <option value="xbox">Xbox</option>
+                            <option value="pc">PC</option>
+                            <option value="Nintendo">Nintendo</option>
+                        </select>
                         <button onclick>Abbonati!</button>
-                    </div>
-                    <div class="targhettaAbb">
-                        <h3><strong>SISTEMA</strong></h3>
-                        <img src="assets/Designer (9).jpeg" alt="Icona abbonamento SISTEMA">
-                        <p>L'abbonamento "SISTEMA" permette di giocare tutti i giochi di una determianta piattaforma</p>
-                        <p><strong>Costo:</strong> 40€</p>
-                        <form action="/submit" method="post">
-                            <label for="piattaforma">Seleziona il sistema:</label>
-                            <select id="piattaforma" name="piattaforma" required>
-                                <option value="" disabled selected>Seleziona un'opzione</option>
-                                <option value="playstation">PlayStation</option>
-                                <option value="xbox">Xbox</option>
-                                <option value="pc">PC</option>
-                                <option value="Nintendo">Nintendo</option>
-                            </select>
-                            <button onclick>Abbonati!</button>
-                        </form>   
-                    </div>
-                    <div class="targhettaAbb">
-                        <h3><span lang="en"><strong>PREMIUM</strong></span></h3>
-                        <img src="assets/Designer (3).jpeg" alt="Icona abbonamento PREMIUM">
-                        <p>L'abbonamento "PREMIUM" permette di giocare tutti i giochi presenti in catalogo, senza limitazioni</p>
-                        <p><strong>Costo:</strong> 50€</p>
-                        <button onclick>Abbonati!</button>
-                    </div>
+                    </form>   
+                </div>
+                <div class="targhettaAbb">
+                    <h3><span lang="en"><strong>PREMIUM</strong></span></h3>
+                    <img src="assets/Designer (3).jpeg" alt="Icona abbonamento PREMIUM">
+                    <p>L'abbonamento "PREMIUM" permette di giocare tutti i giochi presenti in catalogo, senza limitazioni</p>
+                    <p><strong>Costo:</strong> 50€</p>
+                    <button onclick>Abbonati!</button>
                 </div>
             </div>
         </main>
