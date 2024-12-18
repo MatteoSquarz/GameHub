@@ -662,9 +662,9 @@ footer {
     text-align: center;
     font-size: 20px;
 
-    border: #000 solid 1px;
+    border: var(--homeboxcolor) solid 5px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+
 }
 
 .game-card:hover {
