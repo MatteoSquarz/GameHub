@@ -137,8 +137,10 @@ header #profile{
     background-color: var(--homeboxcolor);
     color: var(--contenttxtcolor);
 }
-/*Pagina VIDEOGIOCO*/
 
+/* ============================
+        PAGINA VIDEOGIOCO
+============================ */
 
 .pannelloVideogioco {
     display: flex;
@@ -152,7 +154,7 @@ header #profile{
     padding-right: 1em;
     border-radius: 10px;   
 }
-.VideogiocoImm1{
+.copertinaVideogioco{
     width: 65%;
     height: auto;
     border-radius: 20px;
@@ -163,20 +165,12 @@ header #profile{
     max-width: 100%;
     hyphens: auto;
 }
-#scrittaDettagli {
-    text-align: center; 
-    margin: 0 auto; 
-    width: 100%; 
-    font-size: 1.3em;
-    font-weight: bold;
-}
 .videogiocoPegiEAcquisto{
-    
     gap: 1em;
     padding-left: 1em;
-    pedding-right: 1em;
+    padding-right: 1em;
 }
-.boxDescrizioneECateorie{
+.boxDescrizioneECategorie{
     display: flex;
     flex-direction: column;
     padding-left: 1em;
@@ -184,12 +178,13 @@ header #profile{
 }
 .boxDescrizioneEInfo{
     max-width: 100%;
-    padding: 0em;
+    padding: 1em;
+}
+.boxCategorie{
+    padding: 1em;
 }
 .infoVideogioco{
-    
     padding: 0em;
     gap: 1em;
-    
-    
 }
+
