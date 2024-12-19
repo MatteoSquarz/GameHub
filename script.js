@@ -53,13 +53,13 @@ function messaggio(input, mode) {
     if(!mode){
         //creo messaggio di aiuto
         node = document.createElement("span");
-        node.className = "subText";
+        node.className = "hintText";
         node.appendChild(document.createTextNode(dettagli_form[input.id][0]));
     }
     else{
         //creo messaggio di errore
         node = document.createElement("strong");
-        node.className = "subText";
+        node.className = "errorText";
         node.appendChild(document.createTextNode(dettagli_form[input.id][2]));
     }
     p.appendChild(node);

@@ -756,7 +756,7 @@ footer {
 }
 
 .loginRegistrazione h2{
-    margin: 2% 0%;
+    margin-top: 1em;
     color: var(--logintextcolor);
 }
 
@@ -779,11 +779,20 @@ footer {
     background-color: var(--bgvisitedcolor);
 }  
 
-.subText{
-    font-size: x-small;
-    margin-bottom: 4%;
+.hintText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
     align-self: flex-start;
     color: var(--logintextcolor);
+}
+
+.errorText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    align-self: flex-start;
+    color: rgb(148, 17, 17);
 }
 
 .labelForm {
