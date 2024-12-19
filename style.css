@@ -185,7 +185,7 @@ header #profile {
 }
 
 .background{
-    background: url('assets/dark-background-abstract-background-network-3d-background-3840x2160-8324.png') no-repeat center center/cover;
+    background: url('assets/dark-background-abstract-background-network-3d-background-3840x2160-8324.png') no-repeat center fixed;
     background-color: var(--bgcolor);
 }
 
@@ -724,7 +724,7 @@ footer {
    PAGINA LOGIN/REGISTRAZIONE
 ===============================*/
 
-.mainLoginRegistrazione{
+#mainLoginRegistrazione{
     background-color: var(--loginbgcolor);
 }
 
@@ -735,10 +735,9 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2em 0;
-    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
+    margin: 5em 0;
     border-radius: 1em;
-    background-color: var(--loginformcolor);
+    background-color: var(--homeboxcolor);
     max-width: 600px;
 }
 
@@ -757,25 +756,49 @@ footer {
 }
 
 .loginRegistrazione h2{
-    margin: 2% 0%;
+    margin-top: 1em;
     color: var(--logintextcolor);
 }
 
 .loginRegistrazione p{
-    margin-bottom: 2%;
+    margin-bottom: 1em;
     color: var(--logintextcolor);
 }
 
-.subText{
-    font-size: x-small;
-    margin-bottom: 4%;
+.loginRegistrazione a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.loginRegistrazione a:visited{
+    background-color: var(--bgvisitedcolor);
+}  
+
+.hintText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
     align-self: flex-start;
     color: var(--logintextcolor);
 }
 
+.errorText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    align-self: flex-start;
+    color: rgb(148, 17, 17);
+}
+
 .labelForm {
     display: block;
-    margin-bottom: 0.5%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     font-weight: bold;
     color: var(--logintextcolor);
     align-self: flex-start;
@@ -785,16 +808,21 @@ footer {
     width: 100%;
     padding: 0.7em;
     border-radius: 10px;
+    border: #000 solid 2px;
 }
 
 .buttonForm {
-    border-radius: 10px;
-    padding: 1em 2em;
-    margin-bottom: 5%;
-    margin-top: 3%;
+    border-radius: 15px;
+    padding: 0.8em 1.8em;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    background: linear-gradient(45deg, #115AA2,#000000);
+    color: white;
+    border: none;    
 }
 
 hr{
     width: 85%;
     margin-bottom: 2%;
 }
+
