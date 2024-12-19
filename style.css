@@ -724,7 +724,7 @@ footer {
    PAGINA LOGIN/REGISTRAZIONE
 ===============================*/
 
-.mainLoginRegistrazione{
+#mainLoginRegistrazione{
     background-color: var(--loginbgcolor);
 }
 
@@ -738,7 +738,7 @@ footer {
     margin: 2em 0;
     /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
     border-radius: 1em;
-    background-color: var(--loginformcolor);
+    background-color: var(--homeboxcolor);
     max-width: 600px;
 }
 
@@ -766,6 +766,20 @@ footer {
     color: var(--logintextcolor);
 }
 
+.loginRegistrazione a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.loginRegistrazione a:visited{
+    background-color: var(--bgvisitedcolor);
+}  
+
 .subText{
     font-size: x-small;
     margin-bottom: 4%;
@@ -775,7 +789,8 @@ footer {
 
 .labelForm {
     display: block;
-    margin-bottom: 0.5%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     font-weight: bold;
     color: var(--logintextcolor);
     align-self: flex-start;
@@ -785,16 +800,21 @@ footer {
     width: 100%;
     padding: 0.7em;
     border-radius: 10px;
+    border: #000 solid 2px;
 }
 
 .buttonForm {
-    border-radius: 10px;
-    padding: 1em 2em;
-    margin-bottom: 5%;
-    margin-top: 3%;
+    border-radius: 15px;
+    padding: 0.8em 1.8em;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    background: linear-gradient(45deg, #115AA2,#000000);
+    color: white;
+    border: none;    
 }
 
 hr{
     width: 85%;
     margin-bottom: 2%;
 }
+

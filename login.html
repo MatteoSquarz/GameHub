@@ -15,19 +15,18 @@
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <a href="index.php" id="logo"></a>
-                    <h1>GameHub</h1>
+                    <a href="index.php" id="logo"><h1>GameHub</h1></a>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
                         <a href="#content" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu">
                     <ul class="menuList">
-                        <li><a href="index.php" class="currentMenu">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="catalogo.html">Catalogo</a></li>
                         <li><a href="abbonamenti.html">Abbonamenti</a></li>
                         <li><a href="chiSiamo.html">Chi siamo</a></li>
-                        <li><a href="login.html">Accedi</a></li>
+                        <li><a href="login.html" class="currentMenu">Accedi</a></li>
                     </ul>
                     <!--<a id="profile" href="#menu">Profile</a>-->
                 </nav>
@@ -43,7 +42,7 @@
                 <p>Ti trovi in: <span lang="en">Login</span></p>
             </nav>
         </div>
-        <main class="mainLoginRegistrazione">
+        <main id="mainLogin" class="background">
             <div class="loginRegistrazione">
                 <h2>Login</h2>
                 <form class="formLoginRegistrazione" method="post" action="login.php" onsubmit="return validazioneForm();">
@@ -67,11 +66,11 @@
         </main>
         <nav id="hamburgerMobileMenu">
             <ul class="menuListMobile">
-                <li><a href="index.php" class="currentMenu">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="catalogo.html">Catalogo</a></li>
                 <li><a href="abbonamenti.html">Abbonamenti</a></li>
                 <li><a href="chiSiamo.html">Chi siamo</a></li>
-                <li><a href="login.html">Accedi</a></li>
+                <li><a href="login.html" class="currentMenu">Accedi</a></li>
                 <li><a href=#content>Torna su</a></li>
             </ul>
         </nav>    
