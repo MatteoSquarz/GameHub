@@ -20,7 +20,7 @@
 }
 
 body{
-    background-color: var(--bgcolor);
+    background-color: #000;
     color: var(--txtcolor);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5em;
@@ -34,8 +34,8 @@ html {
 main{
     display: flex;
     flex-direction: column;
-    background-color: var(--bgcolor);
-    min-height: calc(100vh - 12em); /*da capire se potrebbe essere giusto*/
+    background-color: #000;
+    min-height: calc(100vh - 12em);
 }
 
 
@@ -70,7 +70,7 @@ header #logo{
     margin: 0.2em 0.4em;
     padding: 0em;
     width: 4.5em; 
-    height: 4.5em; 
+    height: 4.5em;
 }
 
 header .menuList{
@@ -87,7 +87,7 @@ header .menuList li:last-child{
     margin-right: 1.5em;
 }
 
-header .menuList li:last-child a{
+header .menuList li:last-child{
     background-image: url('assets/loginIcon.png');
     background-size: 1em;
     background-repeat: no-repeat;
@@ -105,9 +105,10 @@ header .menuList a{
     text-transform: uppercase;
 }
 
-header .currentMenu{
+#currentMenu{
     font-weight: bold;
-    color: var(--txtcolor) !important;
+    color: var(--txtcolor);
+    text-transform: uppercase;
 }
 
 header .menuList a:hover{
@@ -188,7 +189,7 @@ header #profile {
 
 .background{
     background: url('assets/dark-background-abstract-background-network-3d-background-3840x2160-8324.png') no-repeat center fixed;
-    background-color: var(--bgcolor);
+    background-color: #000;
 }
 
 .blur{
@@ -564,6 +565,10 @@ footer {
     color: var(--contenttxtcolor);
 }
 
+.cardFondatore h3{
+    font-size: 1em;
+}
+
 .cardFondatore img{
     width: 8em;
     height: auto;
@@ -574,7 +579,7 @@ footer {
 /*** PAGINA CATALOGO                                                          ***/
 /********************************************************************************/
 
-.catalogo-main {
+.catalogo-cantainer {
     display: flex;
     flex-direction: column;
 }
@@ -798,6 +803,7 @@ footer {
     padding: 0.7em;
     border-radius: 10px;
     border: #000 solid 2px;
+    font-size: 0.9em;
 }
 
 .buttonForm {
@@ -807,7 +813,9 @@ footer {
     margin-top: 2em;
     background: linear-gradient(45deg, #115AA2,#000000);
     color: white;
-    border: none;    
+    border: none;
+    font-size: 1em;
+    text-transform: uppercase;    
 }
 
 hr{
