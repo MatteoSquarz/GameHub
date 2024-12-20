@@ -402,13 +402,12 @@ footer {
 .tornaSuHelper{
     margin-bottom: 2em;
     text-indent: -999em;
-    background-color: #000;
+    background-color: var(--homeboxcolor);
     border-radius: 10px;
     padding: 0.5em 1.5em 0.5em 1.5em;
-    background-image: url('assets/arrow_up.png');
-    background-size: 1em;
+    background-image: url('assets/arrowupblack.png');
+    background-size: 1.5em;
     background-repeat: no-repeat;
-
     background-position: center;
     cursor: pointer;
     display: inline-flex;
@@ -419,7 +418,7 @@ footer {
     position: static;
     text-indent: 0;
     background-position: center right;
-    color: #FFF;
+    color: #000000;
     text-decoration: none;
 }
 

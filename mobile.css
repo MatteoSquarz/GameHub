@@ -11,14 +11,6 @@ header #profile{
     display: none;
 }
 
-.videogames:hover{
-    transform: translateX(0px);
-}
-
-.abbonamenti:hover{
-    transform: translateX(0px);
-}
-
 .videogames img{
     display: none;
 }
@@ -64,11 +56,6 @@ header #profile{
     color: #c8c4c4;
     text-decoration: none;
     text-transform: uppercase;
-}
-
-.menuListMobile .currentMenu{
-    font-weight: bold;
-    color: white !important;
 }
 
 /* ========================
