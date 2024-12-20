@@ -826,3 +826,145 @@ hr{
     margin-bottom: 2%;
 }
 
+
+
+/* ============================
+        PAGINA VIDEOGIOCO
+============================ */
+
+#mainVideogioco{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: var(--txtcolor);
+    width: 100%;
+    background: #282525;
+}
+.backgroundPannelloVideogioco{
+    background: url('assets/royalty-free-music-for-videogames.png') no-repeat center center/cover;
+    background-color: var(--bgcolor);
+    width: 100%;
+    border-radius: 10px;
+}
+.pannelloVideogioco {
+    color: var(--txtcolor);
+    display: flex;
+    flex-direction: row;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 3em;
+    justify-content: left;
+    gap: 2em;
+    align-items:center; 
+    box-sizing: border-box; 
+    width: 100%;
+    height: 35vh;
+    border-radius: 10px;
+}
+
+.pannelloVideogioco h2{
+    font-size: 2.3em;
+    max-width: 100%;
+}
+
+.copertinaVideogioco{
+    width: 25%;
+    height: auto;
+    border-radius: 20px;
+}
+.videogiocoPegiEAcquisto{
+    box-sizing:border-box;
+    color: var(--txtcolor);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    padding: 1em; 
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+.videogiocoPegi img{
+    width: 2.6em;
+    height: auto;
+    border-radius: 2px;
+}
+.videogiocoPegi {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    height: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 0.85em;
+    align-items: center;
+    width: 20%;
+}
+.videogiocoAcquisto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    padding-left: 0em;
+    padding-top: 2em;
+}
+
+
+.videogiocoAcquisto button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+}
+
+#mainVideogioco h3{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.boxDescrizioneECategorie{
+    display: flex;
+    flex-direction: row;;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 1em;
+    background-color: var(--homeboxcolor);
+    border-radius: 25px;
+    color: #000;
+    margin: 1em;
+}
+.boxCategorie{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    box-sizing: border-box;
+    padding-left: 5em;
+    min-width: 50%;
+}
+.boxCategorie dt{
+    font-weight: bold;
+}
+.boxCategorie dd{
+    margin-top: 0.1em;
+    margin-bottom: 0.3em;
+}
+.boxDescrizioneEInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    max-width: 50%;
+}
+.infoVideogioco{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
