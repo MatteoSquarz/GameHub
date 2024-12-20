@@ -185,7 +185,7 @@ header #profile {
 }
 
 .background{
-    background: url('assets/royalty-free-music-for-videogames.png') no-repeat center center/cover;
+    background: url('assets/dark-background-abstract-background-network-3d-background-3840x2160-8324.png') no-repeat center fixed;
     background-color: var(--bgcolor);
 }
 
@@ -566,7 +566,7 @@ footer {
 }
 
 #chiSiamoMain {
-    background: url('assets/looking-far-away-4k-lb.png') no-repeat center center/cover;
+    background: url('assets/dark-background-abstract-background-network-3d-background-3840x2160-8324.png') no-repeat center center/cover;
     background-color: var(--bgcolor);
 }
 
@@ -582,13 +582,6 @@ footer {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-
-    background-image: url('assets/background-prova.jpg');
-
-    background-repeat: repeat-y; /* Repeat the image vertically */
-    background-size: 100% auto; /* Stretch the image to match the screen width */
-    background-position: top center; /* Align the image at the top and center */
-    margin: 0; /* Remove default margins */
 }
 /********************************************************************************/
 
@@ -669,9 +662,9 @@ footer {
     text-align: center;
     font-size: 20px;
 
-    border: #000 solid 1px;
+    border: var(--homeboxcolor) solid 5px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+
 }
 
 .game-card:hover {
@@ -731,52 +724,81 @@ footer {
    PAGINA LOGIN/REGISTRAZIONE
 ===============================*/
 
-.mainLoginRegistrazione{
+#mainLoginRegistrazione{
     background-color: var(--loginbgcolor);
-    min-height: 100vh;
 }
 
 .loginRegistrazione{
     border: 2px solid #000;
-    width: 85%;
+    width: 80%;
     align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: auto;
-    /*box-shadow: 0.5em 0.5em 0.5em 0.5em #074a85;*/
+    margin: 5em 0;
     border-radius: 1em;
-    background-color: var(--loginformcolor);
-    max-width: 800px;
+    background-color: var(--homeboxcolor);
+    max-width: 600px;
 }
 
 .formLoginRegistrazione{
-    width: 85%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formLoginRegistrazione div{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .loginRegistrazione h2{
-    margin: 2% 0%;
+    margin-top: 1em;
     color: var(--logintextcolor);
 }
 
 .loginRegistrazione p{
-    margin-bottom: 2%;
+    margin-bottom: 1em;
     color: var(--logintextcolor);
 }
 
-.subText{
-    font-size: x-small;
-    margin-bottom: 3%;
+.loginRegistrazione a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.loginRegistrazione a:visited{
+    background-color: var(--bgvisitedcolor);
+}  
+
+.hintText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
     align-self: flex-start;
     color: var(--logintextcolor);
 }
 
+.errorText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    align-self: flex-start;
+    color: rgb(148, 17, 17);
+}
+
 .labelForm {
     display: block;
-    margin-bottom: 0.5%;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
     font-weight: bold;
     color: var(--logintextcolor);
     align-self: flex-start;
@@ -786,18 +808,25 @@ footer {
     width: 100%;
     padding: 0.7em;
     border-radius: 10px;
+    border: #000 solid 2px;
 }
 
 .buttonForm {
-    border-radius: 10px;
-    padding: 1em 2em;
-    margin-bottom: 5%;
+    border-radius: 15px;
+    padding: 0.8em 1.8em;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    background: linear-gradient(45deg, #115AA2,#000000);
+    color: white;
+    border: none;    
 }
 
 hr{
     width: 85%;
     margin-bottom: 2%;
 }
+
+
 
 /* ============================
         PAGINA VIDEOGIOCO

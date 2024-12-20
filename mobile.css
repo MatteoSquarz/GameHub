@@ -34,6 +34,7 @@ header #profile{
     flex-direction: column;
     justify-content: flex-start;
     list-style: none;
+    height: calc(100vh - 6em);
 }
 
 .menuListMobile li{
