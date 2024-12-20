@@ -59,6 +59,7 @@ header{
 
 header h1{
     text-indent: -999em;
+    color: var(--txtcolor);
 }
 
 header #logo{
@@ -71,6 +72,7 @@ header #logo{
     padding: 0em;
     width: 4.5em; 
     height: 4.5em;
+    text-decoration: none;
 }
 
 header .menuList{
