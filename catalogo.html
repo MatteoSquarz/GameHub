@@ -15,15 +15,15 @@
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <a href="index.php" id="logo"><h1>GameHub</h1></a>
+                    <a href="index.html" id="logo"><h1>GameHub</h1></a>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
-                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                        <a href="#catalogo-main" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu">
                     <ul class="menuList">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#" class="currentMenu">Catalogo</a></li>
+                        <li id="currentMenu">Catalogo</li>
                         <li><a href="abbonamenti.html">Abbonamenti</a></li>
                         <li><a href="chiSiamo.html">Chi siamo</a></li>
                         <li><a href="login.html">Accedi</a></li>
@@ -42,7 +42,7 @@
                 <p>Ti trovi in: Catalogo</p>
             </nav>
         </div>
-        <main class="catalogo-main background">
+        <main id="catalogo-main" class="catalogo-container background">
             <div class="intro blur">
                 <h1>Esplora il nostro catalogo!</h1>
                 <p>Immergiti in nuove avventure con un catalogo di videogiochi in costante aggiornamento</p>
@@ -175,11 +175,11 @@
         <nav id="hamburgerMobileMenu">
             <ul class="menuListMobile">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="catalogo.html" class="currentMenu">Catalogo</a></li>
+                <li id="currentMenu">Catalogo</li>
                 <li><a href="abbonamenti.html">Abbonamenti</a></li>
                 <li><a href="chiSiamo.html">Chi siamo</a></li>
                 <li><a href="login.html">Accedi</a></li>
-                <li><a href=#content>Torna su</a></li>
+                <li><a href=#catalogo-main>Torna su</a></li>
             </ul>
         </nav>
         <footer>

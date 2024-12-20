@@ -9,24 +9,24 @@
         <link rel = "stylesheet" href = "style.css" media = "screen">
         <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <title>Login - GameHub</title>
+        <title>Accedi - GameHub</title>
     </head>
     <body>
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <a href="index.php" id="logo"><h1>GameHub</h1></a>
+                    <a href="index.html" id="logo"><h1>GameHub</h1></a>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
-                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                        <a href="#mainLogin" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu">
                     <ul class="menuList">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="catalogo.html">Catalogo</a></li>
                         <li><a href="abbonamenti.html">Abbonamenti</a></li>
                         <li><a href="chiSiamo.html">Chi siamo</a></li>
-                        <li><a href="login.html" class="currentMenu">Accedi</a></li>
+                        <li id="currentMenu">Accedi</li>
                     </ul>
                     <!--<a id="profile" href="#menu">Profile</a>-->
                 </nav>
@@ -39,12 +39,12 @@
                 </a>
             </header>
             <nav id="breadcumb">
-                <p>Ti trovi in: <span lang="en">Login</span></p>
+                <p>Ti trovi in: Accedi</p>
             </nav>
         </div>
         <main id="mainLogin" class="background">
             <div class="loginRegistrazione">
-                <h2>Login</h2>
+                <h2>Accedi</h2>
                 <form class="formLoginRegistrazione" method="post" action="login.php" onsubmit="return validazioneForm();">
                     <div>
                         <label class="labelForm" for="username">Username</label>
@@ -66,12 +66,12 @@
         </main>
         <nav id="hamburgerMobileMenu">
             <ul class="menuListMobile">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="catalogo.html">Catalogo</a></li>
                 <li><a href="abbonamenti.html">Abbonamenti</a></li>
                 <li><a href="chiSiamo.html">Chi siamo</a></li>
-                <li><a href="login.html" class="currentMenu">Accedi</a></li>
-                <li><a href=#content>Torna su</a></li>
+                <li id="currentMenu">Accedi</li>
+                <li><a href=#mainLogin>Torna su</a></li>
             </ul>
         </nav>    
         <footer>
