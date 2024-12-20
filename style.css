@@ -22,6 +22,8 @@
 body{
     background-color: var(--bgcolor);
     color: var(--txtcolor);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5em;
 }
 
 html {
@@ -56,7 +58,7 @@ header{
 }
 
 header h1{
-    text-indent: -9999px;
+    text-indent: -999em;
 }
 
 header #logo{
@@ -177,11 +179,11 @@ header #profile {
     justify-content: center;
     align-items: center;
     gap: 1em;
-    height: 20vh;
+    height: 30vh;
 }
 
 .intro p{
-    font-size: 1.25em;
+    font-size: 1.2em;
 }
 
 .background{
@@ -199,8 +201,9 @@ header #profile {
     backdrop-filter: blur(10px);
 }
 
-.intro h2 {
-    font-size: 2.5em;
+.intro h1 {
+    font-size: 2.2em;
+    line-height: 1.5em;
 }
 
 
@@ -230,13 +233,16 @@ header #profile {
     border: #000 solid 1px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s;
-
 }
 
-/*
-.videogames:hover{
-    transform:translateX(20px);
-}*/
+.infoVideogames h2{
+    font-size: 1.5em;
+}
+
+.infoVideogames p{
+    font-size: 1em;
+}
+
 
 .videogames img{
     width: 60%;
@@ -268,6 +274,16 @@ header #profile {
     width: 100%;
 }
 
+
+.infoAbbonamenti h2{
+    font-size: 1.5em;
+}
+
+.infoAbbonamenti p{
+    font-size: 1em;
+}
+
+
 .abbonamenti{
     display: flex;
     flex-direction: row;
@@ -284,10 +300,6 @@ header #profile {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s;
 }
-/*
-.abbonamenti:hover{
-    transform: translateX(-20px);
-}*/
 
 .abbonamenti img{
     width: 45%;
@@ -413,12 +425,7 @@ footer {
 /* ========================
       PAGINA ABBONAMENTI
 =========================== */
-.introAbbonamenti h2 {
-    font-size: 2.5em;
-}
-.introAbbonamenti p{
-    font-size: 1.25em;
-}
+
 .abbonamentiAbb{
     box-sizing: border-box;
     display: flex;
@@ -455,12 +462,10 @@ footer {
 .targhettaAbb p{
     font-size: 1em;
 }
-.targhettaAbb strong{
-    font-size: 1.5em;
+.targhettaAbb h2{
+    font-size: 1.6em;
 }
-.targhettaAbb p strong{
-    font-size: 1em;
-}
+
 
 .targhettaAbb img{    
     max-width: 40%;
@@ -507,11 +512,11 @@ footer {
     align-items: center;
 }
 
-.chiSiamo h3{
-    font-size: 1.8em;
+.chiSiamo h2{
+    font-size: 1.5em;
 }
 .chiSiamo p{
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .infoObiettivi {
     display: flex;
@@ -575,19 +580,11 @@ footer {
 /*** PAGINA CATALOGO                                                          ***/
 /********************************************************************************/
 
-
-
-/*** Main Layout ****************************************************************/
 .catalogo-main {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
-/********************************************************************************/
 
-
-
-/*** Hero & Search Bar **********************************************************/
 .search-container {
     display: flex;
     align-self: center;
@@ -630,10 +627,10 @@ footer {
     font-size: 1.3em;
 }
 
-/*** Sections *******************************************************************/
-.section-title {
+
+.allgames-section h2 {
     width: 100%;
-    font-size: 2em;
+    font-size: 1.6em;
     color:white;
     margin-bottom: 1em;
     text-align: center;
@@ -688,15 +685,12 @@ footer {
     justify-content: left;
     color: black;
     padding: 0.3em;
-
-    font-size: 0.8em;
-
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
 
-.game-title {
-    font-size: 1.2em;
+.game-info h3 {
+    font-size: 1em;
     font-weight: bold;
 }
 
@@ -712,6 +706,7 @@ footer {
     text-align: center;
     border-radius: 15px;
     text-decoration: none;
+    font-size: 0.7em;
 }
 
 .game-page-link:visited{
@@ -862,8 +857,9 @@ hr{
     border-radius: 10px;
 }
 
-.pannelloVideogioco h2{
-    font-size: 2.3em;
+.pannelloVideogioco h1{
+    font-size: 2.5em;
+    line-height: 1.5em;
     max-width: 100%;
 }
 
@@ -919,7 +915,7 @@ hr{
     border-radius: 4px;
 }
 
-#mainVideogioco h3{
+#mainVideogioco h2{
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
@@ -939,6 +935,7 @@ hr{
     border-radius: 25px;
     color: #000;
     margin: 1em;
+    font-size: 1em;
 }
 .boxCategorie{
     display: flex;
