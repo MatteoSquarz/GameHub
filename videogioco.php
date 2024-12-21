@@ -1,0 +1,101 @@
+<?php
+require_once "templatedbConnection.php";
+use DB\DBAccess;
+
+$paginaHTML = file_get_contents('videogioco.html');
+
+$connection = new DBAccess();
+$connectionOK = $connection->openDBConnection();
+
+$giochi = "";
+$paginaGioco = "";
+
+if(!$connectionOK)
+{
+    $giochi = $connection->getGiocoByCodice('00000004');
+    $categorie = $connection->getCategoriaByCodiceGioco('00000004');
+    $piattaforme = $connection->getPiattaformaByCodiceGioco('00000004');
+    $abbonamenti = $connection->getAbbonamentoByCodiceGioco('00000004');
+    $connection->closeConnection();
+
+    $paginaGioco .= "<div class=\"backgroundPannelloVideogioco\">";
+    foreach($giochi as $gioco)
+    {
+        $paginaGioco .= "<div class=\"pannelloVideogioco blur\">";
+        $img = $gioco['immagine'];
+        $paginaGioco .= "<img src=\"assets/game-covers/$img\" alt=\"\" class=\"copertinaVideogioco\">";
+        $titolo = $gioco['titolo'];
+        $paginaGioco .= "<h1><span lang=\"en\">$titolo</span></h1>";
+        $paginaGioco .= "</div>";
+        $paginaGioco .= "</div>";
+        $paginaGioco .= "<div class=\"videogiocoPegiEAcquisto\">";
+        $paginaGioco .= "<div class=\"videogiocoPegi\">";
+        $pegi = $gioco['pegi'];
+        $paginaGioco .= "<p><span lang=\"en\">PEGI</span> $pegi</p>";
+        $paginaGioco .= "<img src=\"assets/PEGI_$pegi.svg\" alt=\"\">";
+        $paginaGioco .= "</div>";
+        $paginaGioco .= "<div class=\"videogiocoAcquisto\">";
+        $paginaGioco .= "<button>Acquisto singolo</button>";
+        $costo = $gioco['prezzo'];
+        $paginaGioco .= "<p>Costo: $costo €</p>";
+        $paginaGioco .= "</div>";
+        $paginaGioco .= "</div>";
+        $paginaGioco .= "<h2>Dettagli</h2>";
+        $paginaGioco .= "<div class=\"boxDescrizioneECategorie\">";
+        $paginaGioco .= "<div class=\"boxDescrizioneEInfo\">";
+        $descrizione = $gioco['descrizione'];
+        $paginaGioco .= "<p><strong>Descrizione:</strong> <span lang=\"en\">$descrizione</span></p>";
+        $paginaGioco .= "<div class=\"infoVideogioco\">";
+        $produttore = $gioco['casaSviluppatrice'];
+        $paginaGioco .= "<p><strong>Produttore:</strong> <span lang=\"en\">$produttore</span></p>";
+        $dataUscita = $gioco['dataUscita'];
+        $paginaGioco .= "<p><strong>Data Uscita:</strong>$dataUscita</p>";
+        $paginaGioco .= "</div>";
+        $paginaGioco .= "</div>";
+        $paginaGioco .= "<div class=\"boxCategorie\">";
+        $paginaGioco .= "<dl>";
+        $paginaGioco .= "<dt>Categorie:</dt>";
+        $listaCategorie = "<dd>";
+        foreach($categorie as $categoria)
+        {
+            $cat = $categoria['categoria'];
+            $listaCategorie .= $cat;
+            $listaCategorie .= ",";
+        }
+        $listaCategorie = substr($listaCategorie, 0, -1);
+        $listaCategorie .= "</dd>";
+        $paginaGioco .= $listaCategorie;
+        $paginaGioco .= "<dt>Piattaforma:</dt>";
+        $listaPiattaforme = "<dd>";
+        foreach($piattaforme as $piattaforma)
+        {
+            $piat = $piattaforma['piattaforma'];
+            $listaPiattaforme .= $piat;
+            $listaPiattaforme .= ",";
+        }
+        $listaPiattaforme = substr($listaPiattaforme, 0, -1);
+        $listaPiattaforme .= "</dd>";
+        $paginaGioco .= $listaPiattaforme;
+        $paginaGioco .= "<dt>Abbonamenti:</dt>";
+        $listaAbbonamenti = "<dd>";
+        foreach($abbonamenti as $abbonamento)
+        {
+            $abb = $abbonamento['abbonamento'];
+            $listaAbbonamenti .= $abb;
+            $listaAbbonamenti .= ",";
+        }
+        $listaAbbonamenti = substr($listaAbbonamenti, 0, -1);
+        $listaAbbonamenti .= "</dd>";
+        $paginaGioco .= $listaAbbonamenti;
+        $paginaGioco .= "</dl>";
+        $paginaGioco .= "</div>";
+    }
+    $paginaGioco .= "</div>";
+}
+else
+	//in fase di produzione rimuovere $connessioneOK
+	$paginaGioco = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+
+echo str_replace("[paginaGioco]", $paginaGioco, $paginaHTML);
+
+?>
