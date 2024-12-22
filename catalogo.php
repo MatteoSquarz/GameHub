@@ -22,7 +22,7 @@ if(!$connectionOK)
         {
             $listaGiochi .= "<div class=\"game-card\" href=\"#GamePage\">";
             $img = $gioco['immagine'];
-            $listaGiochi .= "<img class=\"game-card-image\" src=\"assets/game-covers/$img\">";
+            $listaGiochi .= "<img class=\"game-card-image\" src=\"assets/game-covers/$img\" alt=\"\">";
             $listaGiochi .= "<div class=\"game-info\">";
             $titolo = $gioco['titolo'];
             $listaGiochi .= "<h3>$titolo</h3>";
