@@ -49,7 +49,7 @@ if(!$connectionOK)
         $produttore = $gioco['casaSviluppatrice'];
         $paginaGioco .= "<p><strong>Produttore:</strong> <span lang=\"en\">$produttore</span></p>";
         $dataUscita = $gioco['dataUscita'];
-        $paginaGioco .= "<p><strong>Data Uscita:</strong>$dataUscita</p>";
+        $paginaGioco .= "<p><strong>Data Uscita: </strong>$dataUscita</p>";
         $paginaGioco .= "</div>";
         $paginaGioco .= "</div>";
         $paginaGioco .= "<div class=\"boxCategorie\">";
