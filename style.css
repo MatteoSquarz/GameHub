@@ -961,7 +961,7 @@ hr{
     flex-direction: column;
     gap: 1em;
     padding: 1em;
-    max-width: 50%;
+    width: 50%;
 }
 .infoVideogioco{
     display: flex;
