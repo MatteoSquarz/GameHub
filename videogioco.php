@@ -9,13 +9,14 @@ $connectionOK = $connection->openDBConnection();
 
 $giochi = "";
 $paginaGioco = "";
+$codice = $_GET['codice'];
 
 if(!$connectionOK)
 {
-    $giochi = $connection->getGiocoByCodice('00000004');
-    $categorie = $connection->getCategoriaByCodiceGioco('00000004');
-    $piattaforme = $connection->getPiattaformaByCodiceGioco('00000004');
-    $abbonamenti = $connection->getAbbonamentoByCodiceGioco('00000004');
+    $giochi = $connection->getGiocoByCodice($codice);
+    $categorie = $connection->getCategoriaByCodiceGioco($codice);
+    $piattaforme = $connection->getPiattaformaByCodiceGioco($codice);
+    $abbonamenti = $connection->getAbbonamentoByCodiceGioco($codice);
     $connection->closeConnection();
 
     $paginaGioco .= "<div class=\"backgroundPannelloVideogioco\">";
