@@ -970,9 +970,9 @@ hr{
 }
 
 
-/********************************************************************************/
-/*** PAGINE ERRORE                                                            ***/
-/********************************************************************************/
+/* ============================
+        PAGINE ERRORE
+============================ */
 
 .error-page {
     background-color: white;
@@ -987,8 +987,9 @@ hr{
 }
 
 .error-img {
-    max-height: 15em;
-    width: auto;
+    max-width: 15em;
+    height: auto;
+    align-self: center;
 }
 
 .error-info {
@@ -996,6 +997,7 @@ hr{
     flex-direction: column;
     justify-content: space-evenly;
     gap: 1em;
+    padding: 1em;
 }
 
 .error-msg {

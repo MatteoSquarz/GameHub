@@ -185,3 +185,11 @@ header #profile{
     gap: 1em;
 }
 
+
+/* ============================
+        PAGINE ERRORE
+============================ */
+
+.error-container {
+    flex-direction: column;
+}
