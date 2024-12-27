@@ -164,7 +164,8 @@ class DBAccess{
 			}
 			$queryResult->free();
 		}
-
+		
+		$authenticated = "";
 		foreach($result as $utente)
 		{
 			if($username == $utente['username'])
@@ -175,8 +176,9 @@ class DBAccess{
 					return "not authenticated";
 			}
 			else
-				return "no user";
+				$authenticated = "no user";
 		}
+		return $authenticated;
 	}
 
 	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email, $abbonamento) {

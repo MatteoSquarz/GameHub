@@ -10,7 +10,7 @@ $username = "";
 $password = "";
 
 $connessione = new DBAccess();
-//$connessioneOK = $connessione->openDBConnection();
+$connessioneOK = $connessione->openDBConnection();
 
 if (isset($_POST['accedi'])) {
 	$messaggiPerForm .= "<ul>";
@@ -20,35 +20,42 @@ if (isset($_POST['accedi'])) {
         $messaggiPerForm .= "<li>Non è sicuramente uno username</li>";
 
     $password = $connessione->pulisciInput($_POST['password']);
-	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{8,}$/",$password))
+	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{4,}$/",$password))
         $messaggiPerForm .= "<li>Non è sicuramente una password</li>";
 
-	$messaggiPerForm .= "</ul>";
-
-	if($messaggiPerForm == ""){
-
-		if($connessioneOK == true)
+	if($messaggiPerForm == "<ul>"){
+		if($connessioneOK == NULL)
 		{
-			/*
-            $autenticazione = $connection->autenticaUtente("admin","admin");
+            $autenticazione = $connessione->autenticaUtente($username,$password);
             switch($autenticazione)
             {
 	            case "no result":
-		            echo "La query non ha prodotto risultati <br>";
+					$messaggiPerForm .= "<li>La query non ha prodotto risultati</li>";//pagina d'errore
 	            break;
 	            case "no user":
-		            echo "Nessun username corrisponde <br>";
-	            break;
-	            case "authenticated":
-		            echo "Utene autenticato <br>";
+					$messaggiPerForm .= "<li>Nessun username corrisponde</li>";//si può accorpare con quella sotto: username e/o password errati
 	            break;
 	            case "not authenticated":
-		            echo "Utene non autenticato <br>";
+					$messaggiPerForm .= "<li>Utente non autenticato</li>";//si può accorpare con quella sopra: username e/o password errati
+	            break;
+				case "authenticated":
+					session_start();
+					if(empty($_SESSION))
+					{
+    					$_SESSION["username"] = $username;
+					}
+					else 
+					{
+						unset($_SESSION);
+						$_SESSION["username"] = $username;
+					}
+					header("Location: /index.php");
+  					exit();
 	            break;
             }
-            */
 		}
 	}
+	$messaggiPerForm .= "</ul>";
 }
 
 $paginaHTML = str_replace('[messaggiForm]', $messaggiPerForm, $paginaHTML);

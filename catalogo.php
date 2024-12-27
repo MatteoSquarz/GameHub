@@ -26,7 +26,8 @@ if(!$connectionOK)
             $listaGiochi .= "<div class=\"game-info\">";
             $titolo = $gioco['titolo'];
             $listaGiochi .= "<h3>$titolo</h3>";
-            $listaGiochi .= "<a class=\"game-page-link\" href=\"#GamePageTodo\">Vai alla pagina dedicata</a>";
+            $codice = $gioco['codice'];
+            $listaGiochi .= "<a class=\"game-page-link\" href=\"videogioco.php?codice=$codice\">Vai alla pagina dedicata</a>";
             $listaGiochi .= "</div>";
             $listaGiochi .= "</div>";
         }
