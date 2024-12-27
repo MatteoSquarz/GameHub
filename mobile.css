@@ -84,12 +84,13 @@ header #profile{
     align-items: center;
     gap: 2.3em;
     padding: 2em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
     padding-bottom: 4em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     max-width: 100%;
-    
+    margin-left: 0em;
+    margin-right: 0em;
 }
 .targhettaAbb{
     display: flex;
