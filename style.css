@@ -89,7 +89,7 @@ header .menuList li:last-child{
     margin-right: 1.5em;
 }
 
-header .menuList li:last-child{
+header .menuList li:last-child[class="login"]{
     background-image: url('assets/loginIcon.png');
     background-size: 1em;
     background-repeat: no-repeat;
@@ -97,6 +97,18 @@ header .menuList li:last-child{
     background-position: center right;
     cursor: pointer;
     padding-right: 1.8em;
+    display: inline-flex;
+    align-items: center;
+}
+
+header .menuList li:last-child[class="profile"]{
+    background-image: url('assets/profileIcon.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center right;
+    cursor: pointer;
+    padding-right: 2em;
     display: inline-flex;
     align-items: center;
 }
@@ -991,6 +1003,7 @@ hr{
 }
 
 .profilePicture {
+    border: 2px solid #000;
     border-radius: 50%;
     margin-top: 1em;
     width: 120px;
