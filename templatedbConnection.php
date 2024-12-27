@@ -2,10 +2,10 @@
 namespace DB;
 
 class DBAccess{
-    private const HOST = 'mariadb';
-    private const DB_NAME = 'my_database';
-    private const USERNAME = 'my_user';
-    private const PASSWORD = 'my_password';
+    private const HOST = 'localhost';
+    private const DB_NAME = 'prova';
+    private const USERNAME = 'root';
+    private const PASSWORD = '';
 
     private $connection;
 

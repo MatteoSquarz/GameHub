@@ -927,7 +927,7 @@ hr{
 
 .boxDescrizioneECategorie{
     display: flex;
-    flex-direction: row;;
+    flex-direction: row;
     max-width: 100%;
     box-sizing: border-box;
     padding: 1em;
@@ -967,4 +967,143 @@ hr{
     display: flex;
     flex-direction: row;
     gap: 2em;
+}
+
+
+/* ============================
+        PAGINA PROFILO
+============================ */
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 2em 10%;
+    gap: 2.5em;  
+}
+
+.profileBox {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    background: var(--homeboxcolor);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    margin-top: 1em;
+    width: 120px;
+    height: 120px;
+}
+
+.profileBoxContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+.profileBox h2 {
+    font-size: 1.5em;
+    margin-top: 1em;
+    color: #000;
+}
+
+.userDetailsItem {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFF;
+    padding: 0.5em;
+}
+
+.userDetails dl{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 25px;
+    color: #000;
+    font-size: 1em;
+}
+
+.userDetailsItem dt{
+    font-weight: bold;
+}
+
+.buttonBoxProfile{
+    display: inline-block;
+    padding: 0.5em 1em;
+    background:#D13500;
+    border: 2px solid #000;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.subscriptionDetailsItem{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFF;
+    padding: 0.5em;
+}
+
+.subscriptionDetailsItem dt {
+    font-weight: bold;
+}
+
+.subscriptionContent dl{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 25px;
+    color: #000;
+    font-size: 1em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.subscriptionContent {
+    flex: 1 1;
+}
+
+
+.gamesList {
+    margin-top: 1em;
+    list-style: none;
+    margin: 1em 2em;
+}
+
+.gameItem {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #FFF;
+}
+
+.gameItem h3 {
+    font-size: 1.3em;
+    color: #000;
+}
+
+.gameThumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 1em;
+}
+
+.gameInfo {
+    flex: 1;
+}
+
+.purchaseDate {
+    color: #404040;
+    font-size: 0.9em;
 }

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Questa pagina è dedicata al sito GameHub, venditore di videogiochi dal 2020">
+        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento">
+        <meta name="author" content="Matteo Squarzoni">    
+        <link rel = "stylesheet" href = "style.css" media = "screen">
+        <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <title>GameHub</title>
+    </head>
+    <body>
+        <div class="stickyScroll">
+            <header>
+                <div class="logoName">
+                    <a id="logo"><h1>GameHub</h1></a>
+                </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                </nav>
+                <nav id="menu">
+                    <ul class="menuList">
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="catalogo.php">Catalogo</a></li>
+                        <li><a href="abbonamenti.php">Abbonamenti</a></li>
+                        <li><a href="chiSiamo.php">Chi siamo</a></li>
+                        [loginProfilo]
+                    </ul>
+                </nav>
+                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle" aria-label="apri menu">
+                    <div role="button" class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
+            </header>
+            <nav id="breadcumb">
+                <p>Ti trovi in: Profilo</p>
+            </nav>
+        </div>
+        <main id="profileContent" class="background">
+            <div class="profileContainer">
+                <!-- User Information Box -->
+                <div class="profileBoxContainer">
+                    <div class="profileBox">
+                        <h2>Informazioni personali</h2>
+                        <div class="infoContent">
+                            <img src="assets/profileIcon.png" alt="" class="profilePicture">
+                            <div class="userDetails">
+                                <dl>
+                                    <div class="userDetailsItem">
+                                        <dt>Username:</dt>
+                                        <dd>[Nome Utente]</dd>
+                                    </div>
+                                    <div class="userDetailsItem">
+                                        <dt>Email:</dt>
+                                        <dd>[Email]</dd>
+                                    </div>
+                                    <div class="userDetailsItem">
+                                        <dt>Nome:</dt>
+                                        <dd>[Nome]</dd>
+                                    </div>
+                                    <div class="userDetailsItem">
+                                        <dt>Cognome:</dt>
+                                        <dd>[Cognome]</dd>
+                                    </div>
+                                    <div class="userDetailsItem">
+                                        <dt>Data di Nascita:</dt>
+                                        <dd>[Data di Nascita]</dd>
+                                    </div>
+                                </dl>
+                                <a role="button" class="buttonBoxProfile">Disconnettiti</a>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Subscription Box -->
+                    <div class="profileBox">
+                        <h2>Abbonamento attuale</h2>
+                        <div class="subscriptionContent">
+                            <img src="assets/profileIcon.png" alt="" class="profilePicture">
+                            <dl>
+                                <div class="subscriptionDetailsItem">
+                                    <dt>Tipo abbonamento:</dt>
+                                    <dd>[Nome Abbonamento]</dd>
+                                </div>
+                                <div class="subscriptionDetailsItem">
+                                    <dt>Data iscrizione:</dt>
+                                    <dd>[Data iscrizione]</dd>
+                                </div>
+                                <div class="subscriptionDetailsItem">
+                                    <dt>Scadenza:</dt>
+                                    <dd>[Data scadenza]</dd>
+                                </div>
+                            </dl>
+                            <a role="button" class="buttonBoxProfile">Disdici</a>
+                        </div>
+                    </div>
+                </div>    
+                <!-- Purchased Games Box -->
+                <div class="profileBox">
+                    <h2>I tuoi giochi</h2>
+                    <ul class="gamesList">
+                        <li class="gameItem">
+                            <img src="assets/profileIcon.png" alt="Game 1" class="gameThumbnail">
+                            <div class="gameInfo">
+                                <h3>Nome Gioco 1</h3>
+                                <p class="purchaseDate">Acquistato il: 01/01/2024</p>
+                            </div>
+                        </li>
+                        <li class="gameItem">
+                            <img src="assets/profileIcon.png" alt="" class="gameThumbnail">
+                            <div class="gameInfo">
+                                <h3>Nome Gioco 2</h3>
+                                <p class="purchaseDate">Acquistato il: 01/01/2024</p>
+                            </div>
+                        </li>
+                        <li class="gameItem">
+                            <img src="assets/profileIcon.png" alt="" class="gameThumbnail">
+                            <div class="gameInfo">
+                                <h3>Nome Gioco sdnfkjsdnf sfnjsdkjfsdkj sfnkj3</h3>
+                                <p class="purchaseDate">Acquistato il: 01/01/2024</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <li><a href="abbonamenti.php">Abbonamenti</a></li>
+                <li><a href="chiSiamo.php">Chi siamo</a></li>
+                [loginProfilo]
+                <li><a href=#content>Torna su</a></li>
+            </ul>
+        </nav>    
+        <footer>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contattaci</h3>
+                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+                </div>
+                <div class="social-links">
+                    <h3>Seguici</h3>
+                    <a href="https://www.facebook.com/" title="Facebook"><span class="fa-brands fa-facebook"></span></a>
+                    <a href="https://x.com/" title="Twitter"><span class="fa-brands fa-twitter"></span></a>
+                    <a href="https://www.instagram.com/" title="Instagram"><span class="fa-brands fa-instagram"></span></a>
+                    <a href="https://www.youtube.com/" title="Youtube"><span class="fa-brands fa-youtube"></span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+            </div>
+        </footer>
+    </body>
+</html>

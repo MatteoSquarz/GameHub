@@ -185,3 +185,28 @@ header #profile{
     gap: 1em;
 }
 
+/* ============================
+        PAGINA PROFILO
+============================ */
+.profileBoxContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+}
+
+.gameThumbnail {
+    width: 60px;
+    height: 60px;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    margin-top: 1em;
+    width: 90px;
+    height: 90px;
+}
+
+.subscriptionContent dl{
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
