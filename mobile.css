@@ -210,3 +210,11 @@ header #profile{
     margin-top: 0em;
     margin-bottom: 0em;
 }
+
+.gameItem h3 {
+    font-size: 1.1em;
+}
+
+.purchaseDate {
+    font-size: 0.8em;
+}
