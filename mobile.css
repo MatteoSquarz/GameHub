@@ -193,3 +193,7 @@ header #profile{
 .error-container {
     flex-direction: column-reverse;
 }
+
+.error-img {
+    max-width: 100%;
+}
