@@ -2,10 +2,10 @@
 namespace DB;
 
 class DBAccess{
-    private const HOST = 'localhost';
-    private const DB_NAME = 'prova';
-    private const USERNAME = 'root';
-    private const PASSWORD = '';
+    private const HOST = 'mariadb';
+    private const DB_NAME = 'my_database';
+    private const USERNAME = 'my_user';
+    private const PASSWORD = 'my_password';
 
     private $connection;
 
@@ -138,6 +138,53 @@ class DBAccess{
 			}
 			$queryResult->free();
 			return $result;
+		}
+	}
+
+	public function getUtente($username){
+		$query = "SELECT * from User WHERE username = '$username'";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$result = array();
+			while($row=mysqli_fetch_assoc($queryResult)){
+				array_push($result, $row);
+			}
+			$queryResult->free();
+			return $result;
+		}
+	}
+
+	public function getAcquisti($username){
+		$query = "SELECT * from Vendita WHERE utente = '$username'";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$result = array();
+			while($row=mysqli_fetch_assoc($queryResult)){
+				array_push($result, $row);
+			}
+			$queryResult->free();
+			return $result;
+		}
+	}
+
+	public function getImmagineAbbonamento($abbonamento){
+		$query = "SELECT * from Abbonamento WHERE nome = '$abbonamento'";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$row=mysqli_fetch_assoc($queryResult);
+			return $row['immagine'];
 		}
 	}
 
