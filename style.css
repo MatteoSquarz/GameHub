@@ -981,7 +981,7 @@ hr{
 
 .error-container {
     justify-self: center;
-    margin: 5em;
+    margin: 2vw;
     display: flex;
     justify-content: center;
 }
@@ -995,7 +995,7 @@ hr{
 .error-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 1em;
     padding: 1em;
 }
@@ -1006,4 +1006,8 @@ hr{
 
 .error-descr {
     color: black;
+}
+
+.error-info a {
+    align-self: flex-end;
 }
