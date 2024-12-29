@@ -23,20 +23,28 @@ $listaGiochi = "";
 
 if(!$connectionOK)
 {
-    $utenti = $connection->getUtente($_SESSION['username']);
-    foreach($utenti as $utente)
-    {        
-        $username = $utente['username'];
-        $paginaHTML = str_replace('[Nome Utente]', $username, $paginaHTML);
-        $email = $utente['email'];
-        $paginaHTML = str_replace('[Email]', $email, $paginaHTML);
-        $nome = $utente['nome'];
-        $paginaHTML = str_replace('[Nome]', $nome, $paginaHTML);
-        $cognome = $utente['cognome'];
-        $paginaHTML = str_replace('[Cognome]', $cognome, $paginaHTML);
-        $dataNascita = $utente['dataNascita'];
-        $paginaHTML = str_replace('[Data di Nascita]', $dataNascita, $paginaHTML);
-        $abbonamento = $utente['abbonamentoAttuale'];
+    $utente = ($connection->getUtente($_SESSION['username'])[0]);
+        
+    $username = $utente['username'];
+    $paginaHTML = str_replace('[Nome Utente]', $username, $paginaHTML);
+    $email = $utente['email'];
+    $paginaHTML = str_replace('[Email]', $email, $paginaHTML);
+    $nome = $utente['nome'];
+    $paginaHTML = str_replace('[Nome]', $nome, $paginaHTML);
+    $cognome = $utente['cognome'];
+    $paginaHTML = str_replace('[Cognome]', $cognome, $paginaHTML);
+    $dataNascita = $utente['dataNascita'];
+    $paginaHTML = str_replace('[Data di Nascita]', $dataNascita, $paginaHTML);
+    $abbonamento = $utente['abbonamentoAttuale'];
+    if ($abbonamento == null){
+        $imgAbb = "<img src=\"assets/no-abbonamento.png\" alt=\"\" class=\"profilePicture\">";
+        $paginaHTML = str_replace('[immagine]', $imgAbb, $paginaHTML);
+        $paginaHTML = str_replace('[Nome Abbonamento]', "Nessun abbonamento attivo", $paginaHTML);
+        $paginaHTML = str_replace('[Data iscrizione]', "Nessun abbonamento attivo", $paginaHTML);
+        $paginaHTML = str_replace('[Data scadenza]', "Nessun abbonamento attivo", $paginaHTML);
+        $paginaHTML = str_replace('[pulsante disdici]', "", $paginaHTML);
+    }
+    else{
         $abbonamentoImg = $connection->getImmagineAbbonamento($abbonamento);
         $imgAbb = "<img src=\"assets/$abbonamentoImg\" alt=\"\" class=\"profilePicture\">";
         $paginaHTML = str_replace('[immagine]', $imgAbb, $paginaHTML);
@@ -45,7 +53,9 @@ if(!$connectionOK)
         $paginaHTML = str_replace('[Data iscrizione]', $dataInizio, $paginaHTML);
         $dataFine = $utente['dataFine'];
         $paginaHTML = str_replace('[Data scadenza]', $dataFine, $paginaHTML);
-    }
+        $disdici = "<a role=\"button\" class=\"buttonBoxProfile\">Disdici</a>";
+        $paginaHTML = str_replace('[pulsante disdici]', $disdici, $paginaHTML);
+    }    
 
     $vendite = $connection->getAcquisti($_SESSION['username']);
     $cnt = 0;
