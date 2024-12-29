@@ -84,12 +84,13 @@ header #profile{
     align-items: center;
     gap: 2.3em;
     padding: 2em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
     padding-bottom: 4em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
     max-width: 100%;
-    
+    margin-left: 0em;
+    margin-right: 0em;
 }
 .targhettaAbb{
     display: flex;
@@ -185,7 +186,39 @@ header #profile{
     gap: 1em;
 }
 
+/* ============================
+        PAGINA PROFILO
+============================ */
+.profileBoxContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+}
 
+.gameThumbnail {
+    width: 60px;
+    height: 60px;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    margin-top: 1em;
+    width: 90px;
+    height: 90px;
+}
+
+.subscriptionContent dl{
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.gameItem h3 {
+    font-size: 1.1em;
+}
+
+.purchaseDate {
+    font-size: 0.8em;
+}
 /* ============================
         PAGINE ERRORE
 ============================ */
