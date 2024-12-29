@@ -2,10 +2,10 @@
 namespace DB;
 
 class DBAccess{
-    private const HOST = 'mariadb';
-    private const DB_NAME = 'my_database';
-    private const USERNAME = 'my_user';
-    private const PASSWORD = 'my_password';
+    private const HOST = 'localhost';
+    private const DB_NAME = 'prova';
+    private const USERNAME = 'root';
+    private const PASSWORD = '';
 
     private $connection;
 
@@ -198,9 +198,9 @@ class DBAccess{
 		return $value;
     }
 
-	public function autenticaUtente($username, $password){
+	public function autenticaUtente($username, $password){  //ritornare solo true o false 
 		$query = "SELECT * from Utente";
-
+		// $query = "SELECT * from User WHERE username = '$username' AND password = '$password'";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_num_rows($queryResult) == 0) {
 			return "no result";
@@ -227,6 +227,9 @@ class DBAccess{
 		}
 		return $authenticated;
 	}
+
+	//fare metodo per autenticare admin
+	// $query = "SELECT * from Admin WHERE username = '$username' AND password = '$password'";
 
 	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email, $abbonamento) {
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";
