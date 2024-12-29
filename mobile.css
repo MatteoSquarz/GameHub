@@ -219,3 +219,14 @@ header #profile{
 .purchaseDate {
     font-size: 0.8em;
 }
+/* ============================
+        PAGINE ERRORE
+============================ */
+
+.error-container {
+    flex-direction: column-reverse;
+}
+
+.error-img {
+    max-width: 90%;
+}

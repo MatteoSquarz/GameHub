@@ -1121,3 +1121,75 @@ hr{
     color: #404040;
     font-size: 0.9em;
 }
+
+/* ============================
+        PAGINE ERRORE
+============================ */
+
+.error-page {
+    background-color: white;
+    border: 1px solid white;
+}
+
+.error-main {
+    background-color: white;
+}
+
+.error-container {
+    justify-self: center;
+    margin: 1em 2em;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.error-img {
+    max-width: 35%;
+    height: auto;
+    align-self: center;
+    margin-top: 1.5em;
+}
+
+.error-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    padding: 1em;
+}
+
+.error-msg {
+    color: black;
+    font-size: 2.5em;
+    line-height: 1.5em;
+}
+
+.error-descr {
+    color: black;
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+.error-info li{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.error-info li a{
+    align-self: center;
+}
+
+.error-info li a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.error-info li a:visited{
+    background-color: var(--bgvisitedcolor);
+}
