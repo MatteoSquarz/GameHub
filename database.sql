@@ -48,8 +48,10 @@ CREATE TABLE User(
     nome varchar(20) NOT NULL,
     cognome varchar(20) NOT NULL,
     dataNascita date NOT NULL,
-    email varchar(20) NOT NULL,
+    email varchar(50) NOT NULL,
     abbonamentoAttuale varchar(10),
+    dataInizio date,
+    dataFine date,
     PRIMARY KEY(username),
     FOREIGN KEY(username) REFERENCES Utente(username),
     FOREIGN KEY(abbonamentoAttuale) REFERENCES Abbonamento(nome)
@@ -68,6 +70,8 @@ CREATE TABLE Vendita(
 CREATE TABLE StoricoAbbonamento(
     utente varchar(20) NOT NULL,
     abbonamento varchar(10) NOT NULL,
+    dataInizio date,
+    dataFine date,
     PRIMARY KEY(utente, abbonamento),
     FOREIGN KEY(utente) REFERENCES User(username),
     FOREIGN KEY(abbonamento) REFERENCES Abbonamento(nome)
@@ -141,14 +145,17 @@ INSERT INTO Categoria (nome) VALUES
 INSERT INTO Admin (username) VALUES
 ('admin');
 
-INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale) VALUES
-('user', 'Utente', 'Generico', 2001-10-15, 'utente.generico@gmail.de', 'Base');
+INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES
+('user', 'Utente', 'Generico', '2001-10-15', 'utente.generico@gmail.de', 'Base', '2024-12-08', '2025-12-08');
 
 INSERT INTO Vendita (utente, data, totale, videogioco) VALUES
-('user', 2024-12-13, 59.99, '00000001');
+('user', '2024-12-13', 59.99, '00000001'),
+('user', '2024-11-09', 69.99, '00000004'),
+('user', '2024-11-09', 59.99, '00000007'),
+('user', '2024-10-25', 69.99, '00000010');
 
-INSERT INTO StoricoAbbonamento (utente, abbonamento) VALUES
-('user', 'Premium');
+INSERT INTO StoricoAbbonamento (utente, abbonamento, dataInizio, dataFine) VALUES
+('user', 'Premium', '2023-10-21', '2024-10-21');
 
 INSERT INTO CategoriaVideogioco (categoria, videogioco) VALUES
 ('Avventura', '00000001'),

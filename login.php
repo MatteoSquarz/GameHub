@@ -27,6 +27,7 @@ if (isset($_POST['accedi'])) {
 		if($connessioneOK == NULL)
 		{
             $autenticazione = $connessione->autenticaUtente($username,$password);
+			//prima fare autenticaUtente, se fallisce fare autenticaAdmin, se fallisce anche autenticaAdmin dare username e/o password errati
             switch($autenticazione)
             {
 	            case "no result":

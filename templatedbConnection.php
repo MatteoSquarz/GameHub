@@ -141,6 +141,53 @@ class DBAccess{
 		}
 	}
 
+	public function getUtente($username){
+		$query = "SELECT * from User WHERE username = '$username'";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$result = array();
+			while($row=mysqli_fetch_assoc($queryResult)){
+				array_push($result, $row);
+			}
+			$queryResult->free();
+			return $result;
+		}
+	}
+
+	public function getAcquisti($username){
+		$query = "SELECT * from Vendita WHERE utente = '$username'";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$result = array();
+			while($row=mysqli_fetch_assoc($queryResult)){
+				array_push($result, $row);
+			}
+			$queryResult->free();
+			return $result;
+		}
+	}
+
+	public function getImmagineAbbonamento($abbonamento){
+		$query = "SELECT * from Abbonamento WHERE nome = '$abbonamento'";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$row=mysqli_fetch_assoc($queryResult);
+			return $row['immagine'];
+		}
+	}
+
 	public function pulisciInput($value){
 		// elimina gli spazi
 		$value = trim($value);
@@ -151,9 +198,9 @@ class DBAccess{
 		return $value;
     }
 
-	public function autenticaUtente($username, $password){
+	public function autenticaUtente($username, $password){  //ritornare solo true o false 
 		$query = "SELECT * from Utente";
-
+		// $query = "SELECT * from User WHERE username = '$username' AND password = '$password'";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_num_rows($queryResult) == 0) {
 			return "no result";
@@ -180,6 +227,9 @@ class DBAccess{
 		}
 		return $authenticated;
 	}
+
+	//fare metodo per autenticare admin
+	// $query = "SELECT * from Admin WHERE username = '$username' AND password = '$password'";
 
 	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email, $abbonamento) {
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";
