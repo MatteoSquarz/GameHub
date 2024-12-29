@@ -59,7 +59,7 @@ if(!$connectionOK)
 
     $vendite = $connection->getAcquisti($_SESSION['username']);
     if($vendite == null)
-        $listaGiochi = "<p>Non hai ancora effettuato acquisti.</p>";
+        $listaGiochi = "<p class=\"noAcquisti\">Non hai ancora effettuato acquisti.</p>";
     else{
         foreach($vendite as $vendita){
             $codice = $vendita['videogioco'];
