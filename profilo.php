@@ -10,7 +10,7 @@ if (isset($_SESSION['username']))
 
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
-    header("Location: /index.php");
+    header("Location: /TecWeb-project/index.php");
   	exit();
 }
 
@@ -58,21 +58,22 @@ if(!$connectionOK)
     }    
 
     $vendite = $connection->getAcquisti($_SESSION['username']);
-    $cnt = 0;
-    foreach($vendite as $vendita)
-    {
-        $codice = $vendita['videogioco'];
-        $videogiochi = $connection->getGiocoByCodice($codice);
-        $listaGiochi .= "<li class=\"gameItem\">";
-        $img = $videogiochi[$cnt]['immagine'];
-        $listaGiochi .= "<img src=\"assets/game-covers/$img\" alt=\"\" class=\"gameThumbnail\">";
-        $listaGiochi .= "<div class=\"gameInfo\">";
-        $nome = $videogiochi[$cnt]['titolo'];
-        $listaGiochi .= "<h3>$nome</h3>";
-        $data = $vendita['data'];
-        $listaGiochi .= "<p class=\"purchaseDate\">Acquistato il: $data</p>";
-        $listaGiochi .= "</div>";
-        $listaGiochi .= "</li>";
+    if($vendite == null)
+        $listaGiochi = "<p>Non hai ancora effettuato acquisti.</p>";
+    else{
+        foreach($vendite as $vendita){
+            $codice = $vendita['videogioco'];
+            $listaGiochi .= "<li class=\"gameItem\">";
+            $img = $vendita['immagine'];
+            $listaGiochi .= "<img src=\"assets/game-covers/$img\" alt=\"\" class=\"gameThumbnail\">";
+            $listaGiochi .= "<div class=\"gameInfo\">";
+            $nome = $vendita['titolo'];
+            $listaGiochi .= "<h3>$nome</h3>";
+            $data = $vendita['data'];
+            $listaGiochi .= "<p class=\"purchaseDate\">Acquistato il: $data</p>";
+            $listaGiochi .= "</div>";
+            $listaGiochi .= "</li>";
+        }
     }
 }
 else

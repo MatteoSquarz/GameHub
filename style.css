@@ -991,7 +991,7 @@ hr{
     display: flex;
     flex-direction: column;
     margin: 2em 10%;
-    gap: 2.5em;  
+    gap: 2.5em;
 }
 
 .profileBox {
@@ -1092,6 +1092,13 @@ hr{
     margin-top: 1em;
     list-style: none;
     margin: 1em 2em;
+}
+
+.gamesList p{
+    font-size: 1.1em;
+    color: #000;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .gameItem {
