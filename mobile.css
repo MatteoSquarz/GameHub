@@ -230,3 +230,8 @@ header #profile{
 .error-img {
     max-width: 90%;
 }
+/*pagina Dashboard admin*/
+.formRiga{
+    display: flex;
+    flex-direction: column;
+}

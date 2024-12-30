@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Questa pagina è dedicata al sito GameHub, venditore di videogiochi dal 2020">
+        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento">
+        <meta name="author" content="Matteo Squarzoni">    
+        <link rel = "stylesheet" href = "style.css" media = "screen">
+        <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <title>GameHub-Pagina Admin</title>
+    </head>
+    <body>
+      <div class="stickyScroll">
+        <header>
+            <div class="logoName">
+                <a id="logo"><h1>GameHub</h1></a>
+            </div>
+            <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                    <a href="#content" class="navHelper">Vai al contenuto</a>
+            </nav>
+            <nav id="menu">
+                <ul class="menuList">
+                    <li id="currentMenu">Home</li>
+                    <li><a href="catalogo.php">Catalogo</a></li>
+                    <li><a href="abbonamenti.html">Abbonamenti</a></li>
+                    <li><a href="chiSiamo.php">Chi siamo</a></li>
+                    [loginProfilo]
+                </ul>
+                <!--<a id="profile" href="#menu">Profile</a>-->
+            </nav>
+            <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle" aria-label="apri menu">
+                <div role="button" class="menu-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div> 
+            </a>
+        </header>
+        <nav id="breadcumb">
+            <p>Ti trovi in: Pagina amministratore</p>
+        </nav>
+      </div>
+
+
+    <main id="content" class="background">
+        <div class="intro blur">
+            <h2 class="titoloPagina"><span lang="en">Dashbord</span> per l' amministratore</h2>
+            <p>In questa pagina l' amministratore può aggiungere e rimuovere i giochi in catalogo, 
+              oltre che modificare i prezzi degli abbonamenti
+            </p>
+        </div>
+        
+      <div class="divForm">
+        <form id="inserimento-gioco" method="post">
+        <h3 class="titoloForm">Form Inserimento Gioco</h3>
+        <div class="formRiga">
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="codice">Codice:</label>
+            <input type="text" id="codice" name="codice" required />
+          </div>
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="titolo">Titolo:</label>
+            <input type="text" id="titolo" name="titolo" required />
+          </div>
+        </div>
+      
+        <div class="formRiga">
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="data-uscita">Data uscita:</label>
+            <input type="date" id="data-uscita" name="data-uscita" required />
+          </div>
+          
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="pegi"><span lang="en">Pegi:</span></label>
+            <input type="number" id="pegi" name="pegi" required />
+          </div>
+        </div>
+      
+        <div class="formRiga">
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="prezzo">Prezzo:</label>
+            <input type="number" id="prezzo" name="prezzo" step="0.01" required />
+          </div>
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="casa-sviluppatrice">Casa Sviluppatrice:</label>
+            <input type="text" id="casa-sviluppatrice" name="casa-sviluppatrice" required />
+          </div>
+        </div>
+      
+        <div class="formRiga">
+          
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="immagine">Immagine:</label>
+            <input type="url" id="immagine" name="immagine" required />
+          </div>
+        </div>
+        <div>
+          <label class="labelFormAdmin" for="descrizione">Descrizione:</label>
+          <textarea id="descrizione" name="descrizione" cols="80" rows="4" required></textarea>
+        </div>
+      
+        <button type="submit">Inserisci</button>
+        [messaggi form]
+      </form>
+    </div>
+    <!-- Area Rimozione Gioco -->
+    <div class="divForm">
+      <form id="rimozione-gioco" method="get">
+        <h3 class="titoloForm">Area Rimozione Gioco</h3>
+        <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
+        <input type="text" id="codice-rimozione" name="codice-rimozione" required />
+        <button type="submit">Rimuovi</button>
+        [messaggi form]
+      </form>
+    </div>
+    <!-- Area Modifica Prezzi Abbonamenti -->
+    <div class="divForm">
+      
+      <form id="modifica-prezzi" method="get">
+        <h3 class="titoloForm">Area Modifica Prezzi Abbonamenti</h3>
+        <div class="formRiga">
+          <div class="formGruppo">
+            <label class="labelFormAdmin" for="abbonamento">Seleziona l'abbonamento:</label>
+            <select id="abbonamento" name="abbonamento">
+              <option value="base">Base</option>
+              <option value="sistema">Sistema</option>
+              <option value="premium">Premium</option>
+            </select>
+          
+            <label class="labelFormAdmin" for="nuovo-costo">Nuovo costo:</label>
+            <input type="number" id="nuovo-costo" name="nuovo-costo" step="0.01" required />
+          </div>
+        </div>
+        <button type="submit">Modifica</button>
+        [messaggi form]
+      </form>
+    </div>
+    </div>
+    <div class="tornaSuButton">
+        <a href="#content" class="tornaSuHelper">Torna su</a>
+    </div>
+        </main>
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li id="currentMenu">Home</li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <li><a href="abbonamenti.php">Abbonamenti</a></li>
+                <li><a href="chiSiamo.php">Chi siamo</a></li>
+                [loginProfilo]
+                <li><a href=#content>Torna su</a></li>
+            </ul>
+        </nav>    
+        <footer>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contattaci</h3>
+                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+                </div>
+                <div class="social-links">
+                    <h3>Seguici</h3>
+                    <a href="https://www.facebook.com/" title="Facebook"><span class="fa-brands fa-facebook"></span></a>
+                    <a href="https://x.com/" title="Twitter"><span class="fa-brands fa-twitter"></span></a>
+                    <a href="https://www.instagram.com/" title="Instagram"><span class="fa-brands fa-instagram"></span></a>
+                    <a href="https://www.youtube.com/" title="Youtube"><span class="fa-brands fa-youtube"></span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+            </div>
+        </footer>
+    </body>
+</html>
