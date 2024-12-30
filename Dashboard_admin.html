@@ -93,7 +93,7 @@
           
           <div class="formGruppo">
             <label class="labelFormAdmin" for="immagine">Immagine:</label>
-            <input type="url" id="immagine" name="immagine" required />
+            <input type="file" id="immagine" name="immagine" accept="image/*"  required />
           </div>
         </div>
         <div>
@@ -107,7 +107,7 @@
     </div>
     <!-- Area Rimozione Gioco -->
     <div class="divForm">
-      <form id="rimozione-gioco" method="get">
+      <form id="rimozione-gioco" method="post">
         <h3 class="titoloForm">Area Rimozione Gioco</h3>
         <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
         <input type="text" id="codice-rimozione" name="codice-rimozione" required />
@@ -118,7 +118,7 @@
     <!-- Area Modifica Prezzi Abbonamenti -->
     <div class="divForm">
       
-      <form id="modifica-prezzi" method="get">
+      <form id="modifica-prezzi" method="post">
         <h3 class="titoloForm">Area Modifica Prezzi Abbonamenti</h3>
         <div class="formRiga">
           <div class="formGruppo">
