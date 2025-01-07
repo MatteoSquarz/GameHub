@@ -249,7 +249,7 @@ class DBAccess{
 	}
 
 	public function disdiciAbbonamento($username){
-		$query = "UPDATE User SET abbonamentoAttuale = NULL WHERE username = '$username'";
+		$query = "UPDATE User SET abbonamentoAttuale = NULL, dataInizio = NULL, dataFine = NULL WHERE username = '$username'";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
