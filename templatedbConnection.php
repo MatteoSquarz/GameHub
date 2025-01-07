@@ -198,38 +198,27 @@ class DBAccess{
 		return $value;
     }
 
-	public function autenticaUtente($username, $password){  //ritornare solo true o false 
-		$query = "SELECT * from Utente";
-		// $query = "SELECT * from User WHERE username = '$username' AND password = '$password'";
+	public function autenticaUtente($username, $password){
+		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM User)";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
-		if(mysqli_num_rows($queryResult) == 0) {
-			return "no result";
+		if(mysqli_num_rows($queryResult) == 1) {
+			return true;
 		} else {
-			$result = array();
-			while($row=mysqli_fetch_assoc($queryResult)){
-				array_push($result, $row);
-			}
 			$queryResult->free();
+			return false;
 		}
-		
-		$authenticated = "";
-		foreach($result as $utente)
-		{
-			if($username == $utente['username'])
-			{
-				if($password == $utente['password'])
-					return "authenticated";
-				else
-					return "not authenticated";
-			}
-			else
-				$authenticated = "no user";
-		}
-		return $authenticated;
 	}
 
-	//fare metodo per autenticare admin
-	// $query = "SELECT * from Admin WHERE username = '$username' AND password = '$password'";
+	public function autenticaAdmin($username, $password){ 
+		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM Admin)";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_num_rows($queryResult) == 1) {
+			return true;
+		} else {
+			$queryResult->free();
+			return false;
+		}
+	}
 
 	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email, $abbonamento) {
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";

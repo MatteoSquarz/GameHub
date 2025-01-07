@@ -802,7 +802,7 @@ footer {
     margin-top: 0.5em;
     margin-bottom: 1em;
     align-self: flex-start;
-    color: rgb(148, 17, 17);
+    color: #941110;
 }
 
 .labelForm {
@@ -839,7 +839,13 @@ hr{
     margin-bottom: 2%;
 }
 
-
+.errorLogin {
+    color: #941110;
+    font-size: 1em;
+    list-style: none;
+    font-weight: bold;
+    margin-bottom: 0.1em;
+}
 
 /* ============================
         PAGINA VIDEOGIOCO

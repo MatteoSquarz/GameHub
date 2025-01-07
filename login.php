@@ -13,48 +13,43 @@ $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
 
 if (isset($_POST['accedi'])) {
-	$messaggiPerForm .= "<ul>";
-
+	$messaggiPerForm .= "<ul class=\"errorLogin\">";
+	
     $username = $connessione->pulisciInput($_POST['username']);
-	if(!preg_match("/^[a-zA-Z0-9]{2,}$/",$username))
-        $messaggiPerForm .= "<li>Non è sicuramente uno username</li>";
+	/*if(!preg_match("/^[a-zA-Z0-9]{2,}$/",$username))
+        $messaggiPerForm .= "<li>Non è sicuramente uno username</li>";*/
 
     $password = $connessione->pulisciInput($_POST['password']);
-	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{4,}$/",$password))
-        $messaggiPerForm .= "<li>Non è sicuramente una password</li>";
-
-	if($messaggiPerForm == "<ul>"){
-		if($connessioneOK == NULL)
-		{
-            $autenticazione = $connessione->autenticaUtente($username,$password);
-			//prima fare autenticaUtente, se fallisce fare autenticaAdmin, se fallisce anche autenticaAdmin dare username e/o password errati
-            switch($autenticazione)
-            {
-	            case "no result":
-					$messaggiPerForm .= "<li>La query non ha prodotto risultati</li>";//pagina d'errore
-	            break;
-	            case "no user":
-					$messaggiPerForm .= "<li>Nessun username corrisponde</li>";//si può accorpare con quella sotto: username e/o password errati
-	            break;
-	            case "not authenticated":
-					$messaggiPerForm .= "<li>Utente non autenticato</li>";//si può accorpare con quella sopra: username e/o password errati
-	            break;
-				case "authenticated":
-					session_start();
-					if(empty($_SESSION))
-					{
-    					$_SESSION["username"] = $username;
-					}
-					else 
-					{
-						unset($_SESSION);
-						$_SESSION["username"] = $username;
-					}
-					header("Location: /TecWeb-project/index.php");
-  					exit();
-	            break;
-            }
+	/*if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{4,}$/",$password))
+        $messaggiPerForm .= "<li>Non è sicuramente una password</li>";*/
+	
+	
+	if($connessioneOK == NULL){
+		$autenticazione = $connessione->autenticaUtente($username,$password);
+		if($connessione->autenticaUtente($username,$password)){
+			session_start();
+			if(empty($_SESSION)){
+				$_SESSION["username"] = $username;
+			}
+			else{
+				unset($_SESSION);
+				$_SESSION["username"] = $username;
+			}
+			header("Location: /TecWeb-project/index.php");	
 		}
+		elseif($connessione->autenticaAdmin($username,$password)){
+			session_start();
+			if(empty($_SESSION)){
+				$_SESSION["username"] = $username;
+			}
+			else{
+				unset($_SESSION);
+				$_SESSION["username"] = $username;
+			}
+			header("Location: /TecWeb-project/index.php");
+		}
+		else
+			$messaggiPerForm .= "<li>Username e/o password errati</li>";
 	}
 	$messaggiPerForm .= "</ul>";
 }
