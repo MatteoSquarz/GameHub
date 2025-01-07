@@ -2,24 +2,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pagina di errore 404 page not found di GameHub">
+    <meta name="description" content="Pagina di acquisto completato su GameHub">
     <meta name="author" content="Francesco Lapenna">  
     <link rel="stylesheet" href="style.css">
     <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
-    <title>GameHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Acquisto - GameHub</title>
 </head>
-<body class="background">
-    <main class="ac-page">
+<body>
+    <div class="stickyScroll">
+        <header>
+            <div class="logoName">
+                <a href="index.php" id="logo"><h1>GameHub</h1></a>
+            </div>
+            <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                    <a href="#mainAcquisto" class="navHelper">Vai al contenuto</a>
+            </nav>
+            <nav id="menu">
+                <ul class="menuList">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="catalogo.php">Catalogo</a></li>
+                    <li><a href="abbonamenti.php" id="currentMenu">Abbonamenti</a></li>
+                    <li><a href="chiSiamo.php">Chi siamo</a></li>
+                    [loginProfilo]
+                </ul>
+            </nav>
+            <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle" aria-label="apri menu">
+                <div role="button" class="menu-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div> 
+            </a>
+        </header>
+        <nav id="breadcumb">
+            <p>Ti trovi in: Acquisto completato</p>
+        </nav>
+    </div>
+    <main id="mainAcquisto" class="ac-page background">
         <div class="ac-container">
             <img class="ac-img" src="assets/order-complete.jpg" alt="">
             <div class="ac-info">
-                <h1 class="ac-msg">Acquisto Completato</h1>
-                <h2 class="ac-descr">Complimenti per il tuo nuovo acquisto!</h2>
+                <h1 class="ac-msg">Acquisto Completato!</h1>
+                <h2 class="ac-descr">Complimenti ora puoi visualizzare nella sezione profilo il tuo nuovo acquisto!</h2>
                 <li>
-                    <a href="index.php">Torna alla <span lang="en">Home</span></a>
+                    <a href="index.php">Torna alla <span lang="en">home</span></a>
+                    <a href="profilo.php">Vai al profilo</a>
                 </li>
             </div>
         </div>
     </main>
+    <nav id="hamburgerMobileMenu">
+        <ul class="menuListMobile">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="catalogo.php">Catalogo</a></li>
+            <li><a href="abbonamenti.php" id="currentMenu">Abbonamenti</a></li>
+            <li><a href="chiSiamo.php">Chi siamo</a></li>
+            [loginProfilo]
+            <li><a href=#mainAcquisto>Torna su</a></li>
+        </ul>
+    </nav>   
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contattaci</h3>
+                <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+            </div>
+            <div class="social-links">
+                <h3>Seguici</h3>
+                <a href="https://www.facebook.com/" title="Facebook"><span class="fa-brands fa-facebook"></span></a>
+                <a href="https://x.com/" title="Twitter"><span class="fa-brands fa-twitter"></span></a>
+                <a href="https://www.instagram.com/" title="Instagram"><span class="fa-brands fa-instagram"></span></a>
+                <a href="https://www.youtube.com/" title="Youtube"><span class="fa-brands fa-youtube"></span></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+        </div>
+    </footer>
 </body>
 </html>

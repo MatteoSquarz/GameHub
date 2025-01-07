@@ -1195,7 +1195,7 @@ hr{
 }
 
 /* ============================
-        PAGINA ACQUISTO COMPLETATO
+    PAGINA ACQUISTO COMPLETATO
 ============================ */
 
 .ac-page {
@@ -1212,12 +1212,14 @@ hr{
     padding: 1.5em;
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: #ADD8E6;
     border-radius: 15px;
 }
 
 .ac-img {
     max-width: 35%;
+    border-radius: 50%;
+    border: #000 solid 3px;
     height: auto;
     align-self: center;
 }
