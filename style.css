@@ -486,13 +486,14 @@ footer {
     max-width: 40%;
     height: auto;
     border-radius: 20px;
+    border: #000 solid 2px;
 }
 
 .targhettaAbb button{
-    background: linear-gradient(45deg, #115AA2,#000000);
+    background: #D13500;
+    border: #000 solid 1px;
     color: white;            
-    padding: 0.5em 1.5em;     
-    border: none;             
+    padding: 0.5em 1.5em;                
     border-radius: 5px;       
     font-size: 1em;           
     cursor: pointer;         
