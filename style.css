@@ -1198,14 +1198,6 @@ hr{
     PAGINA ACQUISTO COMPLETATO
 ============================ */
 
-.ac-page {
-    background-color: unset;
-}
-
-.ac-main {
-    background-color: white;
-}
-
 .ac-container {
     justify-self: center;
     margin: 1em 2em;
