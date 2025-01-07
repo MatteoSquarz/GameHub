@@ -107,9 +107,9 @@ INSERT INTO Utente (username, password) VALUES
 ('admin','admin');
 
 INSERT INTO Abbonamento (nome, descrizione, prezzo, livello, immagine) VALUES
-('Base', 'Accesso ad una piccola selezione dei giochi senza premi o ricompense', 20, 1, 'base.jpeg'),
-('Deluxe', 'Accesso alla maggior parte dei giochi compresi di ricompense speciali in gioco', 50, 2, 'deluxe.jpeg'),
-('Premium', 'Accesso a tutti i giochi del catalogo compresi di tutti i contenuti sbloccabili in gioco', 80, 3, 'premium.jpeg');
+('Base', 'Accesso ad una piccola selezione dei giochi senza premi o ricompense.', 20, 1, 'base.jpeg'),
+('Deluxe', 'Accesso alla maggior parte dei giochi compresi di ricompense speciali in gioco.', 50, 2, 'deluxe.jpeg'),
+('Premium', 'Accesso a tutti i giochi del catalogo compresi di tutti i contenuti sbloccabili in gioco.', 80, 3, 'premium.jpeg');
 
 INSERT INTO Videogioco (codice, titolo, descrizione, prezzo, dataUscita, pegi, casaSviluppatrice, immagine) VALUES
 ('00000001', 'Legends of Avalon', 'Un emozionante gioco di avventura in un mondo fantasy', 59.99, '2023-10-15', 12, 'GameStudio A', 'avalon.jpg'),
