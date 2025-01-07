@@ -242,3 +242,15 @@ header #profile{
 .error-img {
     max-width: 90%;
 }
+
+/* ============================
+    PAGINA ACQUISTO COMPLETATO
+============================ */
+
+.ac-container {
+    flex-direction: column-reverse;
+}
+
+.ac-img {
+    max-width: 90%;
+}
