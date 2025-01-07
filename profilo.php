@@ -17,7 +17,11 @@ if(isset($_GET['logout'])){
 $connection = new DBAccess();
 $connectionOK = $connection->openDBConnection();
 
-$utenti = "";
+if(isset($_GET['disdici'])){
+    $connection->disdiciAbbonamento($_SESSION['username']);
+    header("Location: /TecWeb-project/profilo.php");
+}
+
 $vendite = "";
 $listaGiochi = "";
 
@@ -53,11 +57,12 @@ if(!$connectionOK)
         $paginaHTML = str_replace('[Data iscrizione]', $dataInizio, $paginaHTML);
         $dataFine = $utente['dataFine'];
         $paginaHTML = str_replace('[Data scadenza]', $dataFine, $paginaHTML);
-        $disdici = "<a role=\"button\" class=\"buttonBoxProfile\">Disdici</a>";
+        $disdici = "<a role=\"button\" class=\"buttonBoxProfile\" href=\"profilo.php?disdici=1\">Disdici</a>";
         $paginaHTML = str_replace('[pulsante disdici]', $disdici, $paginaHTML);
     }    
 
     $vendite = $connection->getAcquisti($_SESSION['username']);
+    $connection->closeDBConnection();
     if($vendite == null)
         $listaGiochi = "<p class=\"noAcquisti\">Non hai ancora effettuato acquisti.</p>";
     else{

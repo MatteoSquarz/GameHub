@@ -20,7 +20,7 @@ $listaGiochi = "";
 if(!$connectionOK)
 {
     $giochi = $connection->getListGiochi();
-    $connection->closeConnection();
+    $connection->closeDBConnection();
 
     if($giochi)
     {
