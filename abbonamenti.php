@@ -20,7 +20,7 @@ $listaAbbonamenti = "";
 if(!$connectionOK)
 {
     $abbonamenti = $connection->getListAbbonamenti();
-    $connection->closeConnection();
+    $connection->closeDBConnection();
 
     if($abbonamenti)
     {
