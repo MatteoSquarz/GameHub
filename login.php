@@ -50,7 +50,7 @@ if (isset($_POST['accedi'])) {
 						unset($_SESSION);
 						$_SESSION["username"] = $username;
 					}
-					header("Location: /index.php");
+					header("Location: /TecWeb-project/index.php");
   					exit();
 	            break;
             }

@@ -263,6 +263,7 @@ header #profile {
     width: 60%;
     height: auto;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .infoVideogames a{
@@ -320,7 +321,7 @@ header #profile {
     width: 45%;
     height: auto;
     border-radius: 20px;
-
+    object-fit: cover;
 }
 
 .infoAbbonamenti a{
@@ -990,7 +991,7 @@ hr{
     display: flex;
     flex-direction: column;
     margin: 2em 10%;
-    gap: 2.5em;  
+    gap: 2.5em;
 }
 
 .profileBox {
@@ -1093,6 +1094,13 @@ hr{
     margin: 1em 2em;
 }
 
+.noAcquisti{
+    font-size: 1.1em;
+    color: #000;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .gameItem {
     display: flex;
     align-items: center;
@@ -1128,7 +1136,6 @@ hr{
 
 .error-page {
     background-color: white;
-    border: 1px solid white;
 }
 
 .error-main {

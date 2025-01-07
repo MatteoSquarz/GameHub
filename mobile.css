@@ -190,6 +190,10 @@ header #profile{
         PAGINA PROFILO
 ============================ */
 .profileBoxContainer{
+    word-break: break-word;
+}
+
+.profileBoxContainer{
     display: flex;
     flex-direction: column;
     gap: 2.5em;
@@ -210,6 +214,14 @@ header #profile{
 .subscriptionContent dl{
     margin-top: 0em;
     margin-bottom: 0em;
+}
+
+.userDetailsItem {
+    flex-direction: column;
+}
+
+.subscriptionDetailsItem{
+    flex-direction: column;
 }
 
 .gameItem h3 {
