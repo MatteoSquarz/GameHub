@@ -39,7 +39,7 @@ if (isset($_POST['accedi'])) {
 				unset($_SESSION);
 				$_SESSION["username"] = $username;
 			}
-			header("Location: /TecWeb-project/index.php");
+			header("Location: /TecWeb-project/admin.php");
 		}
 		else
 			$messaggiPerForm .= "<li>Username e/o password errati</li>";

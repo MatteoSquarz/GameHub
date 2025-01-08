@@ -56,6 +56,40 @@ class DBAccess{
 		}
 	}
 
+	public function getListCategorie() {
+		$query = "SELECT * from Categoria";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$result = array();
+			while($row=mysqli_fetch_assoc($queryResult)){
+				array_push($result, $row);
+			}
+			$queryResult->free();
+			return $result;
+		}
+	}
+
+	public function getListPiattaforme() {
+		$query = "SELECT * from Piattaforma";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		
+		if(mysqli_num_rows($queryResult) == 0) {
+			return null;
+		} else {
+			$result = array();
+			while($row=mysqli_fetch_assoc($queryResult)){
+				array_push($result, $row);
+			}
+			$queryResult->free();
+			return $result;
+		}
+	}
+
 	public function getListGiochi() {
 		$query = "SELECT * from Videogioco";
 

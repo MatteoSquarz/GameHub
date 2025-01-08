@@ -1273,3 +1273,113 @@ hr{
 .ac-info li a:visited{
     background-color: var(--bgvisitedcolor);
 }
+/* =========================
+        DASHBOARD ADMIN
+============================*/
+.divForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-radius: 25px;
+    font-size: 1em;
+    background-color: var(--homeboxcolor);
+    color: #000;
+    margin: 2em 15%;
+}
+.formRiga{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: center;
+    padding: 0em 2em;
+}
+.formCampo{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.divForm h2{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+}
+.titleLegend{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+.sceltaPiattaforma{
+    text-align: center;
+}
+
+.containerScelteCategoria{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.formCheckboxAreaPiattaforme{
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.formCheckboxAreaCategorie{
+    margin-bottom: 2em;
+}
+
+fieldset{
+    border: none;
+}
+
+.formCampo input, textarea {
+    width: 90%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 0.9em;
+    background-color: #fff;
+}
+
+.formCampo select {
+    width: 95%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 0.9em;
+    background-color: #fff;
+}
+
+.labelFormAdmin{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: var(--logintextcolor);
+}
+
+.buttonAdminForm{
+    font-size: 0.9em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background:#D13500;
+    border: 2px solid #000;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    align-self: center;
+}
+
+.itemCentered{
+    align-self: center;
+    justify-self: center;
+}
