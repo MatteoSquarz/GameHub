@@ -489,18 +489,16 @@ footer {
     border: #000 solid 2px;
 }
 
-.targhettaAbb button{
-    background: #D13500;
-    border: #000 solid 1px;
-    color: white;            
-    padding: 0.5em 1.5em;                
-    border-radius: 5px;       
-    font-size: 1em;           
-    cursor: pointer;         
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
-    transition: background-color 0.3s, transform 0.2s; 
-    max-width: 100%;
-    width: 100%;
+.targhettaAbb a{
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    background:#D13500;
+    border: 2px solid #000;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+
 }
 
 .targhettaAbb button:hover {

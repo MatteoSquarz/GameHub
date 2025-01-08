@@ -36,7 +36,7 @@ if(!$connectionOK)
             $listaAbbonamenti .= "<p>$descrizione</p>";
             $costo = $abb['prezzo'];
             $listaAbbonamenti .= "<p><strong>Costo annuale:</strong> $costo €</p>";
-            $listaAbbonamenti .= "<a class=\"buttonBoxProfile\" href=\"abbonamenti.php?abbonamento=$nome\">Abbonati!</a>";
+            $listaAbbonamenti .= "<a role=\"button\" href=\"abbonamenti.php?abbonamento=$nome\">Abbonati!</a>";
             $listaAbbonamenti .= "[messaggio$nome]";
             $listaAbbonamenti .= "</div>";
         }
