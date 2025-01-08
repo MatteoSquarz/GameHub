@@ -13,6 +13,9 @@ $email = "";
 $username = "";
 $password = "";
 
+$connessione = new DBAccess();
+$connessioneOK = $connessione->openDBConnection();
+
 if (isset($_POST['registrati'])) {
 	$messaggiPerForm .= "<ul>";
 
@@ -41,15 +44,17 @@ if (isset($_POST['registrati'])) {
 	$messaggiPerForm .= "</ul>";
 
 	if($messaggiPerForm == "<ul></ul>"){
-		$connessione = new DBAccess();
-		$connessioneOK = $connessione->openDBConnection();
-		if($connessioneOK == true)
+		if($connessioneOK == NULL)
 		{
-			/*
-			$nuovoUtente = $connection->insertNewUser("jesus","1234568","fabio","rossi","2001/12/25","lamiamail@gmail.com","null");
-			if($nuovoUtente)
-				echo "Inserito con successo <br>";
-			*/
+			$esistente = $connessione->getUtente($username);
+			if($esistente == null)
+			{
+				$nuovoUtente = $connessione->insertNewUser($username,$password,$nome,$cognome,$dataNascita,$email);
+				if($nuovoUtente)
+					header("Location: /TecWeb-project/login.php");
+			}
+			else
+				$messaggiPerForm = "<p>Username già utilizzato, si prega di usarne un altro</p>";				
 		}
 	}
 }
