@@ -220,11 +220,11 @@ class DBAccess{
 		}
 	}
 
-	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email, $abbonamento) {
+	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email) {
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";
-		$queryInsUser = "INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", \"$abbonamento\")";
+		$queryInsUser = "INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", NULL, NULL, NULL)";
 		
-		$queryInsUtenteRes = mysqli_query($this->connection, $queryInsUtente) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryInsRes = mysqli_query($this->connection, $queryInsUtente) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 		{
 			$queryInsUserRes = mysqli_query($this->connection, $queryInsUser) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
