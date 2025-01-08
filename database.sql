@@ -16,7 +16,7 @@ CREATE TABLE Abbonamento(
 CREATE TABLE Videogioco(
     codice varchar(8) NOT NULL,
     titolo varchar(20) NOT NULL,
-    descrizione varchar(250) NOT NULL,
+    descrizione varchar(1000) NOT NULL,
     prezzo decimal NOT NULL,
     dataUscita date NOT NULL,
     pegi int NOT NULL,
