@@ -13,9 +13,6 @@ $email = "";
 $username = "";
 $password = "";
 
-$connessione = new DBAccess();
-//$connessioneOK = $connessione->openDBConnection();
-
 if (isset($_POST['registrati'])) {
 	$messaggiPerForm .= "<ul>";
 
@@ -43,8 +40,9 @@ if (isset($_POST['registrati'])) {
 
 	$messaggiPerForm .= "</ul>";
 
-	if($messaggiPerForm == ""){
-
+	if($messaggiPerForm == "<ul></ul>"){
+		$connessione = new DBAccess();
+		$connessioneOK = $connessione->openDBConnection();
 		if($connessioneOK == true)
 		{
 			/*

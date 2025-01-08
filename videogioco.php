@@ -24,7 +24,7 @@ if(!$connectionOK)
     $categorie = $connection->getCategoriaByCodiceGioco($codice);
     $piattaforme = $connection->getPiattaformaByCodiceGioco($codice);
     $abbonamenti = $connection->getAbbonamentoByCodiceGioco($codice);
-    $connection->closeConnection();
+    $connection->closeDBConnection();
 
     $paginaGioco .= "<div class=\"backgroundPannelloVideogioco\">";
     foreach($giochi as $gioco)
