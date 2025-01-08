@@ -16,7 +16,7 @@ CREATE TABLE Abbonamento(
 CREATE TABLE Videogioco(
     codice varchar(8) NOT NULL,
     titolo varchar(20) NOT NULL,
-    descrizione varchar(250) NOT NULL,
+    descrizione varchar(1000) NOT NULL,
     prezzo decimal NOT NULL,
     dataUscita date NOT NULL,
     pegi int NOT NULL,
@@ -107,9 +107,9 @@ INSERT INTO Utente (username, password) VALUES
 ('admin','admin');
 
 INSERT INTO Abbonamento (nome, descrizione, prezzo, livello, immagine) VALUES
-('Base', 'Accesso limitato ai giochi', 20, 1, 'base.jpeg'),
-('Sistema', 'Accesso completo ai giochi di un sistema', 40, 2, 'sistema.jpeg'),
-('Premium', 'Accesso a tutti i giochi', 65, 3, 'premium.jpeg');
+('Base', 'Accesso ad una piccola selezione dei giochi senza premi o ricompense.', 20, 1, 'base.jpeg'),
+('Deluxe', 'Accesso alla maggior parte dei giochi compresi di ricompense speciali in gioco.', 50, 2, 'deluxe.jpeg'),
+('Premium', 'Accesso a tutti i giochi del catalogo compresi di tutti i contenuti sbloccabili in gioco.', 80, 3, 'premium.jpeg');
 
 INSERT INTO Videogioco (codice, titolo, descrizione, prezzo, dataUscita, pegi, casaSviluppatrice, immagine) VALUES
 ('00000001', 'Legends of Avalon', 'Un emozionante gioco di avventura in un mondo fantasy', 59.99, '2023-10-15', 12, 'GameStudio A', 'avalon.jpg'),
@@ -190,11 +190,11 @@ INSERT INTO AbbonamentoVideogioco (abbonamento, videogioco) VALUES
 ('Base', '00000001'),
 ('Base', '00000002'),
 ('Base', '00000003'),
-('Sistema', '00000001'),
-('Sistema', '00000002'),
-('Sistema', '00000005'),
-('Sistema', '00000006'),
-('Sistema', '00000009'),
+('Deluxe', '00000001'),
+('Deluxe', '00000002'),
+('Deluxe', '00000005'),
+('Deluxe', '00000006'),
+('Deluxe', '00000009'),
 ('Premium', '00000001'),
 ('Premium', '00000002'),
 ('Premium', '00000003'),

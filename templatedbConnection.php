@@ -2,10 +2,10 @@
 namespace DB;
 
 class DBAccess{
-    private const HOST = 'localhost';
-    private const DB_NAME = 'prova';
-    private const USERNAME = 'root';
-    private const PASSWORD = '';
+    private const HOST = 'mariadb';
+    private const DB_NAME = 'my_database';
+    private const USERNAME = 'my_user';
+    private const PASSWORD = 'my_password';
 
     private $connection;
 
@@ -35,7 +35,7 @@ class DBAccess{
 		
 	}
 
-	public function closeConnection() {
+	public function closeDBConnection() {
 		mysqli_close($this->connection);
 	}
 
@@ -193,7 +193,7 @@ class DBAccess{
 	}
 
 	public function getAcquisti($username){
-		$query = "SELECT * from Vendita WHERE utente = '$username'";
+		$query = "SELECT * from Vendita, Videogioco WHERE Vendita.videogioco = Videogioco.codice and utente = '$username'";
 
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 
@@ -232,44 +232,33 @@ class DBAccess{
 		return $value;
     }
 
-	public function autenticaUtente($username, $password){  //ritornare solo true o false 
-		$query = "SELECT * from Utente";
-		// $query = "SELECT * from User WHERE username = '$username' AND password = '$password'";
+	public function autenticaUtente($username, $password){
+		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM User)";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
-		if(mysqli_num_rows($queryResult) == 0) {
-			return "no result";
+		if(mysqli_num_rows($queryResult) == 1) {
+			return true;
 		} else {
-			$result = array();
-			while($row=mysqli_fetch_assoc($queryResult)){
-				array_push($result, $row);
-			}
 			$queryResult->free();
+			return false;
 		}
-		
-		$authenticated = "";
-		foreach($result as $utente)
-		{
-			if($username == $utente['username'])
-			{
-				if($password == $utente['password'])
-					return "authenticated";
-				else
-					return "not authenticated";
-			}
-			else
-				$authenticated = "no user";
-		}
-		return $authenticated;
 	}
 
-	//fare metodo per autenticare admin
-	// $query = "SELECT * from Admin WHERE username = '$username' AND password = '$password'";
+	public function autenticaAdmin($username, $password){ 
+		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM Admin)";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_num_rows($queryResult) == 1) {
+			return true;
+		} else {
+			$queryResult->free();
+			return false;
+		}
+	}
 
-	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email, $abbonamento) {
+	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email) {
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";
-		$queryInsUser = "INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", \"$abbonamento\")";
+		$queryInsUser = "INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", NULL, NULL, NULL)";
 		
-		$queryInsUtenteRes = mysqli_query($this->connection, $queryInsUtente) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryInsRes = mysqli_query($this->connection, $queryInsUtente) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 		{
 			$queryInsUserRes = mysqli_query($this->connection, $queryInsUser) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
@@ -278,6 +267,15 @@ class DBAccess{
 			else
 				return false;
 		}
+		else
+			return false;
+	}
+
+	public function disdiciAbbonamento($username){
+		$query = "UPDATE User SET abbonamentoAttuale = NULL, dataInizio = NULL, dataFine = NULL WHERE username = '$username'";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
 		else
 			return false;
 	}

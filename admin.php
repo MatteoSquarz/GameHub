@@ -21,7 +21,7 @@ if(!$connectionOK){
     $abbonamenti = $connection->getListAbbonamenti();
     $categorie = $connection->getListCategorie();
     $piattaforme = $connection->getListPiattaforme();
-    $connection->closeConnection();
+    $connection->closeDBConnection();
 
 
     foreach($abbonamenti as $abbonamento){

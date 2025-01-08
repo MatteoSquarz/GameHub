@@ -263,6 +263,7 @@ header #profile {
     width: 60%;
     height: auto;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .infoVideogames a{
@@ -320,7 +321,7 @@ header #profile {
     width: 45%;
     height: auto;
     border-radius: 20px;
-
+    object-fit: cover;
 }
 
 .infoAbbonamenti a{
@@ -485,13 +486,14 @@ footer {
     max-width: 40%;
     height: auto;
     border-radius: 20px;
+    border: #000 solid 2px;
 }
 
 .targhettaAbb button{
-    background: linear-gradient(45deg, #115AA2,#000000);
+    background: #D13500;
+    border: #000 solid 1px;
     color: white;            
-    padding: 0.5em 1.5em;     
-    border: none;             
+    padding: 0.5em 1.5em;                
     border-radius: 5px;       
     font-size: 1em;           
     cursor: pointer;         
@@ -800,7 +802,7 @@ footer {
     margin-top: 0.5em;
     margin-bottom: 1em;
     align-self: flex-start;
-    color: rgb(148, 17, 17);
+    color: #941110;
 }
 
 .labelForm {
@@ -825,9 +827,9 @@ footer {
     padding: 0.8em 1.8em;
     margin-bottom: 2em;
     margin-top: 2em;
-    background: linear-gradient(45deg, #115AA2,#000000);
+    background: #D13500;
+    border: #000 solid 2px;
     color: white;
-    border: none;
     font-size: 1em;
     text-transform: uppercase;    
 }
@@ -837,7 +839,13 @@ hr{
     margin-bottom: 2%;
 }
 
-
+.errorLogin {
+    color: #941110;
+    font-size: 1em;
+    list-style: none;
+    font-weight: bold;
+    margin-bottom: 0.1em;
+}
 
 /* ============================
         PAGINA VIDEOGIOCO
@@ -990,7 +998,7 @@ hr{
     display: flex;
     flex-direction: column;
     margin: 2em 10%;
-    gap: 2.5em;  
+    gap: 2.5em;
 }
 
 .profileBox {
@@ -1093,6 +1101,13 @@ hr{
     margin: 1em 2em;
 }
 
+.noAcquisti{
+    font-size: 1.1em;
+    color: #000;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .gameItem {
     display: flex;
     align-items: center;
@@ -1128,7 +1143,6 @@ hr{
 
 .error-page {
     background-color: white;
-    border: 1px solid white;
 }
 
 .error-main {
@@ -1191,6 +1205,72 @@ hr{
 }
 
 .error-info li a:visited{
+    background-color: var(--bgvisitedcolor);
+}
+
+/* ============================
+    PAGINA ACQUISTO COMPLETATO
+============================ */
+
+.ac-container {
+    justify-self: center;
+    margin: 1em 2em;
+    padding: 1.5em;
+    display: flex;
+    justify-content: center;
+    background-color: #ADD8E6;
+    border-radius: 15px;
+}
+
+.ac-img {
+    max-width: 35%;
+    border-radius: 50%;
+    border: #000 solid 3px;
+    height: auto;
+    align-self: center;
+}
+
+.ac-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    padding: 1em;
+}
+
+.ac-msg {
+    color: black;
+    font-size: 2.5em;
+    line-height: 1.5em;
+}
+
+.ac-descr {
+    color: black;
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+.ac-info li{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.ac-info li a{
+    align-self: center;
+}
+
+.ac-info li a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.ac-info li a:visited{
     background-color: var(--bgvisitedcolor);
 }
 /* =========================

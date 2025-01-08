@@ -20,7 +20,7 @@ $listaAbbonamenti = "";
 if(!$connectionOK)
 {
     $abbonamenti = $connection->getListAbbonamenti();
-    $connection->closeConnection();
+    $connection->closeDBConnection();
 
     if($abbonamenti)
     {
@@ -35,23 +35,8 @@ if(!$connectionOK)
             $descrizione = $abb['descrizione'];
             $listaAbbonamenti .= "<p>$descrizione</p>";
             $costo = $abb['prezzo'];
-            $listaAbbonamenti .= "<p><strong>Costo:</strong>$costo €</p>";
-            $livello = $abb['livello'];
-            if($livello == 2)
-            {
-                $listaAbbonamenti .= "<form action=\"/submit\" method=\"post\">";
-                $listaAbbonamenti .= "<label for=\"piattaforma\">Seleziona il sistema:</label>";
-                $listaAbbonamenti .= "<select id=\"piattaforma\" name=\"piattaforma\" required>";
-                $listaAbbonamenti .= "<option value=\"\" disabled selected>Seleziona un'opzione</option>";
-                $listaAbbonamenti .= "<option value=\"playstation\">PlayStation</option>";
-                $listaAbbonamenti .= "<option value=\"xbox\">Xbox</option>";
-                $listaAbbonamenti .= "<option value=\"pc\">PC</option>";
-                $listaAbbonamenti .= "<option value=\"Nintendo\">Nintendo</option>";
-                $listaAbbonamenti .= "</select>";
-            }
+            $listaAbbonamenti .= "<p><strong>Costo annuale:</strong> $costo €</p>";
             $listaAbbonamenti .= "<button onclick>Abbonati!</button>";
-            if($livello == 2)
-                $listaAbbonamenti .= "</form>";
             $listaAbbonamenti .= "</div>";
         }
         $listaAbbonamenti .= "</div>";

@@ -190,6 +190,10 @@ header #profile{
         PAGINA PROFILO
 ============================ */
 .profileBoxContainer{
+    word-break: break-word;
+}
+
+.profileBoxContainer{
     display: flex;
     flex-direction: column;
     gap: 2.5em;
@@ -212,6 +216,14 @@ header #profile{
     margin-bottom: 0em;
 }
 
+.userDetailsItem {
+    flex-direction: column;
+}
+
+.subscriptionDetailsItem{
+    flex-direction: column;
+}
+
 .gameItem h3 {
     font-size: 1.1em;
 }
@@ -228,6 +240,18 @@ header #profile{
 }
 
 .error-img {
+    max-width: 90%;
+}
+
+/* ============================
+    PAGINA ACQUISTO COMPLETATO
+============================ */
+
+.ac-container {
+    flex-direction: column-reverse;
+}
+
+.ac-img {
     max-width: 90%;
 }
 

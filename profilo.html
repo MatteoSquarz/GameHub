@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Questa pagina è dedicata al sito GameHub, venditore di videogiochi dal 2020">
-        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento">
+        <meta name="description" content="Questa pagina è dedicata al profilo dell'utente di GameHub, dove potrà visualizzare le informazioni personali, l'abbonamento attuale e i giochi acquistati">
+        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento, giochi, profilo">
         <meta name="author" content="Matteo Squarzoni">    
         <link rel = "stylesheet" href = "style.css" media = "screen">
         <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <title>GameHub</title>
+        <title>Profilo - GameHub</title>
     </head>
     <body>
         <div class="stickyScroll">
@@ -18,7 +18,7 @@
                     <a id="logo"><h1>GameHub</h1></a>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
-                        <a href="#content" class="navHelper">Vai al contenuto</a>
+                        <a href="#profileContent" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu">
                     <ul class="menuList">
@@ -43,7 +43,6 @@
         </div>
         <main id="profileContent" class="background">
             <div class="profileContainer">
-                <!-- User Information Box -->
                 <div class="profileBoxContainer">
                     <div class="profileBox">
                         <h2>Informazioni personali</h2>
@@ -76,8 +75,6 @@
                             </div>
                         </div>
                     </div>
-            
-                    <!-- Subscription Box -->
                     <div class="profileBox">
                         <h2>Abbonamento attuale</h2>
                         <div class="subscriptionContent">
@@ -96,11 +93,10 @@
                                     <dd>[Data scadenza]</dd>
                                 </div>
                             </dl>
-                            <a role="button" class="buttonBoxProfile">Disdici</a>
+                            [pulsante disdici]
                         </div>
                     </div>
                 </div>    
-                <!-- Purchased Games Box -->
                 <div class="profileBox">
                     <h2>I tuoi giochi</h2>
                     <ul class="gamesList">
@@ -116,7 +112,7 @@
                 <li><a href="abbonamenti.php">Abbonamenti</a></li>
                 <li><a href="chiSiamo.php">Chi siamo</a></li>
                 [loginProfilo]
-                <li><a href=#content>Torna su</a></li>
+                <li><a href=#profileContent>Torna su</a></li>
             </ul>
         </nav>    
         <footer>
