@@ -1350,7 +1350,7 @@ fieldset{
 }
 
 .formCampo select {
-    width: 100%;
+    width: 95%;
     padding: 0.7em;
     border-radius: 10px;
     border: #000 solid 2px;
