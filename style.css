@@ -1193,59 +1193,113 @@ hr{
 .error-info li a:visited{
     background-color: var(--bgvisitedcolor);
 }
-/*Dashboard ADMIN*/
+/* =========================
+        DASHBOARD ADMIN
+============================*/
 .divForm{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
+    justify-content: center;
     padding: 1em;
     border-radius: 25px;
+    font-size: 1em;
     background-color: var(--homeboxcolor);
     color: #000;
-    font-size: 1em;
-    margin: 3em;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 2em 15%;
 }
 .formRiga{
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: 2em;
     align-items: center;
+    padding: 0em 2em;
 }
-.formGruppo
-{
+.formCampo{
     display: flex;
     flex-direction: column;
-    width: 98%;
-    padding: 0.5em;
-    
+    width: 80%;
 }
-.titoloForm
-{
+.divForm h2{
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
-    padding: 1em;
+    padding: 0.5em;
 }
-.formGruppo input, select, textarea {
-    width: 100%;     
-    box-sizing: border-box; 
-  }
-  .intro h2 {
-    font-size: 2.2em;
+.titleLegend{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em;
     line-height: 1.5em;
-  }
-  .labelFormAdmin{
+}
+
+.sceltaPiattaforma{
+    text-align: center;
+}
+
+.containerScelteCategoria{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.formCheckboxAreaPiattaforme{
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.formCheckboxAreaCategorie{
+    margin-bottom: 2em;
+}
+
+fieldset{
+    border: none;
+}
+
+.formCampo input, textarea {
+    width: 90%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 0.9em;
+    background-color: #fff;
+}
+
+.formCampo select {
+    width: 100%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 0.9em;
+    background-color: #fff;
+}
+
+.labelFormAdmin{
     margin-top: 1em;
     margin-bottom: 0.5em;
     font-weight: bold;
     color: var(--logintextcolor);
-  }/*
-  .divForm button{
-    border-radius: 15px;
-    padding: 0.3em 0.8em;
-    
-    
-  }*/
+}
+
+.buttonAdminForm{
+    font-size: 0.9em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background:#D13500;
+    border: 2px solid #000;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    align-self: center;
+}
+
+.itemCentered{
+    align-self: center;
+    justify-self: center;
+}

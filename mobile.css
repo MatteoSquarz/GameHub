@@ -230,8 +230,14 @@ header #profile{
 .error-img {
     max-width: 90%;
 }
-/*pagina Dashboard admin*/
+
+/* ============================
+        DASHBOARD ADMIN
+============================ */
+
 .formRiga{
     display: flex;
     flex-direction: column;
+    gap: 0em;
+    padding: 0em;
 }

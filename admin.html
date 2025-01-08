@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Questa pagina è dedicata alla dashbord per admin del sito GameHub">
+        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento">
+        <meta name="author" content="Alessandro Damiani">    
+        <link rel="stylesheet" href="style.css" media="screen">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <title>Pagina Admin - GameHub</title>
+    </head>
+    <body>
+        <div class="stickyScroll">
+            <header>
+                <div class="logoName">
+                    <a id="logo"><h1>GameHub</h1></a>
+                </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                    <a href="#contentAdmin" class="navHelper">Vai al contenuto</a>
+                </nav>
+                <nav id="menu">
+                    <ul class="menuList">
+                        <li id="currentMenu">Home</li>
+                        <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
+                    </ul>
+                </nav>
+                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle" aria-label="apri menu">
+                    <div role="button" class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
+            </header>
+            <nav id="breadcumb">
+                <p>Ti trovi in: Pagina admin</p>
+            </nav>
+        </div>
+    
+        <main id="contentAdmin" class="background">
+            <div class="intro blur">
+                <h1>Ecco la tua <span lang="en">dashbord</span> admin</h1>
+                <p>In questa pagina l'admin può aggiungere e rimuovere i giochi in catalogo, 
+                  inoltre è possibile modificare i prezzi degli abbonamenti.
+                </p>
+            </div>
+            <div class="divForm">
+                <form id="inserimento-gioco" method="post">
+                    <h2>Area Inserimento Gioco</h2>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="codice">Codice:</label>
+                            <input type="text" id="codice" name="codice" required />
+                            <p>sdkfjos kfsjdksfj  sj fdk jskldf kls ksdfhk jdshkj fsd hsk zcjlsnd sfnkjsdnfk ksnjfknsjfd skndfknjsdf hsdkfh sdh fdjkshjfksd </p>
+                        </div>
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="titolo">Titolo:</label>
+                            <input type="text" id="titolo" name="titolo" required />
+                            <p>sdkfjos kfsjdksfj  sj fdk jskldf kls ksdfhk jdshkj fsd hsk hsdkfh sdh fdjkshjfksd </p>
+                        </div>
+                    </div>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="data-uscita">Data uscita:</label>
+                            <input type="date" id="data-uscita" name="data-uscita" required />
+                        </div>
+                        
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="pegi"><span lang="en">Pegi:</span></label>
+                            <select id="pegi" name="pegi" required>
+                                <option value="3">3</option>
+                                <option value="7">7</option>
+                                <option value="12">12</option>
+                                <option value="16">16</option>
+                                <option value="18">18</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="prezzo">Prezzo:</label>
+                            <input type="number" id="prezzo" name="prezzo" step="1.0" required />
+                        </div>
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="casa-sviluppatrice">Casa Sviluppatrice:</label>
+                            <input type="text" id="casa-sviluppatrice" name="casa-sviluppatrice" required />
+                        </div>
+                    </div>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="immagine">Immagine:</label>
+                            <input type="file" id="immagine" name="immagine" accept="image/*"  required />
+                        </div>
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="abbonamentoMin">Abbonamento minimo:</label>
+                            <select id="abbonamentoMin" name="abbonamentoMin" required>
+                                [listaAbbonamenti]
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formCheckboxAreaPiattaforme">
+                        <fieldset>
+                            <legend class="titleLegend">Piattaforme (selezionare almeno una):</legend>
+                            <div class="sceltaPiattaforma">
+                                <label for="playstation">PlayStation</label>
+                                <input type="checkbox" id="playstation" name="playstation" value="playstation" required>
+                            </div>
+                            <div class="sceltaPiattaforma">
+                                <label for="xbox">Xbox</label>
+                                <input type="checkbox" id="xbox" name="xbox" value="xbox" required>
+                            </div class="sceltaPiattaforma">
+                            <div class="sceltaPiattaforma">
+                                <label for="nintendo">Nintendo Switch</label>
+                                <input type="checkbox" id="nintendo" name="nintendo" value="Nintendo Switch" required>
+                            </div>
+                            <div class="sceltaPiattaforma">
+                                <label for="pc">PC</label>
+                                <input type="checkbox" id="pc" name="pc" value="pc" required>
+                            </div>
+                            <div class="sceltaPiattaforma">
+                                <label for="mobile">Mobile</label>
+                                <input type="checkbox" id="mobile" name="mobile" value="mobile" required>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="formCheckboxAreaCategorie">
+                        <fieldset>
+                            <legend class="titleLegend">Categorie (selezionare almeno una):</legend>
+                            <div class="containerScelteCategoria">
+                                <div class="gruppoScelteCategoria">
+                                    <div>
+                                        <label for="playstation">PlayStation</label>
+                                        <input type="checkbox" id="playstation" name="platforms" value="playstation" required>
+                                    </div>
+                                    <div>
+                                        <label for="xbox">Xbox</label>
+                                        <input type="checkbox" id="xbox" name="xbox" value="xbox" required>
+                                    </div>
+                                    <div>
+                                        <label for="nintendo">Nintendo Switch</label>
+                                        <input type="checkbox" id="nintendo" name="nintendo" value="nintendo" required>
+                                    </div>
+                                    <div>
+                                        <label for="pc">PC</label>
+                                        <input type="checkbox" id="pc" name="pc" value="pc" required>
+                                    </div>
+                                    <div>
+                                        <label for="mobile">Mobile</label>
+                                        <input type="checkbox" id="mobile" name="mobile" value="mobile" required>
+                                    </div>
+                                </div>
+                                <div class="gruppoScelteCategoria">
+                                    <div>
+                                        <label for="playstation">PlayStation</label>
+                                        <input type="checkbox" id="playstation" name="platforms" value="playstation" required>
+                                    </div>
+                                    <div>
+                                        <label for="xbox">Xbox</label>
+                                        <input type="checkbox" id="xbox" name="xbox" value="xbox" required>
+                                    </div>
+                                    <div>
+                                        <label for="nintendo">Nintendo Switch</label>
+                                        <input type="checkbox" id="nintendo" name="nintendo" value="nintendo" required>
+                                    </div>
+                                    <div>
+                                        <label for="pc">PC</label>
+                                        <input type="checkbox" id="pc" name="pc" value="pc" required>
+                                    </div>
+                                    <div>
+                                        <label for="mobile">Mobile</label>
+                                        <input type="checkbox" id="mobile" name="mobile" value="mobile" required>
+                                    </div>
+                                </div>
+                                <div class="gruppoScelteCategoria">
+                                    <div>
+                                        <label for="playstation">PlayStation</label>
+                                        <input type="checkbox" id="playstation" name="platforms" value="playstation" required>
+                                    </div>
+                                    <div>
+                                        <label for="xbox">Xbox</label>
+                                        <input type="checkbox" id="xbox" name="xbox" value="xbox" required>
+                                    </div>
+                                    <div>
+                                        <label for="nintendo">Nintendo Switch</label>
+                                        <input type="checkbox" id="nintendo" name="nintendo" value="nintendo" required>
+                                    </div>
+                                    <div>
+                                        <label for="pc">PC</label>
+                                        <input type="checkbox" id="pc" name="pc" value="pc" required>
+                                    </div>
+                                    <div>
+                                        <label for="mobile">Mobile</label>
+                                        <input type="checkbox" id="mobile" name="mobile" value="mobile" required>
+                                    </div>
+                                </div>
+                            </div> 
+                        </fieldset>
+                    </div>
+                    <div class="formCampo">
+                        <label class="labelFormAdmin" for="descrizione">Descrizione:</label>
+                        <textarea id="descrizione" name="descrizione" cols="100" rows="8" required></textarea>
+                    </div>
+                    <div class="itemCentered">
+                        <button type="inserisciVideogioco" class="buttonAdminForm">Inserisci gioco</button>
+                    </div>    
+                </form>
+            </div>
+            <div class="divForm">
+                <form id="rimozione-gioco" method="post">
+                    <h2>Area Rimozione Gioco</h2>
+                    <div class="formCampo itemCentered">
+                        <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
+                        <input type="text" id="codice-rimozione" name="codice-rimozione" required />
+                    </div>
+                    <div class="itemCentered">
+                        <button type="rimuoviVideogioco" class="buttonAdminForm">Rimuovi gioco</button>
+                    </div> 
+                </form>
+            </div>
+            <div class="divForm">
+                <form id="modifica-prezzi" method="post">
+                    <h2>Area Modifica Prezzi Abbonamenti</h3>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="abbonamento">Abbonamento:</label>
+                            <select id="abbonamento" name="abbonamento">
+                                [listaAbbonamenti]
+                            </select>
+                        </div>
+                        <div class="formCampo itemCentered">
+                            <label class="labelFormAdmin" for="nuovo-costo">Nuovo prezzo:</label>
+                            <input type="number" id="nuovo-costo" name="nuovo-costo" step="1.0" required />
+                        </div>
+                    </div>
+                    <div class="itemCentered">
+                        <button type="modificaAbbonamento" class="buttonAdminForm">Modifica prezzo</button>
+                    </div> 
+                </form>
+            </div>
+            <div class="tornaSuButton">
+                <a href="#contentAdmin" class="tornaSuHelper">Torna su</a>
+            </div>
+        </main>
+        <nav id="hamburgerMobileMenu">
+            <ul class="menuListMobile">
+                <li id="currentMenu">Home</li>
+                <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
+                <li><a href=#contentAdmin>Torna su</a></li>
+            </ul>
+        </nav>  
+        <footer>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Contattaci</h3>
+                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+                </div>
+                <div class="social-links">
+                    <h3>Seguici</h3>
+                    <a href="https://www.facebook.com/" title="Facebook"><span class="fa-brands fa-facebook"></span></a>
+                    <a href="https://x.com/" title="Twitter"><span class="fa-brands fa-twitter"></span></a>
+                    <a href="https://www.instagram.com/" title="Instagram"><span class="fa-brands fa-instagram"></span></a>
+                    <a href="https://www.youtube.com/" title="Youtube"><span class="fa-brands fa-youtube"></span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+            </div>
+        </footer>
+    </body>
+</html>
