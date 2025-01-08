@@ -63,7 +63,7 @@ if(isset($_GET['abbonamento'])){
         else
         {
             $result = $connection->acquistaAbbonamento($utente['username'], $abb);
-            header("Location: /acquistoCompletato.php");
+            header("Location: /TecWeb-Project/acquistoCompletato.php");
         }
     }
 }
