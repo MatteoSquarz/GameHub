@@ -20,7 +20,7 @@ $listaAbbonamenti = "";
 if(!$connectionOK)
 {
     $abbonamenti = $connection->getListAbbonamenti();
-    $connection->closeDBConnection();
+    //$connection->closeDBConnection();
 
     if($abbonamenti)
     {
@@ -36,7 +36,8 @@ if(!$connectionOK)
             $listaAbbonamenti .= "<p>$descrizione</p>";
             $costo = $abb['prezzo'];
             $listaAbbonamenti .= "<p><strong>Costo annuale:</strong> $costo €</p>";
-            $listaAbbonamenti .= "<button onclick>Abbonati!</button>";
+            $listaAbbonamenti .= "<a class=\"buttonBoxProfile\" href=\"abbonamenti.php?abbonamento=$nome\">Abbonati!</a>";
+            $listaAbbonamenti .= "[messaggio$nome]";
             $listaAbbonamenti .= "</div>";
         }
         $listaAbbonamenti .= "</div>";
@@ -48,6 +49,27 @@ else
 	//in fase di produzione rimuovere $connessioneOK
 	$listaAbbonamenti = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
 
-echo str_replace("[listaAbbonamenti]", $listaAbbonamenti, $paginaHTML);
+$paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 
+if(isset($_GET['abbonamento'])){
+    $abb = $_GET['abbonamento'];
+    if (!isset($_SESSION['username']))
+        $paginaHTML = str_replace("[messaggio$abb]", "Prima di abbonarsi bisogna registrarsi", $paginaHTML);
+    else
+    {
+        $utente = ($connection->getUtente($_SESSION['username'])[0]);
+        if($utente['abbonamentoAttuale'] != NULL)
+            $paginaHTML = str_replace("[messaggio$abb]", "Prima di abbonarsi ad un nuovo abbonamento bisogna disdire il vecchio", $paginaHTML);
+        else
+        {
+            $result = $connection->acquistaAbbonamento($utente['username'], $abb);
+            header("Location: /acquistoCompletato.php");
+        }
+    }
+}
+
+$paginaHTML = str_replace('[messaggioBase]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioDeluxe]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioPremium]', "", $paginaHTML);
+echo $paginaHTML;
 ?>
