@@ -24,7 +24,7 @@ if(!$connectionOK)
     $categorie = $connection->getCategoriaByCodiceGioco($codice);
     $piattaforme = $connection->getPiattaformaByCodiceGioco($codice);
     $abbonamenti = $connection->getAbbonamentoByCodiceGioco($codice);
-    $connection->closeDBConnection();
+    //$connection->closeDBConnection();
 
     $paginaGioco .= "<div class=\"backgroundPannelloVideogioco\">";
     foreach($giochi as $gioco)
@@ -43,9 +43,10 @@ if(!$connectionOK)
         $paginaGioco .= "<img src=\"assets/PEGI_$pegi.svg\" alt=\"\">";
         $paginaGioco .= "</div>";
         $paginaGioco .= "<div class=\"videogiocoAcquisto\">";
-        $paginaGioco .= "<button>Acquisto singolo</button>";
+        $paginaGioco .= "<a role=\"button\" href=\"videogioco.php?codice=$codice&acquisto=1\">Acquisto singolo</a>";
         $costo = $gioco['prezzo'];
         $paginaGioco .= "<p>Costo: $costo €</p>";
+        $paginaGioco .= "[messaggio]";
         $paginaGioco .= "</div>";
         $paginaGioco .= "</div>";
         $paginaGioco .= "<h2>Dettagli</h2>";
@@ -104,6 +105,24 @@ else
 	//in fase di produzione rimuovere $connessioneOK
 	$paginaGioco = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
 
-echo str_replace("[paginaGioco]", $paginaGioco, $paginaHTML);
+$paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
 
+if(isset($_GET['acquisto'])){
+    $gioco = ($connection->getGiocoByCodice($codice)[0]);
+    if (!isset($_SESSION['username']))
+        $paginaHTML = str_replace("[messaggio]", "Per acquistare un videogioco bisogna registrarsi", $paginaHTML);
+    else
+    {
+        if($connection->findAcquisto($_SESSION['username'],$codice))
+            $paginaHTML = str_replace("[messaggio]", "Videogioco già acquistato", $paginaHTML);
+        else
+        {
+            $result = $connection->acquistaGioco($_SESSION['username'], $codice, $costo);
+            header("Location: /TecWeb-Project/acquistoCompletato.php");
+        }
+    }
+}
+
+$paginaHTML = str_replace("[messaggio]", "", $paginaHTML);
+echo $paginaHTML;
 ?>
