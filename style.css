@@ -514,7 +514,10 @@ footer {
     gap: 1em;
 }
 
-
+.warningAbbonamento{
+    color: #941110;
+    font-size: 1em;
+}
 
 /* ============================
         PAGINA CHI SIAMO       
@@ -986,6 +989,23 @@ hr{
     display: flex;
     flex-direction: row;
     gap: 2em;
+}
+
+.buttonAcquistaVideogioco{
+    border-radius: 15px;
+    text-decoration: none;
+    padding: 0.2em 0.3em;
+    background: #D13500;
+    border: #000 solid 2px;
+    color: white;
+    font-size: 1em;
+    text-align: center;
+}
+
+.warningAcquisto{
+    color: #F5A200;
+    font-size: 1em;
+    margin-bottom: 0.8em;
 }
 
 

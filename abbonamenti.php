@@ -54,12 +54,12 @@ $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 if(isset($_GET['abbonamento'])){
     $abb = $_GET['abbonamento'];
     if (!isset($_SESSION['username']))
-        $paginaHTML = str_replace("[messaggio$abb]", "Prima di abbonarsi bisogna registrarsi", $paginaHTML);
+        $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Si prega di effettuare il login prima di abbonarsi</p>", $paginaHTML);
     else
     {
         $utente = ($connection->getUtente($_SESSION['username'])[0]);
         if($utente['abbonamentoAttuale'] != NULL)
-            $paginaHTML = str_replace("[messaggio$abb]", "Prima di abbonarsi ad un nuovo abbonamento bisogna disdire il vecchio", $paginaHTML);
+            $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
         else
         {
             $result = $connection->acquistaAbbonamento($utente['username'], $abb);

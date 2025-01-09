@@ -292,6 +292,28 @@ class DBAccess{
 			return false;
 	}
 
+	public function findAcquisto($username, $codice){
+		$query = "SELECT * from Vendita WHERE videogioco = '$codice' and utente = '$username'";
+
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+
+		if(mysqli_num_rows($queryResult) == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public function acquistaGioco($username, $codice, $costo){
+		$data = date('Y-m-d');
+		$query = "INSERT INTO Vendita (utente, data, totale, videogioco) VALUES (\"$username\", \"$data\", \"$costo\", \"$codice\")";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
 }
 
 ?>
