@@ -175,7 +175,7 @@ header #profile{
     padding-right: 1em;
 }
 .boxDescrizioneEInfo{
-    max-width: 100%;
+    width: auto;
     padding: 1em;
 }
 .boxCategorie{

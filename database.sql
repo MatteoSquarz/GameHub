@@ -118,7 +118,7 @@ INSERT INTO Videogioco (codice, titolo, descrizione, prezzo, dataUscita, pegi, c
 ('00000004', 'Warzone Alpha', 'Un FPS adrenalinico con modalità multiplayer', 69.99, '2024-01-12', 18, 'ShooterPro', 'warzone.jpg'),
 ('00000005', 'Eternal Saga', 'Un RPG epico con una storia profonda e ramificata', 79.99, '2020-11-03', 12, 'EpicRPGs', 'eternalsaga.jpg'),
 ('00000006', 'Racing Thunder', 'Un gioco di corse ad alta velocità', 29.99, '2019-06-20', 7, 'SpeedMasters', 'racingthunder.jpg'),
-('00000007', 'Galaxy Explorers', 'Un sandbox spaziale con esplorazione intergalattica', 59.99, '2018-03-15', 10, 'SpaceGames', 'galaxyexplorers.jpg'),
+('00000007', 'Galaxy Explorers', 'Un sandbox spaziale con esplorazione intergalattica', 59.99, '2018-03-15', 12, 'SpaceGames', 'galaxyexplorers.jpg'),
 ('00000008', 'Mystery Manor', 'Un gioco investigativo con puzzle intricati', 49.99, '2023-09-10', 12, 'PuzzleStudios', 'mysterymanor.jpg'),
 ('00000009', 'Heroes Clash', 'Un gioco MOBA competitivo', 1.00, '2022-11-05', 12, 'BattleArena Inc.', 'heroesclash.jpg'),
 ('00000010', 'CyberBattle 2077', 'Un gioco di azione futuristica ambientato in una città distopica', 69.99, '2024-04-08', 18, 'CyberWorlds', 'cyberbattle.jpg');
