@@ -563,6 +563,7 @@ footer {
     border-radius: 20px;
     background-color: var(--boxcolor);
     color: var(--boxtxtcolor);
+    margin-bottom: 2em;
 }
 
 .containerCardFondatori{
