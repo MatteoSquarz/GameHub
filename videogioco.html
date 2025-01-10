@@ -6,7 +6,7 @@
         <meta name="description" content="Questa pagina è dedicata ad un gioco specifico presente nel catalogo del sito GameHub">
         <meta name="keywords" content="Videogioco, GameHub, negozio, dettagli, acquista">
         <meta name="author" content="Alessandro Damiani">    
-        <link rel = "stylesheet" href = "style.css" media = "screen">
+        <link rel="stylesheet" href="style.css" media = "screen">
         <link rel="stylesheet" href="mobile.css" media="only screen and (max-width: 768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <title>[videogioco] - GameHub</title>
@@ -23,15 +23,14 @@
                 <nav id="menu">
                     <ul class="menuList">
                         <li><a href="index.php">Home</a></li>
-                        <li id="currentMenu">Catalogo</li>
-                        <li><a href="abbonamenti.php" >Abbonamenti</a></li>
+                        <li><a href="catalogo.php" id="currentMenu">Catalogo</a></li>
+                        <li><a href="abbonamenti.php">Abbonamenti</a></li>
                         <li><a href="chiSiamo.php">Chi siamo</a></li>
                         [loginProfilo]
                     </ul>
-                    <!--<a id="profile" href="#menu">Profile</a>-->
                 </nav>
-                <a href="#hamburgerMobileMenu" id="mobile-menu" class="menu-toggle" aria-label="apri menu">
-                    <div role="button" class="menu-toggle">
+                <a href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
+                    <div role="button">
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -49,8 +48,8 @@
         <nav id="hamburgerMobileMenu">
             <ul class="menuListMobile">
                 <li><a href="index.php">Home</a></li>
-                <li><a href="catalogo.php">Catalogo</a></li>
-                <li><a href="abbonamenti.php" class="currentMenu">Abbonamenti</a></li>
+                <li><a href="catalogo.php" id="currentMenu">Catalogo</a></li>
+                <li><a href="abbonamenti.php">Abbonamenti</a></li>
                 <li><a href="chiSiamo.php">Chi siamo</a></li>
                 [loginProfilo]
                 <li><a href=#mainVideogioco>Torna su</a></li>
