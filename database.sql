@@ -189,7 +189,7 @@ INSERT INTO PiattaformaVideogioco (piattaforma, videogioco) VALUES
 INSERT INTO AbbonamentoVideogioco (abbonamento, videogioco) VALUES
 ('Base', '00000001'),
 ('Base', '00000002'),
-('Base', '00000003'),
+('Deluxe', '00000003'),
 ('Deluxe', '00000001'),
 ('Deluxe', '00000002'),
 ('Deluxe', '00000005'),
