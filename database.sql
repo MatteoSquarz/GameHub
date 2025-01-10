@@ -112,16 +112,16 @@ INSERT INTO Abbonamento (nome, descrizione, prezzo, livello, immagine) VALUES
 ('Premium', 'Accesso a tutti i giochi del catalogo compresi di tutti i contenuti sbloccabili in gioco.', 80, 3, 'premium.jpeg');
 
 INSERT INTO Videogioco (codice, titolo, descrizione, prezzo, dataUscita, pegi, casaSviluppatrice, immagine) VALUES
-('00000001', 'Legends of Avalon', 'Un emozionante gioco di avventura in un mondo fantasy', 59.99, '2023-10-15', 12, 'GameStudio A', 'avalon.jpg'),
-('00000002', 'Strategic Conquest', 'Un fantastico gioco di strategia militare', 49.99, '2022-05-10', 16, 'StrategyWorks', 'conquest.jpg'),
-('00000003', 'Jump Quest', 'Un classico platform reinventato con livelli impegnativi', 39.99, '2021-08-22', 7, 'PlatformMasters', 'jumpquest.jpg'),
-('00000004', 'Warzone Alpha', 'Un FPS adrenalinico con modalità multiplayer', 69.99, '2024-01-12', 18, 'ShooterPro', 'warzone.jpg'),
-('00000005', 'Eternal Saga', 'Un RPG epico con una storia profonda e ramificata', 79.99, '2020-11-03', 12, 'EpicRPGs', 'eternalsaga.jpg'),
+('00000001', 'Faery Legends of Avalon', 'Un emozionante gioco di avventura in un mondo fantasy', 59.99, '2023-10-15', 12, 'GameStudio A', 'avalon.jpg'),
+('00000002', 'Song of Conquest', 'Un fantastico gioco di strategia militare', 49.99, '2022-05-10', 16, 'StrategyWorks', 'conquest.jpg'),
+('00000003', 'Jump King Quest', 'Un classico platform reinventato con livelli impegnativi', 39.99, '2021-08-22', 7, 'PlatformMasters', 'jumpquest.jpg'),
+('00000004', 'Call of Duty Warzone', 'Un FPS adrenalinico con modalità multiplayer', 69.99, '2024-01-12', 18, 'ShooterPro', 'warzone.jpg'),
+('00000005', 'Eternal Strands', 'Un RPG epico con una storia profonda e ramificata', 79.99, '2020-11-03', 12, 'EpicRPGs', 'eternalsaga.jpg'),
 ('00000006', 'Racing Thunder', 'Un gioco di corse ad alta velocità', 29.99, '2019-06-20', 7, 'SpeedMasters', 'racingthunder.jpg'),
 ('00000007', 'Galaxy Explorers', 'Un sandbox spaziale con esplorazione intergalattica', 59.99, '2018-03-15', 12, 'SpaceGames', 'galaxyexplorers.jpg'),
 ('00000008', 'Mystery Manor', 'Un gioco investigativo con puzzle intricati', 49.99, '2023-09-10', 12, 'PuzzleStudios', 'mysterymanor.jpg'),
-('00000009', 'Heroes Clash', 'Un gioco MOBA competitivo', 1.00, '2022-11-05', 12, 'BattleArena Inc.', 'heroesclash.jpg'),
-('00000010', 'CyberBattle 2077', 'Un gioco di azione futuristica ambientato in una città distopica', 69.99, '2024-04-08', 18, 'CyberWorlds', 'cyberbattle.jpg');
+('00000009', 'Clash of Heroes', 'Un gioco MOBA competitivo', 1.00, '2022-11-05', 12, 'BattleArena Inc.', 'heroesclash.jpg'),
+('00000010', 'CyberPunk 2077', 'Un gioco di azione futuristica ambientato in una città distopica', 69.99, '2024-04-08', 18, 'CyberWorlds', 'cyberbattle.jpg');
 
 INSERT INTO Piattaforma (nome, annoUscita, casaProduttrice) VALUES
 ('PC', 1981, 'IBM'),
