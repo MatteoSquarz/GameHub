@@ -70,8 +70,8 @@ CREATE TABLE Vendita(
 CREATE TABLE StoricoAbbonamento(
     utente varchar(20) NOT NULL,
     abbonamento varchar(10) NOT NULL,
-    dataInizio date,
-    dataFine date,
+    dataInizio date NOT NULL,
+    dataFine date NOT NULL,
     PRIMARY KEY(utente, abbonamento),
     FOREIGN KEY(utente) REFERENCES User(username),
     FOREIGN KEY(abbonamento) REFERENCES Abbonamento(nome)
