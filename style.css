@@ -4,37 +4,39 @@
 }
 
 :root{
-    --bgcolor: #115AA2;
-    --loginbgcolor: #000;
-    --loginformcolor: #3D8FC0;
-    --logintextcolor: #000;
+    --bgcolor: #222326;
+    --errortxtonbgcolor: #F5A200;
+
     --txtcolor: #FFF;
-    --breadcolor: #000000;
-    --homeboxcolor: #ADD8E6;
-    --newscolor: #F3C42B;
-    --contenttxtcolor: #000;
-    --contentbgcolor: #F3C42B;
+    --breadcolor: #000;
+
+    --boxcolor: #ADD8E6;
+    --boxtxtcolor: #000;
+    --errortxtonboxcolor: #941110;
+
     --linktxtcolor: #FFF;
     --bglinkcolor: #547A2C;
     --bgvisitedcolor: #1A1B41;
+
+    --buttoncolor: #D13500;
+    --buttontxtcolor: #FFF;
 }
 
 body{
-    background-color: #000;
     color: var(--txtcolor);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5em;
 }
 
 html {
-    scroll-padding-top: 7em; /* Adjust the value to match the height of your header */
+    scroll-padding-top: 7em;
     background-color: #000;
 }
 
 main{
     display: flex;
     flex-direction: column;
-    background-color: #000;
+    background-color: var(--bgcolor);
     min-height: calc(100vh - 12em);
 }
 
@@ -146,14 +148,14 @@ header #profile {
     display: inline-block;
 }
 
-#mobile-menu{
+#mobileMenu{
     display: none;
 }
 
-#mobile-menu .bar{
+#mobileMenu .bar{
     width: 25px;
     height: 3px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--txtcolor);
     margin: 5px 1.5em;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -172,8 +174,8 @@ header #profile {
     background-color: var(--breadcolor);
     color: var(--txtcolor);
     padding: 0.5em;
-    border-top: 1px solid var(--homeboxcolor);
-    border-bottom: 1px solid var(--homeboxcolor);
+    border-top: 1px solid var(--boxcolor);
+    border-bottom: 1px solid var(--boxcolor);
 }
 
 .stickyScroll {
@@ -185,7 +187,7 @@ header #profile {
 
 /* SEZIONE MAIN */
 
-.intro {
+.hero {
     color: var(--txtcolor);
     padding: 3em;
     text-align: center;
@@ -197,13 +199,13 @@ header #profile {
     height: 30vh;
 }
 
-.intro p{
+.hero p{
     font-size: 1.2em;
 }
 
 .background{
     background: url('assets/dark-background-abstract-background-network-3d-background-3840x2160-8324.png') no-repeat center fixed;
-    background-color: #000;
+    background-color: var(--bgcolor);
 }
 
 .blur{
@@ -216,7 +218,7 @@ header #profile {
     backdrop-filter: blur(10px);
 }
 
-.intro h1 {
+.hero h1 {
     font-size: 2.2em;
     line-height: 1.5em;
 }
@@ -229,7 +231,7 @@ header #profile {
     justify-content: center;
     gap: 1em;
     align-items: left;
-    color: black;
+    color: var(--boxtxtcolor);
     width: 100%;
 }
 
@@ -238,7 +240,7 @@ header #profile {
     flex-direction: row;
     margin: 4em 10% 0em 0em;
     gap: 1em;
-    background-color: var(--homeboxcolor);
+    background-color: var(--boxcolor);
     justify-content: space-around;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -286,7 +288,7 @@ header #profile {
     justify-content: center;
     gap: 1em;
     align-items: left;
-    color: black;
+    color: var(--boxtxtcolor);
     width: 100%;
 }
 
@@ -306,7 +308,7 @@ header #profile {
     justify-content: space-around;
     margin: 4em 0em 2em 10%;
     gap: 1em;
-    background-color: var(--homeboxcolor);
+    background-color: var(--boxcolor);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     padding: 1em;
@@ -361,7 +363,7 @@ footer {
 
 .contact-info h3, .social-links h3 {
     margin-bottom: 1em;
-    color: #fff;
+    color: var(--txtcolor);
 }
 
 .contact-info p {
@@ -378,7 +380,7 @@ footer {
 
 
 .social-links a:hover {
-    color: #add8e6;
+    color: var(--boxcolor);
 }
 
 .footer-bottom {
@@ -401,7 +403,7 @@ footer {
 
 .listHelp a{
     text-decoration: none;
-    color: #FFF;
+    color: var(--txtcolor);
 }
 
 .listHelp ul{
@@ -417,7 +419,7 @@ footer {
 .tornaSuHelper{
     margin-bottom: 2em;
     text-indent: -999em;
-    background-color: var(--homeboxcolor);
+    background-color: var(--boxcolor);
     border-radius: 10px;
     padding: 0.5em 1.5em 0.5em 1.5em;
     background-image: url('assets/arrowupblack.png');
@@ -433,7 +435,7 @@ footer {
     position: static;
     text-indent: 0;
     background-position: center right;
-    color: #000000;
+    color: var(--boxtxtcolor);
     text-decoration: none;
 }
 
@@ -464,11 +466,11 @@ footer {
     gap: 1em;
     align-items: center;
     text-align: center;
-    color: black;
+    color: var(--boxtxtcolor);
     max-width: 100%;
     width: 100%;
     padding: 2.3em 1.5em 2.3em 1.5em;
-    background-color: var(--homeboxcolor);
+    background-color: var(--boxcolor);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -492,9 +494,9 @@ footer {
 .targhettaAbb a{
     display: inline-block;
     padding: 0.5em 1.5em;
-    background:#D13500;
+    background: var(--buttoncolor);
     border: 2px solid #000;
-    color: white;
+    color: var(--buttontxtcolor);
     text-decoration: none;
     border-radius: 10px;
     margin-top: 1em;
@@ -515,7 +517,7 @@ footer {
 }
 
 .warningAbbonamento{
-    color: #941110;
+    color: var(--errortxtonboxcolor);
     font-size: 1em;
 }
 
@@ -545,8 +547,8 @@ footer {
     border: #000 solid 1px;
     padding: 1em;
     border-radius: 20px;
-    background-color: var(--homeboxcolor);
-    color: var(--contenttxtcolor);
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
 }
 
 .infoFondatori {
@@ -559,8 +561,8 @@ footer {
     border: #000 solid 1px;
     padding: 1em;
     border-radius: 20px;
-    background-color: var(--homeboxcolor);
-    color: var(--contenttxtcolor);
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
 }
 
 .containerCardFondatori{
@@ -577,8 +579,8 @@ footer {
     align-items: center;
     gap: 1em;
     padding: 1em;
-    background-color: var(--homeboxcolor);
-    color: var(--contenttxtcolor);
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
 }
 
 .cardFondatore h3{
@@ -646,7 +648,7 @@ footer {
 .allgames-section h2 {
     width: 100%;
     font-size: 1.6em;
-    color:white;
+    color: var(--txtcolor);
     margin-bottom: 1em;
     text-align: center;
 }
@@ -670,11 +672,11 @@ footer {
 
     display: flex;
     flex-direction: column;
-    background-color: var(--homeboxcolor);
+    background-color: var(--boxcolor);
     text-align: center;
     font-size: 20px;
 
-    border: var(--homeboxcolor) solid 5px;
+    border: var(--boxcolor) solid 5px;
     border-radius: 10px;
 
 }
@@ -698,7 +700,7 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     justify-content: left;
-    color: black;
+    color: var(--boxtxtcolor);
     padding: 0.3em;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
@@ -734,10 +736,6 @@ footer {
    PAGINA LOGIN/REGISTRAZIONE
 ===============================*/
 
-#mainLoginRegistrazione{
-    background-color: var(--loginbgcolor);
-}
-
 .loginRegistrazione{
     border: 2px solid #000;
     width: 80%;
@@ -747,7 +745,7 @@ footer {
     align-items: center;
     margin: 5em 0;
     border-radius: 1em;
-    background-color: var(--homeboxcolor);
+    background-color: var(--boxcolor);
     max-width: 600px;
 }
 
@@ -767,12 +765,12 @@ footer {
 
 .loginRegistrazione h2{
     margin-top: 1em;
-    color: var(--logintextcolor);
+    color: var(--boxtxtcolor);
 }
 
 .loginRegistrazione p{
     margin-bottom: 0.2em;
-    color: var(--logintextcolor);
+    color: var(--boxtxtcolor);
 }
 
 .loginRegistrazione a{
@@ -795,7 +793,7 @@ footer {
     margin-top: 0.5em;
     margin-bottom: 1em;
     align-self: flex-start;
-    color: var(--logintextcolor);
+    color: var(--boxtxtcolor);
 }
 
 .errorText{
@@ -803,7 +801,7 @@ footer {
     margin-top: 0.5em;
     margin-bottom: 1em;
     align-self: flex-start;
-    color: #941110;
+    color: var(--errortxtonboxcolor);
 }
 
 .labelForm {
@@ -811,7 +809,7 @@ footer {
     margin-top: 1em;
     margin-bottom: 0.5em;
     font-weight: bold;
-    color: var(--logintextcolor);
+    color: var(--boxtxtcolor);
     align-self: flex-start;
 }
 
@@ -828,9 +826,9 @@ footer {
     padding: 0.8em 1.8em;
     margin-bottom: 2em;
     margin-top: 2em;
-    background: #D13500;
+    background: var(--buttoncolor);
     border: #000 solid 2px;
-    color: white;
+    color: var(--buttontxtcolor);
     font-size: 1em;
     text-transform: uppercase;    
 }
@@ -841,7 +839,7 @@ hr{
 }
 
 .errorLogin {
-    color: #941110;
+    color: var(--errortxtonboxcolor);
     font-size: 1em;
     list-style: none;
     font-weight: bold;
@@ -858,7 +856,7 @@ hr{
     gap: 1em;
     color: var(--txtcolor);
     width: 100%;
-    background: #282525;
+    background: var(--bgcolor);
 }
 .backgroundPannelloVideogioco{
     background: url('assets/royalty-free-music-for-videogames.png') no-repeat center center/cover;
@@ -932,14 +930,6 @@ hr{
     padding-top: 2em;
 }
 
-
-.videogiocoAcquisto button {
-    padding: 0.5em 1em;
-    font-size: 1em;
-    background-color: #f2f2f2;
-    border-radius: 4px;
-}
-
 #mainVideogioco h2{
     font-size: 1.5em;
     font-weight: bold;
@@ -956,9 +946,9 @@ hr{
     padding-left: 1.5em;
     padding-right: 1.5em;
     padding-bottom: 1em;
-    background-color: var(--homeboxcolor);
+    background-color: var(--boxcolor);
     border-radius: 25px;
-    color: #000;
+    color: var(--boxtxtcolor);
     margin: 1em;
     font-size: 1em;
 }
@@ -995,15 +985,15 @@ hr{
     border-radius: 15px;
     text-decoration: none;
     padding: 0.2em 0.3em;
-    background: #D13500;
+    background: var(--buttoncolor);
     border: #000 solid 2px;
-    color: white;
+    color: var(--buttontxtcolor);
     font-size: 1em;
     text-align: center;
 }
 
 .warningAcquisto{
-    color: #F5A200;
+    color: var(--errortxtonbgcolor);
     font-size: 1em;
     margin-bottom: 0.8em;
 }
@@ -1023,7 +1013,7 @@ hr{
     display: flex;
     flex-direction: column;
     flex: 1 1;
-    background: var(--homeboxcolor);
+    background: var(--boxcolor);
     border-radius: 10px;
     text-align: center;
 }
@@ -1047,7 +1037,7 @@ hr{
 .profileBox h2 {
     font-size: 1.5em;
     margin-top: 1em;
-    color: #000;
+    color: var(--boxtxtcolor);
 }
 
 .userDetailsItem {
@@ -1064,7 +1054,7 @@ hr{
     padding-left: 1.5em;
     padding-right: 1.5em;
     border-radius: 25px;
-    color: #000;
+    color: var(--boxtxtcolor);
     font-size: 1em;
 }
 
@@ -1075,9 +1065,9 @@ hr{
 .buttonBoxProfile{
     display: inline-block;
     padding: 0.5em 1em;
-    background:#D13500;
+    background: var(--buttoncolor);
     border: 2px solid #000;
-    color: white;
+    color: var(--buttontxtcolor);
     text-decoration: none;
     border-radius: 10px;
     margin-top: 1em;
@@ -1102,7 +1092,7 @@ hr{
     padding-left: 1.5em;
     padding-right: 1.5em;
     border-radius: 25px;
-    color: #000;
+    color: var(--boxtxtcolor);
     font-size: 1em;
     margin-top: 2em;
     margin-bottom: 1em;
@@ -1121,7 +1111,7 @@ hr{
 
 .noAcquisti{
     font-size: 1.1em;
-    color: #000;
+    color: var(--boxtxtcolor);
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -1135,7 +1125,7 @@ hr{
 
 .gameItem h3 {
     font-size: 1.3em;
-    color: #000;
+    color: var(--boxtxtcolor);
 }
 
 .gameThumbnail {
@@ -1236,7 +1226,7 @@ hr{
     padding: 1.5em;
     display: flex;
     justify-content: center;
-    background-color: #ADD8E6;
+    background-color: var(--boxcolor);
     border-radius: 15px;
 }
 
@@ -1257,13 +1247,13 @@ hr{
 }
 
 .ac-msg {
-    color: black;
+    color: var(--boxtxtcolor);
     font-size: 2.5em;
     line-height: 1.5em;
 }
 
 .ac-descr {
-    color: black;
+    color: var(--boxtxtcolor);
     font-size: 1.2em;
     line-height: 1.5em;
 }
@@ -1302,8 +1292,8 @@ hr{
     padding: 1em;
     border-radius: 25px;
     font-size: 1em;
-    background-color: var(--homeboxcolor);
-    color: #000;
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
     margin: 2em 15%;
 }
 .formRiga{
@@ -1364,7 +1354,7 @@ fieldset{
     border-radius: 10px;
     border: #000 solid 2px;
     font-size: 0.9em;
-    background-color: #fff;
+    background-color: #FFF;
 }
 
 .formCampo select {
@@ -1373,23 +1363,23 @@ fieldset{
     border-radius: 10px;
     border: #000 solid 2px;
     font-size: 0.9em;
-    background-color: #fff;
+    background-color: #FFF;
 }
 
 .labelFormAdmin{
     margin-top: 1em;
     margin-bottom: 0.5em;
     font-weight: bold;
-    color: var(--logintextcolor);
+    color: var(--boxtxtcolor);
 }
 
 .buttonAdminForm{
     font-size: 0.9em;
     display: inline-block;
     padding: 0.5em 1em;
-    background:#D13500;
+    background: var(--buttoncolor);
     border: 2px solid #000;
-    color: white;
+    color: var(--buttontxtcolor);
     text-decoration: none;
     border-radius: 10px;
     margin-top: 1em;
