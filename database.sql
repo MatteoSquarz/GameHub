@@ -64,7 +64,7 @@ CREATE TABLE Vendita(
     videogioco varchar(8) NOT NULL,
     PRIMARY KEY(utente, data, videogioco),
     FOREIGN KEY(utente) REFERENCES User(username),
-    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice)
+    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice) ON DELETE CASCADE
 );
 
 CREATE TABLE StoricoAbbonamento(
@@ -82,7 +82,7 @@ CREATE TABLE CategoriaVideogioco(
     videogioco varchar(8) NOT NULL,
     PRIMARY KEY(categoria,videogioco),
     FOREIGN KEY(categoria) REFERENCES Categoria(nome),
-    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice)
+    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice) ON DELETE CASCADE
 );
 
 CREATE TABLE PiattaformaVideogioco(
@@ -90,7 +90,7 @@ CREATE TABLE PiattaformaVideogioco(
     videogioco varchar(8) NOT NULL,
     PRIMARY KEY(piattaforma,videogioco),
     FOREIGN KEY(piattaforma) REFERENCES Piattaforma(nome),
-    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice)
+    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice) ON DELETE CASCADE
 );
 
 CREATE TABLE AbbonamentoVideogioco(
@@ -98,7 +98,7 @@ CREATE TABLE AbbonamentoVideogioco(
     videogioco varchar(8) NOT NULL,
     PRIMARY KEY(abbonamento,videogioco),
     FOREIGN KEY(abbonamento) REFERENCES Abbonamento(nome),
-    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice)
+    FOREIGN KEY(videogioco) REFERENCES Videogioco(codice) ON DELETE CASCADE
 );
 
 /* ------------------------------------------------------------------------------ */
