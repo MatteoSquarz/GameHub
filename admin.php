@@ -4,17 +4,21 @@ use DB\DBAccess;
 
 $paginaHTML = file_get_contents('admin.html');
 
-//fare un controllo se admin o no
+$connection = new DBAccess();
+$connectionOK = $connection->openDBConnection();
 
 session_start();
+if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
+{
+    header("Location: /TecWeb-project/404.php");
+    exit();
+}
+
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
     header("Location: /TecWeb-project/index.php");
   	exit();
 }
-
-$connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 $abbonamenti = "";
 $listaAbbonamenti = "";
