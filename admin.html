@@ -9,9 +9,10 @@
         <link rel="stylesheet" href="style.css" media="screen">
         <link rel="stylesheet" href="mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <script src="script.js"></script>
         <title>Pagina Admin - GameHub</title>
     </head>
-    <body>
+    <body onload="caricamento('admin');">
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
@@ -47,7 +48,7 @@
                 </p>
             </div>
             <div class="divForm">
-                <form id="inserimento-gioco" method="post" action="admin.php" onsubmit="return validazioneForm();">
+                <form id="inserimento-gioco" method="post" action="admin.php"> <!--onsubmit="return validazioneForm('admin');"-->
                     <h2>Area Inserimento Gioco</h2>
                     <div class="formRiga">
                         <div class="formCampo">
@@ -123,7 +124,7 @@
                 </form>
             </div>
             <div class="divForm">
-                <form id="rimozione-gioco" method="post" action="admin.php" onsubmit="return validazioneForm();">
+                <form id="rimozione-gioco" method="post" action="admin.php"> <!--onsubmit="return validazioneForm('admin');"-->
                     <h2>Area Rimozione Gioco</h2>
                     <div class="formCampo itemCentered">
                         <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
@@ -136,7 +137,7 @@
                 </form>
             </div>
             <div class="divForm">
-                <form id="modifica-prezzi" method="post" action="admin.php" onsubmit="return validazioneForm();">
+                <form id="modifica-prezzi" method="post" action="admin.php"> <!--onsubmit="return validazioneForm('admin');"-->
                     <h2>Area Modifica Prezzi Abbonamenti</h3>
                     <div class="formRiga">
                         <div class="formCampo">

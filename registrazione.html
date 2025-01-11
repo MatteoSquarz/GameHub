@@ -12,7 +12,7 @@
         <script src="script.js"></script>
         <title>Registrazione - GameHub</title>
     </head>
-    <body onload="caricamento();">
+    <body onload="caricamento('registrazione');">
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
@@ -45,7 +45,7 @@
         <main id="mainRegistrazione" class="background">
             <div class="loginRegistrazione">
                 <h2>Registrati</h2>
-                <form class="formLoginRegistrazione" method="post" action="registrazione.php" onsubmit="return validazioneForm();">
+                <form class="formLoginRegistrazione" method="post" action="registrazione.php"> <!--onsubmit="return validazioneForm('registrazione');"-->
                     <div>
                         <label class="labelForm" for="nome">Nome</label>
                         <input class="inputForm" type="text" placeholder="Inserisci il tuo nome" name="nome" id="nome" required>
