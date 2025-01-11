@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Questa pagina è dedicata alla sezione abbonamenti del negozio di videogiochi GameHub. Troverai abbonamenti  Base, Sistema e Premium">
+        <meta name="description" content="Questa pagina è dedicata alla sezione abbonamenti del negozio di videogiochi GameHub. Troverai abbonamenti Base, Deluxe e Premium">
         <meta name="keywords" content="Abbonamenti, GameHub, Videogiochi, negozio, Base, Deluxe, Premium">
         <meta name="author" content="Alessandro Damiani">    
-        <link rel="stylesheet" href="style.css" media = "screen">
+        <link rel="stylesheet" href="style.css" media="screen">
         <link rel="stylesheet" href="mobile.css" media="only screen and (max-width: 768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <title>Abbonamenti - GameHub</title>
@@ -15,12 +15,12 @@
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <a href="index.php" id="logo"><h1>GameHub</h1></a>
+                    <h1 id="logo">GameHub</h1>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
                         <a href="#mainAbbonamenti" class="navHelper">Vai al contenuto</a>
                 </nav>
-                <nav id="menu">
+                <nav id="menu" aria-label="menu di navigazione">
                     <ul class="menuList">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="catalogo.php">Catalogo</a></li>
@@ -29,8 +29,8 @@
                         [loginProfilo]
                     </ul>
                 </nav>
-                <a href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
-                    <div role="button">
+                <a role="button" href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
+                    <div>
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -38,7 +38,7 @@
                 </a>
                 
             </header>
-            <nav id="breadcumb">
+            <nav id="breadcumb" aria-label="percorso pagina">
                 <p>Ti trovi in: Abbonamenti</p>
             </nav>
         </div>
@@ -52,33 +52,35 @@
                 <a href="#mainAbbonamenti" class="tornaSuHelper">Torna su</a>
             </div>
         </main>
-        <nav id="hamburgerMobileMenu">
+        <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
             <ul class="menuListMobile">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="catalogo.php">Catalogo</a></li>
-                <li id="currentMenu">Abbonamenti</li>
+                <li id="currentMenuMobile">Abbonamenti</li>
                 <li><a href="chiSiamo.php">Chi siamo</a></li>
                 [loginProfilo]
                 <li><a href=#mainAbbonamenti>Torna su</a></li>
             </ul>
         </nav>   
         <footer>
-            <div class="footer-content">
-                <div class="contact-info">
-                    <h3>Contattaci</h3>
+            <div class="footerContent">
+                <div class="contactInfo">
+                    <h3 class="footerHeader">Contattaci</h3>
                     <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
                     <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
                     <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
                 </div>
-                <div class="social-links">
-                    <h3>Seguici</h3>
-                    <a href="https://www.facebook.com/" title="Facebook"><span class="fa-brands fa-facebook"></span></a>
-                    <a href="https://x.com/" title="Twitter"><span class="fa-brands fa-twitter"></span></a>
-                    <a href="https://www.instagram.com/" title="Instagram"><span class="fa-brands fa-instagram"></span></a>
-                    <a href="https://www.youtube.com/" title="Youtube"><span class="fa-brands fa-youtube"></span></a>
+                <div class="socialLinks">
+                    <h3 class="footerHeader">Seguici</h3>
+                    <div class="socialIcons">
+                        <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> Facebook</a>
+                        <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> Twitter</a>
+                        <a href="https://www.instagram.com/"><span class="fa-brands fa-instagram iconSize"></span> Instagram</a>
+                        <a href="https://www.youtube.com/"><span class="fa-brands fa-youtube iconSize"></span> Youtube</a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footerBottom">
                 <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
             </div>
         </footer>

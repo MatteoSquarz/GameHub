@@ -25,7 +25,7 @@ if(isset($_GET['disdici'])){
 $vendite = "";
 $listaGiochi = "";
 
-if(!$connectionOK)
+if(!$connectionOK && isset($_SESSION['username']))
 {
     $utente = ($connection->getUtente($_SESSION['username'])[0]);
         

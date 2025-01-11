@@ -29,7 +29,7 @@ body{
 }
 
 html {
-    scroll-padding-top: 7em;
+    scroll-padding-top: 7.8em;
     background-color: #000;
 }
 
@@ -72,8 +72,8 @@ header #logo{
     border-radius: 50px;
     margin: 0.2em 0.4em;
     padding: 0em;
-    width: 4.5em; 
-    height: 4.5em;
+    width: 2.3em; 
+    height: 2.3em;
     text-decoration: none;
 }
 
@@ -347,43 +347,52 @@ header #profile {
     display: none;
 }
 
+
+/* SEZIONE FOOTER */
 footer {
     background-color: var(--breadcolor);
     color: var(--txtcolor);
 }
 
 
-.footer-content {
+.footerContent {
     display: flex;
     justify-content: space-around;
     padding: 1.0em;
     gap: 2em;
 }
 
-
-.contact-info h3, .social-links h3 {
+.footerHeader{
     margin-bottom: 1em;
     color: var(--txtcolor);
+    font-size: 1.4em;
 }
 
-.contact-info p {
+.contactInfo p {
     margin: 0.5em 0;
 }
 
-
-.social-links a {
+.socialLinks a {
     color: var(--linktxtcolor);
-    font-size: 1.5em;
+    font-size: 1em;
     margin-right: 1em;
     text-decoration: none;
 }
 
+.socialIcons {
+    display: flex;
+    gap: 0.5em;
+}
 
-.social-links a:hover {
+.iconSize {
+    font-size: 1.25em;
+}
+
+.socialLinks a:hover {
     color: var(--boxcolor);
 }
 
-.footer-bottom {
+.footerBottom {
     text-align: center;
     border-top: 1px solid #333;
     vertical-align: middle;
@@ -764,7 +773,7 @@ footer {
     align-items: center;
 }
 
-.loginRegistrazione h2{
+.loginRegistrazione h1{
     margin-top: 1em;
     color: var(--boxtxtcolor);
 }
@@ -1156,6 +1165,7 @@ hr{
 
 .error-main {
     background-color: white;
+    min-height: 100vh;
 }
 
 .error-container {
@@ -1193,17 +1203,19 @@ hr{
     line-height: 1.5em;
 }
 
-.error-info li{
+.error-info ul{
     display: flex;
     flex-direction: column;
     gap: 0.5em;
 }
 
-.error-info li a{
+.error-info li{
     align-self: center;
+    list-style: none;
 }
 
 .error-info li a{
+    display: inline-block;
     background-color: var(--bglinkcolor);
     color: var(--linktxtcolor);
     width: 9em;
@@ -1259,17 +1271,19 @@ hr{
     line-height: 1.5em;
 }
 
-.ac-info li{
+.ac-info ul{
     display: flex;
     flex-direction: column;
     gap: 0.5em;
 }
 
-.ac-info li a{
+.ac-info li{
     align-self: center;
+    list-style: none;
 }
 
 .ac-info li a{
+    display: inline-block;
     background-color: var(--bglinkcolor);
     color: var(--linktxtcolor);
     width: 9em;
