@@ -27,7 +27,7 @@ if(!$connectionOK)
         $listaGiochi .= "<div class=\"card-container\">";
         foreach($giochi as $gioco)
         {
-            $listaGiochi .= "<div class=\"game-card\" href=\"#GamePage\">";
+            $listaGiochi .= "<div class=\"game-card\">";
             $img = $gioco['immagine'];
             $listaGiochi .= "<img class=\"game-card-image\" src=\"assets/game-covers/$img\" alt=\"\">";
             $listaGiochi .= "<div class=\"game-info\">";
@@ -41,7 +41,7 @@ if(!$connectionOK)
         $listaGiochi .= "</div>";
     }
     else
-        $listaGiochi .= "Non ci sono abbonamenti da visualizzare";
+        $listaGiochi .= "Non ci sono giochi da visualizzare";
 }
 else
 	//in fase di produzione rimuovere $connessioneOK
