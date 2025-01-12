@@ -51,7 +51,11 @@ if (isset($_POST['registrati'])) {
 			{
 				$nuovoUtente = $connessione->insertNewUser($username,$password,$nome,$cognome,$dataNascita,$email);
 				if($nuovoUtente)
-					header("Location: /TecWeb-project/login.php?registrazione=true");
+				{
+					session_start();
+					$_SESSION["registrazione"] = 1;
+					header("Location: /TecWeb-project/login.php");
+				}
 			}
 			else
 				$messaggiPerForm = "<p>Username già utilizzato, si prega di usarne un altro</p>";				

@@ -5,10 +5,10 @@ use DB\DBAccess;
 $paginaHTML = file_get_contents('login.html');
 
 session_start();
-if (isset($_GET['registrazione']))
+if (isset($_SESSION['registrazione']))
 {
-	header("Location: /TecWeb-project/login.php");
 	$paginaHTML = str_replace('[registrazione]', "<p>Utente registrato con successo</p>", $paginaHTML);
+	unset($_SESSION['registrazione']);
 }
 else
 	$paginaHTML = str_replace('[registrazione]', "", $paginaHTML);
