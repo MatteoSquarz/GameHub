@@ -8,11 +8,11 @@ $connection = new DBAccess();
 $connectionOK = $connection->openDBConnection();
 
 session_start();
-if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
-{
-    header("Location: /TecWeb-project/404.php");
-    exit();
-}
+//if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
+//{
+//    header("Location: /TecWeb-project/404.php");
+//    exit();
+//}
 
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
@@ -41,9 +41,11 @@ if(!$connectionOK){
 
     foreach($piattaforme as $piattaforma){
         $nome = $piattaforma['nome'];
+        $value = $nome;
+        $nome = str_replace(' ', '-', $nome);
         $listaPiattaforme .= "<div class=\"sceltaPiattaforma\">";
-        $listaPiattaforme .= "<label for=\"$nome\">$nome </label>";
-        $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Piattaforma$nome\">";
+        $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"$value\" />";
+        $listaPiattaforme .= "<label for=\"$nome\"> $value</label>";
         $listaPiattaforme .= "</div>";
     }
 
@@ -53,9 +55,11 @@ if(!$connectionOK){
             $listaCategorie .= "<div class=\"gruppoScelteCategoria\">";
         }
         $nome = $categoria['nome'];
+        $value = $nome;
+        $nome = str_replace(' ', '-', $nome);
         $listaCategorie .= "<div>";
-        $listaCategorie .= "<label for='$nome'>$nome </label>";
-        $listaCategorie .= "<input type='checkbox' id='$nome' name='$nome' value='Categoria$nome'>";
+        $listaCategorie .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Categoria$value\" />";
+        $listaCategorie .= "<label for=\"$nome\"> $value</label>";
         $listaCategorie .= "</div>";
         if($count % 5 == 4) { //chiude il gruppo di 5 categorie
             $listaCategorie .= "</div>";
