@@ -10,12 +10,13 @@ var dettagli_registrazione = {
 var dettagli_per_admin = {
     "codice":["Ex: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
     "titolo":["Ex: La casa degli incubi", /^[A-Za-z0-9\ \']{2,20}$/,"Il titolo non può contenere caratteri speciali, almeno 2 caratteri max 20"],
-    "data-uscita":["", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
+    "data-uscita":["Formato: dd/mm/yyyy", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
     "pegi":["Età consigliata", , ],
     "prezzo":["Ex: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
     "casa-sviluppatrice":["Ex: Nightmare House", /^[A-Za-z0-9\ \']{2,30}$/,"La casa sviluppatrice contiene solo lettere o numeri, almeno 2 caratteri max 30"],
     "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri max 1000"],
     "codice-rimozione":["Ex: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
+    "abbonamento":["In cui si modifica", , ],
     "nuovo-costo":["Ex: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"]
 };
 

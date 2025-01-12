@@ -147,7 +147,7 @@ if (isset($_POST['inserisciVideogioco'])) {
                     $connection->insertCategorieGioco($codice, $cat);
                     $connection->insertPiattaformeGioco($codice, $piat);
                     $connection->insertAbbonamentiGioco($codice, $abb);
-                    $messaggiInserimento = "<p>Inserimento avvenuto con successo</p>";
+                    $paginaHTML = str_replace('[messaggioSuccesso]', "<p class=\"itemCentered\">Inserimento avvenuto con successo</p>", $paginaHTML);
                 }
 			}
 			else
@@ -176,7 +176,7 @@ if (isset($_POST['rimuoviVideogioco'])) {
             {
                 $rimozione = $connection->rimuoviGioco($codice);
 				if($rimozione)
-                    $messaggioRimozione = "<p>Rimozione avvenuta con successo</p>";
+                $paginaHTML = str_replace('[messaggioSuccesso]', "<p class=\"itemCentered\">Rimozione avvenuta con successo</p>", $paginaHTML);
             }				
 		}        
 	}
@@ -196,15 +196,14 @@ if (isset($_POST['modificaAbbonamento'])) {
 	    if($connectionOK == NULL)
 	    {
 		    if($connection->modificaPrezzoAbbonamento($abb,$prezzo))
-		    {
-                $messaggioModifica = "<p>Modifica avvenuta con successo</p>";
-		    }
+                $paginaHTML = str_replace('[messaggioSuccesso]', "<p class=\"itemCentered\">Modifica avvenuta con successo</p>", $paginaHTML);
 		    else
 			    $messaggioModifica = "<p>Errore</p>";				
 	    }
     }       
 }
 $paginaHTML = str_replace('[messaggioModifica]', $messaggioModifica, $paginaHTML);
+$paginaHTML = str_replace('[messaggioSuccesso]', "", $paginaHTML);
 
 echo $paginaHTML;
 ?>
