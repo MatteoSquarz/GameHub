@@ -8,11 +8,11 @@ $connection = new DBAccess();
 $connectionOK = $connection->openDBConnection();
 
 session_start();
-//if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
-//{
-//    header("Location: /TecWeb-project/404.php");
-//    exit();
-//}
+if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
+{
+    header("Location: /TecWeb-project/404.php");
+    exit();
+}
 
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
@@ -44,7 +44,7 @@ if(!$connectionOK){
         $value = $nome;
         $nome = str_replace(' ', '-', $nome);
         $listaPiattaforme .= "<div class=\"sceltaPiattaforma\">";
-        $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"$value\" />";
+        $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Piattaforma$value\" />";
         $listaPiattaforme .= "<label for=\"$nome\"> $value</label>";
         $listaPiattaforme .= "</div>";
     }
