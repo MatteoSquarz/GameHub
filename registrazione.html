@@ -6,8 +6,8 @@
         <meta name="description" content="Questa pagina è dedicata alla nazionale femminile di pallavolo che ha vinto l'oro alle olimpiadi di Parigi 2024.">
         <meta name="keywords" content="pallavolo,nazionale,femminile,volley,olimpiadi,oro,Paola Egonu,Alessia Orro">
         <meta name="author" content="Andrea Piola">    
-        <link rel = "stylesheet" href = "style.css" media = "screen">
-        <link rel = "stylesheet" href="mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="style.css" media="screen">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <script src="script.js"></script>
         <title>Registrazione - GameHub</title>
@@ -16,13 +16,13 @@
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <a href="index.php" id="logo"><h1>GameHub</h1></a>
+                    <h1 id="logo">GameHub</h1>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
                         <a href="#mainRegistrazione" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu">
-                    <ul class="menuList">
+                    <ul class="menuList" aria-label="menu di navigazione">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="catalogo.php">Catalogo</a></li>
                         <li><a href="abbonamenti.php">Abbonamenti</a></li>
@@ -30,22 +30,22 @@
                         <li><a href="login.php" id="currentMenu">Accedi</a></li>
                     </ul>
                 </nav>
-                <a href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
-                    <div role="button">
+                <a role="button" href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
+                    <div>
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
                     </div> 
                 </a>
             </header>
-            <nav id="breadcumb">
+            <nav id="breadcumb" aria-label="percorso pagina">
                 <p>Ti trovi in: Registrazione</p>
             </nav>
         </div>
         <main id="mainRegistrazione" class="background">
             <div class="loginRegistrazione">
-                <h2>Registrati</h2>
-                <form class="formLoginRegistrazione" method="post" action="registrazione.php"> <!--onsubmit="return validazioneForm('registrazione');"-->
+                <h1>Registrati</h1>
+                <form class="formLoginRegistrazione" method="post" action="registrazione.php" onsubmit="return validazioneForm();">
                     <div>
                         <label class="labelForm" for="nome">Nome</label>
                         <input class="inputForm" type="text" placeholder="Inserisci il tuo nome" name="nome" id="nome" required>
@@ -80,33 +80,35 @@
                 </form>                
             </div>
         </main>
-        <nav id="hamburgerMobileMenu">
+        <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
             <ul class="menuListMobile">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="catalogo.php">Catalogo</a></li>
                 <li><a href="abbonamenti.php">Abbonamenti</a></li>
                 <li><a href="chiSiamo.php">Chi siamo</a></li>
-                <li><a href="login.php" id="currentMenu">Accedi</a></li>
+                <li><a href="login.php" id="currentMenuMobile">Accedi</a></li>
                 <li><a href=#mainRegistrazione>Torna su</a></li>
             </ul>
         </nav>    
         <footer>
-            <div class="footer-content">
-                <div class="contact-info">
-                    <h3>Contattaci</h3>
+            <div class="footerContent">
+                <div class="contactInfo">
+                    <h2 class="footerHeader">Contattaci</h2>
                     <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
                     <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
                     <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
                 </div>
-                <div class="social-links">
-                    <h3>Seguici</h3>
-                    <a href="https://www.facebook.com/" title="Facebook"><span class="fa-brands fa-facebook"></span></a>
-                    <a href="https://x.com/" title="Twitter"><span class="fa-brands fa-twitter"></span></a>
-                    <a href="https://www.instagram.com/" title="Instagram"><span class="fa-brands fa-instagram"></span></a>
-                    <a href="https://www.youtube.com/" title="Youtube"><span class="fa-brands fa-youtube"></span></a>
+                <div class="socialLinks">
+                    <h2 class="footerHeader">Seguici</h2>
+                    <div class="socialIcons">
+                        <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> Facebook</a>
+                        <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> Twitter</a>
+                        <a href="https://www.instagram.com/"><span class="fa-brands fa-instagram iconSize"></span> Instagram</a>
+                        <a href="https://www.youtube.com/"><span class="fa-brands fa-youtube iconSize"></span> Youtube</a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footerBottom">
                 <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
             </div>
         </footer>

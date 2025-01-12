@@ -15,13 +15,13 @@
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <a href="index.php" id="logo"><h1>GameHub</h1></a>
+                    <h1 id="logo">GameHub</h1>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
-                        <a href="#mainVideogioco" class="navHelper">Vai al contenuto</a>
+                    <a href="#mainVideogioco" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu">
-                    <ul class="menuList">
+                    <ul class="menuList" aria-label="menu principale">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="catalogo.php" id="currentMenu">Catalogo</a></li>
                         <li><a href="abbonamenti.php">Abbonamenti</a></li>
@@ -29,17 +29,16 @@
                         [loginProfilo]
                     </ul>
                 </nav>
-                <a href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
-                    <div role="button">
+                <a role="button" href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
+                    <div>
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
                     </div> 
                 </a>
-                
             </header>
-            <nav id="breadcumb">
-                <p>Ti trovi in: Catalogo >> [videogioco]</p>
+            <nav id="breadcumb" aria-label="percorso pagina">
+                <p>Ti trovi in: Catalogo &gt;&gt; [videogioco]</p>
             </nav>
         </div>
         <main id="mainVideogioco">
@@ -48,10 +47,10 @@
                 <a href="#mainVideogioco" class="tornaSuHelper">Torna su</a>
             </div>
         </main>
-        <nav id="hamburgerMobileMenu">
+        <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
             <ul class="menuListMobile">
                 <li><a href="index.php">Home</a></li>
-                <li><a href="catalogo.php" id="currentMenu">Catalogo</a></li>
+                <li><a href="catalogo.php" id="currentMenuMobile">Catalogo</a></li>
                 <li><a href="abbonamenti.php">Abbonamenti</a></li>
                 <li><a href="chiSiamo.php">Chi siamo</a></li>
                 [loginProfilo]
@@ -59,22 +58,24 @@
             </ul>
         </nav>   
         <footer>
-            <div class="footer-content">
-                <div class="contact-info">
-                    <h3>Contattaci</h3>
+            <div class="footerContent">
+                <div class="contactInfo">
+                    <h3 class="footerHeader">Contattaci</h3>
                     <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
                     <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
                     <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
                 </div>
-                <div class="social-links">
-                    <h3>Seguici</h3>
-                    <a href="https://www.facebook.com/" title="Facebook"><span class="fa-brands fa-facebook"></span></a>
-                    <a href="https://x.com/" title="Twitter"><span class="fa-brands fa-twitter"></span></a>
-                    <a href="https://www.instagram.com/" title="Instagram"><span class="fa-brands fa-instagram"></span></a>
-                    <a href="https://www.youtube.com/" title="Youtube"><span class="fa-brands fa-youtube"></span></a>
+                <div class="socialLinks">
+                    <h3 class="footerHeader">Seguici</h3>
+                    <div class="socialIcons">
+                        <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> Facebook</a>
+                        <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> Twitter</a>
+                        <a href="https://www.instagram.com/"><span class="fa-brands fa-instagram iconSize"></span> Instagram</a>
+                        <a href="https://www.youtube.com/"><span class="fa-brands fa-youtube iconSize"></span> Youtube</a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footerBottom">
                 <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
             </div>
         </footer>

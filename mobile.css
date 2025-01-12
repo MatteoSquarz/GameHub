@@ -58,6 +58,18 @@ header #profile{
     text-transform: uppercase;
 }
 
+#currentMenuMobile{
+    font-weight: bold;
+    color: var(--txtcolor);
+    text-transform: uppercase;
+}
+
+.socialIcons {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 /* ========================
       PAGINA HOME
 =========================== */
