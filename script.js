@@ -7,18 +7,26 @@ var dettagli_registrazione = {
     "password":["Caratteri consentiti: tutte le lettere, numeri e !@#%", /^[A-Za-z0-9\!\@\#\%]{8,}$/,"Sono ammessi solo numeri, lettere e e !@#%, il numero di caratteri dev'essere almeno 8"]
 };
 
-var dettagli_per_admin = {
+var dettagli_inserimento = {
     "codice":["Ex: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
     "titolo":["Ex: La casa degli incubi", /^[A-Za-z0-9\ \']{2,20}$/,"Il titolo non può contenere caratteri speciali, almeno 2 caratteri max 20"],
     "data-uscita":["Formato: dd/mm/yyyy", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
     "pegi":["Età consigliata", , ],
     "prezzo":["Ex: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
     "casa-sviluppatrice":["Ex: Nightmare House", /^[A-Za-z0-9\ \']{2,30}$/,"La casa sviluppatrice contiene solo lettere o numeri, almeno 2 caratteri max 30"],
-    "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri max 1000"],
-    "codice-rimozione":["Ex: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
+    "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri max 1000"]
+}
+
+var dettagli_rimozione = {
+    "codice-rimozione":["Ex: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"]
+}
+
+var dettagli_modifica = {
     "abbonamento":["In cui si modifica", , ],
     "nuovo-costo":["Ex: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"]
-};
+}
+
+var dettagli_per_admin = concat(dettagli_inserimento, dettagli_rimozione, dettagli_modifica);
 
 function caricamento(tipo) {
     var dettagli_form;
@@ -49,6 +57,15 @@ function validazioneCampo(input, tipo) {
         case "admin":
             dettagli_form = dettagli_per_admin;
         break;
+        case "inserimento":
+            dettagli_form = dettagli_inserimento;
+        break;
+        case "rimozione":
+            dettagli_form = dettagli_rimozione;
+        break;
+        case "modifica":
+            dettagli_form = dettagli_modifica;
+        break;
     }
 
     var text = input.value;
@@ -68,15 +85,21 @@ function validazioneCampo(input, tipo) {
     return true;
 }
     
-/*function validazioneForm(tipo) {
+function validazioneForm(tipo) {
     var dettagli_form;
     switch (tipo)
     {
         case "registrazione":
             dettagli_form = dettagli_registrazione;
         break;
-        case "admin":
-            dettagli_form = dettagli_per_admin;
+        case "inserimento":
+            dettagli_form = dettagli_inserimento;
+        break;
+        case "rimozione":
+            dettagli_form = dettagli_rimozione;
+        break;
+        case "modifica":
+            dettagli_form = dettagli_modifica;
         break;
     }
 
@@ -86,7 +109,7 @@ function validazioneCampo(input, tipo) {
             return false;
     }
     return true;
-}*/
+}
     
 function messaggio(input, mode, tipo) {
     /* mode = 0, modalità input

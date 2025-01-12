@@ -5,8 +5,11 @@ use DB\DBAccess;
 $paginaHTML = file_get_contents('login.html');
 
 session_start();
-if (isset($_GET['registrazione'])) 
+if (isset($_GET['registrazione']))
+{
+	header("Location: /TecWeb-project/login.php");
 	$paginaHTML = str_replace('[registrazione]', "<p>Utente registrato con successo</p>", $paginaHTML);
+}
 else
 	$paginaHTML = str_replace('[registrazione]', "", $paginaHTML);
 
@@ -26,7 +29,6 @@ if (isset($_POST['accedi'])) {
 	
 	if($connessioneOK == NULL){
 		if($connessione->autenticaUtente($username,$password)){
-			session_start();
 			if(empty($_SESSION)){
 				$_SESSION["username"] = $username;
 			}
@@ -37,7 +39,6 @@ if (isset($_POST['accedi'])) {
 			header("Location: /TecWeb-project/index.php");	
 		}
 		elseif($connessione->autenticaAdmin($username,$password)){
-			session_start();
 			if(empty($_SESSION)){
 				$_SESSION["username"] = $username;
 			}
