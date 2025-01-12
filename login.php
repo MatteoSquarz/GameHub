@@ -4,6 +4,12 @@ use DB\DBAccess;
 
 $paginaHTML = file_get_contents('login.html');
 
+session_start();
+if (isset($_GET['registrazione'])) 
+	$paginaHTML = str_replace('[registrazione]', "<p>Utente registrato con successo</p>", $paginaHTML);
+else
+	$paginaHTML = str_replace('[registrazione]', "", $paginaHTML);
+
 $messaggiPerForm = "";
 
 $username = "";
