@@ -7,7 +7,7 @@ $paginaHTML = file_get_contents('login.html');
 session_start();
 if (isset($_SESSION['registrazione']))
 {
-	$paginaHTML = str_replace('[registrazione]', "<p>Utente registrato con successo</p>", $paginaHTML);
+	$paginaHTML = str_replace('[registrazione]', "<p class='confermaRegistrazione'>Utente registrato con successo</p>", $paginaHTML);
 	unset($_SESSION['registrazione']);
 }
 else

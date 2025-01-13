@@ -821,6 +821,13 @@ hr{
     margin-top: 1em;
 }
 
+.confermaRegistrazione {
+    color: var(--boxtxtcolor);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
 /* ============================
         PAGINA VIDEOGIOCO
 ============================ */

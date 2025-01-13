@@ -43,7 +43,7 @@ if (isset($_POST['registrati'])) {
 
 	$messaggiPerForm .= "</ul>";
 
-	if($messaggiPerForm == "<ul></ul>"){
+	if($messaggiPerForm == "<ul class='itemCentered errorFormRegistrazione'></ul>"){
 		if($connessioneOK == NULL)
 		{
 			$esistente = $connessione->getUtente($username);
