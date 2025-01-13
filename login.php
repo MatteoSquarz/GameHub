@@ -4,6 +4,15 @@ use DB\DBAccess;
 
 $paginaHTML = file_get_contents('login.html');
 
+session_start();
+if (isset($_SESSION['registrazione']))
+{
+	$paginaHTML = str_replace('[registrazione]', "<p class='confermaRegistrazione'>Utente registrato con successo</p>", $paginaHTML);
+	unset($_SESSION['registrazione']);
+}
+else
+	$paginaHTML = str_replace('[registrazione]', "", $paginaHTML);
+
 $messaggiPerForm = "";
 
 $username = "";
@@ -20,7 +29,6 @@ if (isset($_POST['accedi'])) {
 	
 	if($connessioneOK == NULL){
 		if($connessione->autenticaUtente($username,$password)){
-			session_start();
 			if(empty($_SESSION)){
 				$_SESSION["username"] = $username;
 			}
@@ -31,7 +39,6 @@ if (isset($_POST['accedi'])) {
 			header("Location: /TecWeb-project/index.php");	
 		}
 		elseif($connessione->autenticaAdmin($username,$password)){
-			session_start();
 			if(empty($_SESSION)){
 				$_SESSION["username"] = $username;
 			}

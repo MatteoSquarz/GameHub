@@ -314,6 +314,90 @@ class DBAccess{
 			return false;
 	}
 
+	public function verifyAdmin($username){
+		$query = "SELECT * FROM Admin WHERE username = '$username'";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public function insertGioco($codice, $titolo, $descrizione, $prezzo, $dataUscita, $pegi, $casaSviluppatrice, $immagine){
+		$query = "INSERT INTO Videogioco (codice, titolo, descrizione, prezzo, dataUscita, pegi, casaSviluppatrice, immagine) VALUES (\"$codice\", \"$titolo\", \"$descrizione\", \"$prezzo\", \"$dataUscita\", \"$pegi\", \"$casaSviluppatrice\", \"$immagine\")";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public function rimuoviGioco($codice){
+		$query = "DELETE FROM Videogioco where codice = '$codice'";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public function modificaPrezzoAbbonamento($abbonamento, $prezzo){
+		$query = "UPDATE Abbonamento SET prezzo = '$prezzo' WHERE nome = '$abbonamento'";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public function insertCategorieGioco($codice, $categorie){
+		$valori = "";
+		foreach($categorie as $categoria)
+			$valori .= "('$categoria', '$codice'), ";
+		$valori = substr($valori, 0, -2);
+		$query = "INSERT INTO CategoriaVideogioco (categoria, videogioco) VALUES $valori;";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public function insertPiattaformeGioco($codice, $piattaforme){
+		$valori = "";
+		foreach($piattaforme as $piattaforma)
+			$valori .= "('$piattaforma', '$codice'), ";
+		$valori = substr($valori, 0, -2);
+		$query = "INSERT INTO PiattaformaVideogioco (piattaforma, videogioco) VALUES $valori;";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
+	public function insertAbbonamentiGioco($codice, $abbonamento){
+		$valori = "";
+		switch($abbonamento)
+		{
+			case "Base":
+				$valori = "('Base', '$codice'), ('Deluxe', '$codice'), ('Premium', '$codice');";
+			break;
+			case "Deluxe":
+				$valori = "('Deluxe', '$codice'), ('Premium', '$codice');";
+			break;
+			case "Premium":
+				$valori = "('Premium', '$codice');";
+			break;
+		}
+		$query = "INSERT INTO AbbonamentoVideogioco (abbonamento, videogioco) VALUES $valori;";
+		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		if(mysqli_affected_rows($this->connection) > 0)
+			return true;
+		else
+			return false;
+	}
+
 }
 
 ?>

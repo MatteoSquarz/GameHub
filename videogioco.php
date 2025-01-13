@@ -67,9 +67,9 @@ if(!$connectionOK){
     {
         $cat = $categoria['categoria'];
         $listaCategorie .= $cat;
-        $listaCategorie .= ",";
+        $listaCategorie .= ", ";
     }
-    $listaCategorie = substr($listaCategorie, 0, -1);
+    $listaCategorie = substr($listaCategorie, 0, -2);
     $listaCategorie .= "</dd>";
     $paginaGioco .= $listaCategorie;
     $paginaGioco .= "<dt>Piattaforma:</dt>";
@@ -78,9 +78,9 @@ if(!$connectionOK){
     {
         $piat = $piattaforma['piattaforma'];
         $listaPiattaforme .= $piat;
-        $listaPiattaforme .= ",";
+        $listaPiattaforme .= ", ";
     }
-    $listaPiattaforme = substr($listaPiattaforme, 0, -1);
+    $listaPiattaforme = substr($listaPiattaforme, 0, -2);
     $listaPiattaforme .= "</dd>";
     $paginaGioco .= $listaPiattaforme;
     $paginaGioco .= "<dt>Abbonamenti:</dt>";
@@ -89,9 +89,9 @@ if(!$connectionOK){
     {
         $abb = $abbonamento['abbonamento'];
         $listaAbbonamenti .= $abb;
-        $listaAbbonamenti .= ",";
+        $listaAbbonamenti .= ", ";
     }
-    $listaAbbonamenti = substr($listaAbbonamenti, 0, -1);
+    $listaAbbonamenti = substr($listaAbbonamenti, 0, -2);
     $listaAbbonamenti .= "</dd>";
     $paginaGioco .= $listaAbbonamenti;
     $paginaGioco .= "</dl>";

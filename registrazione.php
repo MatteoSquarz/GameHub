@@ -17,7 +17,7 @@ $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
 
 if (isset($_POST['registrati'])) {
-	$messaggiPerForm .= "<ul>";
+	$messaggiPerForm .= "<ul class='itemCentered errorFormRegistrazione'>";
 
 	$nome = $connessione->pulisciInput($_POST['nome']);
 	if(!preg_match("/^[A-Za-z\ ]{2,}$/",$nome))
@@ -43,7 +43,7 @@ if (isset($_POST['registrati'])) {
 
 	$messaggiPerForm .= "</ul>";
 
-	if($messaggiPerForm == "<ul></ul>"){
+	if($messaggiPerForm == "<ul class='itemCentered errorFormRegistrazione'></ul>"){
 		if($connessioneOK == NULL)
 		{
 			$esistente = $connessione->getUtente($username);
@@ -51,7 +51,11 @@ if (isset($_POST['registrati'])) {
 			{
 				$nuovoUtente = $connessione->insertNewUser($username,$password,$nome,$cognome,$dataNascita,$email);
 				if($nuovoUtente)
+				{
+					session_start();
+					$_SESSION["registrazione"] = 1;
 					header("Location: /TecWeb-project/login.php");
+				}
 			}
 			else
 				$messaggiPerForm = "<p>Username già utilizzato, si prega di usarne un altro</p>";				
