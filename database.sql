@@ -21,7 +21,6 @@ DROP TABLE IF EXISTS Videogioco;
 DROP TABLE IF EXISTS Abbonamento;
 DROP TABLE IF EXISTS Utente;
 
-
 CREATE TABLE Utente(
     username varchar(20) NOT NULL,
     password varchar(20) NOT NULL,
