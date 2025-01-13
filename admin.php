@@ -78,7 +78,10 @@ $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
 $paginaHTML = str_replace('[listaPiattaforme]', $listaPiattaforme, $paginaHTML);
 
+$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati in fondo al form su cui stavi lavorando.</p></div>";
+
 $messaggiInserimento = "";
+
 if (isset($_POST['inserisciVideogioco'])) {
 	$piat = array();
     $cat = array();
@@ -96,7 +99,7 @@ if (isset($_POST['inserisciVideogioco'])) {
         }
     }
 
-    $messaggiInserimento .= "<ul>";
+    $messaggiInserimento .= "<ul class=\"itemCentered errorFormAdmin\">";
 
 	$codice = $connection->pulisciInput($_POST['codice']);
 	if(!preg_match("/^[0-9]{8,8}$/",$codice))
@@ -112,7 +115,7 @@ if (isset($_POST['inserisciVideogioco'])) {
 
 	$prezzo = $connection->pulisciInput($_POST['prezzo']);
 	if(!preg_match("/^([0-9]{1,3})$/",$prezzo))
-		$messaggiInserimento .= "<li>Il prezzo è compreso tra 0 e 999</li>";
+		$messaggiInserimento .= "<li>Il prezzo deve essere compreso tra 0 e 999</li>";
 
     $casaSviluppatrice = $connection->pulisciInput($_POST['casa-sviluppatrice']);
 	if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
@@ -136,7 +139,7 @@ if (isset($_POST['inserisciVideogioco'])) {
 
 	$messaggiInserimento .= "</ul>";
 
-	if($messaggiInserimento == "<ul></ul>"){
+	if($messaggiInserimento == "<ul class=\"itemCentered errorFormAdmin\"></ul>"){
 		if($connectionOK == NULL)
 		{
 			if($connection->getGiocoByCodice($codice) == null)
@@ -147,32 +150,41 @@ if (isset($_POST['inserisciVideogioco'])) {
                     $connection->insertCategorieGioco($codice, $cat);
                     $connection->insertPiattaformeGioco($codice, $piat);
                     $connection->insertAbbonamentiGioco($codice, $abb);
-                    $paginaHTML = str_replace('[messaggioSuccesso]', "<p class=\"itemCentered\">Inserimento avvenuto con successo</p>", $paginaHTML);
+                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
                 }
 			}
-			else
-				$messaggiInserimento = "<p class=\"itemCentered errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</p>";				
+			else{
+                $messaggiInserimento = "<p class=\"itemCentered errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</p>";
+                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
+            }			
 		}        
-	}
+	} 
+    else
+        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+
 }
 $paginaHTML = str_replace('[messaggiInserimento]', $messaggiInserimento, $paginaHTML);
 
 $messaggioRimozione = "";
 if (isset($_POST['rimuoviVideogioco'])) {
 	$codice = $connection->pulisciInput($_POST['codice-rimozione']);
-	if(!preg_match("/^[0-9]{8,8}$/",$codice))
-		$messaggioRimozione .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
+	if(!preg_match("/^[0-9]{8,8}$/",$codice)){
+        $messaggioRimozione .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
+        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
+    }
 
 	if($messaggioRimozione == ""){
 		if($connectionOK == NULL)
 		{
-			if($connection->getGiocoByCodice($codice) == null)
+			if($connection->getGiocoByCodice($codice) == null){
                 $messaggioRimozione = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
+                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+            }
 			else
             {
                 $rimozione = $connection->rimuoviGioco($codice);
 				if($rimozione)
-                $paginaHTML = str_replace('[messaggioSuccesso]', "<p class=\"itemCentered\">Rimozione avvenuta con successo</p>", $paginaHTML);
+                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
             }				
 		}        
 	}
@@ -182,9 +194,10 @@ $paginaHTML = str_replace('[messaggioRimozione]', $messaggioRimozione, $paginaHT
 $messaggioModifica = "";
 if (isset($_POST['modificaAbbonamento'])) {
 	$prezzo = $connection->pulisciInput($_POST['nuovo-costo']);
-	if(!preg_match("/^[0-9]{1,3}$/",$prezzo))
-		$messaggioModifica = "<p>Il prezzo è compreso tra 0 e 999</p>";
-
+	if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
+		$messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</p>";
+        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+    }
 	$abb = $connection->pulisciInput($_POST['abbonamento']);
 
     if($messaggioModifica == "")
@@ -192,14 +205,15 @@ if (isset($_POST['modificaAbbonamento'])) {
 	    if($connectionOK == NULL)
 	    {
 		    if($connection->modificaPrezzoAbbonamento($abb,$prezzo))
-                $paginaHTML = str_replace('[messaggioSuccesso]', "<p class=\"itemCentered\">Modifica avvenuta con successo</p>", $paginaHTML);
-		    else
-			    $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";				
+                $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered\">Modifica avvenuta con successo</p></div>", $paginaHTML);
+		    else{
+                $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";
+                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+            }				
 	    }
     }       
 }
 $paginaHTML = str_replace('[messaggioModifica]', $messaggioModifica, $paginaHTML);
-$paginaHTML = str_replace('[messaggioSuccesso]', "", $paginaHTML);
-
+$paginaHTML = str_replace('[messaggioOutput]', "", $paginaHTML);
 echo $paginaHTML;
 ?>
