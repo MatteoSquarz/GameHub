@@ -80,7 +80,7 @@ function validazioneCampo(input, tipo) {
     if (text.search(regex) != 0) {
         messaggio(input, 1, tipo);
         input.focus();
-        input.select(); //opzionale
+        input.select();
         return false;
     }
     return true;
@@ -106,8 +106,9 @@ function validazioneForm(tipo) {
 
     for(var key in dettagli_form){
         var input = document.getElementById(key);
-        if(!validazioneCampo(input, tipo))
+        if(!validazioneCampo(input, tipo)){
             return false;
+        }
     }
     return true;
 }

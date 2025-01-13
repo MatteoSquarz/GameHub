@@ -151,7 +151,7 @@ if (isset($_POST['inserisciVideogioco'])) {
                 }
 			}
 			else
-				$messaggiInserimento = "<p>Codice gioco già utilizzato, si prega di usarne un altro</p>";				
+				$messaggiInserimento = "<p class=\"itemCentered errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</p>";				
 		}        
 	}
 }
@@ -159,19 +159,15 @@ $paginaHTML = str_replace('[messaggiInserimento]', $messaggiInserimento, $pagina
 
 $messaggioRimozione = "";
 if (isset($_POST['rimuoviVideogioco'])) {
-	$messaggioRimozione .= "<ul>";
-
 	$codice = $connection->pulisciInput($_POST['codice-rimozione']);
 	if(!preg_match("/^[0-9]{8,8}$/",$codice))
-		$messaggioRimozione .= "<li>Il codice contiene solo numeri e deve essere di 8 caratteri</li>";
+		$messaggioRimozione .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
 
-	$messaggioRimozione .= "</ul>";
-
-	if($messaggioRimozione == "<ul></ul>"){
+	if($messaggioRimozione == ""){
 		if($connectionOK == NULL)
 		{
 			if($connection->getGiocoByCodice($codice) == null)
-                $messaggioRimozione = "<p>Codice gioco non presente</p>";
+                $messaggioRimozione = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
 			else
             {
                 $rimozione = $connection->rimuoviGioco($codice);
@@ -198,7 +194,7 @@ if (isset($_POST['modificaAbbonamento'])) {
 		    if($connection->modificaPrezzoAbbonamento($abb,$prezzo))
                 $paginaHTML = str_replace('[messaggioSuccesso]', "<p class=\"itemCentered\">Modifica avvenuta con successo</p>", $paginaHTML);
 		    else
-			    $messaggioModifica = "<p>Errore</p>";				
+			    $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";				
 	    }
     }       
 }

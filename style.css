@@ -1406,3 +1406,10 @@ fieldset{
     align-self: center;
     justify-self: center;
 }
+
+.errorFormAdmin {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    list-style: none;
+    font-weight: bold;
+}
