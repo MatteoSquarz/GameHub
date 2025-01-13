@@ -150,7 +150,7 @@ if (isset($_POST['inserisciVideogioco'])) {
                     $connection->insertCategorieGioco($codice, $cat);
                     $connection->insertPiattaformeGioco($codice, $piat);
                     $connection->insertAbbonamentiGioco($codice, $abb);
-                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
+                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
                 }
 			}
 			else{
@@ -184,7 +184,7 @@ if (isset($_POST['rimuoviVideogioco'])) {
             {
                 $rimozione = $connection->rimuoviGioco($codice);
 				if($rimozione)
-                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
+                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
             }				
 		}        
 	}
@@ -205,7 +205,7 @@ if (isset($_POST['modificaAbbonamento'])) {
 	    if($connectionOK == NULL)
 	    {
 		    if($connection->modificaPrezzoAbbonamento($abb,$prezzo))
-                $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered\">Modifica avvenuta con successo</p></div>", $paginaHTML);
+                $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
 		    else{
                 $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";
                 $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);

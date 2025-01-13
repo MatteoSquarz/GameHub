@@ -13,6 +13,7 @@
     --boxcolor: #ADD8E6;
     --boxtxtcolor: #000;
     --errortxtonboxcolor: #941110;
+    --successtxtonboxcolor: #005B00;
 
     --linktxtcolor: #FFF;
     --bglinkcolor: #547A2C;
@@ -822,7 +823,7 @@ hr{
 }
 
 .confermaRegistrazione {
-    color: var(--boxtxtcolor);
+    color: var(--successtxtonboxcolor);
     font-size: 1em;
     font-weight: bold;
     margin-top: 1em;
@@ -1381,6 +1382,12 @@ fieldset{
 
 .errorFormAdmin {
     color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.confermaOperazioneAdmin {
+    color: var(--successtxtonboxcolor);
     font-size: 1em;
     font-weight: bold;
 }
