@@ -22,11 +22,12 @@ var dettagli_rimozione = {
 }
 
 var dettagli_modifica = {
-    "abbonamento":["In cui si modifica", , ],
+    "abbonamento":["In cui si modifica", ,""],
     "nuovo-costo":["Ex: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"]
 }
 
-var dettagli_per_admin = concat(dettagli_inserimento, dettagli_rimozione, dettagli_modifica);
+
+
 
 function caricamento(tipo) {
     var dettagli_form;
@@ -36,7 +37,7 @@ function caricamento(tipo) {
             dettagli_form = dettagli_registrazione;
         break;
         case "admin":
-            dettagli_form = dettagli_per_admin;
+            dettagli_form = Object.assign(dettagli_inserimento, dettagli_modifica, dettagli_rimozione);
         break;
     }
 
@@ -55,7 +56,7 @@ function validazioneCampo(input, tipo) {
             dettagli_form = dettagli_registrazione;
         break;
         case "admin":
-            dettagli_form = dettagli_per_admin;
+            dettagli_form = Object.assign(dettagli_inserimento, dettagli_modifica, dettagli_rimozione);
         break;
         case "inserimento":
             dettagli_form = dettagli_inserimento;
@@ -121,7 +122,7 @@ function messaggio(input, mode, tipo) {
             dettagli_form = dettagli_registrazione;
         break;
         case "admin":
-            dettagli_form = dettagli_per_admin;
+            dettagli_form = Object.assign(dettagli_inserimento, dettagli_modifica, dettagli_rimozione);
         break;
     }
 
