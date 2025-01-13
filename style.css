@@ -814,6 +814,13 @@ hr{
     margin-bottom: 0.1em;
 }
 
+.errorFormRegistrazione {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
 /* ============================
         PAGINA VIDEOGIOCO
 ============================ */

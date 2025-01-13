@@ -17,7 +17,7 @@ $connessione = new DBAccess();
 $connessioneOK = $connessione->openDBConnection();
 
 if (isset($_POST['registrati'])) {
-	$messaggiPerForm .= "<ul>";
+	$messaggiPerForm .= "<ul class='itemCentered errorFormRegistrazione'>";
 
 	$nome = $connessione->pulisciInput($_POST['nome']);
 	if(!preg_match("/^[A-Za-z\ ]{2,}$/",$nome))
