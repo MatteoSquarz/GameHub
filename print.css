@@ -199,3 +199,52 @@ h1, h2 {
     height: auto;
     border-radius: 20px;
 }
+
+/*==============================
+    PAGINA ACQUISTO COMPLETATO
+==============================*/
+.ac-container {
+    justify-self: center;
+    margin: 1em 2em;
+    padding: 1.5em;
+    display: flex;
+    justify-content: center;
+    background-color: var(--boxcolor);
+    border-radius: 15px;
+    gap: 1em;
+}
+
+.ac-img {
+    max-width: 50%;
+    border-radius: 50%;
+    border: #000 solid 2pt;
+    height: auto;
+    align-self: center;
+}
+
+.ac-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+}
+
+.ac-msg {
+    font-size: 2em;
+    line-height: 1.5em;
+    margin-bottom: 0;
+}
+
+.ac-descr {
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+.ac-info ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.ac-info li{
+    align-self: center;
+}
