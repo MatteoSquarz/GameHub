@@ -1,0 +1,179 @@
+footer,
+.tornaSuButton,
+.navHelper,
+#menu,
+#mobileMenu,
+.menuListMobile {
+    display: none;
+}
+
+
+body {
+    font-family: serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#breadcumb {
+    border-top: #000 1pt solid;
+    border-bottom: 1pt solid #000;
+    text-align: center;
+    color: #000;
+}
+
+#logo {
+    display: block !important;
+    text-align: center;
+    color: #000;
+}
+
+.hero {
+    padding: 1cm 0;
+    text-align: center;
+    border-bottom: 1pt solid #000;
+    margin-bottom: 1cm;
+}
+
+.hero h1 {
+    font-size: 24pt;
+    margin-bottom: 0.5cm;
+}
+
+.videogames,
+.abbonamenti {
+    gap: 1em;
+    margin: 1em 0;
+    page-break-inside: avoid;
+}
+
+/* Images */
+.videogames img, .abbonamenti img {
+    display: none;
+}
+
+a:link:after, a:visited:after {
+    content: " [" attr(href) "] ";
+    font-size: 90%;
+}
+
+
+h1, h2 {
+    page-break-after: avoid;
+}
+
+/*==============================
+        PAGINA CATALOGO
+==============================*/
+.game-card{
+    page-break-inside: avoid;
+    border: #000 1pt solid;
+}
+.game-card a{
+    display: none;
+}
+.catalogo-cantainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+.game-card {
+    flex: 1 1 250px;
+    max-width: 380px;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--boxcolor);
+    text-align: center;
+    font-size: 20px;
+
+    border: 1pt solid #000;
+    border-radius: 10px;
+
+}
+.game-card-image {
+    width: 100%;
+    height: 100%;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.allgames-section h2 {
+    text-align: center;
+}
+
+
+
+/*==============================
+        PAGINA ABBONAMENTI
+==============================*/
+.abbonamentiAbb{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.targhettaAbb img{
+    width: 10em;
+    height: auto;
+    border-radius: 20px;
+}
+
+.targhettaAbb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.targhettaAbb p{
+    margin-bottom: 0;
+}
+
+
+/*==============================
+        PAGINA CHI SIAMO
+==============================*/
+.infoObiettivi, .infoFondatori{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.infoObiettivi h2, .infoFondatori h2{
+    margin-bottom: 0;
+}
+.containerCardFondatori{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+.cardFondatore{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cardFondatore h3{
+    margin-bottom: 0;
+}
+.cardFondatore img{
+    width: 8em;
+    height: auto;
+    border-radius: 20px;
+}
