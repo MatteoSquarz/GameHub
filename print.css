@@ -49,6 +49,28 @@ body {
     page-break-inside: avoid;
 }
 
+.videogames{
+    margin-bottom: 2em;
+}
+.infoVideogames{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.infoAbbonamenti{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+.infoAbbonamenti p{
+    text-align: right;
+}
+.infoAbbonamenti h2, .infoVideogames h2{
+    margin-bottom: 0;
+}
+
 /* Images */
 .videogames img, .abbonamenti img {
     display: none;
