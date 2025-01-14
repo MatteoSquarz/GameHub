@@ -10,13 +10,13 @@ $connectionOK = $connection->openDBConnection();
 session_start();
 if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
 {
-    header("Location: /TecWeb-project/404.php");
+    header("Location: /TecWeb-Project/404.php");
     exit();
 }
 
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
-    header("Location: /TecWeb-project/index.php");
+    header("Location: /TecWeb-Project/index.php");
   	exit();
 }
 

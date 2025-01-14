@@ -10,7 +10,7 @@ if (isset($_SESSION['username']))
 
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
-    header("Location: /TecWeb-project/index.php");
+    header("Location: /TecWeb-Project/index.php");
   	exit();
 }
 
@@ -19,7 +19,7 @@ $connectionOK = $connection->openDBConnection();
 
 if(isset($_GET['disdici'])){
     $connection->disdiciAbbonamento($_SESSION['username']);
-    header("Location: /TecWeb-project/profilo.php");
+    header("Location: /TecWeb-Project/profilo.php");
 }
 
 $vendite = "";

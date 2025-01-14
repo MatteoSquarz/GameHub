@@ -36,7 +36,7 @@ if (isset($_POST['accedi'])) {
 				unset($_SESSION);
 				$_SESSION["username"] = $username;
 			}
-			header("Location: /TecWeb-project/index.php");	
+			header("Location: /TecWeb-Project/index.php");	
 		}
 		elseif($connessione->autenticaAdmin($username,$password)){
 			if(empty($_SESSION)){
@@ -46,7 +46,7 @@ if (isset($_POST['accedi'])) {
 				unset($_SESSION);
 				$_SESSION["username"] = $username;
 			}
-			header("Location: /TecWeb-project/admin.php");
+			header("Location: /TecWeb-Project/admin.php");
 		}
 		else
 			$messaggiPerForm .= "<li>Username e/o password errati</li>";
