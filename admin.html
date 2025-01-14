@@ -12,7 +12,7 @@
         <script src="script.js"></script>
         <title>Pagina Admin - GameHub</title>
     </head>
-    <body onload="caricamento('admin');">
+    <body onload="caricamento('inserimento'); caricamento('rimozione'); caricamento('modifica');">
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
@@ -129,7 +129,7 @@
                     <h2>Area Rimozione Gioco</h2>
                     <div class="formCampo itemCentered">
                         <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
-                        <input type="text" id="codice-rimozione" name="codice-rimozione" required />
+                        <input type="text" id="codice-rimozione" name="codice-rimozione" required/>
                     </div>
                     <div class="itemCentered">
                         <button type="submit" class="buttonAdminForm" name="rimuoviVideogioco" id="rimuoviVideogioco">Rimuovi gioco</button>

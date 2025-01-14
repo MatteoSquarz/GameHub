@@ -36,8 +36,14 @@ function caricamento(tipo) {
         case "registrazione":
             dettagli_form = dettagli_registrazione;
         break;
-        case "admin":
-            dettagli_form = Object.assign(dettagli_inserimento, dettagli_modifica, dettagli_rimozione);
+        case "inserimento":
+            dettagli_form = dettagli_inserimento;
+        break;
+        case "rimozione":
+            dettagli_form = dettagli_rimozione;
+        break;
+        case "modifica":
+            dettagli_form = dettagli_modifica;
         break;
     }
 
@@ -54,9 +60,6 @@ function validazioneCampo(input, tipo) {
     {
         case "registrazione":
             dettagli_form = dettagli_registrazione;
-        break;
-        case "admin":
-            dettagli_form = Object.assign(dettagli_inserimento, dettagli_modifica, dettagli_rimozione);
         break;
         case "inserimento":
             dettagli_form = dettagli_inserimento;
@@ -79,8 +82,6 @@ function validazioneCampo(input, tipo) {
     }
     if (text.search(regex) != 0) {
         messaggio(input, 1, tipo);
-        input.focus();
-        input.select();
         return false;
     }
     return true;
@@ -107,6 +108,8 @@ function validazioneForm(tipo) {
     for(var key in dettagli_form){
         var input = document.getElementById(key);
         if(!validazioneCampo(input, tipo)){
+            input.focus();
+            input.select();
             return false;
         }
     }
@@ -122,8 +125,14 @@ function messaggio(input, mode, tipo) {
         case "registrazione":
             dettagli_form = dettagli_registrazione;
         break;
-        case "admin":
-            dettagli_form = Object.assign(dettagli_inserimento, dettagli_modifica, dettagli_rimozione);
+        case "inserimento":
+            dettagli_form = dettagli_inserimento;
+        break;
+        case "rimozione":
+            dettagli_form = dettagli_rimozione;
+        break;
+        case "modifica":
+            dettagli_form = dettagli_modifica;
         break;
     }
 
