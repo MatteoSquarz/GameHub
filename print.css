@@ -593,3 +593,106 @@ hr{
     width: 85%;
     margin-bottom: 2%;
 }
+
+/*==============================
+        DASHBOARD ADMIN
+==============================*/
+.divForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-radius: 25px;
+    font-size: 1em;
+    margin: 2em 15%;
+    border: #000 solid 2pt;
+}
+#divAreaModifica, #divAreaRimozione{
+    page-break-inside: avoid;
+}
+.formRiga{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0em;
+    padding: 0em;
+}
+.formCampo{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.divForm h2{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+.titleLegend{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.sceltaPiattaforma{
+    text-align: center;
+}
+
+.containerScelteCategoria{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.formCheckboxAreaPiattaforme{
+    margin-top: 1em;
+}
+
+
+fieldset{
+    border: none;
+}
+
+.formCampo input, textarea {
+    width: 90%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2pt;
+    font-size: 0.9em;
+}
+
+.formCampo select {
+    width: 95%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2pt;
+    font-size: 0.9em;
+}
+
+.labelFormAdmin{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.buttonAdminForm{
+    font-size: 0.9em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 2pt solid #000;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    align-self: center;
+}
+
+.itemCentered{
+    align-self: center;
+    justify-self: center;
+}

@@ -1381,6 +1381,7 @@ fieldset{
     color: var(--errortxtonboxcolor);
     font-size: 1em;
     font-weight: bold;
+    text-align: center;
 }
 
 .confermaOperazioneAdmin {
