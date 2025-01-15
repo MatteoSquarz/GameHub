@@ -12,15 +12,14 @@ if (isset($_SESSION['username']))
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 
 $connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 $abbonamenti = "";
 $listaAbbonamenti = "";
 
-if(!$connectionOK)
+if($connection->openDBConnection())
 {
     $abbonamenti = $connection->getListAbbonamenti();
-    //$connection->closeDBConnection();
+    $connection->closeDBConnection();
 
     if($abbonamenti)
     {
@@ -46,25 +45,30 @@ if(!$connectionOK)
         $listaAbbonamenti .= "Non ci sono abbonamenti da visualizzare";
 }
 else
-	//in fase di produzione rimuovere $connessioneOK
-	$listaAbbonamenti = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+    header("Location: 500.php");
 
 $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 
-if(isset($_GET['abbonamento'])){
+if(isset($_GET['abbonamento']))
+{
     $abb = $_GET['abbonamento'];
-    if (!isset($_SESSION['username']))
+    if (!isset($_SESSION['username']))   //se non è loggato
         $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Si prega di effettuare il login prima di abbonarsi</p>", $paginaHTML);
-    else
-    {
-        $utente = ($connection->getUtente($_SESSION['username'])[0]);
-        if($utente['abbonamentoAttuale'] != NULL)
-            $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
-        else
-        {
-            $result = $connection->acquistaAbbonamento($utente['username'], $abb);
-            header("Location: /TecWeb-Project/acquistoCompletato.php");
+    else{   //se è loggato
+        if($connection->openDBConnection()){
+            $utente = ($connection->getUtente($_SESSION['username'])[0]);
+
+            if($utente['abbonamentoAttuale'] == NULL){  //se non ha già un abbonamento attivo
+                $result = $connection->acquistaAbbonamento($utente['username'], $abb);
+                header("Location: acquistoCompletato.php");
+            }
+            else{   //se ha un abbonamento attivo
+                $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
+            }
+            $connection->closeDBConnection();
         }
+        else
+            header("Location: 500.php");
     }
 }
 

@@ -12,21 +12,18 @@ if (isset($_SESSION['username']))
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 
 $connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 $giochi = "";
 $listaGiochi = "";
 
-if(!$connectionOK)
+if($connection->openDBConnection())
 {
     $giochi = $connection->getListGiochi();
     $connection->closeDBConnection();
 
-    if($giochi)
-    {
+    if($giochi){
         $listaGiochi .= "<div class=\"card-container\">";
-        foreach($giochi as $gioco)
-        {
+        foreach($giochi as $gioco){
             $listaGiochi .= "<div class=\"game-card\">";
             $img = $gioco['immagine'];
             $listaGiochi .= "<img class=\"game-card-image\" src=\"assets/game-covers/$img\" alt=\"\">";
@@ -41,11 +38,10 @@ if(!$connectionOK)
         $listaGiochi .= "</div>";
     }
     else
-        $listaGiochi .= "Non ci sono giochi da visualizzare";
+        $listaGiochi .= "Non ci sono giochi da visualizzare";  //todo
 }
 else
-	//in fase di produzione rimuovere $connessioneOK
-	$listaGiochi = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+    header("Location: 500.php");
 
 echo str_replace("[listaGiochi]", $listaGiochi, $paginaHTML);
 

@@ -2,21 +2,28 @@
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
+function pulisciInput($value){
+    $value = trim($value);
+    $value = strip_tags($value);
+    $value = htmlentities($value);
+    return $value;
+}
+
 $paginaHTML = file_get_contents('admin.html');
 
 $connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 session_start();
-if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
-{
-    header("Location: /TecWeb-project/404.php");
-    exit();
+if($connection->openDBConnection()){
+    if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username']))){   //se non è loggato come admin
+        $connection->closeDBConnection();
+        header("Location: 404.php");
+        exit();
+    }
 }
-
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
-    header("Location: /TecWeb-project/index.php");
+    header("Location: index.php");
   	exit();
 }
 
@@ -27,11 +34,12 @@ $listaCategorie = "";
 $piattaforme = "";
 $listaPiattaforme = "";
 
-if(!$connectionOK){
+if($connection->openDBConnection())
+{
     $abbonamenti = $connection->getListAbbonamenti();
     $categorie = $connection->getListCategorie();
     $piattaforme = $connection->getListPiattaforme();
-    //$connection->closeDBConnection();
+    $connection->closeDBConnection();
 
 
     foreach($abbonamenti as $abbonamento){
@@ -71,8 +79,9 @@ if(!$connectionOK){
         $listaCategorie .= "</div>";
     }
 
-
 }
+else
+    header("Location: 500.php");
 
 $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
@@ -85,15 +94,12 @@ $messaggiInserimento = "";
 if (isset($_POST['inserisciVideogioco'])) {
 	$piat = array();
     $cat = array();
-    foreach ($_POST as $p)
-    {
-        if (str_contains($p,"Piattaforma"))
-        {
+    foreach ($_POST as $p){
+        if (str_contains($p,"Piattaforma")){
             $p = str_replace("Piattaforma","",$p);
             array_push($piat,$p);
         }
-        else if(str_contains($p,"Categoria"))
-        {
+        else if(str_contains($p,"Categoria")){
             $p = str_replace("Categoria","",$p);
             array_push($cat,$p);
         }
@@ -101,23 +107,24 @@ if (isset($_POST['inserisciVideogioco'])) {
 
     $messaggiInserimento .= "<ul class=\"itemCentered errorFormAdmin\">";
 
-	$codice = $connection->pulisciInput($_POST['codice']);
+    $codice = pulisciInput($_POST['codice']);
+    $titolo = pulisciInput($_POST['titolo']);
+    $dataUscita = pulisciInput($_POST['data-uscita']);
+    $prezzo = pulisciInput($_POST['prezzo']);
+    $casaSviluppatrice = pulisciInput($_POST['casa-sviluppatrice']);
+    $descrizione = pulisciInput($_POST['descrizione']);
+
 	if(!preg_match("/^[0-9]{8,8}$/",$codice))
 		$messaggiInserimento .= "<li>Il codice contiene solo numeri e deve essere di 8 caratteri</li>";
 
-    $titolo = $connection->pulisciInput($_POST['titolo']);
     if(!preg_match("/^[A-Za-z0-9\ \']{2,20}$/",$titolo))
         $messaggiInserimento .= "<li>Il titolo non può contenere caratteri speciali, almeno 2 caratteri max 20</li>";
 
-	$dataUscita = $connection->pulisciInput($_POST['data-uscita']);
-
     $pegi = $_POST['pegi'];
-
-	$prezzo = $connection->pulisciInput($_POST['prezzo']);
+	
 	if(!preg_match("/^([0-9]{1,3})$/",$prezzo))
 		$messaggiInserimento .= "<li>Il prezzo deve essere compreso tra 0 e 999</li>";
-
-    $casaSviluppatrice = $connection->pulisciInput($_POST['casa-sviluppatrice']);
+   
 	if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
         $messaggiInserimento .= "<li>La casa sviluppatrice contiene solo lettere o numeri, almeno 2 caratteri max 30</li>";
 
@@ -126,8 +133,7 @@ if (isset($_POST['inserisciVideogioco'])) {
         $messaggiInserimento .= "<li>Nessun immagine selezionata</li>";
 
     $abb = $_POST['abbonamentoMin'];
-
-    $descrizione = $connection->pulisciInput($_POST['descrizione']);
+    
 	if(!preg_match("/^[\s\S]{20,1000}$/",$descrizione))
         $messaggiInserimento .= "<li>La descrizione deve essere di almeno 20 caratteri max 1000</li>";
 
@@ -140,24 +146,22 @@ if (isset($_POST['inserisciVideogioco'])) {
 	$messaggiInserimento .= "</ul>";
 
 	if($messaggiInserimento == "<ul class=\"itemCentered errorFormAdmin\"></ul>"){
-		if($connectionOK == NULL)
-		{
-			if($connection->getGiocoByCodice($codice) == null)
-			{
-				$nuovoGioco = $connection->insertGioco($codice,$titolo,$descrizione,$prezzo,$dataUscita,$pegi,$casaSviluppatrice,$img);
-				if($nuovoGioco)
-                {
-                    $connection->insertCategorieGioco($codice, $cat);
-                    $connection->insertPiattaformeGioco($codice, $piat);
-                    $connection->insertAbbonamentiGioco($codice, $abb);
-                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
-                }
-			}
+		if($connection->openDBConnection()){
+			if($connection->getGiocoByCodice($codice) == null){  //se il codice non è già presente
+				$connection->insertGioco($codice,$titolo,$descrizione,$prezzo,$dataUscita,$pegi,$casaSviluppatrice,$img);
+                $connection->insertCategorieGioco($codice, $cat);
+                $connection->insertPiattaformeGioco($codice, $piat);
+                $connection->insertAbbonamentiGioco($codice, $abb);
+                $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
+            }       
 			else{
                 $messaggiInserimento = "<p class=\"itemCentered errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</p>";
-                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
-            }			
-		}        
+                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+            }
+            $connection->closeDBConnection();			
+		}     
+        else
+            header("Location: 500.php");
 	} 
     else
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
@@ -167,50 +171,56 @@ $paginaHTML = str_replace('[messaggiInserimento]', $messaggiInserimento, $pagina
 
 $messaggioRimozione = "";
 if (isset($_POST['rimuoviVideogioco'])) {
-	$codice = $connection->pulisciInput($_POST['codice-rimozione']);
+    $codice = pulisciInput($_POST['codice-rimozione']);
+
 	if(!preg_match("/^[0-9]{8,8}$/",$codice)){
         $messaggioRimozione .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
     }
 
 	if($messaggioRimozione == ""){
-		if($connectionOK == NULL)
-		{
-			if($connection->getGiocoByCodice($codice) == null){
-                $messaggioRimozione = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
-                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
-            }
-			else
-            {
+		if($connection->openDBConnection()){
+			if(!$connection->getGiocoByCodice($codice) == null){  //se il codice è presente
                 $rimozione = $connection->rimuoviGioco($codice);
 				if($rimozione)
                     $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
-            }				
-		}        
+            }
+			else{   //se il codice non è presente non è possibile rimuoverlo
+                $messaggioRimozione = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
+                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+            }
+            $connection->closeDBConnection();				
+		}
+        else
+            header("Location: 500.php");   
 	}
 }
 $paginaHTML = str_replace('[messaggioRimozione]', $messaggioRimozione, $paginaHTML);
 
 $messaggioModifica = "";
 if (isset($_POST['modificaAbbonamento'])) {
-	$prezzo = $connection->pulisciInput($_POST['nuovo-costo']);
+
+    $prezzo = pulisciInput($_POST['nuovo-costo']);
+    $abb = pulisciInput($_POST['abbonamento']);
+
 	if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
 		$messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</p>";
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
     }
-	$abb = $connection->pulisciInput($_POST['abbonamento']);
 
-    if($messaggioModifica == "")
-    {
-	    if($connectionOK == NULL)
-	    {
-		    if($connection->modificaPrezzoAbbonamento($abb,$prezzo))
+    if($messaggioModifica == ""){
+	    if($connection->openDBConnection()){
+		    if($connection->modificaPrezzoAbbonamento($abb,$prezzo)){  //se il prezzo è stato modificato
                 $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
-		    else{
+            }
+            else{   //se il prezzo è già quello impostato
                 $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";
                 $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
-            }				
+            }
+            $connection->closeDBConnection();				
 	    }
+        else
+            header("Location: 500.php");
     }       
 }
 $paginaHTML = str_replace('[messaggioModifica]', $messaggioModifica, $paginaHTML);

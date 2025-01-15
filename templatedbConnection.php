@@ -9,30 +9,16 @@ class DBAccess{
 
     private $connection;
 
-	public function openDBConnection() {
-		
-		//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT)
-		//try{
-			//$this->connection = mysqli_connect(DBAccess::HOST_DB, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DATABASE_NAME);
-			//fare query
-		//}
-		//catch(mysqli_sql_exception $e){
-			//$errore = $e->getMessage()
-		//}
+	public function openDBConnection() {		
 		mysqli_report(MYSQLI_REPORT_ERROR);
 
 		$this->connection = mysqli_connect(DBAccess::HOST, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DB_NAME);
-		
-		//solo per fase di debug
-		return mysqli_connect_error();
 
-		//produzione
-		/*if(mysqli_connect_errno()){
+		if(mysqli_connect_errno()){
 			return false;
 		} else {
 			return true;
-		}*/
-		
+		}
 	}
 
 	public function closeDBConnection() {
@@ -176,7 +162,7 @@ class DBAccess{
 	}
 
 	public function getUtente($username){
-		$query = "SELECT * from User WHERE username = '$username'";
+		$query = "SELECT * from Cliente WHERE username = '$username'";
 
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 
@@ -222,18 +208,8 @@ class DBAccess{
 		}
 	}
 
-	public function pulisciInput($value){
-		// elimina gli spazi
-		$value = trim($value);
-		// rimuove tag html (non sempre è una buona idea!) 
-		$value = strip_tags($value);
-		// converte i caratteri speciali in entità html (ex. &lt;)
-	    $value = htmlentities($value);
-		return $value;
-    }
-
 	public function autenticaUtente($username, $password){
-		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM User)";
+		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM Cliente)";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_num_rows($queryResult) == 1) {
 			return true;
@@ -256,7 +232,7 @@ class DBAccess{
 
 	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email) {
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";
-		$queryInsUser = "INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", NULL, NULL, NULL)";
+		$queryInsUser = "INSERT INTO Cliente (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", NULL, NULL, NULL)";
 		
 		$queryInsRes = mysqli_query($this->connection, $queryInsUtente) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
@@ -272,7 +248,7 @@ class DBAccess{
 	}
 
 	public function disdiciAbbonamento($username){
-		$query = "UPDATE User SET abbonamentoAttuale = NULL, dataInizio = NULL, dataFine = NULL WHERE username = '$username'";
+		$query = "UPDATE Cliente SET abbonamentoAttuale = NULL, dataInizio = NULL, dataFine = NULL WHERE username = '$username'";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
@@ -284,7 +260,7 @@ class DBAccess{
 		$dataInizio = date('Y-m-d');
 		$timestamp = strtotime("+1 year");
 		$dataFine = date('Y-m-d', $timestamp);
-		$query = "UPDATE User SET abbonamentoAttuale = '$abbonamento', dataInizio = '$dataInizio', dataFine = '$dataFine' WHERE username = '$username'";
+		$query = "UPDATE Cliente SET abbonamentoAttuale = '$abbonamento', dataInizio = '$dataInizio', dataFine = '$dataFine' WHERE username = '$username'";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;

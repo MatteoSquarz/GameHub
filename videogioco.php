@@ -12,18 +12,18 @@ if (isset($_SESSION['username']))
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 
 $connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 $giochi = "";
 $paginaGioco = "";
 $codice = $_GET['codice'];
 
-if(!$connectionOK){
+if($connection->openDBConnection()){
+
     $gioco = $connection->getGiocoByCodice($codice)[0];
     $categorie = $connection->getCategoriaByCodiceGioco($codice);
     $piattaforme = $connection->getPiattaformaByCodiceGioco($codice);
     $abbonamenti = $connection->getAbbonamentoByCodiceGioco($codice);
-    //$connection->closeDBConnection();
+    $connection->closeDBConnection();
 
     $paginaGioco .= "<div class=\"backgroundPannelloVideogioco\">";
     $paginaGioco .= "<div class=\"pannelloVideogioco blur\">";
@@ -99,25 +99,36 @@ if(!$connectionOK){
     $paginaGioco .= "</div>";
 }
 else
-	//in fase di produzione rimuovere $connessioneOK
-	$paginaGioco = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+    header("Location: 500.php");
 
 $paginaHTML = str_replace('[videogioco]', $titolo, $paginaHTML);
 $paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
 
 if(isset($_GET['acquisto'])){
-    $gioco = ($connection->getGiocoByCodice($codice)[0]);
-    if (!isset($_SESSION['username']))
-        $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare il login prima di acquistare</p>", $paginaHTML);
+    /*
+    if($connection->openDBConnection()){
+        $gioco = ($connection->getGiocoByCodice($codice)[0]);
+        $connection->closeDBConnection();
+    }
     else
-    {
-        if($connection->findAcquisto($_SESSION['username'],$codice))
-            $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Hai già acquistato questo videogioco</p>", $paginaHTML);
-        else
-        {
-            $result = $connection->acquistaGioco($_SESSION['username'], $codice, $costo);
-            header("Location: /TecWeb-Project/acquistoCompletato.php");
+        header("Location: 500.php");
+    */
+
+    if (!isset($_SESSION['username']))  //se non è loggato
+        $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare il login prima di acquistare</p>", $paginaHTML);
+    else{   //se è loggato
+        if($connection->openDBConnection()){
+            if(!$connection->findAcquisto($_SESSION['username'],$codice)){   //se non ha già acquistato il gioco
+                $result = $connection->acquistaGioco($_SESSION['username'], $codice, $costo);
+                header("Location: acquistoCompletato.php");
+            }
+            else   //se ha già acquistato il gioco
+                $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Hai già acquistato questo videogioco</p>", $paginaHTML);
+
+            $connection->closeDBConnection();
         }
+        else
+            header("Location: 500.php");
     }
 }
 
