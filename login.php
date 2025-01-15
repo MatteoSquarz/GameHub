@@ -34,7 +34,7 @@ if (isset($_POST['accedi'])) {
 	
 	if(!preg_match("/^[A-Za-z0-9]{2,}$/",$username))
 		$messaggiPerForm .= "<li>Caratteri non concessi nello username</li>";
-	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{8,}$/",$password))
+	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{2,}$/",$password))
 		$messaggiPerForm .= "<li>Caratteri non concessi nella password</li>";
 
 	if($messaggiPerForm == "<ul class=\"errorLogin\">")
