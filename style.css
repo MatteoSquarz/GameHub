@@ -1384,6 +1384,14 @@ fieldset{
     text-align: center;
 }
 
+ul[class ~= "errorFormAdmin"] {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: start;
+    margin-left: 0.5em;
+}
+
 .confermaOperazioneAdmin {
     color: var(--successtxtonboxcolor);
     font-size: 1em;

@@ -51,6 +51,7 @@
             [messaggioOutput]
             <div class="divForm" id="divAreaInserimento">
                 <form id="inserimento-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('inserimento');">
+                    [messaggiInserimento] 
                     <h2>Area Inserimento Gioco</h2>
                     <div class="formRiga">
                         <div class="formCampo">
@@ -121,12 +122,12 @@
                     </div>
                     <div class="itemCentered">
                         <button type="submit" class="buttonAdminForm" name="inserisciVideogioco" id="inserisciVideogioco">Inserisci gioco</button>                        
-                    </div>
-                    [messaggiInserimento]    
+                    </div>   
                 </form>
             </div>
             <div class="divForm" id="divAreaRimozione">
                 <form id="rimozione-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('rimozione');">
+                    [messaggioRimozione]
                     <h2>Area Rimozione Gioco</h2>
                     <div class="formCampo itemCentered">
                         <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
@@ -135,11 +136,11 @@
                     <div class="itemCentered">
                         <button type="submit" class="buttonAdminForm" name="rimuoviVideogioco" id="rimuoviVideogioco">Rimuovi gioco</button>
                     </div>
-                    [messaggioRimozione]
                 </form>
             </div>
             <div class="divForm" id="divAreaModifica">
                 <form id="modifica-prezzi" method="post" action="admin.php" onsubmit="return validazioneForm('modifica');">
+                    [messaggioModifica]
                     <h2>Area Modifica Prezzi Abbonamenti</h2>
                     <div class="formRiga">
                         <div class="formCampo">
@@ -156,7 +157,6 @@
                     <div class="itemCentered">
                         <button type="submit" class="buttonAdminForm" name="modificaAbbonamento" id="modificaAbbonamento">Modifica prezzo</button>
                     </div>
-                    [messaggioModifica]
                 </form>
             </div>
             <div class="tornaSuButton">
