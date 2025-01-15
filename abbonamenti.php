@@ -52,31 +52,23 @@ $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 if(isset($_GET['abbonamento']))
 {
     $abb = $_GET['abbonamento'];
-    if (!isset($_SESSION['username']))
+    if (!isset($_SESSION['username']))   //se non è loggato
         $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Si prega di effettuare il login prima di abbonarsi</p>", $paginaHTML);
-    else
-    {
-        if($connection->openDBConnection())
-        {
+    else{   //se è loggato
+        if($connection->openDBConnection()){
             $utente = ($connection->getUtente($_SESSION['username'])[0]);
+
+            if($utente['abbonamentoAttuale'] == NULL){  //se non ha già un abbonamento attivo
+                $result = $connection->acquistaAbbonamento($utente['username'], $abb);
+                header("Location: acquistoCompletato.php");
+            }
+            else{   //se ha un abbonamento attivo
+                $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
+            }
             $connection->closeDBConnection();
         }
         else
             header("Location: 500.php");
-
-        if($utente['abbonamentoAttuale'] != NULL)
-            $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
-        else
-        {
-            if($connection->openDBConnection())
-            {
-                $result = $connection->acquistaAbbonamento($utente['username'], $abb);
-                $connection->closeDBConnection();
-            }
-            else
-                header("Location: 500.php");
-            header("Location: acquistoCompletato.php");
-        }
     }
 }
 

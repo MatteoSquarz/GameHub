@@ -21,11 +21,9 @@ if($connection->openDBConnection())
     $giochi = $connection->getListGiochi();
     $connection->closeDBConnection();
 
-    if($giochi)
-    {
+    if($giochi){
         $listaGiochi .= "<div class=\"card-container\">";
-        foreach($giochi as $gioco)
-        {
+        foreach($giochi as $gioco){
             $listaGiochi .= "<div class=\"game-card\">";
             $img = $gioco['immagine'];
             $listaGiochi .= "<img class=\"game-card-image\" src=\"assets/game-covers/$img\" alt=\"\">";
@@ -40,7 +38,7 @@ if($connection->openDBConnection())
         $listaGiochi .= "</div>";
     }
     else
-        $listaGiochi .= "Non ci sono giochi da visualizzare";
+        $listaGiochi .= "Non ci sono giochi da visualizzare";  //todo
 }
 else
     header("Location: 500.php");

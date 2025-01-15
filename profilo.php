@@ -17,7 +17,7 @@ if(isset($_GET['logout'])){
 $connection = new DBAccess();
 
 if(isset($_GET['disdici'])){
-    $connectionOK = $connection->openDBConnection();
+    $connection->openDBConnection();
     $connection->disdiciAbbonamento($_SESSION['username']);
     $connection->closeDBConnection();
     header("Location: profilo.php");
@@ -26,9 +26,12 @@ if(isset($_GET['disdici'])){
 $vendite = "";
 $listaGiochi = "";
 
-if($connection->openDBConnection() && isset($_SESSION['username']))
-{
+if($connection->openDBConnection() && isset($_SESSION['username'])){
+
     $utente = ($connection->getUtente($_SESSION['username'])[0]);
+    $abbonamento = $utente['abbonamentoAttuale'];
+    $abbonamentoImg = $connection->getImmagineAbbonamento($abbonamento);
+    $vendite = $connection->getAcquisti($_SESSION['username']);
     $connection->closeDBConnection();
 
     $username = $utente['username'];
@@ -41,8 +44,8 @@ if($connection->openDBConnection() && isset($_SESSION['username']))
     $paginaHTML = str_replace('[Cognome]', $cognome, $paginaHTML);
     $dataNascita = $utente['dataNascita'];
     $paginaHTML = str_replace('[Data di Nascita]', $dataNascita, $paginaHTML);
-    $abbonamento = $utente['abbonamentoAttuale'];
-    if ($abbonamento == null){
+    
+    if ($abbonamento == null){  //se non ha un abbonamento
         $imgAbb = "<img src=\"assets/no-abbonamento.png\" alt=\"\" class=\"profilePicture\">";
         $paginaHTML = str_replace('[immagine]', $imgAbb, $paginaHTML);
         $paginaHTML = str_replace('[Nome Abbonamento]', "Nessun abbonamento attivo", $paginaHTML);
@@ -50,16 +53,7 @@ if($connection->openDBConnection() && isset($_SESSION['username']))
         $paginaHTML = str_replace('[Data scadenza]', "Nessun abbonamento attivo", $paginaHTML);
         $paginaHTML = str_replace('[pulsante disdici]', "", $paginaHTML);
     }
-    else
-    {
-        if($connection->openDBConnection())
-        {
-            $abbonamentoImg = $connection->getImmagineAbbonamento($abbonamento);
-            $connection->closeDBConnection();
-        }
-        else
-            header("Location: 500.php");
-
+    else{   //se ha un abbonamento
         $imgAbb = "<img src=\"assets/$abbonamentoImg\" alt=\"\" class=\"profilePicture\">";
         $paginaHTML = str_replace('[immagine]', $imgAbb, $paginaHTML);
         $paginaHTML = str_replace('[Nome Abbonamento]', $abbonamento, $paginaHTML);
@@ -71,17 +65,9 @@ if($connection->openDBConnection() && isset($_SESSION['username']))
         $paginaHTML = str_replace('[pulsante disdici]', $disdici, $paginaHTML);
     }    
 
-    if($connection->openDBConnection())
-    {
-        $vendite = $connection->getAcquisti($_SESSION['username']);
-        $connection->closeDBConnection();
-    }
-    else
-        header("Location: 500.php");
-
-    if($vendite == null)
+    if($vendite == null)  //se non ha effettuato acquisti
         $listaGiochi = "<p class=\"noAcquisti\">Non hai ancora effettuato acquisti.</p>";
-    else{
+    else{    //se ha effettuato acquisti
         foreach($vendite as $vendita){
             $codice = $vendita['videogioco'];
             $listaGiochi .= "<li class=\"gameItem\">";

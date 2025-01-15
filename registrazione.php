@@ -4,6 +4,13 @@ use DB\DBAccess;
 
 $paginaHTML = file_get_contents('registrazione.html');
 
+function pulisciInput($value){
+    $value = trim($value);
+    $value = strip_tags($value);
+    $value = htmlentities($value);
+    return $value;
+}
+
 $messaggiPerForm = "";
 
 $nome = "";
@@ -18,18 +25,12 @@ $connection = new DBAccess();
 if (isset($_POST['registrati'])) {
 	$messaggiPerForm .= "<ul class='itemCentered errorFormRegistrazione'>";
 
-	if($connection->openDBConnection())
-	{
-		$nome = $connection->pulisciInput($_POST['nome']);
-		$cognome = $connection->pulisciInput($_POST['cognome']);
-		$dataNascita = $connection->pulisciInput($_POST['dataNascita']);
-		$email = $connection->pulisciInput($_POST['email']);
-		$username = $connection->pulisciInput($_POST['username']);
-		$password = $connection->pulisciInput($_POST['password']);
-		$connection->closeDBConnection();
-	}
-	else
-		header("Location: 500.php");
+	$nome = pulisciInput($_POST['nome']);
+	$cognome = pulisciInput($_POST['cognome']);
+	$dataNascita = pulisciInput($_POST['dataNascita']);
+	$email = pulisciInput($_POST['email']);
+	$username = pulisciInput($_POST['username']);
+	$password = pulisciInput($_POST['password']);
 	
 	if(!preg_match("/^[A-Za-z\ ]{2,}$/",$nome))
 		$messaggiPerForm .= "<li>Il nome non può contenere numeri o caratteri speciali, almeno 2 caratteri</li>";
@@ -49,29 +50,19 @@ if (isset($_POST['registrati'])) {
 	$messaggiPerForm .= "</ul>";
 
 	if($messaggiPerForm == "<ul class='itemCentered errorFormRegistrazione'></ul>"){
-		if($connection->openDBConnection())
-		{
+		if($connection->openDBConnection()){
 			$esistente = $connection->getUtente($username);
-			$connection->closeDBConnection();
-			if($esistente == null)
-			{
-				if($connection->openDBConnection())
-				{
-					$nuovoUtente = $connection->insertNewUser($username,$password,$nome,$cognome,$dataNascita,$email);
-					$connection->closeDBConnection();
-				}
-				else
-					header("Location: 500.php");
-
-				if($nuovoUtente)
-				{
+			if($esistente == null){  //se non esiste già un utente con quel username
+				$nuovoUtente = $connection->insertNewUser($username,$password,$nome,$cognome,$dataNascita,$email);
+				if($nuovoUtente){
 					session_start();
 					$_SESSION["registrazione"] = 1;
-					header("Location: login.php");
+					header("Location: login.php");  //reindirizza alla pagina di login
 				}
 			}
-			else
-				$messaggiPerForm = "<p>Username già utilizzato, si prega di usarne un altro</p>";				
+			else   //se esiste già un utente con quel username do un errore
+				$messaggiPerForm = "<p class='itemCentered errorFormRegistrazione'>Username già utilizzato, si prega di usarne un altro</p>";
+			$connection->closeDBConnection();
 		}
 		else
 			header("Location: 500.php");

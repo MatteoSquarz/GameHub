@@ -17,8 +17,8 @@ $giochi = "";
 $paginaGioco = "";
 $codice = $_GET['codice'];
 
-if($connection->openDBConnection())
-{
+if($connection->openDBConnection()){
+
     $gioco = $connection->getGiocoByCodice($codice)[0];
     $categorie = $connection->getCategoriaByCodiceGioco($codice);
     $piattaforme = $connection->getPiattaformaByCodiceGioco($codice);
@@ -105,31 +105,27 @@ $paginaHTML = str_replace('[videogioco]', $titolo, $paginaHTML);
 $paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
 
 if(isset($_GET['acquisto'])){
-    if($connection->openDBConnection())
-    {
+    /*
+    if($connection->openDBConnection()){
         $gioco = ($connection->getGiocoByCodice($codice)[0]);
         $connection->closeDBConnection();
     }
     else
         header("Location: 500.php");
+    */
 
-    if (!isset($_SESSION['username']))
+    if (!isset($_SESSION['username']))  //se non è loggato
         $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare il login prima di acquistare</p>", $paginaHTML);
-    else
-    {
-        if($connection->openDBConnection())
-        {
-            if($connection->findAcquisto($_SESSION['username'],$codice))
-            {
-                $connection->closeDBConnection();
-                $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Hai già acquistato questo videogioco</p>", $paginaHTML);
-            }
-            else
-            {
+    else{   //se è loggato
+        if($connection->openDBConnection()){
+            if(!$connection->findAcquisto($_SESSION['username'],$codice)){   //se non ha già acquistato il gioco
                 $result = $connection->acquistaGioco($_SESSION['username'], $codice, $costo);
-                $connection->closeDBConnection();
                 header("Location: acquistoCompletato.php");
             }
+            else   //se ha già acquistato il gioco
+                $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Hai già acquistato questo videogioco</p>", $paginaHTML);
+
+            $connection->closeDBConnection();
         }
         else
             header("Location: 500.php");

@@ -162,7 +162,7 @@ class DBAccess{
 	}
 
 	public function getUtente($username){
-		$query = "SELECT * from User WHERE username = '$username'";
+		$query = "SELECT * from Cliente WHERE username = '$username'";
 
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 
@@ -208,15 +208,8 @@ class DBAccess{
 		}
 	}
 
-	public function pulisciInput($value){
-		$value = trim($value);
-		$value = strip_tags($value);
-	    $value = htmlentities($value);
-		return $value;
-    }
-
 	public function autenticaUtente($username, $password){
-		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM User)";
+		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM Cliente)";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_num_rows($queryResult) == 1) {
 			return true;
@@ -239,7 +232,7 @@ class DBAccess{
 
 	public function insertNewUser($username, $password, $nome, $cognome, $nascita, $email) {
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";
-		$queryInsUser = "INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", NULL, NULL, NULL)";
+		$queryInsUser = "INSERT INTO Cliente (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", NULL, NULL, NULL)";
 		
 		$queryInsRes = mysqli_query($this->connection, $queryInsUtente) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
@@ -255,7 +248,7 @@ class DBAccess{
 	}
 
 	public function disdiciAbbonamento($username){
-		$query = "UPDATE User SET abbonamentoAttuale = NULL, dataInizio = NULL, dataFine = NULL WHERE username = '$username'";
+		$query = "UPDATE Cliente SET abbonamentoAttuale = NULL, dataInizio = NULL, dataFine = NULL WHERE username = '$username'";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
@@ -267,7 +260,7 @@ class DBAccess{
 		$dataInizio = date('Y-m-d');
 		$timestamp = strtotime("+1 year");
 		$dataFine = date('Y-m-d', $timestamp);
-		$query = "UPDATE User SET abbonamentoAttuale = '$abbonamento', dataInizio = '$dataInizio', dataFine = '$dataFine' WHERE username = '$username'";
+		$query = "UPDATE Cliente SET abbonamentoAttuale = '$abbonamento', dataInizio = '$dataInizio', dataFine = '$dataFine' WHERE username = '$username'";
 		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;

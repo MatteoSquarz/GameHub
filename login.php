@@ -4,6 +4,13 @@ use DB\DBAccess;
 
 $paginaHTML = file_get_contents('login.html');
 
+function pulisciInput($value){
+    $value = trim($value);
+    $value = strip_tags($value);
+    $value = htmlentities($value);
+    return $value;
+}
+
 session_start();
 if (isset($_SESSION['registrazione']))
 {
@@ -23,26 +30,17 @@ $connection = new DBAccess();
 if (isset($_POST['accedi'])) {
 	$messaggiPerForm .= "<ul class=\"errorLogin\">";
 	
-	if($connection->openDBConnection())
-	{
-    	$username = $connection->pulisciInput($_POST['username']);
-    	$password = $connection->pulisciInput($_POST['password']);
-		$connection->closeDBConnection();
-	}
-	else
-		header("Location: 500.php");
+	$username = pulisciInput($_POST['username']);
+	$password = pulisciInput($_POST['password']);
 	
 	if(!preg_match("/^[A-Za-z0-9]{2,}$/",$username))
 		$messaggiPerForm .= "<li>Caratteri non concessi nello username</li>";
 	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{2,}$/",$password))
 		$messaggiPerForm .= "<li>Caratteri non concessi nella password</li>";
 
-	if($messaggiPerForm == "<ul class=\"errorLogin\">")
-	{
-		if($connection->openDBConnection())
-		{
+	if($messaggiPerForm == "<ul class=\"errorLogin\">"){
+		if($connection->openDBConnection()){
 			if($connection->autenticaUtente($username,$password)){
-				$connection->closeDBConnection();
 				if(empty($_SESSION)){
 					$_SESSION["username"] = $username;
 				}
@@ -53,7 +51,6 @@ if (isset($_POST['accedi'])) {
 				header("Location: index.php");	
 			}
 			elseif($connection->autenticaAdmin($username,$password)){
-				$connection->closeDBConnection();
 				if(empty($_SESSION)){
 					$_SESSION["username"] = $username;
 				}
@@ -63,11 +60,10 @@ if (isset($_POST['accedi'])) {
 				}
 				header("Location: admin.php");
 			}
-			else
-			{
-				$connection->closeDBConnection();
+			else{
 				$messaggiPerForm .= "<li>Username e/o password errati</li>";
 			}
+			$connection->closeDBConnection();
 		}
 		else
 			header("Location: 500.php");
