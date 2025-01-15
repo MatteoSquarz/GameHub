@@ -248,3 +248,129 @@ h1, h2 {
 .ac-info li{
     align-self: center;
 }
+
+/*==============================
+        PAGINA VIDEOGIOCO
+==============================*/
+#mainVideogioco{
+    display: flex;
+    flex-direction: column;
+    color: var(--txtcolor);
+    width: 100%;
+    background: var(--bgcolor);
+}
+
+.pannelloVideogioco {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center; 
+    box-sizing: border-box; 
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 10px; 
+    margin-top: 2em;
+    margin-bottom: 0;  
+}
+
+.pannelloVideogioco h1{
+    font-size: 2.5em;
+    line-height: 1.5em;
+    max-width: 100%;
+}
+
+.copertinaVideogioco{
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.videogiocoPegiEAcquisto{
+    box-sizing:border-box;
+    color: var(--txtcolor);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+.videogiocoPegi img{
+    width: 2.6em;
+    height: auto;
+    border-radius: 2px;
+}
+.videogiocoPegi {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    height: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 0.85em;
+    align-items: center;
+    width: 20%;
+}
+.videogiocoAcquisto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    padding-left: 0em;
+    padding-top: 2em;
+}
+
+#mainVideogioco h2{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+.boxDescrizioneECategorie{
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0em 1em 1em 1em;
+    background-color: var(--boxcolor);
+    border-radius: 25px;
+    color: var(--boxtxtcolor);
+    margin: 0em;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.boxCategorie{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0em 1em 1em 1em;
+    box-sizing: border-box;
+    min-width: 50%;
+}
+.boxCategorie dt{
+    font-weight: bold;
+}
+.boxCategorie dd{
+    margin-top: 0.1em;
+    margin-bottom: 0.3em;
+}
+.boxDescrizioneEInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: auto;
+    padding: 1em 1em 0em 1em;
+}
+.infoVideogioco{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+.buttonAcquistaVideogioco{
+    display: none;
+}
