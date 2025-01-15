@@ -45,7 +45,7 @@ if($connection->openDBConnection())
         $listaAbbonamenti .= "Non ci sono abbonamenti da visualizzare";
 }
 else
-    header("Location: /TecWeb-Project/500.php");
+    header("Location: 500.php");
 
 $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 
@@ -62,7 +62,7 @@ if(isset($_GET['abbonamento']))
             $connection->closeDBConnection();
         }
         else
-            header("Location: /TecWeb-Project/500.php");
+            header("Location: 500.php");
 
         if($utente['abbonamentoAttuale'] != NULL)
             $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
@@ -74,8 +74,8 @@ if(isset($_GET['abbonamento']))
                 $connection->closeDBConnection();
             }
             else
-                header("Location: /TecWeb-Project/500.php");
-            header("Location: /TecWeb-Project/acquistoCompletato.php");
+                header("Location: 500.php");
+            header("Location: acquistoCompletato.php");
         }
     }
 }

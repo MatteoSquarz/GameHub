@@ -30,7 +30,7 @@ if (isset($_POST['accedi'])) {
 		$connection->closeDBConnection();
 	}
 	else
-		header("Location: /TecWeb-project/500.php");
+		header("Location: 500.php");
 	
 	if($connection->openDBConnection())
 	{
@@ -43,7 +43,7 @@ if (isset($_POST['accedi'])) {
 				unset($_SESSION);
 				$_SESSION["username"] = $username;
 			}
-			header("Location: /TecWeb-project/index.php");	
+			header("Location: index.php");	
 		}
 		elseif($connection->autenticaAdmin($username,$password)){
 			$connection->closeDBConnection();
@@ -54,7 +54,7 @@ if (isset($_POST['accedi'])) {
 				unset($_SESSION);
 				$_SESSION["username"] = $username;
 			}
-			header("Location: /TecWeb-project/admin.php");
+			header("Location: admin.php");
 		}
 		else
 		{
@@ -63,7 +63,7 @@ if (isset($_POST['accedi'])) {
 		}
 	}
 	else
-		header("Location: /TecWeb-project/500.php");
+		header("Location: 500.php");
 
 	$messaggiPerForm .= "</ul>";
 }

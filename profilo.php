@@ -10,7 +10,7 @@ if (isset($_SESSION['username']))
 
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
-    header("Location: /TecWeb-project/index.php");
+    header("Location: index.php");
   	exit();
 }
 
@@ -20,7 +20,7 @@ if(isset($_GET['disdici'])){
     $connectionOK = $connection->openDBConnection();
     $connection->disdiciAbbonamento($_SESSION['username']);
     $connection->closeDBConnection();
-    header("Location: /TecWeb-project/profilo.php");
+    header("Location: profilo.php");
 }
 
 $vendite = "";
@@ -58,7 +58,7 @@ if($connection->openDBConnection() && isset($_SESSION['username']))
             $connection->closeDBConnection();
         }
         else
-            header("Location: /TecWeb-project/500.php");
+            header("Location: 500.php");
 
         $imgAbb = "<img src=\"assets/$abbonamentoImg\" alt=\"\" class=\"profilePicture\">";
         $paginaHTML = str_replace('[immagine]', $imgAbb, $paginaHTML);
@@ -77,7 +77,7 @@ if($connection->openDBConnection() && isset($_SESSION['username']))
         $connection->closeDBConnection();
     }
     else
-        header("Location: /TecWeb-project/500.php");
+        header("Location: 500.php");
 
     if($vendite == null)
         $listaGiochi = "<p class=\"noAcquisti\">Non hai ancora effettuato acquisti.</p>";
@@ -98,7 +98,7 @@ if($connection->openDBConnection() && isset($_SESSION['username']))
     }
 }
 else
-    header("Location: /TecWeb-project/500.php");
+    header("Location: 500.php");
 
 $paginaHTML = str_replace('[lista Giochi]', $listaGiochi, $paginaHTML);
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);

@@ -43,7 +43,7 @@ if($connection->openDBConnection())
         $listaGiochi .= "Non ci sono giochi da visualizzare";
 }
 else
-    header("Location: /TecWeb-project/500.php");
+    header("Location: 500.php");
 
 echo str_replace("[listaGiochi]", $listaGiochi, $paginaHTML);
 

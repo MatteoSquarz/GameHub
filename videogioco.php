@@ -99,7 +99,7 @@ if($connection->openDBConnection())
     $paginaGioco .= "</div>";
 }
 else
-    header("Location: /TecWeb-project/500.php");
+    header("Location: 500.php");
 
 $paginaHTML = str_replace('[videogioco]', $titolo, $paginaHTML);
 $paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
@@ -111,7 +111,7 @@ if(isset($_GET['acquisto'])){
         $connection->closeDBConnection();
     }
     else
-        header("Location: /TecWeb-project/500.php");
+        header("Location: 500.php");
 
     if (!isset($_SESSION['username']))
         $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare il login prima di acquistare</p>", $paginaHTML);
@@ -128,11 +128,11 @@ if(isset($_GET['acquisto'])){
             {
                 $result = $connection->acquistaGioco($_SESSION['username'], $codice, $costo);
                 $connection->closeDBConnection();
-                header("Location: /TecWeb-Project/acquistoCompletato.php");
+                header("Location: acquistoCompletato.php");
             }
         }
         else
-            header("Location: /TecWeb-project/500.php");
+            header("Location: 500.php");
     }
 }
 

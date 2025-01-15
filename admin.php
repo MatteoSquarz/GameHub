@@ -6,20 +6,20 @@ $paginaHTML = file_get_contents('admin.html');
 
 $connection = new DBAccess();
 if(!$connection->openDBConnection())
-    header("Location: /TecWeb-project/500.php");
+    header("Location: 500.php");
 
 session_start();
 if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))
 {
     $connection->closeDBConnection();
-    header("Location: /TecWeb-project/404.php");
+    header("Location: 404.php");
     exit();
 }
 $connection->closeDBConnection();
 if(isset($_GET['logout']))
 {
     unset($_SESSION['username']);
-    header("Location: /TecWeb-project/index.php");
+    header("Location: index.php");
   	exit();
 }
 
@@ -77,7 +77,7 @@ if($connection->openDBConnection())
 
 }
 else
-    header("Location: /TecWeb-project/500.php");
+    header("Location: 500.php");
 
 $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
@@ -117,7 +117,7 @@ if (isset($_POST['inserisciVideogioco'])) {
         $connection->closeDBConnection();
     }
     else
-        header("Location: /TecWeb-project/500.php");
+        header("Location: 500.php");
 
 	if(!preg_match("/^[0-9]{8,8}$/",$codice))
 		$messaggiInserimento .= "<li>Il codice contiene solo numeri e deve essere di 8 caratteri</li>";
@@ -167,7 +167,7 @@ if (isset($_POST['inserisciVideogioco'])) {
                         $connection->closeDBConnection();
                     }
                     else
-                        header("Location: /TecWeb-project/500.php");
+                        header("Location: 500.php");
                     $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
                 }
 			}
@@ -178,7 +178,7 @@ if (isset($_POST['inserisciVideogioco'])) {
             }			
 		}     
         else
-            header("Location: /TecWeb-project/500.php");
+            header("Location: 500.php");
 	} 
     else
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
@@ -195,7 +195,7 @@ if (isset($_POST['rimuoviVideogioco'])) {
         $connection->closeDBConnection();
     }
     else
-        header("Location: /TecWeb-project/500.php");
+        header("Location: 500.php");
 
 	if(!preg_match("/^[0-9]{8,8}$/",$codice)){
         $messaggioRimozione .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
@@ -219,7 +219,7 @@ if (isset($_POST['rimuoviVideogioco'])) {
             }				
 		}
         else
-            header("Location: /TecWeb-project/500.php");   
+            header("Location: 500.php");   
 	}
 }
 $paginaHTML = str_replace('[messaggioRimozione]', $messaggioRimozione, $paginaHTML);
@@ -234,7 +234,7 @@ if (isset($_POST['modificaAbbonamento'])) {
         $connection->closeDBConnection();
     }
     else
-        header("Location: /TecWeb-project/500.php");
+        header("Location: 500.php");
 
 	if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
 		$messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</p>";

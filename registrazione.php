@@ -29,7 +29,7 @@ if (isset($_POST['registrati'])) {
 		$connection->closeDBConnection();
 	}
 	else
-		header("Location: /TecWeb-project/500.php");
+		header("Location: 500.php");
 	
 	if(!preg_match("/^[A-Za-z\ ]{2,}$/",$nome))
 		$messaggiPerForm .= "<li>Il nome non può contenere numeri o caratteri speciali, almeno 2 caratteri</li>";
@@ -61,20 +61,20 @@ if (isset($_POST['registrati'])) {
 					$connection->closeDBConnection();
 				}
 				else
-					header("Location: /TecWeb-project/500.php");
+					header("Location: 500.php");
 
 				if($nuovoUtente)
 				{
 					session_start();
 					$_SESSION["registrazione"] = 1;
-					header("Location: /TecWeb-project/login.php");
+					header("Location: login.php");
 				}
 			}
 			else
 				$messaggiPerForm = "<p>Username già utilizzato, si prega di usarne un altro</p>";				
 		}
 		else
-			header("Location: /TecWeb-project/500.php");
+			header("Location: 500.php");
 	}
 }
 
