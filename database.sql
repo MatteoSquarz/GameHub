@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS PiattaformaVideogioco;
 DROP TABLE IF EXISTS CategoriaVideogioco;
 DROP TABLE IF EXISTS StoricoAbbonamento;
 DROP TABLE IF EXISTS Vendita;
-DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Cliente;
 DROP TABLE IF EXISTS Admin;
 DROP TABLE IF EXISTS Categoria;
 DROP TABLE IF EXISTS Piattaforma;
@@ -66,7 +66,7 @@ CREATE TABLE Admin(
     FOREIGN KEY(username) REFERENCES Utente(username) 
 );
 
-CREATE TABLE User(
+CREATE TABLE Cliente(
     username varchar(20) NOT NULL,
     nome varchar(20) NOT NULL,
     cognome varchar(20) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE Vendita(
     totale decimal NOT NULL,
     videogioco varchar(8) NOT NULL,
     PRIMARY KEY(utente, data, videogioco),
-    FOREIGN KEY(utente) REFERENCES User(username),
+    FOREIGN KEY(utente) REFERENCES Cliente(username),
     FOREIGN KEY(videogioco) REFERENCES Videogioco(codice) ON DELETE CASCADE
 );
 
@@ -96,7 +96,7 @@ CREATE TABLE StoricoAbbonamento(
     dataInizio date NOT NULL,
     dataFine date NOT NULL,
     PRIMARY KEY(utente, abbonamento),
-    FOREIGN KEY(utente) REFERENCES User(username),
+    FOREIGN KEY(utente) REFERENCES Cliente(username),
     FOREIGN KEY(abbonamento) REFERENCES Abbonamento(nome)
 );
 
@@ -178,7 +178,7 @@ INSERT INTO Categoria (nome) VALUES
 INSERT INTO Admin (username) VALUES
 ('admin');
 
-INSERT INTO User (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES
+INSERT INTO Cliente (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES
 ('user', 'Utente', 'Generico', '2001-10-15', 'utente.generico@gmail.de', 'Base', '2024-12-08', '2025-12-08');
 
 INSERT INTO Vendita (utente, data, totale, videogioco) VALUES
