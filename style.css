@@ -1032,7 +1032,6 @@ hr{
     padding: 0.5em;
     padding-left: 1.5em;
     padding-right: 1.5em;
-    border-radius: 25px;
     color: var(--boxtxtcolor);
     font-size: 1em;
 }
@@ -1070,7 +1069,6 @@ hr{
     padding: 0.5em;
     padding-left: 1.5em;
     padding-right: 1.5em;
-    border-radius: 25px;
     color: var(--boxtxtcolor);
     font-size: 1em;
     margin-top: 2em;
@@ -1098,7 +1096,7 @@ hr{
 .gameItem {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 1em;
     border-bottom: 1px solid #FFF;
 }
 
