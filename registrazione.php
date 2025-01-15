@@ -61,7 +61,7 @@ if (isset($_POST['registrati'])) {
 				}
 			}
 			else   //se esiste già un utente con quel username do un errore
-				$messaggiPerForm = "<p class='itemCentered errorFormRegistrazione'>Username già utilizzato, si prega di usarne un altro</p>";
+				$messaggiPerForm = "<span class='itemCentered errorFormRegistrazione'>Username già utilizzato, si prega di usarne un altro</span>";
 			$connection->closeDBConnection();
 		}
 		else

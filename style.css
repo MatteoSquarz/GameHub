@@ -529,6 +529,7 @@ footer {
 .warningAbbonamento{
     color: var(--errortxtonboxcolor);
     font-size: 1em;
+    font-weight: bold;
 }
 
 /* ============================
@@ -816,6 +817,7 @@ hr{
     font-size: 1em;
     font-weight: bold;
     margin-top: 1em;
+    text-align: center;
 }
 
 .confermaRegistrazione {
@@ -975,6 +977,7 @@ hr{
     color: var(--errortxtonbgcolor);
     font-size: 1em;
     margin-bottom: 0.8em;
+    font-weight: bold;
 }
 
 
