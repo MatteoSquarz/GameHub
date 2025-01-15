@@ -12,15 +12,14 @@ if (isset($_SESSION['username']))
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 
 $connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 $abbonamenti = "";
 $listaAbbonamenti = "";
 
-if(!$connectionOK)
+if($connection->openDBConnection())
 {
     $abbonamenti = $connection->getListAbbonamenti();
-    //$connection->closeDBConnection();
+    $connection->closeDBConnection();
 
     if($abbonamenti)
     {
@@ -46,23 +45,36 @@ if(!$connectionOK)
         $listaAbbonamenti .= "Non ci sono abbonamenti da visualizzare";
 }
 else
-	//in fase di produzione rimuovere $connessioneOK
-	$listaAbbonamenti = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+    header("Location: /TecWeb-Project/500.php");
 
 $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 
-if(isset($_GET['abbonamento'])){
+if(isset($_GET['abbonamento']))
+{
     $abb = $_GET['abbonamento'];
     if (!isset($_SESSION['username']))
         $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Si prega di effettuare il login prima di abbonarsi</p>", $paginaHTML);
     else
     {
-        $utente = ($connection->getUtente($_SESSION['username'])[0]);
+        if($connection->openDBConnection())
+        {
+            $utente = ($connection->getUtente($_SESSION['username'])[0]);
+            $connection->closeDBConnection();
+        }
+        else
+            header("Location: /TecWeb-Project/500.php");
+
         if($utente['abbonamentoAttuale'] != NULL)
             $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
         else
         {
-            $result = $connection->acquistaAbbonamento($utente['username'], $abb);
+            if($connection->openDBConnection())
+            {
+                $result = $connection->acquistaAbbonamento($utente['username'], $abb);
+                $connection->closeDBConnection();
+            }
+            else
+                header("Location: /TecWeb-Project/500.php");
             header("Location: /TecWeb-Project/acquistoCompletato.php");
         }
     }

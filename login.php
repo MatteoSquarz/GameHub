@@ -18,17 +18,24 @@ $messaggiPerForm = "";
 $username = "";
 $password = "";
 
-$connessione = new DBAccess();
-$connessioneOK = $connessione->openDBConnection();
+$connection = new DBAccess();
 
 if (isset($_POST['accedi'])) {
 	$messaggiPerForm .= "<ul class=\"errorLogin\">";
 	
-    $username = $connessione->pulisciInput($_POST['username']);
-    $password = $connessione->pulisciInput($_POST['password']);
+	if($connection->openDBConnection())
+	{
+    	$username = $connection->pulisciInput($_POST['username']);
+    	$password = $connection->pulisciInput($_POST['password']);
+		$connection->closeDBConnection();
+	}
+	else
+		header("Location: /TecWeb-project/500.php");
 	
-	if($connessioneOK == NULL){
-		if($connessione->autenticaUtente($username,$password)){
+	if($connection->openDBConnection())
+	{
+		if($connection->autenticaUtente($username,$password)){
+			$connection->closeDBConnection();
 			if(empty($_SESSION)){
 				$_SESSION["username"] = $username;
 			}
@@ -38,7 +45,8 @@ if (isset($_POST['accedi'])) {
 			}
 			header("Location: /TecWeb-project/index.php");	
 		}
-		elseif($connessione->autenticaAdmin($username,$password)){
+		elseif($connection->autenticaAdmin($username,$password)){
+			$connection->closeDBConnection();
 			if(empty($_SESSION)){
 				$_SESSION["username"] = $username;
 			}
@@ -49,8 +57,14 @@ if (isset($_POST['accedi'])) {
 			header("Location: /TecWeb-project/admin.php");
 		}
 		else
+		{
+			$connection->closeDBConnection();
 			$messaggiPerForm .= "<li>Username e/o password errati</li>";
+		}
 	}
+	else
+		header("Location: /TecWeb-project/500.php");
+
 	$messaggiPerForm .= "</ul>";
 }
 

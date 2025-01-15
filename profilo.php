@@ -15,20 +15,22 @@ if(isset($_GET['logout'])){
 }
 
 $connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 if(isset($_GET['disdici'])){
+    $connectionOK = $connection->openDBConnection();
     $connection->disdiciAbbonamento($_SESSION['username']);
+    $connection->closeDBConnection();
     header("Location: /TecWeb-project/profilo.php");
 }
 
 $vendite = "";
 $listaGiochi = "";
 
-if(!$connectionOK && isset($_SESSION['username']))
+if($connection->openDBConnection() && isset($_SESSION['username']))
 {
     $utente = ($connection->getUtente($_SESSION['username'])[0]);
-        
+    $connection->closeDBConnection();
+
     $username = $utente['username'];
     $paginaHTML = str_replace('[Nome Utente]', $username, $paginaHTML);
     $email = $utente['email'];
@@ -48,8 +50,16 @@ if(!$connectionOK && isset($_SESSION['username']))
         $paginaHTML = str_replace('[Data scadenza]', "Nessun abbonamento attivo", $paginaHTML);
         $paginaHTML = str_replace('[pulsante disdici]', "", $paginaHTML);
     }
-    else{
-        $abbonamentoImg = $connection->getImmagineAbbonamento($abbonamento);
+    else
+    {
+        if($connection->openDBConnection())
+        {
+            $abbonamentoImg = $connection->getImmagineAbbonamento($abbonamento);
+            $connection->closeDBConnection();
+        }
+        else
+            header("Location: /TecWeb-project/500.php");
+
         $imgAbb = "<img src=\"assets/$abbonamentoImg\" alt=\"\" class=\"profilePicture\">";
         $paginaHTML = str_replace('[immagine]', $imgAbb, $paginaHTML);
         $paginaHTML = str_replace('[Nome Abbonamento]', $abbonamento, $paginaHTML);
@@ -61,8 +71,14 @@ if(!$connectionOK && isset($_SESSION['username']))
         $paginaHTML = str_replace('[pulsante disdici]', $disdici, $paginaHTML);
     }    
 
-    $vendite = $connection->getAcquisti($_SESSION['username']);
-    $connection->closeDBConnection();
+    if($connection->openDBConnection())
+    {
+        $vendite = $connection->getAcquisti($_SESSION['username']);
+        $connection->closeDBConnection();
+    }
+    else
+        header("Location: /TecWeb-project/500.php");
+
     if($vendite == null)
         $listaGiochi = "<p class=\"noAcquisti\">Non hai ancora effettuato acquisti.</p>";
     else{
@@ -82,7 +98,7 @@ if(!$connectionOK && isset($_SESSION['username']))
     }
 }
 else
-    $paginaGioco = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+    header("Location: /TecWeb-project/500.php");
 
 $paginaHTML = str_replace('[lista Giochi]', $listaGiochi, $paginaHTML);
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);

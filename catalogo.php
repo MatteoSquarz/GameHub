@@ -12,12 +12,11 @@ if (isset($_SESSION['username']))
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 
 $connection = new DBAccess();
-$connectionOK = $connection->openDBConnection();
 
 $giochi = "";
 $listaGiochi = "";
 
-if(!$connectionOK)
+if($connection->openDBConnection())
 {
     $giochi = $connection->getListGiochi();
     $connection->closeDBConnection();
@@ -44,8 +43,7 @@ if(!$connectionOK)
         $listaGiochi .= "Non ci sono giochi da visualizzare";
 }
 else
-	//in fase di produzione rimuovere $connessioneOK
-	$listaGiochi = $connectionOK ."<p>I sistemi sono momentaneamente fuori servizio, ci scusiamo per il disagio.</p>";
+    header("Location: /TecWeb-project/500.php");
 
 echo str_replace("[listaGiochi]", $listaGiochi, $paginaHTML);
 

@@ -9,30 +9,16 @@ class DBAccess{
 
     private $connection;
 
-	public function openDBConnection() {
-		
-		//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT)
-		//try{
-			//$this->connection = mysqli_connect(DBAccess::HOST_DB, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DATABASE_NAME);
-			//fare query
-		//}
-		//catch(mysqli_sql_exception $e){
-			//$errore = $e->getMessage()
-		//}
+	public function openDBConnection() {		
 		mysqli_report(MYSQLI_REPORT_ERROR);
 
 		$this->connection = mysqli_connect(DBAccess::HOST, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DB_NAME);
-		
-		//solo per fase di debug
-		return mysqli_connect_error();
 
-		//produzione
-		/*if(mysqli_connect_errno()){
+		if(mysqli_connect_errno()){
 			return false;
 		} else {
 			return true;
-		}*/
-		
+		}
 	}
 
 	public function closeDBConnection() {
@@ -223,11 +209,8 @@ class DBAccess{
 	}
 
 	public function pulisciInput($value){
-		// elimina gli spazi
 		$value = trim($value);
-		// rimuove tag html (non sempre è una buona idea!) 
 		$value = strip_tags($value);
-		// converte i caratteri speciali in entità html (ex. &lt;)
 	    $value = htmlentities($value);
 		return $value;
     }
