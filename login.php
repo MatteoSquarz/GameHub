@@ -32,38 +32,46 @@ if (isset($_POST['accedi'])) {
 	else
 		header("Location: 500.php");
 	
-	if($connection->openDBConnection())
+	if(!preg_match("/^[A-Za-z0-9]{2,}$/",$username))
+		$messaggiPerForm .= "<li>Caratteri non concessi nello username</li>";
+	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{8,}$/",$password))
+		$messaggiPerForm .= "<li>Caratteri non concessi nella password</li>";
+
+	if($messaggiPerForm == "<ul class=\"errorLogin\">")
 	{
-		if($connection->autenticaUtente($username,$password)){
-			$connection->closeDBConnection();
-			if(empty($_SESSION)){
-				$_SESSION["username"] = $username;
+		if($connection->openDBConnection())
+		{
+			if($connection->autenticaUtente($username,$password)){
+				$connection->closeDBConnection();
+				if(empty($_SESSION)){
+					$_SESSION["username"] = $username;
+				}
+				else{
+					unset($_SESSION);
+					$_SESSION["username"] = $username;
+				}
+				header("Location: index.php");	
 			}
-			else{
-				unset($_SESSION);
-				$_SESSION["username"] = $username;
+			elseif($connection->autenticaAdmin($username,$password)){
+				$connection->closeDBConnection();
+				if(empty($_SESSION)){
+					$_SESSION["username"] = $username;
+				}
+				else{
+					unset($_SESSION);
+					$_SESSION["username"] = $username;
+				}
+				header("Location: admin.php");
 			}
-			header("Location: index.php");	
-		}
-		elseif($connection->autenticaAdmin($username,$password)){
-			$connection->closeDBConnection();
-			if(empty($_SESSION)){
-				$_SESSION["username"] = $username;
+			else
+			{
+				$connection->closeDBConnection();
+				$messaggiPerForm .= "<li>Username e/o password errati</li>";
 			}
-			else{
-				unset($_SESSION);
-				$_SESSION["username"] = $username;
-			}
-			header("Location: admin.php");
 		}
 		else
-		{
-			$connection->closeDBConnection();
-			$messaggiPerForm .= "<li>Username e/o password errati</li>";
-		}
+			header("Location: 500.php");
 	}
-	else
-		header("Location: 500.php");
 
 	$messaggiPerForm .= "</ul>";
 }
