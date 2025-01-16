@@ -87,7 +87,7 @@ $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
 $paginaHTML = str_replace('[listaPiattaforme]', $listaPiattaforme, $paginaHTML);
 
-$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati in fondo al form su cui stavi lavorando.</p></div>";
+$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati in cima al form su cui stavi lavorando.</p></div>";
 
 $messaggiInserimento = "";
 

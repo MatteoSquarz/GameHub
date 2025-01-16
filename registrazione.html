@@ -8,6 +8,7 @@
         <meta name="author" content="Andrea Piola">    
         <link rel="stylesheet" href="style.css" media="screen">
         <link rel="stylesheet" href="mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="print.css" media="print">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <script src="script.js"></script>
         <title>Registrazione - GameHub</title>
@@ -44,6 +45,7 @@
         </div>
         <main id="mainRegistrazione" class="background">
             <div class="loginRegistrazione">
+                [messaggiForm]
                 <h1>Registrati</h1>
                 <form class="formLoginRegistrazione" method="post" action="registrazione.php" onsubmit="return validazioneForm('registrazione');">
                     <div>
@@ -75,7 +77,6 @@
                         <label class="labelForm" for="password">Password</label>
                         <input class="inputForm" type="password" placeholder="Inserisci la password" name="password" id="password" required>
                     </div>
-                    [messaggiForm]
                     <button class="buttonForm" type="submit" name="registrati" id="registrati">Registrati</button>
                 </form>                
             </div>

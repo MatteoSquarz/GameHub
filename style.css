@@ -529,6 +529,7 @@ footer {
 .warningAbbonamento{
     color: var(--errortxtonboxcolor);
     font-size: 1em;
+    font-weight: bold;
 }
 
 /* ============================
@@ -604,9 +605,9 @@ footer {
     border-radius: 20px;
 }
 
-/********************************************************************************/
-/*** PAGINA CATALOGO                                                          ***/
-/********************************************************************************/
+/* ============================
+        PAGINA CATALOGO
+============================ */
 
 .catalogo-cantainer {
     display: flex;
@@ -634,7 +635,6 @@ footer {
     margin: 5%;
 }
 
-/*** Game cards ****************************************************************/
 .game-card {
     flex: 1 1 250px;
     max-width: 380px;
@@ -683,7 +683,6 @@ footer {
 .game-page-link{
     align-self: flex-end;
     padding: 0.4em 0.8em;
-    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 2em;
@@ -698,8 +697,6 @@ footer {
 .game-page-link:visited{
     background-color: var(--bgvisitedcolor);
 }
-
-/********************************************************************************/
 
 /*=============================
    PAGINA LOGIN/REGISTRAZIONE
@@ -820,6 +817,7 @@ hr{
     font-size: 1em;
     font-weight: bold;
     margin-top: 1em;
+    margin-left: 2em;
 }
 
 .confermaRegistrazione {
@@ -979,6 +977,7 @@ hr{
     color: var(--errortxtonbgcolor);
     font-size: 1em;
     margin-bottom: 0.8em;
+    font-weight: bold;
 }
 
 
@@ -1036,7 +1035,6 @@ hr{
     padding: 0.5em;
     padding-left: 1.5em;
     padding-right: 1.5em;
-    border-radius: 25px;
     color: var(--boxtxtcolor);
     font-size: 1em;
 }
@@ -1074,7 +1072,6 @@ hr{
     padding: 0.5em;
     padding-left: 1.5em;
     padding-right: 1.5em;
-    border-radius: 25px;
     color: var(--boxtxtcolor);
     font-size: 1em;
     margin-top: 2em;
@@ -1102,7 +1099,7 @@ hr{
 .gameItem {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 1em;
     border-bottom: 1px solid #FFF;
 }
 
@@ -1384,6 +1381,15 @@ fieldset{
     color: var(--errortxtonboxcolor);
     font-size: 1em;
     font-weight: bold;
+    text-align: center;
+}
+
+ul[class ~= "errorFormAdmin"] {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: start;
+    margin-left: 0.5em;
 }
 
 .confermaOperazioneAdmin {

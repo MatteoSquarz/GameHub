@@ -14,7 +14,7 @@ function pulisciInput($value){
 session_start();
 if (isset($_SESSION['registrazione']))
 {
-	$paginaHTML = str_replace('[registrazione]', "<p class='confermaRegistrazione'>Utente registrato con successo</p>", $paginaHTML);
+	$paginaHTML = str_replace('[registrazione]', "<span class='confermaRegistrazione'>Utente registrato con successo</span>", $paginaHTML);
 	unset($_SESSION['registrazione']);
 }
 else

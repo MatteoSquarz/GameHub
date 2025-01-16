@@ -8,6 +8,7 @@
         <meta name="author" content="Alessandro Damiani">    
         <link rel="stylesheet" href="style.css" media="screen">
         <link rel="stylesheet" href="mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="print.css" media="print">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <script src="script.js"></script>
         <title>Pagina Admin - GameHub</title>
@@ -42,14 +43,15 @@
     
         <main id="contentAdmin" class="background">
             <div class="hero blur">
-                <h1>Ecco la tua <span lang="en">dashbord</span> admin</h1>
+                <h1>Ecco la tua <span lang="en">dashboard</span> admin</h1>
                 <p>In questa pagina l'admin può aggiungere e rimuovere i giochi in catalogo, 
                   inoltre è possibile modificare i prezzi degli abbonamenti.
                 </p>
             </div>
             [messaggioOutput]
-            <div class="divForm">
+            <div class="divForm" id="divAreaInserimento">
                 <form id="inserimento-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('inserimento');">
+                    [messaggiInserimento] 
                     <h2>Area Inserimento Gioco</h2>
                     <div class="formRiga">
                         <div class="formCampo">
@@ -120,12 +122,12 @@
                     </div>
                     <div class="itemCentered">
                         <button type="submit" class="buttonAdminForm" name="inserisciVideogioco" id="inserisciVideogioco">Inserisci gioco</button>                        
-                    </div>
-                    [messaggiInserimento]    
+                    </div>   
                 </form>
             </div>
-            <div class="divForm">
+            <div class="divForm" id="divAreaRimozione">
                 <form id="rimozione-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('rimozione');">
+                    [messaggioRimozione]
                     <h2>Area Rimozione Gioco</h2>
                     <div class="formCampo itemCentered">
                         <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
@@ -134,11 +136,11 @@
                     <div class="itemCentered">
                         <button type="submit" class="buttonAdminForm" name="rimuoviVideogioco" id="rimuoviVideogioco">Rimuovi gioco</button>
                     </div>
-                    [messaggioRimozione]
                 </form>
             </div>
-            <div class="divForm">
+            <div class="divForm" id="divAreaModifica">
                 <form id="modifica-prezzi" method="post" action="admin.php" onsubmit="return validazioneForm('modifica');">
+                    [messaggioModifica]
                     <h2>Area Modifica Prezzi Abbonamenti</h2>
                     <div class="formRiga">
                         <div class="formCampo">
@@ -155,7 +157,6 @@
                     <div class="itemCentered">
                         <button type="submit" class="buttonAdminForm" name="modificaAbbonamento" id="modificaAbbonamento">Modifica prezzo</button>
                     </div>
-                    [messaggioModifica]
                 </form>
             </div>
             <div class="tornaSuButton">
