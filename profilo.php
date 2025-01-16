@@ -15,25 +15,60 @@ if(isset($_GET['logout'])){
 }
 
 $connection = new DBAccess();
+$connectionOK = false;
 
 if(isset($_GET['disdici'])){
-    $connection->openDBConnection();
-    $connection->disdiciAbbonamento($_SESSION['username']);
-    $connection->closeDBConnection();
-    header("Location: profilo.php");
+    try{
+        $connectionOK = $connection->openDBConnection();
+        if($connectionOK){
+            $connection->disdiciAbbonamento($_SESSION['username']);
+            header("Location: profilo.php");
+        }
+        else
+            header("Location: 500.php");
+    }
+    catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
+        header("Location: 500.php");
+    }
+    finally{  //chiudo la connessione in ogni caso
+        if($connectionOK)
+            $connection->closeDBConnection();
+    }
 }
 
+$utente = "";
+$abbonamento = "";
+$abbonamentoImg = "";
 $vendite = "";
 $listaGiochi = "";
 
-if($connection->openDBConnection() && isset($_SESSION['username'])){
+if(!isset($_SESSION['username'])){   //qualcuno prova ad accedere alla pagina senza essere loggato
+    header("Location: login.php");
+    exit();
+}
 
-    $utente = ($connection->getUtente($_SESSION['username'])[0]);
-    $abbonamento = $utente['abbonamentoAttuale'];
-    $abbonamentoImg = $connection->getImmagineAbbonamento($abbonamento);
-    $vendite = $connection->getAcquisti($_SESSION['username']);
-    $connection->closeDBConnection();
+try{
+    $connectionOK = $connection->openDBConnection();
+    if($connectionOK){
+        $utente = ($connection->getUtente($_SESSION['username'])[0]);
+        if($utente){
+            $abbonamento = $utente['abbonamentoAttuale'];
+            $abbonamentoImg = $connection->getImmagineAbbonamento($abbonamento);
+            $vendite = $connection->getAcquisti($_SESSION['username']);
+        }
+    }
+    else
+        header("Location: 500.php");
+}
+catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
+    header("Location: 500.php");
+}
+finally{  //chiudo la connessione in ogni caso
+    if($connectionOK)
+        $connection->closeDBConnection();
+}
 
+if($utente){
     $username = $utente['username'];
     $paginaHTML = str_replace('[Nome Utente]', $username, $paginaHTML);
     $email = $utente['email'];
@@ -44,7 +79,7 @@ if($connection->openDBConnection() && isset($_SESSION['username'])){
     $paginaHTML = str_replace('[Cognome]', $cognome, $paginaHTML);
     $dataNascita = $utente['dataNascita'];
     $paginaHTML = str_replace('[Data di Nascita]', $dataNascita, $paginaHTML);
-    
+
     if ($abbonamento == null){  //se non ha un abbonamento
         $imgAbb = "<img src=\"assets/no-abbonamento.png\" alt=\"\" class=\"profilePicture\">";
         $paginaHTML = str_replace('[immagine]', $imgAbb, $paginaHTML);
@@ -83,8 +118,6 @@ if($connection->openDBConnection() && isset($_SESSION['username'])){
         }
     }
 }
-else
-    header("Location: 500.php");
 
 $paginaHTML = str_replace('[lista Giochi]', $listaGiochi, $paginaHTML);
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);

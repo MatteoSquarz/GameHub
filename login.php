@@ -26,6 +26,8 @@ $username = "";
 $password = "";
 
 $connection = new DBAccess();
+$connectionOK = false;
+
 
 if (isset($_POST['accedi'])) {
 	$messaggiPerForm .= "<ul class=\"errorLogin\">";
@@ -38,35 +40,44 @@ if (isset($_POST['accedi'])) {
 	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{2,}$/",$password))
 		$messaggiPerForm .= "<li>Caratteri non concessi nella password</li>";
 
+	
 	if($messaggiPerForm == "<ul class=\"errorLogin\">"){
-		if($connection->openDBConnection()){
-			if($connection->autenticaUtente($username,$password)){
-				if(empty($_SESSION)){
-					$_SESSION["username"] = $username;
+		try{
+			$connectionOK = $connection->openDBConnection();
+			if($connectionOK){
+				if($connection->autenticaUtente($username,$password)){
+					if(empty($_SESSION)){
+						$_SESSION["username"] = $username;
+					}
+					else{
+						unset($_SESSION);
+						$_SESSION["username"] = $username;
+					}
+					header("Location: index.php");	
 				}
-				else{
-					unset($_SESSION);
-					$_SESSION["username"] = $username;
+				elseif($connection->autenticaAdmin($username,$password)){
+					if(empty($_SESSION)){
+						$_SESSION["username"] = $username;
+					}
+					else{
+						unset($_SESSION);
+						$_SESSION["username"] = $username;
+					}
+					header("Location: admin.php");
 				}
-				header("Location: index.php");	
+				else
+					$messaggiPerForm .= "<li>Username e/o password errati</li>";
 			}
-			elseif($connection->autenticaAdmin($username,$password)){
-				if(empty($_SESSION)){
-					$_SESSION["username"] = $username;
-				}
-				else{
-					unset($_SESSION);
-					$_SESSION["username"] = $username;
-				}
-				header("Location: admin.php");
-			}
-			else{
-				$messaggiPerForm .= "<li>Username e/o password errati</li>";
-			}
-			$connection->closeDBConnection();
+			else
+				header("Location: 500.php");
 		}
-		else
+		catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
 			header("Location: 500.php");
+		}
+		finally{  //chiudo la connessione in ogni caso
+			if($connectionOK)
+				$connection->closeDBConnection();
+		}
 	}
 
 	$messaggiPerForm .= "</ul>";

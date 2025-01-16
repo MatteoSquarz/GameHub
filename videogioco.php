@@ -12,19 +12,37 @@ if (isset($_SESSION['username']))
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 
 $connection = new DBAccess();
+$connectionOK = false;
 
-$giochi = "";
+$gioco = null;
+$categorie = "";
+$piattaforme = "";
 $paginaGioco = "";
+$costo; 
 $codice = $_GET['codice'];
 
-if($connection->openDBConnection()){
+try{
+    $connectionOK = $connection->openDBConnection();
+    if($connectionOK){
+        if($connection->getGiocoByCodice($codice)){
+            $gioco = $connection->getGiocoByCodice($codice)[0];
+            $categorie = $connection->getCategoriaByCodiceGioco($codice);
+            $piattaforme = $connection->getPiattaformaByCodiceGioco($codice);
+            $abbonamenti = $connection->getAbbonamentoByCodiceGioco($codice);
+        }
+    }
+    else
+        header("Location: 500.php");
+}
+catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
+    header("Location: 500.php");
+}
+finally{  //chiudo la connessione in ogni caso
+    if($connectionOK)
+        $connection->closeDBConnection();
+}
 
-    $gioco = $connection->getGiocoByCodice($codice)[0];
-    $categorie = $connection->getCategoriaByCodiceGioco($codice);
-    $piattaforme = $connection->getPiattaformaByCodiceGioco($codice);
-    $abbonamenti = $connection->getAbbonamentoByCodiceGioco($codice);
-    $connection->closeDBConnection();
-
+if($gioco){  //se il gioco esiste
     $paginaGioco .= "<div class=\"backgroundPannelloVideogioco\">";
     $paginaGioco .= "<div class=\"pannelloVideogioco blur\">";
     $img = $gioco['immagine'];
@@ -98,37 +116,36 @@ if($connection->openDBConnection()){
     $paginaGioco .= "</div>";
     $paginaGioco .= "</div>";
 }
-else
-    header("Location: 500.php");
+else  //se il gioco non esiste
+    header("Location: 404.php");
 
 $paginaHTML = str_replace('[videogioco]', $titolo, $paginaHTML);
 $paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
 
 if(isset($_GET['acquisto'])){
-    /*
-    if($connection->openDBConnection()){
-        $gioco = ($connection->getGiocoByCodice($codice)[0]);
-        $connection->closeDBConnection();
-    }
-    else
-        header("Location: 500.php");
-    */
-
     if (!isset($_SESSION['username']))  //se non è loggato
         $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare il login prima di acquistare</p>", $paginaHTML);
     else{   //se è loggato
-        if($connection->openDBConnection()){
-            if(!$connection->findAcquisto($_SESSION['username'],$codice)){   //se non ha già acquistato il gioco
-                $result = $connection->acquistaGioco($_SESSION['username'], $codice, $costo);
-                header("Location: acquistoCompletato.php");
+        try{
+            $connectionOK = $connection->openDBConnection();
+            if($connectionOK){
+                if(!$connection->findAcquisto($_SESSION['username'],$codice)){   //se l'utente non ha già acquistato il gioco
+                    $result = $connection->acquistaGioco($_SESSION['username'], $codice, $costo);
+                    header("Location: acquistoCompletato.php");
+                }
+                else   //se l'utente ha già acquistato il gioco
+                    $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Hai già acquistato questo videogioco</p>", $paginaHTML);
             }
-            else   //se ha già acquistato il gioco
-                $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Hai già acquistato questo videogioco</p>", $paginaHTML);
-
-            $connection->closeDBConnection();
+            else
+                header("Location: 500.php");
         }
-        else
+        catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
             header("Location: 500.php");
+        }
+        finally{  //chiudo la connessione in ogni caso
+            if($connectionOK)
+                $connection->closeDBConnection();
+        }
     }
 }
 

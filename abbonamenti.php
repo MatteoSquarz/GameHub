@@ -12,63 +12,78 @@ if (isset($_SESSION['username']))
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 
 $connection = new DBAccess();
+$connectionOK = false;
 
 $abbonamenti = "";
 $listaAbbonamenti = "";
 
-if($connection->openDBConnection())
-{
-    $abbonamenti = $connection->getListAbbonamenti();
-    $connection->closeDBConnection();
+try{
+    $connectionOK = $connection->openDBConnection();
+    if($connectionOK)
+        $abbonamenti = $connection->getListAbbonamenti();
+    else
+        header("Location: 500.php");
+}
+catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
+    header("Location: 500.php");
+}
+finally{  //chiudo la connessione in ogni caso
+    if($connectionOK)
+        $connection->closeDBConnection();
+}
 
-    if($abbonamenti)
+if($abbonamenti)
+{
+    $listaAbbonamenti .= "<div class=\"abbonamentiAbb\">";
+    foreach($abbonamenti as $abb)
     {
-        $listaAbbonamenti .= "<div class=\"abbonamentiAbb\">";
-        foreach($abbonamenti as $abb)
-        {
-            $listaAbbonamenti .= "<div class=\"targhettaAbb\">";
-            $nome = $abb['nome'];
-            $listaAbbonamenti .= "<h2><strong>$nome</strong></h2>";
-            $img = $abb['immagine'];
-            $listaAbbonamenti .= "<img src=\"assets/$img\" alt=\"\">";
-            $descrizione = $abb['descrizione'];
-            $listaAbbonamenti .= "<p>$descrizione</p>";
-            $costo = $abb['prezzo'];
-            $listaAbbonamenti .= "<p><strong>Costo annuale:</strong> $costo €</p>";
-            $listaAbbonamenti .= "<a role=\"button\" href=\"abbonamenti.php?abbonamento=$nome\">Abbonati!</a>";
-            $listaAbbonamenti .= "[messaggio$nome]";
-            $listaAbbonamenti .= "</div>";
-        }
+        $listaAbbonamenti .= "<div class=\"targhettaAbb\">";
+        $nome = $abb['nome'];
+        $listaAbbonamenti .= "<h2><strong>$nome</strong></h2>";
+        $img = $abb['immagine'];
+        $listaAbbonamenti .= "<img src=\"assets/$img\" alt=\"\">";
+        $descrizione = $abb['descrizione'];
+        $listaAbbonamenti .= "<p>$descrizione</p>";
+        $costo = $abb['prezzo'];
+        $listaAbbonamenti .= "<p><strong>Costo annuale:</strong> $costo €</p>";
+        $listaAbbonamenti .= "<a role=\"button\" href=\"abbonamenti.php?abbonamento=$nome\">Abbonati!</a>";
+        $listaAbbonamenti .= "[messaggio$nome]";
         $listaAbbonamenti .= "</div>";
     }
-    else
-        $listaAbbonamenti .= "Non ci sono abbonamenti da visualizzare";
+    $listaAbbonamenti .= "</div>";
 }
 else
-    header("Location: 500.php");
+    $listaAbbonamenti .= "<p>Non ci sono abbonamenti da visualizzare</p>";
 
 $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 
 if(isset($_GET['abbonamento']))
 {
     $abb = $_GET['abbonamento'];
-    if (!isset($_SESSION['username']))   //se non è loggato
+    if (!isset($_SESSION['username']))   //se utente non è loggato
         $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Si prega di effettuare il login prima di abbonarsi</p>", $paginaHTML);
-    else{   //se è loggato
-        if($connection->openDBConnection()){
-            $utente = ($connection->getUtente($_SESSION['username'])[0]);
-
-            if($utente['abbonamentoAttuale'] == NULL){  //se non ha già un abbonamento attivo
-                $result = $connection->acquistaAbbonamento($utente['username'], $abb);
-                header("Location: acquistoCompletato.php");
+    else{   //se utente è loggato
+        try{
+            $connectionOK = $connection->openDBConnection();
+            if($connectionOK){
+                $utente = ($connection->getUtente($_SESSION['username'])[0]);
+                if($utente['abbonamentoAttuale'] == NULL){  //se non ha già un abbonamento attivo
+                    $result = $connection->acquistaAbbonamento($utente['username'], $abb);
+                    header("Location: acquistoCompletato.php");
+                }
+                else   //se ha un abbonamento attivo
+                    $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
             }
-            else{   //se ha un abbonamento attivo
-                $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Sembra che tu abbia già un abbonamento attivo, recati sulla pagina profilo e disdici il tuo attuale abbonamento</p>", $paginaHTML);
-            }
-            $connection->closeDBConnection();
+            else
+                header("Location: 500.php");
         }
-        else
+        catch(mysqli_sql_exception $e){  //se c'è un errore a livello database
             header("Location: 500.php");
+        }
+        finally{  //chiudo la connessione in ogni caso
+            if($connectionOK)
+                $connection->closeDBConnection();
+        }
     }
 }
 
