@@ -1,0 +1,1399 @@
+*{
+    padding: 0em;
+    margin: 0em;
+}
+
+:root{
+    --bgcolor: #222326;
+    --errortxtonbgcolor: #F5A200;
+
+    --txtcolor: #FFF;
+    --breadcolor: #000;
+
+    --boxcolor: #ADD8E6;
+    --boxtxtcolor: #000;
+    --errortxtonboxcolor: #941110;
+    --successtxtonboxcolor: #005B00;
+
+    --linktxtcolor: #FFF;
+    --bglinkcolor: #547A2C;
+    --bgvisitedcolor: #1A1B41;
+
+    --buttoncolor: #D13500;
+    --buttontxtcolor: #FFF;
+}
+
+body{
+    color: var(--txtcolor);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5em;
+}
+
+html {
+    scroll-padding-top: 7.8em;
+    background-color: #000;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bgcolor);
+    min-height: calc(100vh - 12em);
+}
+
+
+
+/* SEZIONE HEADER */
+
+header{
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+header h1{
+    text-indent: -999em;
+    color: var(--txtcolor);
+}
+
+header #logo{
+    background-image: url('../assets/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50px;
+    margin: 0.2em 0.4em;
+    padding: 0em;
+    width: 2.3em; 
+    height: 2.3em;
+    text-decoration: none;
+}
+
+header .menuList{
+    display: inline-flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+header .menuList li{
+    margin-right: 2em;
+}
+
+header .menuList li:last-child{
+    margin-right: 1.5em;
+}
+
+header .menuList li:last-child[class="login"]{
+    background-image: url('../assets/loginIcon.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center right;
+    cursor: pointer;
+    padding-right: 1.8em;
+    display: inline-flex;
+    align-items: center;
+}
+
+header .menuList li:last-child[class="profile"]{
+    background-image: url('../assets/profileIcon.png');
+    background-size: 1em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center right;
+    cursor: pointer;
+    padding-right: 2em;
+    display: inline-flex;
+    align-items: center;
+}
+
+header .menuList a{
+    text-decoration: none;
+    color: #c8c4c4;
+    text-transform: uppercase;
+}
+
+#currentMenu{
+    font-weight: bold;
+    color: var(--txtcolor);
+    text-transform: uppercase;
+}
+
+header .menuList a:hover{
+    text-decoration: underline;
+    color: var(--txtcolor);
+}
+
+header #profile {
+    line-height: 1.5em;
+    cursor: pointer;
+    margin-right: 2em;
+    border-radius: 20px;
+    background-image: url('../assets/profileIcon.png ');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+    text-indent: -9999px; 
+    width: 2em; 
+    height: 2em;
+    display: inline-block;
+}
+
+#mobileMenu{
+    display: none;
+}
+
+#mobileMenu .bar{
+    width: 25px;
+    height: 3px;
+    background-color: var(--txtcolor);
+    margin: 5px 1.5em;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
+
+
+/* SEZIONE BREADCUMB */
+
+#breadcumb{
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+    padding: 0.5em;
+    border-top: 1px solid var(--boxcolor);
+    border-bottom: 1px solid var(--boxcolor);
+}
+
+.stickyScroll {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* SEZIONE MAIN */
+
+.hero {
+    color: var(--txtcolor);
+    padding: 3em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    height: 30vh;
+}
+
+.hero p{
+    font-size: 1.2em;
+}
+
+.background{
+    background: url('../assets/dark-background-abstract-background-network-3d-background-3840x2160-8324.png') no-repeat center fixed;
+    background-color: var(--bgcolor);
+}
+
+.blur{
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.blurBackground{
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+    font-size: 2.2em;
+    line-height: 1.5em;
+}
+
+
+/* SEZIONE VIDEOGAMES */
+.infoVideogames{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: left;
+    color: var(--boxtxtcolor);
+    width: 100%;
+}
+
+.videogames{
+    display: flex;
+    flex-direction: row;
+    margin: 4em 10% 0em 0em;
+    gap: 1em;
+    background-color: var(--boxcolor);
+    justify-content: space-around;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
+}
+
+.infoVideogames h2{
+    font-size: 1.5em;
+}
+
+.infoVideogames p{
+    font-size: 1em;
+}
+
+
+.videogames img{
+    width: 60%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.infoVideogames a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.infoVideogames a:visited{
+    background-color: var(--bgvisitedcolor);
+}
+
+.infoAbbonamenti{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: left;
+    color: var(--boxtxtcolor);
+    width: 100%;
+}
+
+
+.infoAbbonamenti h2{
+    font-size: 1.5em;
+}
+
+.infoAbbonamenti p{
+    font-size: 1em;
+}
+
+
+.abbonamenti{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 4em 0em 2em 10%;
+    gap: 1em;
+    background-color: var(--boxcolor);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border: #000 solid 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s;
+}
+
+.abbonamenti img{
+    width: 45%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.infoAbbonamenti a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.infoAbbonamenti a:visited{
+    background-color: var(--bgvisitedcolor);
+} 
+
+
+
+/* SEZIONE MENU MOBILE */
+.menuListMobile{
+    display: none;
+}
+
+
+/* SEZIONE FOOTER */
+footer {
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+}
+
+
+.footerContent {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.0em;
+    gap: 2em;
+}
+
+.footerHeader{
+    margin-bottom: 1em;
+    color: var(--txtcolor);
+    font-size: 1.4em;
+}
+
+.contactInfo p {
+    margin: 0.5em 0;
+}
+
+.socialLinks a {
+    color: var(--linktxtcolor);
+    font-size: 1em;
+    margin-right: 1em;
+    text-decoration: none;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 0.5em;
+}
+
+.iconSize {
+    font-size: 1.25em;
+}
+
+.socialLinks a:hover {
+    color: var(--boxcolor);
+}
+
+.footerBottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    vertical-align: middle;
+    padding: 0.5em;
+}
+
+/* AIUTI ALLA NAVIGAZIONE */
+.navHelper{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navHelper:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp a{
+    text-decoration: none;
+    color: var(--txtcolor);
+}
+
+.listHelp ul{
+    list-style-type: none;
+}
+
+.tornaSuButton{
+    align-self: flex-end;
+    display: inline-flex;
+    margin-right: 1em;
+}
+
+.tornaSuHelper{
+    margin-bottom: 2em;
+    text-indent: -999em;
+    background-color: var(--boxcolor);
+    border-radius: 10px;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    background-image: url('../assets/arrowupblack.png');
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tornaSuHelper:focus{
+    position: static;
+    text-indent: 0;
+    background-position: center right;
+    color: var(--boxtxtcolor);
+    text-decoration: none;
+}
+
+/* ========================
+      PAGINA ABBONAMENTI
+=========================== */
+
+.abbonamentiAbb{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(0.5em, 1.5vw, 3em);/*gap preferito: 2vw(1/100 larghezza schermo);gap minimo 1 em gap massimo 3 em  */
+    padding: 2em;
+    padding-bottom: 4em;
+    transition: transform 0.3s;
+    max-width: 100%;
+    align-items: stretch;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+.targhettaAbb{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    text-align: center;
+    color: var(--boxtxtcolor);
+    max-width: 100%;
+    width: 100%;
+    padding: 2.3em 1.5em 2.3em 1.5em;
+    background-color: var(--boxcolor);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.targhettaAbb p{
+    font-size: 1em;
+}
+.targhettaAbb h2{
+    font-size: 1.6em;
+}
+
+
+.targhettaAbb img{    
+    max-width: 40%;
+    height: auto;
+    border-radius: 20px;
+    border: #000 solid 2px;
+}
+
+.targhettaAbb a{
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    background: var(--buttoncolor);
+    border: 2px solid #000;
+    color: var(--buttontxtcolor);
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+
+}
+
+.targhettaAbb button:hover {
+    transform: scale(1.03);    
+}
+.targhettaAbb form{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    max-width: 100%;
+    width: 100%;
+    gap: 1em;
+}
+
+.warningAbbonamento{
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* ============================
+        PAGINA CHI SIAMO       
+============================ */
+.chiSiamo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chiSiamo h2{
+    font-size: 1.5em;
+}
+.chiSiamo p{
+    font-size: 1em;
+}
+.infoObiettivi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 10%;
+    gap: 1em;
+    border: #000 solid 1px;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
+}
+
+.infoFondatori {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 5%;
+    gap: 1em;
+    border: #000 solid 1px;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
+    margin-bottom: 2em;
+}
+
+.containerCardFondatori{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cardFondatore{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
+}
+
+.cardFondatore h3{
+    font-size: 1em;
+}
+
+.cardFondatore img{
+    width: 8em;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* ============================
+        PAGINA CATALOGO
+============================ */
+
+.catalogo-cantainer {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.allgames-section h2 {
+    width: 100%;
+    font-size: 1.6em;
+    color: var(--txtcolor);
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.allgames-section{
+    padding: 1em;
+    margin: 5%;
+}
+
+.game-card {
+    flex: 1 1 250px;
+    max-width: 380px;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--boxcolor);
+    text-align: center;
+    font-size: 20px;
+
+    border: var(--boxcolor) solid 5px;
+    border-radius: 10px;
+
+}
+
+.game-card:hover {
+    transform: scale(1.03); 
+    z-index: 1; 
+    transition: transform 0.6s ease;
+}
+
+.game-card-image {
+    width: 100%;
+    height: 100%;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    color: var(--boxtxtcolor);
+    padding: 0.3em;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.game-info h3 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.game-page-link{
+    align-self: flex-end;
+    padding: 0.4em 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 2em;
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 0.7em;
+}
+
+.game-page-link:visited{
+    background-color: var(--bgvisitedcolor);
+}
+
+/*=============================
+   PAGINA LOGIN/REGISTRAZIONE
+===============================*/
+
+.loginRegistrazione{
+    border: 2px solid #000;
+    width: 80%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5em 0;
+    border-radius: 1em;
+    background-color: var(--boxcolor);
+    max-width: 600px;
+}
+
+.formLoginRegistrazione{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formLoginRegistrazione div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginRegistrazione h1{
+    margin-top: 1em;
+    color: var(--boxtxtcolor);
+}
+
+.loginRegistrazione p{
+    margin-bottom: 0.2em;
+    color: var(--boxtxtcolor);
+}
+
+.loginRegistrazione a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 5em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    margin-bottom: 1em;
+}
+
+.loginRegistrazione a:visited{
+    background-color: var(--bgvisitedcolor);
+}  
+
+.hintText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    align-self: flex-start;
+    color: var(--boxtxtcolor);
+}
+
+.errorText{
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    align-self: flex-start;
+    color: var(--errortxtonboxcolor);
+}
+
+.labelForm {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: var(--boxtxtcolor);
+    align-self: flex-start;
+}
+
+.inputForm {
+    width: 100%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 0.9em;
+}
+
+.buttonForm {
+    border-radius: 15px;
+    padding: 0.8em 1.8em;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    background: var(--buttoncolor);
+    border: #000 solid 2px;
+    color: var(--buttontxtcolor);
+    font-size: 1em;
+    text-transform: uppercase;    
+}
+
+hr{
+    width: 85%;
+    margin-bottom: 2%;
+}
+
+.errorLogin {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    list-style: none;
+    font-weight: bold;
+    margin-bottom: 0.1em;
+}
+
+.errorFormRegistrazione {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+.confermaRegistrazione {
+    color: var(--successtxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+/* ============================
+        PAGINA VIDEOGIOCO
+============================ */
+
+#mainVideogioco{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: var(--txtcolor);
+    width: 100%;
+    background: var(--bgcolor);
+}
+.backgroundPannelloVideogioco{
+    background: url('../assets/royalty-free-music-for-videogames.png') no-repeat center center/cover;
+    background-color: var(--bgcolor);
+    width: 100%;
+    border-radius: 10px;
+}
+.pannelloVideogioco {
+    color: var(--txtcolor);
+    display: flex;
+    flex-direction: row;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 3em;
+    justify-content: left;
+    gap: 2em;
+    align-items:center; 
+    box-sizing: border-box; 
+    width: 100%;
+    height: 35vh;
+    border-radius: 10px;
+}
+
+.pannelloVideogioco h1{
+    font-size: 2.5em;
+    line-height: 1.5em;
+    max-width: 100%;
+}
+
+.copertinaVideogioco{
+    width: 25%;
+    height: auto;
+    border-radius: 20px;
+}
+.videogiocoPegiEAcquisto{
+    box-sizing:border-box;
+    color: var(--txtcolor);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    padding: 1em; 
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+.videogiocoPegi img{
+    width: 2.6em;
+    height: auto;
+    border-radius: 2px;
+}
+.videogiocoPegi {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    height: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 0.85em;
+    align-items: center;
+    width: 20%;
+}
+.videogiocoAcquisto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    padding-left: 0em;
+    padding-top: 2em;
+}
+
+#mainVideogioco h2{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.boxDescrizioneECategorie{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-bottom: 1em;
+    background-color: var(--boxcolor);
+    border-radius: 25px;
+    color: var(--boxtxtcolor);
+    margin: 1em;
+    font-size: 1em;
+}
+.boxCategorie{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    box-sizing: border-box;
+    padding-left: 5em;
+    min-width: 50%;
+}
+.boxCategorie dt{
+    font-weight: bold;
+}
+.boxCategorie dd{
+    margin-top: 0.1em;
+    margin-bottom: 0.3em;
+}
+.boxDescrizioneEInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    width: 50%;
+}
+.infoVideogioco{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.buttonAcquistaVideogioco{
+    border-radius: 15px;
+    text-decoration: none;
+    padding: 0.2em 0.3em;
+    background: var(--buttoncolor);
+    border: #000 solid 2px;
+    color: var(--buttontxtcolor);
+    font-size: 1em;
+    text-align: center;
+}
+
+.warningAcquisto{
+    color: var(--errortxtonbgcolor);
+    font-size: 1em;
+    margin-bottom: 0.8em;
+    font-weight: bold;
+}
+
+
+/* ============================
+        PAGINA PROFILO
+============================ */
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 2em 10%;
+    gap: 2.5em;
+}
+
+.profileBox {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    background: var(--boxcolor);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.profilePicture {
+    border: 2px solid #000;
+    border-radius: 50%;
+    margin-top: 1em;
+    width: 120px;
+    height: 120px;
+}
+
+.profileBoxContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+.profileBox h2 {
+    font-size: 1.5em;
+    margin-top: 1em;
+    color: var(--boxtxtcolor);
+}
+
+.userDetailsItem {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFF;
+    padding: 0.5em;
+}
+
+.userDetails dl{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    color: var(--boxtxtcolor);
+    font-size: 1em;
+}
+
+.userDetailsItem dt{
+    font-weight: bold;
+}
+
+.buttonBoxProfile{
+    display: inline-block;
+    padding: 0.5em 1em;
+    background: var(--buttoncolor);
+    border: 2px solid #000;
+    color: var(--buttontxtcolor);
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.subscriptionDetailsItem{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFF;
+    padding: 0.5em;
+}
+
+.subscriptionDetailsItem dt {
+    font-weight: bold;
+}
+
+.subscriptionContent dl{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    color: var(--boxtxtcolor);
+    font-size: 1em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.subscriptionContent {
+    flex: 1 1;
+}
+
+
+.gamesList {
+    margin-top: 1em;
+    list-style: none;
+    margin: 1em 2em;
+}
+
+.noAcquisti{
+    font-size: 1.1em;
+    color: var(--boxtxtcolor);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.gameItem {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid #FFF;
+}
+
+.gameItem h3 {
+    font-size: 1.3em;
+    color: var(--boxtxtcolor);
+}
+
+.gameThumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 1em;
+}
+
+.gameInfo {
+    flex: 1;
+}
+
+.purchaseDate {
+    color: #404040;
+    font-size: 0.9em;
+}
+
+/* ============================
+        PAGINE ERRORE
+============================ */
+
+.error-page {
+    background-color: white;
+}
+
+.error-main {
+    background-color: white;
+    min-height: 100vh;
+}
+
+.error-container {
+    justify-self: center;
+    margin: 1em 2em;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.error-img {
+    max-width: 35%;
+    height: auto;
+    align-self: center;
+    margin-top: 1.5em;
+}
+
+.error-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    padding: 1em;
+}
+
+.error-msg {
+    color: black;
+    font-size: 2.5em;
+    line-height: 1.5em;
+}
+
+.error-descr {
+    color: black;
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+.error-info ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.error-info li{
+    align-self: center;
+    list-style: none;
+}
+
+.error-info li a{
+    display: inline-block;
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.error-info li a:visited{
+    background-color: var(--bgvisitedcolor);
+}
+
+/* ============================
+    PAGINA ACQUISTO COMPLETATO
+============================ */
+
+.ac-container {
+    justify-self: center;
+    margin: 1em 2em;
+    padding: 1.5em;
+    display: flex;
+    justify-content: center;
+    background-color: var(--boxcolor);
+    border-radius: 15px;
+}
+
+.ac-img {
+    max-width: 35%;
+    border-radius: 50%;
+    border: #000 solid 3px;
+    height: auto;
+    align-self: center;
+}
+
+.ac-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    padding: 1em;
+}
+
+.ac-msg {
+    color: var(--boxtxtcolor);
+    font-size: 2.5em;
+    line-height: 1.5em;
+}
+
+.ac-descr {
+    color: var(--boxtxtcolor);
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+.ac-info ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.ac-info li{
+    align-self: center;
+    list-style: none;
+}
+
+.ac-info li a{
+    display: inline-block;
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.ac-info li a:visited{
+    background-color: var(--bgvisitedcolor);
+}
+/* =========================
+        DASHBOARD ADMIN
+============================*/
+.divForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-radius: 25px;
+    font-size: 1em;
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
+    margin: 2em 15%;
+}
+.formRiga{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: center;
+    padding: 0em 2em;
+}
+.formCampo{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.divForm h2{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+}
+.titleLegend{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em;
+    line-height: 1.5em;
+}
+
+.sceltaPiattaforma{
+    text-align: center;
+}
+
+.containerScelteCategoria{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.formCheckboxAreaPiattaforme{
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.formCheckboxAreaCategorie{
+    margin-bottom: 2em;
+}
+
+fieldset{
+    border: none;
+}
+
+.formCampo input, textarea {
+    width: 90%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 0.9em;
+    background-color: #FFF;
+}
+
+.formCampo select {
+    width: 95%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 0.9em;
+    background-color: #FFF;
+}
+
+.labelFormAdmin{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: var(--boxtxtcolor);
+}
+
+.buttonAdminForm{
+    font-size: 0.9em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background: var(--buttoncolor);
+    border: 2px solid #000;
+    color: var(--buttontxtcolor);
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    align-self: center;
+}
+
+.itemCentered{
+    align-self: center;
+    justify-self: center;
+}
+
+.errorFormAdmin {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+ul[class ~= "errorFormAdmin"] {
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: start;
+    margin-left: 0.5em;
+}
+
+.confermaOperazioneAdmin {
+    color: var(--successtxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+}

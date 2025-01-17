@@ -1,6 +1,9 @@
 <?php
 namespace DB;
 
+use mysqli;
+use mysqli_sql_exception;
+
 class DBAccess{
     private const HOST = 'mariadb';
     private const DB_NAME = 'my_database';
@@ -9,10 +12,13 @@ class DBAccess{
 
     private $connection;
 
-	public function openDBConnection() {		
-		mysqli_report(MYSQLI_REPORT_ERROR);
-
-		$this->connection = mysqli_connect(DBAccess::HOST, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DB_NAME);
+	public function openDBConnection() {
+		//mysqli_report(MYSQLI_REPORT_ERROR);
+		try {
+			$this->connection = new mysqli(DBAccess::HOST, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DB_NAME);
+		} catch (mysqli_sql_exception $e) {
+			throw $e;
+		}
 
 		if(mysqli_connect_errno()){
 			return false;
@@ -28,7 +34,7 @@ class DBAccess{
 	public function getListAbbonamenti() {
 		$query = "SELECT * from Abbonamento ORDER BY Livello ASC";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -45,7 +51,7 @@ class DBAccess{
 	public function getListCategorie() {
 		$query = "SELECT * from Categoria";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -62,7 +68,7 @@ class DBAccess{
 	public function getListPiattaforme() {
 		$query = "SELECT * from Piattaforma";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -79,7 +85,7 @@ class DBAccess{
 	public function getListGiochi() {
 		$query = "SELECT * from Videogioco";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -96,7 +102,7 @@ class DBAccess{
 	public function getGiocoByCodice($codice){
 		$query = "SELECT * from Videogioco WHERE codice = '$codice'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -113,7 +119,7 @@ class DBAccess{
 	public function getCategoriaByCodiceGioco($codice){
 		$query = "SELECT * from CategoriaVideogioco WHERE videogioco = '$codice'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -130,7 +136,7 @@ class DBAccess{
     public function getPiattaformaByCodiceGioco($codice){
 		$query = "SELECT * from PiattaformaVideogioco WHERE videogioco = '$codice'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -147,7 +153,7 @@ class DBAccess{
     public function getAbbonamentoByCodiceGioco($codice){
 		$query = "SELECT * from AbbonamentoVideogioco WHERE videogioco = '$codice'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -164,7 +170,7 @@ class DBAccess{
 	public function getUtente($username){
 		$query = "SELECT * from Cliente WHERE username = '$username'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -181,7 +187,7 @@ class DBAccess{
 	public function getAcquisti($username){
 		$query = "SELECT * from Vendita, Videogioco WHERE Vendita.videogioco = Videogioco.codice and utente = '$username'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -198,7 +204,7 @@ class DBAccess{
 	public function getImmagineAbbonamento($abbonamento){
 		$query = "SELECT * from Abbonamento WHERE nome = '$abbonamento'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return null;
@@ -210,7 +216,7 @@ class DBAccess{
 
 	public function autenticaUtente($username, $password){
 		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM Cliente)";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_num_rows($queryResult) == 1) {
 			return true;
 		} else {
@@ -221,7 +227,7 @@ class DBAccess{
 
 	public function autenticaAdmin($username, $password){ 
 		$query = "SELECT * from Utente WHERE username = '$username' AND password = '$password' AND username IN (SELECT username FROM Admin)";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_num_rows($queryResult) == 1) {
 			return true;
 		} else {
@@ -234,10 +240,10 @@ class DBAccess{
 		$queryInsUtente = "INSERT INTO Utente (username, password) VALUES (\"$username\", \"$password\")";
 		$queryInsUser = "INSERT INTO Cliente (username, nome, cognome, dataNascita, email, abbonamentoAttuale, dataInizio, dataFine) VALUES (\"$username\", \"$nome\", \"$cognome\", \"$nascita\", \"$email\", NULL, NULL, NULL)";
 		
-		$queryInsRes = mysqli_query($this->connection, $queryInsUtente) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryInsRes = mysqli_query($this->connection, $queryInsUtente) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 		{
-			$queryInsUserRes = mysqli_query($this->connection, $queryInsUser) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+			$queryInsUserRes = mysqli_query($this->connection, $queryInsUser) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 			if(mysqli_affected_rows($this->connection) > 0)
 				return true;
 			else
@@ -249,7 +255,7 @@ class DBAccess{
 
 	public function disdiciAbbonamento($username){
 		$query = "UPDATE Cliente SET abbonamentoAttuale = NULL, dataInizio = NULL, dataFine = NULL WHERE username = '$username'";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -261,7 +267,7 @@ class DBAccess{
 		$timestamp = strtotime("+1 year");
 		$dataFine = date('Y-m-d', $timestamp);
 		$query = "UPDATE Cliente SET abbonamentoAttuale = '$abbonamento', dataInizio = '$dataInizio', dataFine = '$dataFine' WHERE username = '$username'";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -271,7 +277,7 @@ class DBAccess{
 	public function findAcquisto($username, $codice){
 		$query = "SELECT * from Vendita WHERE videogioco = '$codice' and utente = '$username'";
 
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
 		if(mysqli_num_rows($queryResult) == 0) {
 			return false;
@@ -283,7 +289,7 @@ class DBAccess{
 	public function acquistaGioco($username, $codice, $costo){
 		$data = date('Y-m-d');
 		$query = "INSERT INTO Vendita (utente, data, totale, videogioco) VALUES (\"$username\", \"$data\", \"$costo\", \"$codice\")";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -292,7 +298,7 @@ class DBAccess{
 
 	public function verifyAdmin($username){
 		$query = "SELECT * FROM Admin WHERE username = '$username'";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -301,7 +307,7 @@ class DBAccess{
 
 	public function insertGioco($codice, $titolo, $descrizione, $prezzo, $dataUscita, $pegi, $casaSviluppatrice, $immagine){
 		$query = "INSERT INTO Videogioco (codice, titolo, descrizione, prezzo, dataUscita, pegi, casaSviluppatrice, immagine) VALUES (\"$codice\", \"$titolo\", \"$descrizione\", \"$prezzo\", \"$dataUscita\", \"$pegi\", \"$casaSviluppatrice\", \"$immagine\")";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -310,7 +316,7 @@ class DBAccess{
 
 	public function rimuoviGioco($codice){
 		$query = "DELETE FROM Videogioco where codice = '$codice'";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -319,7 +325,7 @@ class DBAccess{
 
 	public function modificaPrezzoAbbonamento($abbonamento, $prezzo){
 		$query = "UPDATE Abbonamento SET prezzo = '$prezzo' WHERE nome = '$abbonamento'";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -332,7 +338,7 @@ class DBAccess{
 			$valori .= "('$categoria', '$codice'), ";
 		$valori = substr($valori, 0, -2);
 		$query = "INSERT INTO CategoriaVideogioco (categoria, videogioco) VALUES $valori;";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -345,7 +351,7 @@ class DBAccess{
 			$valori .= "('$piattaforma', '$codice'), ";
 		$valori = substr($valori, 0, -2);
 		$query = "INSERT INTO PiattaformaVideogioco (piattaforma, videogioco) VALUES $valori;";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else
@@ -367,7 +373,7 @@ class DBAccess{
 			break;
 		}
 		$query = "INSERT INTO AbbonamentoVideogioco (abbonamento, videogioco) VALUES $valori;";
-		$queryResult = mysqli_query($this->connection, $query) or die("Errore in openDBConnection " . mysqli_error($this-> connection));
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 		if(mysqli_affected_rows($this->connection) > 0)
 			return true;
 		else

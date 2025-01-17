@@ -2,7 +2,7 @@
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
-$paginaHTML = file_get_contents('registrazione.html');
+$paginaHTML = file_get_contents('template/registrazione.html');
 
 function pulisciInput($value){
     $value = trim($value);
@@ -21,6 +21,7 @@ $username = "";
 $password = "";
 
 $connection = new DBAccess();
+$connectionOK = false;
 
 if (isset($_POST['registrati'])) {
 	$messaggiPerForm .= "<ul class='itemCentered errorFormRegistrazione'>";
@@ -50,22 +51,31 @@ if (isset($_POST['registrati'])) {
 	$messaggiPerForm .= "</ul>";
 
 	if($messaggiPerForm == "<ul class='itemCentered errorFormRegistrazione'></ul>"){
-		if($connection->openDBConnection()){
-			$esistente = $connection->getUtente($username);
-			if($esistente == null){  //se non esiste già un utente con quel username
-				$nuovoUtente = $connection->insertNewUser($username,$password,$nome,$cognome,$dataNascita,$email);
-				if($nuovoUtente){
-					session_start();
-					$_SESSION["registrazione"] = 1;
-					header("Location: login.php");  //reindirizza alla pagina di login
+		try{
+			$connectionOK = $connection->openDBConnection();
+			if($connectionOK){
+				$esistente = $connection->getUtente($username);
+				if($esistente == null){  //se non esiste già un utente con quel username
+					$nuovoUtente = $connection->insertNewUser($username,$password,$nome,$cognome,$dataNascita,$email);
+					if($nuovoUtente){
+						session_start();
+						$_SESSION["registrazione"] = 1;
+						header("Location: login.php");  //reindirizza alla pagina di login
+					}
 				}
+				else   //se esiste già un utente con quel username do un errore
+					$messaggiPerForm = "<span class='itemCentered errorFormRegistrazione'>Username già utilizzato, si prega di usarne un altro</span>";
 			}
-			else   //se esiste già un utente con quel username do un errore
-				$messaggiPerForm = "<span class='itemCentered errorFormRegistrazione'>Username già utilizzato, si prega di usarne un altro</span>";
-			$connection->closeDBConnection();
+			else
+				header("Location: 500.php");
 		}
-		else
+		catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
 			header("Location: 500.php");
+		}
+		finally{  //chiudo la connessione in ogni caso
+			if($connectionOK)
+				$connection->closeDBConnection();
+		}
 	}
 }
 

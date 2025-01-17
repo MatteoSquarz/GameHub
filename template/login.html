@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Questa pagina è dedicata alla form di login del sito GameHub">
+        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento">
+        <meta name="author" content="Andrea Piola">    
+        <link rel="stylesheet" href="style/style.css" media="screen">
+        <link rel="stylesheet" href="style/mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="style/print.css" media="print">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <title>Accedi - GameHub</title>
+    </head>
+    <body>
+        <div class="stickyScroll">
+            <header>
+                <div class="logoName">
+                    <h1 id="logo">GameHub</h1>
+                </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                        <a href="#mainLogin" class="navHelper">Vai al contenuto</a>
+                </nav>
+                <nav id="menu" aria-label="menu di navigazione">
+                    <ul class="menuList">
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="catalogo.php">Catalogo</a></li>
+                        <li><a href="abbonamenti.php">Abbonamenti</a></li>
+                        <li><a href="chiSiamo.php">Chi siamo</a></li>
+                        <li id="currentMenu">Accedi</li>
+                    </ul>
+                </nav>
+                <a role="button" href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
+                    <div>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
+            </header>
+            <nav id="breadcumb" aria-label="percorso pagina">
+                <p>Ti trovi in: Accedi</p>
+            </nav>
+        </div>
+        <main id="mainLogin" class="background">
+            <div class="loginRegistrazione">
+                [registrazione]
+                <h1>Accedi</h1>
+                <form class="formLoginRegistrazione" method="post" action="login.php" onsubmit="return validazioneForm();">
+                    <div>
+                        <label class="labelForm" for="username">Username</label>
+                        <input class="inputForm" type="text" placeholder="Inserisci lo username" name="username" id="username" required>
+                    </div>
+
+                    <div>
+                        <label class="labelForm" for="password">Password</label>
+                        <input class="inputForm" type="password" placeholder="Inserisci la password" name="password" id="password" required>
+                    </div>
+
+                    <button class="buttonForm" type="submit" name="accedi" id="accedi">Accedi</button>
+                    [messaggiForm]
+                </form>                
+                <hr>
+                <p>Oppure</p>
+                <p>Se non hai ancora un account:</p>
+                <a href="registrazione.php">Registrati</a>
+            </div>
+        </main>
+        <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
+            <ul class="menuListMobile">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="catalogo.php">Catalogo</a></li>
+                <li><a href="abbonamenti.php">Abbonamenti</a></li>
+                <li><a href="chiSiamo.php">Chi siamo</a></li>
+                <li id="currentMenuMobile">Accedi</li>
+                <li><a href=#mainLogin>Torna su</a></li>
+            </ul>
+        </nav>    
+        <footer>
+            <div class="footerContent">
+                <div class="contactInfo">
+                    <h2 class="footerHeader">Contattaci</h2>
+                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+                </div>
+                <div class="socialLinks">
+                    <h2 class="footerHeader">Seguici</h2>
+                    <div class="socialIcons">
+                        <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> Facebook</a>
+                        <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> Twitter</a>
+                        <a href="https://www.instagram.com/"><span class="fa-brands fa-instagram iconSize"></span> Instagram</a>
+                        <a href="https://www.youtube.com/"><span class="fa-brands fa-youtube iconSize"></span> Youtube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+            </div>
+        </footer>
+    </body>
+</html>

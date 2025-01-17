@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Questa pagina è dedicata alla dashbord per admin del sito GameHub">
+        <meta name="keywords" content="videogioco, playstation, nintendo, xbox, pc, abbonamento">
+        <meta name="author" content="Alessandro Damiani">    
+        <link rel="stylesheet" href="style/style.css" media="screen">
+        <link rel="stylesheet" href="style/mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="style/print.css" media="print">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <script src="script/script.js"></script>
+        <title>Pagina Admin - GameHub</title>
+    </head>
+    <body onload="caricamento('inserimento'); caricamento('rimozione'); caricamento('modifica');">
+        <div class="stickyScroll">
+            <header>
+                <div class="logoName">
+                    <h1 id="logo">GameHub</h1>
+                </div>
+                <nav aria-label = "aiuti alla navigazione" class="listHelp">
+                    <a href="#contentAdmin" class="navHelper">Vai al contenuto</a>
+                </nav>
+                <nav id="menu" aria-label="menu di navigazione">
+                    <ul class="menuList">
+                        <li id="currentMenu">Home</li>
+                        <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
+                    </ul>
+                </nav>
+                <a role="button" href="#hamburgerMobileMenu" id="mobileMenu" aria-label="apri menu">
+                    <div>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div> 
+                </a>
+            </header>
+            <nav id="breadcumb" aria-label="percorso pagina">
+                <p>Ti trovi in: Pagina admin</p>
+            </nav>
+        </div>
+    
+        <main id="contentAdmin" class="background">
+            <div class="hero blur">
+                <h1>Ecco la tua <span lang="en">dashboard</span> admin</h1>
+                <p>In questa pagina l'admin può aggiungere e rimuovere i giochi in catalogo, 
+                  inoltre è possibile modificare i prezzi degli abbonamenti.
+                </p>
+            </div>
+            [messaggioOutput]
+            <div class="divForm" id="divAreaInserimento">
+                <form id="inserimento-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('inserimento');">
+                    [messaggiInserimento] 
+                    <h2>Area Inserimento Gioco</h2>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="codice">Codice:</label>
+                            <input type="text" id="codice" name="codice" required />
+                        </div>
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="titolo">Titolo:</label>
+                            <input type="text" id="titolo" name="titolo" required />
+                        </div>
+                    </div>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="data-uscita">Data uscita:</label>
+                            <input type="date" id="data-uscita" name="data-uscita" required />
+                        </div>
+                        
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="pegi"><span lang="en">Pegi:</span></label>
+                            <select id="pegi" name="pegi" required>
+                                <option value="3">3</option>
+                                <option value="7">7</option>
+                                <option value="12">12</option>
+                                <option value="16">16</option>
+                                <option value="18">18</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="prezzo">Prezzo:</label>
+                            <input type="number" id="prezzo" name="prezzo" step="1.0" required />
+                        </div>
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="casa-sviluppatrice">Casa Sviluppatrice:</label>
+                            <input type="text" id="casa-sviluppatrice" name="casa-sviluppatrice" required />
+                        </div>
+                    </div>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="immagine">Immagine:</label>
+                            <input type="file" id="immagine" name="immagine" accept="image/*"  required />
+                        </div>
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="abbonamentoMin">Abbonamento minimo:</label>
+                            <select id="abbonamentoMin" name="abbonamentoMin" required>
+                                [listaAbbonamenti]
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formCheckboxAreaPiattaforme">
+                        <fieldset>
+                            <legend class="titleLegend">Piattaforme (selezionare almeno una):</legend>
+                            [listaPiattaforme]
+                        </fieldset>
+                    </div>
+                    <div class="formCheckboxAreaCategorie">
+                        <fieldset>
+                            <legend class="titleLegend">Categorie (selezionare almeno una):</legend>
+                            <div class="containerScelteCategoria">
+                                [listaCategorie]
+                            </div> 
+                        </fieldset>
+                    </div>
+                    <div class="formCampo itemCentered">
+                        <label class="labelFormAdmin" for="descrizione">Descrizione:</label>
+                        <textarea id="descrizione" name="descrizione" cols="100" rows="8" required></textarea>
+                    </div>
+                    <div class="itemCentered">
+                        <button type="submit" class="buttonAdminForm" name="inserisciVideogioco" id="inserisciVideogioco">Inserisci gioco</button>                        
+                    </div>   
+                </form>
+            </div>
+            <div class="divForm" id="divAreaRimozione">
+                <form id="rimozione-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('rimozione');">
+                    [messaggioRimozione]
+                    <h2>Area Rimozione Gioco</h2>
+                    <div class="formCampo itemCentered">
+                        <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
+                        <input type="text" id="codice-rimozione" name="codice-rimozione" required/>
+                    </div>
+                    <div class="itemCentered">
+                        <button type="submit" class="buttonAdminForm" name="rimuoviVideogioco" id="rimuoviVideogioco">Rimuovi gioco</button>
+                    </div>
+                </form>
+            </div>
+            <div class="divForm" id="divAreaModifica">
+                <form id="modifica-prezzi" method="post" action="admin.php" onsubmit="return validazioneForm('modifica');">
+                    [messaggioModifica]
+                    <h2>Area Modifica Prezzi Abbonamenti</h2>
+                    <div class="formRiga">
+                        <div class="formCampo">
+                            <label class="labelFormAdmin" for="abbonamento">Abbonamento:</label>
+                            <select id="abbonamento" name="abbonamento">
+                                [listaAbbonamenti]
+                            </select>
+                        </div>
+                        <div class="formCampo itemCentered">
+                            <label class="labelFormAdmin" for="nuovo-costo">Nuovo prezzo:</label>
+                            <input type="number" id="nuovo-costo" name="nuovo-costo" step="1.0" required />
+                        </div>
+                    </div>
+                    <div class="itemCentered">
+                        <button type="submit" class="buttonAdminForm" name="modificaAbbonamento" id="modificaAbbonamento">Modifica prezzo</button>
+                    </div>
+                </form>
+            </div>
+            <div class="tornaSuButton">
+                <a href="#contentAdmin" class="tornaSuHelper">Torna su</a>
+            </div>
+        </main>
+        <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
+            <ul class="menuListMobile">
+                <li id="currentMenuMobile">Home</li>
+                <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
+                <li><a href=#contentAdmin>Torna su</a></li>
+            </ul>
+        </nav>  
+        <footer>
+            <div class="footerContent">
+                <div class="contactInfo">
+                    <h3 class="footerHeader">Contattaci</h3>
+                    <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
+                    <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
+                    <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
+                </div>
+                <div class="socialLinks">
+                    <h3 class="footerHeader">Seguici</h3>
+                    <div class="socialIcons">
+                        <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> Facebook</a>
+                        <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> Twitter</a>
+                        <a href="https://www.instagram.com/"><span class="fa-brands fa-instagram iconSize"></span> Instagram</a>
+                        <a href="https://www.youtube.com/"><span class="fa-brands fa-youtube iconSize"></span> Youtube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+            </div>
+        </footer>
+    </body>
+</html>
