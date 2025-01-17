@@ -12,15 +12,26 @@ function pulisciInput($value){
 $paginaHTML = file_get_contents('admin.html');
 
 $connection = new DBAccess();
+$connectionOK = false;
 
 session_start();
-if($connection->openDBConnection()){
-    if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username']))){   //se non è loggato come admin
-        $connection->closeDBConnection();
-        header("Location: 404.php");
-        exit();
+try{
+    $connectionOK = $connection->openDBConnection();
+    if($connectionOK){
+        if(!isset($_SESSION['username']) || !($connection->verifyAdmin($_SESSION['username'])))   //se non è loggato come admin
+            header("Location: 404.php");
     }
+    else
+        header("Location: 500.php");
 }
+catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
+    header("Location: 500.php");
+}
+finally{  //chiudo la connessione in ogni caso
+    if($connectionOK)
+        $connection->closeDBConnection();
+}
+
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
     header("Location: index.php");
@@ -34,54 +45,60 @@ $listaCategorie = "";
 $piattaforme = "";
 $listaPiattaforme = "";
 
-if($connection->openDBConnection())
-{
-    $abbonamenti = $connection->getListAbbonamenti();
-    $categorie = $connection->getListCategorie();
-    $piattaforme = $connection->getListPiattaforme();
-    $connection->closeDBConnection();
-
-
-    foreach($abbonamenti as $abbonamento){
-        $nome = $abbonamento['nome'];
-        $listaAbbonamenti .= "<option value=\"$nome\">$nome</option>";
+try{
+    $connectionOK = $connection->openDBConnection();
+    if($connectionOK){
+        $abbonamenti = $connection->getListAbbonamenti();
+        $categorie = $connection->getListCategorie();
+        $piattaforme = $connection->getListPiattaforme();
     }
-
-    foreach($piattaforme as $piattaforma){
-        $nome = $piattaforma['nome'];
-        $value = $nome;
-        $nome = str_replace(' ', '-', $nome);
-        $listaPiattaforme .= "<div class=\"sceltaPiattaforma\">";
-        $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Piattaforma$value\" />";
-        $listaPiattaforme .= "<label for=\"$nome\"> $value</label>";
-        $listaPiattaforme .= "</div>";
-    }
-
-    $count = 0;
-    foreach($categorie as $categoria){
-        if($count % 5 == 0) { //apre un nuovo gruppo di 5 categorie
-            $listaCategorie .= "<div class=\"gruppoScelteCategoria\">";
-        }
-        $nome = $categoria['nome'];
-        $value = $nome;
-        $nome = str_replace(' ', '-', $nome);
-        $listaCategorie .= "<div>";
-        $listaCategorie .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Categoria$value\" />";
-        $listaCategorie .= "<label for=\"$nome\"> $value</label>";
-        $listaCategorie .= "</div>";
-        if($count % 5 == 4) { //chiude il gruppo di 5 categorie
-            $listaCategorie .= "</div>";
-        }
-        $count++;
-    }
-    $count--;
-    if($count % 5 != 4) { //chiude l'ultimo gruppo di 5 categorie
-        $listaCategorie .= "</div>";
-    }
-
+    else
+        header("Location: 500.php");
 }
-else
+catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
     header("Location: 500.php");
+}
+finally{  //chiudo la connessione in ogni caso
+    if($connectionOK)
+        $connection->closeDBConnection();
+}
+
+foreach($abbonamenti as $abbonamento){
+    $nome = $abbonamento['nome'];
+    $listaAbbonamenti .= "<option value=\"$nome\">$nome</option>";
+}
+
+foreach($piattaforme as $piattaforma){
+    $nome = $piattaforma['nome'];
+    $value = $nome;
+    $nome = str_replace(' ', '-', $nome);
+    $listaPiattaforme .= "<div class=\"sceltaPiattaforma\">";
+    $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Piattaforma$value\" />";
+    $listaPiattaforme .= "<label for=\"$nome\"> $value</label>";
+    $listaPiattaforme .= "</div>";
+}
+
+$count = 0;
+foreach($categorie as $categoria){
+    if($count % 5 == 0) { //apre un nuovo gruppo di 5 categorie
+        $listaCategorie .= "<div class=\"gruppoScelteCategoria\">";
+    }
+    $nome = $categoria['nome'];
+    $value = $nome;
+    $nome = str_replace(' ', '-', $nome);
+    $listaCategorie .= "<div>";
+    $listaCategorie .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Categoria$value\" />";
+    $listaCategorie .= "<label for=\"$nome\"> $value</label>";
+    $listaCategorie .= "</div>";
+    if($count % 5 == 4) { //chiude il gruppo di 5 categorie
+        $listaCategorie .= "</div>";
+    }
+    $count++;
+}
+$count--;
+if($count % 5 != 4) { //chiude l'ultimo gruppo di 5 categorie
+    $listaCategorie .= "</div>";
+}
 
 $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
@@ -146,22 +163,31 @@ if (isset($_POST['inserisciVideogioco'])) {
 	$messaggiInserimento .= "</ul>";
 
 	if($messaggiInserimento == "<ul class=\"itemCentered errorFormAdmin\"></ul>"){
-		if($connection->openDBConnection()){
-			if($connection->getGiocoByCodice($codice) == null){  //se il codice non è già presente
-				$connection->insertGioco($codice,$titolo,$descrizione,$prezzo,$dataUscita,$pegi,$casaSviluppatrice,$img);
-                $connection->insertCategorieGioco($codice, $cat);
-                $connection->insertPiattaformeGioco($codice, $piat);
-                $connection->insertAbbonamentiGioco($codice, $abb);
-                $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
-            }       
-			else{
-                $messaggiInserimento = "<p class=\"itemCentered errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</p>";
-                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+        try{
+            $connectionOK = $connection->openDBConnection();
+            if($connectionOK){
+                if($connection->getGiocoByCodice($codice) == null){  //se il codice non è già presente
+                    $connection->insertGioco($codice,$titolo,$descrizione,$prezzo,$dataUscita,$pegi,$casaSviluppatrice,$img);
+                    $connection->insertCategorieGioco($codice, $cat);
+                    $connection->insertPiattaformeGioco($codice, $piat);
+                    $connection->insertAbbonamentiGioco($codice, $abb);
+                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
+                }       
+                else{
+                    $messaggiInserimento = "<p class=\"itemCentered errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</p>";
+                    $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+                }
             }
-            $connection->closeDBConnection();			
-		}     
-        else
+            else
+                header("Location: 500.php");
+        }
+        catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
             header("Location: 500.php");
+        }
+        finally{  //chiudo la connessione in ogni caso
+            if($connectionOK)
+                $connection->closeDBConnection();
+        }
 	} 
     else
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
@@ -179,20 +205,29 @@ if (isset($_POST['rimuoviVideogioco'])) {
     }
 
 	if($messaggioRimozione == ""){
-		if($connection->openDBConnection()){
-			if(!$connection->getGiocoByCodice($codice) == null){  //se il codice è presente
-                $rimozione = $connection->rimuoviGioco($codice);
-				if($rimozione)
-                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
+        try{
+            $connectionOK = $connection->openDBConnection();
+            if($connectionOK){
+                if(!$connection->getGiocoByCodice($codice) == null){  //se il codice è presente
+                    $rimozione = $connection->rimuoviGioco($codice);
+                    if($rimozione)
+                        $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
+                }
+                else{   //se il codice non è presente non è possibile rimuoverlo
+                    $messaggioRimozione = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
+                    $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+                }
             }
-			else{   //se il codice non è presente non è possibile rimuoverlo
-                $messaggioRimozione = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
-                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
-            }
-            $connection->closeDBConnection();				
-		}
-        else
-            header("Location: 500.php");   
+            else
+                header("Location: 500.php");
+        }
+        catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
+            header("Location: 500.php");
+        }
+        finally{  //chiudo la connessione in ogni caso
+            if($connectionOK)
+                $connection->closeDBConnection();
+        }
 	}
 }
 $paginaHTML = str_replace('[messaggioRimozione]', $messaggioRimozione, $paginaHTML);
@@ -209,18 +244,27 @@ if (isset($_POST['modificaAbbonamento'])) {
     }
 
     if($messaggioModifica == ""){
-	    if($connection->openDBConnection()){
-		    if($connection->modificaPrezzoAbbonamento($abb,$prezzo)){  //se il prezzo è stato modificato
-                $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
+        try{
+            $connectionOK = $connection->openDBConnection();
+            if($connectionOK){
+                if($connection->modificaPrezzoAbbonamento($abb,$prezzo)){  //se il prezzo è stato modificato
+                    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
+                }
+                else{   //se il prezzo è già quello impostato
+                    $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";
+                    $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
+                }
             }
-            else{   //se il prezzo è già quello impostato
-                $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";
-                $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
-            }
-            $connection->closeDBConnection();				
-	    }
-        else
+            else
+                header("Location: 500.php");
+        }
+        catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
             header("Location: 500.php");
+        }
+        finally{  //chiudo la connessione in ogni caso
+            if($connectionOK)
+                $connection->closeDBConnection();
+        }
     }       
 }
 $paginaHTML = str_replace('[messaggioModifica]', $messaggioModifica, $paginaHTML);
