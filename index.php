@@ -1,5 +1,5 @@
 <?php
-$paginaHTML = file_get_contents('index.html');
+$paginaHTML = file_get_contents('template/index.html');
 
 $menuLoginProfilo = "<li class=\"login\"><a href=\"login.php\">Accedi</a></li>";
 session_start();

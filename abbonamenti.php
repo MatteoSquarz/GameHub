@@ -2,7 +2,7 @@
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
-$paginaHTML = file_get_contents('abbonamenti.html');
+$paginaHTML = file_get_contents('template/abbonamenti.html');
 
 $menuLoginProfilo = "<li class=\"login\"><a href=\"login.php\">Accedi</a></li>";
 session_start();

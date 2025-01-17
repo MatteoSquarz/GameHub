@@ -1,4 +1,4 @@
 <?php
-$paginaHTML = file_get_contents('404.html');
+$paginaHTML = file_get_contents('template/404.html');
 echo $paginaHTML;
 ?>

@@ -2,7 +2,7 @@
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
-$paginaHTML = file_get_contents('registrazione.html');
+$paginaHTML = file_get_contents('template/registrazione.html');
 
 function pulisciInput($value){
     $value = trim($value);

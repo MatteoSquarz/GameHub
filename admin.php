@@ -9,7 +9,7 @@ function pulisciInput($value){
     return $value;
 }
 
-$paginaHTML = file_get_contents('admin.html');
+$paginaHTML = file_get_contents('template/admin.html');
 
 $connection = new DBAccess();
 $connectionOK = false;
