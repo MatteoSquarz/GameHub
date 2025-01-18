@@ -41,7 +41,13 @@ main{
     min-height: calc(100vh - 12em);
 }
 
+main strong{
+    font-weight: normal;
+}
 
+main em{
+    font-style: normal;
+}
 
 /* SEZIONE HEADER */
 
@@ -452,6 +458,10 @@ footer {
 /* ========================
       PAGINA ABBONAMENTI
 =========================== */
+
+#mainAbbonamenti strong{
+    font-weight: bold;
+}
 
 .abbonamentiAbb{
     box-sizing: border-box;
