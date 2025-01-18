@@ -607,6 +607,7 @@ footer {
 
 .cardFondatore h3{
     font-size: 1em;
+    text-align: center;
 }
 
 .cardFondatore img{
@@ -849,6 +850,11 @@ hr{
     width: 100%;
     background: var(--bgcolor);
 }
+
+#mainVideogioco strong{
+    font-weight: bold;
+}
+
 .backgroundPannelloVideogioco{
     background: url('../assets/istockphoto-1334436084-612x612.png') no-repeat center center/cover;
     background-color: var(--bgcolor);

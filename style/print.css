@@ -71,7 +71,6 @@ body {
     margin-bottom: 0;
 }
 
-/* Images */
 .videogames img, .abbonamenti img {
     display: none;
 }
@@ -159,6 +158,8 @@ h1, h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    border: #000 1pt solid;
+    border-radius: 10px;
 }
 
 .targhettaAbb p{
