@@ -632,7 +632,7 @@ footer {
 
 .allgames-section{
     padding: 1em;
-    margin: 5%;
+    margin: 3em 5%;
 }
 
 .game-card {
@@ -840,7 +840,7 @@ hr{
     background: var(--bgcolor);
 }
 .backgroundPannelloVideogioco{
-    background: url('../assets/royalty-free-music-for-videogames.png') no-repeat center center/cover;
+    background: url('../assets/istockphoto-1334436084-612x612.png') no-repeat center center/cover;
     background-color: var(--bgcolor);
     width: 100%;
     border-radius: 10px;
@@ -871,6 +871,8 @@ hr{
     width: 25%;
     height: auto;
     border-radius: 20px;
+    box-shadow: #FFF 0 0 20px;
+    border: #FFF solid 2px;
 }
 .videogiocoPegiEAcquisto{
     box-sizing:border-box;
