@@ -1,29 +1,29 @@
 var dettagli_registrazione = {
-    "nome":["Ex: Gigi", /^[A-Za-z\ ]{2,}$/, "Non sono ammessi numeri o caratteri speciali, il numero di caratteri dev'essere almeno 2"],
-    "cognome":["Ex: Rossi", /^[A-Za-z\ \']{2,}$/,"Non sono ammessi numeri o caratteri speciali, il numero di caratteri dev'essere almeno 2"],
+    "nome":["Es: Leonardo", /^[A-Za-z\ ]{2,}$/, "Non sono ammessi numeri o caratteri speciali, la lunghezza minima consentita è di almeno 2 caratteri"],
+    "cognome":["Es: Rossi", /^[A-Za-z\ \']{2,}$/,"Non sono ammessi numeri o caratteri speciali, la lunghezza minima consentita è di almeno 2 caratteri"],
     "dataNascita":["", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
-    "email":["Ex: gigi.rossi24@gmail.de", /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,"Non sono ammessi caratteri speciali o lettere maiuscole oppure il formato non corretto"],
-    "username":["Ex: GigiRossii23", /^[a-zA-Z0-9]{2,}$/,"Sono ammessi solo numeri e lettere, il numero di caratteri dev'essere almeno 2"],
-    "password":["Caratteri consentiti: tutte le lettere, numeri e !@#%", /^[A-Za-z0-9\!\@\#\%]{8,}$/,"Sono ammessi solo numeri, lettere e e !@#%, il numero di caratteri dev'essere almeno 8"]
+    "email":["Es: leo.rossi24@gmail.com", /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,"Non sono ammessi caratteri speciali o lettere maiuscole oppure il formato non corretto"],
+    "username":["Es: LeoRossii23", /^[a-zA-Z0-9]{2,}$/,"Sono ammessi solo numeri e lettere, la lunghezza minima consentita è di almeno 2 caratteri"],
+    "password":["Caratteri consentiti: tutte le lettere, numeri e i seguenti caratteri speciali !@#%", /^[A-Za-z0-9\!\@\#\%]{8,}$/,"Sono ammessi solo numeri, lettere e i seguenti caratteri speciali !@#%, la lunghezza minima consentita è di 8 caratteri"]
 };
 
 var dettagli_inserimento = {
-    "codice":["Ex: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
-    "titolo":["Ex: La casa degli incubi", /^[A-Za-z0-9\ \']{2,20}$/,"Il titolo non può contenere caratteri speciali, almeno 2 caratteri max 20"],
+    "codice":["Es: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
+    "titolo":["Es: La casa degli incubi", /^[A-Za-z0-9\ \']{2,20}$/,"Il titolo non può contenere caratteri speciali, deve contenere minimo 2 caratteri e massimo 20"],
     "data-uscita":["Formato: dd/mm/yyyy", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
     "pegi":["Età consigliata", , ],
-    "prezzo":["Ex: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
-    "casa-sviluppatrice":["Ex: Nightmare House", /^[A-Za-z0-9\ \']{2,30}$/,"La casa sviluppatrice contiene solo lettere o numeri, almeno 2 caratteri max 30"],
-    "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri max 1000"]
+    "prezzo":["Es: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
+    "casa-sviluppatrice":["Es: Nightmare House", /^[A-Za-z0-9\ \']{2,30}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 30"],
+    "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri e massimo 1000"]
 }
 
 var dettagli_rimozione = {
-    "codice-rimozione":["Ex: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"]
+    "codice-rimozione":["Es: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"]
 }
 
 var dettagli_modifica = {
-    "abbonamento":["In cui si modifica", ,""],
-    "nuovo-costo":["Ex: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"]
+    "abbonamento":["Scegli abbonamento", ,""],
+    "nuovo-costo":["Es: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"]
 }
 
 

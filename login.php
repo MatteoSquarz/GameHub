@@ -35,10 +35,12 @@ if (isset($_POST['accedi'])) {
 	$username = pulisciInput($_POST['username']);
 	$password = pulisciInput($_POST['password']);
 	
+	// Se l'utente inserisce qualche carattere non consentito nei campi username e password mi fermo e non proseguo con la verifica
+	// Non do informazioni all'utente su quali caratteri sono ammessi, per motivi di sicurezza
 	if(!preg_match("/^[A-Za-z0-9]{2,}$/",$username))
-		$messaggiPerForm .= "<li>Caratteri non concessi nello username</li>";
+		$messaggiPerForm .= "<li>Username e/o password errati</li>";
 	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{2,}$/",$password))
-		$messaggiPerForm .= "<li>Caratteri non concessi nella password</li>";
+		$messaggiPerForm .= "<li>Username e/o password errati</li>";
 
 	
 	if($messaggiPerForm == "<ul class=\"errorLogin\">"){
@@ -66,7 +68,7 @@ if (isset($_POST['accedi'])) {
 					header("Location: admin.php");
 				}
 				else
-					$messaggiPerForm .= "<li>Username e/o password errati</li>";
+					$messaggiPerForm .= "<li>Username e/o password errati</li>";     //Errore di autenticazione generico, per motivi di sicurezza
 			}
 			else
 				header("Location: 500.php");

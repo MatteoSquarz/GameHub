@@ -79,7 +79,7 @@ header #profile{
 }
 
 .hero p {
-    font-size: 1em;
+    font-size: 1.1em;
     line-height: 1.5em;
 }
 
@@ -129,7 +129,7 @@ header #profile{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
 }
 
 .cardFondatore{
@@ -139,7 +139,7 @@ header #profile{
     justify-content: center;
     align-items: center;
     align-self: center;
-    gap: 1em;
+    gap: 0.5em;
     padding: 1em;
     background-color: var(--homeboxcolor);
     color: var(--contenttxtcolor);
@@ -238,6 +238,10 @@ header #profile{
 
 .purchaseDate {
     font-size: 0.8em;
+}
+
+.gamesList {
+    margin: 1em 0.5em;
 }
 /* ============================
         PAGINE ERRORE

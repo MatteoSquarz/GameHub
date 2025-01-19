@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Questa pagina è dedicata alla nazionale femminile di pallavolo che ha vinto l'oro alle olimpiadi di Parigi 2024.">
-        <meta name="keywords" content="pallavolo,nazionale,femminile,volley,olimpiadi,oro,Paola Egonu,Alessia Orro">
+        <meta name="description" content="Questa pagina è dedicata alla schermata di registrazione di un nuovo utente sul sito GameHub">
+        <meta name="keywords" content="registrazione, videogiochi, GameHub, account, profilo">
         <meta name="author" content="Andrea Piola">    
         <link rel="stylesheet" href="style/style.css" media="screen">
         <link rel="stylesheet" href="style/mobile.css" media="screen and (max-width:768px)">
@@ -17,14 +17,14 @@
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
-                    <h1 id="logo">GameHub</h1>
+                    <h1 id="logo"><span lang="en">GameHub</span></h1>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
                         <a href="#mainRegistrazione" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu">
                     <ul class="menuList" aria-label="menu di navigazione">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="index.php"><span lang="en">Home</span></a></li>
                         <li><a href="catalogo.php">Catalogo</a></li>
                         <li><a href="abbonamenti.php">Abbonamenti</a></li>
                         <li><a href="chiSiamo.php">Chi siamo</a></li>
@@ -40,10 +40,13 @@
                 </a>
             </header>
             <nav id="breadcumb" aria-label="percorso pagina">
-                <p>Ti trovi in: Accedi &gt;&gt; Registrazione</p>
+                <p>Ti trovi in: <span lang="en">Home</span> &rightarrow; Accedi &rightarrow; Registrazione</p>
             </nav>
         </div>
         <main id="mainRegistrazione" class="background">
+            <div class="tornaAdAccedi">
+                <p>Se hai già un <span lang="en">account</span>, vai alla pagina <a href="login.php">accedi</a> per effettuare l'accesso.</p>
+            </div>
             <div class="loginRegistrazione">
                 [messaggiForm]
                 <h1>Registrati</h1>
@@ -64,17 +67,17 @@
                     </div>
 
                     <div>
-                        <label class="labelForm" for="email">Email</label>
+                        <label class="labelForm" for="email" lang="en">Email</label>
                         <input class="inputForm" type="text" placeholder="Inserisci la tua email" name="email" id="email" required>
                     </div>
 
                     <div>
-                        <label class="labelForm" for="username">Username</label>
+                        <label class="labelForm" for="username" lang="en">Username</label>
                         <input class="inputForm" type="text" placeholder="Inserisci lo username" name="username" id="username" required>
                     </div>
 
                     <div>
-                        <label class="labelForm" for="password">Password</label>
+                        <label class="labelForm" for="password" lang="en">Password</label>
                         <input class="inputForm" type="password" placeholder="Inserisci la password" name="password" id="password" required>
                     </div>
                     <button class="buttonForm" type="submit" name="registrati" id="registrati">Registrati</button>
@@ -83,7 +86,7 @@
         </main>
         <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
             <ul class="menuListMobile">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php"><span lang="en">Home</span></a></li>
                 <li><a href="catalogo.php">Catalogo</a></li>
                 <li><a href="abbonamenti.php">Abbonamenti</a></li>
                 <li><a href="chiSiamo.php">Chi siamo</a></li>
@@ -102,15 +105,15 @@
                 <div class="socialLinks">
                     <h2 class="footerHeader">Seguici</h2>
                     <div class="socialIcons">
-                        <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> Facebook</a>
-                        <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> Twitter</a>
-                        <a href="https://www.instagram.com/"><span class="fa-brands fa-instagram iconSize"></span> Instagram</a>
-                        <a href="https://www.youtube.com/"><span class="fa-brands fa-youtube iconSize"></span> Youtube</a>
+                        <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> <span lang="en">Facebook</span></a>
+                        <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> <span lang="en">Twitter</span></a>
+                        <a href="https://www.instagram.com/"><span class="fa-brands fa-instagram iconSize"></span> <span lang="en">Instagram</span></a>
+                        <a href="https://www.youtube.com/"><span class="fa-brands fa-youtube iconSize"></span> <span lang="en">Youtube</span></a>
                     </div>
                 </div>
             </div>
             <div class="footerBottom">
-                <p>GameHub &copy; 2024 - Tutti i diritti riservati</p>
+                <p><span lang="en">GameHub</span> &copy; 2025 - Tutti i diritti riservati</p>
             </div>
         </footer>
     </body>
