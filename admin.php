@@ -135,7 +135,7 @@ if (isset($_POST['inserisciVideogioco'])) {
 		$messaggiInserimento .= "<li>Il codice contiene solo numeri e deve essere di 8 caratteri</li>";
 
     if(!preg_match("/^[A-Za-z0-9\ \']{2,20}$/",$titolo))
-        $messaggiInserimento .= "<li>Il titolo non può contenere caratteri speciali, almeno 2 caratteri max 20</li>";
+        $messaggiInserimento .= "<li>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e maassimo 20</li>";
 
     $pegi = $_POST['pegi'];
 	
@@ -143,7 +143,7 @@ if (isset($_POST['inserisciVideogioco'])) {
 		$messaggiInserimento .= "<li>Il prezzo deve essere compreso tra 0 e 999</li>";
    
 	if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
-        $messaggiInserimento .= "<li>La casa sviluppatrice contiene solo lettere o numeri, almeno 2 caratteri max 30</li>";
+        $messaggiInserimento .= "<li>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 30</li>";
 
     $img = $_POST['immagine'];
     if($img == "")

@@ -733,6 +733,10 @@ footer {
     align-items: center;
 }
 
+.formLoginRegistrazione strong{
+    font-weight: bold;
+}
+
 .formLoginRegistrazione div{
     width: 100%;
     display: flex;
@@ -1298,6 +1302,9 @@ hr{
     background-color: var(--boxcolor);
     color: var(--boxtxtcolor);
     margin: 2em 15%;
+}
+.divForm strong{
+    font-weight: bold;
 }
 .formRiga{
     display: flex;
