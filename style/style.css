@@ -136,6 +136,7 @@ header .menuList a{
 
 header .menuList a:hover{
     text-decoration: underline;
+    font-weight: bold;
     color: var(--txtcolor);
 }
 
@@ -599,7 +600,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 0.5em;
     padding: 1em;
     background-color: var(--boxcolor);
     color: var(--boxtxtcolor);
@@ -614,6 +615,10 @@ footer {
     width: 8em;
     height: auto;
     border-radius: 20px;
+}
+
+.cardFondatore p{
+    text-align: center;
 }
 
 /* ============================
@@ -720,7 +725,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 5em 0;
+    margin: 1em 0 5em 0;
     border-radius: 1em;
     background-color: var(--boxcolor);
     max-width: 600px;
@@ -842,6 +847,32 @@ hr{
     margin-top: 1em;
 }
 
+.tornaAdAccedi{
+    background-color: var(--boxcolor);
+    color: var(--boxtxtcolor);
+    font-size: 1em;
+    margin-top: 1em;
+    padding: 1em;
+    text-align: center;
+}
+
+.tornaAdAccedi a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 5em;
+    padding: 0.35em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.tornaAdAccedi a:visited{
+    background-color: var(--bgvisitedcolor);
+}
+
+#mainLogin .loginRegistrazione{
+    margin-top: 5em;
+}
 /* ============================
         PAGINA VIDEOGIOCO
 ============================ */
