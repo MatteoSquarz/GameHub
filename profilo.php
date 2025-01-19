@@ -101,7 +101,7 @@ if($utente){
     }    
 
     if($vendite == null)  //se non ha effettuato acquisti
-        $listaGiochi = "<p class=\"noAcquisti\">Non hai ancora effettuato acquisti.</p>";
+        $listaGiochi = "<h3 class=\"noAcquisti\">Non hai ancora effettuato acquisti.</h3>";
     else{    //se ha effettuato acquisti
         foreach($vendite as $vendita){
             $codice = $vendita['videogioco'];

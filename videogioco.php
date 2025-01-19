@@ -48,7 +48,7 @@ if($gioco){  //se il gioco esiste
     $img = $gioco['immagine'];
     $paginaGioco .= "<img src=\"assets/game-covers/$img\" alt=\"\" class=\"copertinaVideogioco\">";
     $titolo = $gioco['titolo'];
-    $paginaGioco .= "<h1><span lang=\"en\">$titolo</span></h1>";
+    $paginaGioco .= "<h1>$titolo</h1>";
     $paginaGioco .= "</div>";
     $paginaGioco .= "</div>";
     $paginaGioco .= "<div class=\"videogiocoPegiEAcquisto\">";
