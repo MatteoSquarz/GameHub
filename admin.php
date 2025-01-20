@@ -229,9 +229,9 @@ if (isset($_POST['rimuoviVideogioco'])) {
     $codice = pulisciInput($_POST['codice-rimozione']);
 
 	if(strlen($codice) == 0)
-		$erroreCodiceDel .= "<li>Inserire il codice</li>";
+		$erroreCodiceDel .= "<strong class=\"errorFormAdmin\">Inserire il codice</strong>";
 	else if(!preg_match("/^[0-9]{8,8}$/",$codice)){
-        $erroreCodiceDel .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
+        $erroreCodiceDel .= "<strong class=\"errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</strong>";
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
     }
 
@@ -245,7 +245,7 @@ if (isset($_POST['rimuoviVideogioco'])) {
                         $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
                 }
                 else{   //se il codice non è presente non è possibile rimuoverlo
-                    $erroreCodiceDel = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
+                    $erroreCodiceDel = "<strong class=\"itemCentered errorFormAdmin\">Codice gioco non presente</strong>";
                     $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
                 }
             }
