@@ -1342,6 +1342,21 @@ hr{
 .divForm strong{
     font-weight: bold;
 }
+
+.divForm form{
+    width: 40em;
+}
+
+@media screen and (max-width: 1024px){
+    .divForm form{
+        width: 35em;
+    }
+}
+
+#rimozione-gioco div.formCampo{
+    width: 15em;
+}
+
 .formRiga{
     display: flex;
     flex-direction: row;

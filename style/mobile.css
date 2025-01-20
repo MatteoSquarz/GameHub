@@ -277,3 +277,17 @@ header #profile{
     gap: 0em;
     padding: 0em;
 }
+
+@media screen and (max-width: 1200px){
+    .divForm form{
+        width: 90%;
+    }
+}
+
+#rimozione-gioco div.formCampo{
+    width: 80%;
+}
+
+.divForm form{
+    width: 90%;
+}
