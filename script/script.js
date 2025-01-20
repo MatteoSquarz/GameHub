@@ -77,8 +77,11 @@ function validazioneCampo(input, tipo) {
     
     //rimuovo messaggio di errore se presente
     var p = input.parentNode;
-    if (p.children.length > 2) {
+    if (p.children.length == 3) { //se è presente un messaggio di errore js
         p.removeChild(p.children[2]);
+    }
+    else if (p.children.length == 4) { //se è presente un messaggio di errore js e un messaggio di errore php
+        p.removeChild(p.children[3]);
     }
     if (text.search(regex) != 0) {
         messaggio(input, 1, tipo);
