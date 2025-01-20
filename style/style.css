@@ -792,7 +792,7 @@ footer {
 
 .labelForm {
     display: block;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
     font-weight: bold;
     color: var(--boxtxtcolor);
     align-self: flex-start;
@@ -811,12 +811,16 @@ footer {
     border-radius: 15px;
     padding: 0.8em 1.8em;
     margin-bottom: 2em;
-    margin-top: 2em;
+    margin-top: 1.5em;
     background: var(--buttoncolor);
     border: #000 solid 2px;
     color: var(--buttontxtcolor);
     font-size: 1em;
     text-transform: uppercase;    
+}
+
+.formLoginRegistrazione button#registrati{
+    margin-top: 0em;
 }
 
 hr{
