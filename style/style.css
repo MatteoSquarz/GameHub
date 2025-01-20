@@ -66,9 +66,19 @@ header{
     vertical-align: middle;
 }
 
-header h1{
-    text-indent: -999em;
+
+header #logo span{
+    display: block;
+    text-indent: 2.6em;
+    font-size: 1em;
+    margin-top: 0.7em;
     color: var(--txtcolor);
+}
+
+@media screen and (max-width: 1200px){
+    header #logo span{
+        text-indent: -999em;
+    }
 }
 
 header #logo{
