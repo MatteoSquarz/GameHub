@@ -12,6 +12,12 @@ function pulisciInput($value){
 }
 
 $messaggiPerForm = "";
+$erroreNome = "";
+$erroreCognome = "";
+$erroreDataNascita = "";
+$erroreEmail = "";
+$erroreUsername = "";
+$errorePassword = "";
 
 $nome = "";
 $cognome = "";
@@ -24,8 +30,6 @@ $connection = new DBAccess();
 $connectionOK = false;
 
 if (isset($_POST['registrati'])) {
-	$messaggiPerForm .= "<ul class='itemCentered errorFormRegistrazione'>";
-
 	$nome = pulisciInput($_POST['nome']);
 	$cognome = pulisciInput($_POST['cognome']);
 	$dataNascita = pulisciInput($_POST['dataNascita']);
@@ -33,24 +37,36 @@ if (isset($_POST['registrati'])) {
 	$username = pulisciInput($_POST['username']);
 	$password = pulisciInput($_POST['password']);
 	
-	if(!preg_match("/^[A-Za-z\ ]{2,}$/",$nome))
-		$messaggiPerForm .= "<li>Il nome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri</li>";
-   
-	if(!preg_match("/^[A-Za-z\ \']{2,}$/",$cognome))
-        $messaggiPerForm .= "<li>Il cognome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri</li>";
-	
-	if(!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/",$email))
-		$messaggiPerForm .= "<li>Formato dell'email non corretto</li>";
+	if(strlen($nome) == 0)
+		$erroreNome .= "<strong class='errorFormRegistrazione'>Inserire il nome</strong>";
+	else if(!preg_match("/^[A-Za-z\ ]{2,20}$/",$nome))
+		$erroreNome .= "<strong class='errorFormRegistrazione'>Il nome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri e massimo 20</strong>";
     
-	if(!preg_match("/^[A-Za-z0-9]{2,}$/",$username))
-        $messaggiPerForm .= "<li>Lo username contiene solo lettere o numeri, la lunghezza minima è di almeno 2 caratteri</li>";
+	if(strlen($cognome) == 0)
+		$erroreCognome .= "<strong class='errorFormRegistrazione'>Inserire il cognome</strong>";
+	else if(!preg_match("/^[A-Za-z\ \']{2,20}$/",$cognome))
+        $erroreCognome .= "<strong class='errorFormRegistrazione'>Il cognome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri e massimo 20</strong>";
+
+	if(strlen($dataNascita) == 0)
+        $erroreDataNascita .= "<strong class='errorFormRegistrazione'>Inserire la data di nascita</strong>";
+	
+	if(strlen($email) == 0)
+		$erroreEmail .= "<strong class='errorFormRegistrazione'>Inserire l'email</strong>";
+	else if(!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/",$email))
+		$erroreEmail .= "<strong class='errorFormRegistrazione'>Formato dell'email non corretto</strong>";
+    
+	if(strlen($username) == 0)
+		$erroreUsername .= "<strong class='errorFormRegistrazione'>Inserire lo username</strong>";
+	else if(!preg_match("/^[A-Za-z0-9]{2,20}$/",$username))
+        $erroreUsername .= "<strong class='errorFormRegistrazione'>Lo username contiene solo lettere o numeri, la lunghezza minima è di almeno 2 caratteri e massimo 20</strong>";
    
-	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{8,}$/",$password))
-        $messaggiPerForm .= "<li>La password contiene solo numeri lettere o i caratteri !@#%, la lunghezza minima è di almeno 8 caratteri</li>";
+	if(strlen($password) == 0)
+		$errorePassword .= "<strong class='errorFormRegistrazione'>Inserire la password</strong>";
+	else if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{8,20}$/",$password))
+        $errorePassword .= "<strong class='errorFormRegistrazione'>La password contiene solo numeri lettere o i caratteri !@#%, la lunghezza minima è di almeno 8 caratteri e massimo 20</strong>";
 
-	$messaggiPerForm .= "</ul>";
-
-	if($messaggiPerForm == "<ul class='itemCentered errorFormRegistrazione'></ul>"){
+	$errori = $erroreNome . $erroreCognome . $erroreDataNascita . $erroreEmail . $erroreUsername . $errorePassword;
+	if($errori == ""){  //se non ci sono errori
 		try{
 			$connectionOK = $connection->openDBConnection();
 			if($connectionOK){
@@ -64,7 +80,7 @@ if (isset($_POST['registrati'])) {
 					}
 				}
 				else   //se esiste già un utente con quel username do un errore
-					$messaggiPerForm = "<span class='itemCentered errorFormRegistrazione'>Username già utilizzato, si prega di usarne un altro</span>";
+					$messaggiPerForm = "<span class='itemCentered errorUsernameFormRegistrazione'>Username già utilizzato, si prega di usarne un altro</span>";
 			}
 			else
 				header("Location: 500.php");
@@ -79,6 +95,12 @@ if (isset($_POST['registrati'])) {
 	}
 }
 
+$paginaHTML = str_replace('[erroreNome]', $erroreNome, $paginaHTML);
+$paginaHTML = str_replace('[erroreCognome]', $erroreCognome, $paginaHTML);
+$paginaHTML = str_replace('[erroreDataNascita]', $erroreDataNascita, $paginaHTML);
+$paginaHTML = str_replace('[erroreEmail]', $erroreEmail, $paginaHTML);
+$paginaHTML = str_replace('[erroreUsername]', $erroreUsername, $paginaHTML);
+$paginaHTML = str_replace('[errorePassword]', $errorePassword, $paginaHTML);
 $paginaHTML = str_replace('[messaggiForm]', $messaggiPerForm, $paginaHTML);
 echo $paginaHTML;
 ?>
