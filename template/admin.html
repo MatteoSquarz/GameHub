@@ -52,20 +52,22 @@
             <div class="divForm" id="divAreaInserimento">
                 <h2>Area Inserimento Gioco</h2>
                 <form id="inserimento-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('inserimento');">
-                    [messaggiInserimento] 
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="codice">Codice:</label>
+                            [erroreCodiceIns]
                             <input type="text" id="codice" name="codice" required />
                         </div>
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="titolo">Titolo:</label>
+                            [erroreTitoloIns]
                             <input type="text" id="titolo" name="titolo" required />
                         </div>
                     </div>
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="data-uscita">Data uscita:</label>
+                            [erroreDataIns]
                             <input type="date" id="data-uscita" name="data-uscita" required />
                         </div>
                         
@@ -83,16 +85,19 @@
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="prezzo">Prezzo:</label>
+                            [errorePrezzoIns]
                             <input type="number" id="prezzo" name="prezzo" step="1.0" required />
                         </div>
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="casa-sviluppatrice">Casa Sviluppatrice:</label>
+                            [erroreProduttoreIns]
                             <input type="text" id="casa-sviluppatrice" name="casa-sviluppatrice" required />
                         </div>
                     </div>
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="immagine">Immagine:</label>
+                            [erroreImmagineIns]
                             <input type="file" id="immagine" name="immagine" accept="image/*"  required />
                         </div>
                         <div class="formCampo">
@@ -107,6 +112,7 @@
                             <legend class="titleLegend">Piattaforme (selezionare almeno una):</legend>
                             [listaPiattaforme]
                         </fieldset>
+                        [errorePiattaformeIns]
                     </div>
                     <div class="formCheckboxAreaCategorie">
                         <fieldset>
@@ -115,9 +121,11 @@
                                 [listaCategorie]
                             </div> 
                         </fieldset>
+                        [erroreCategorieIns]
                     </div>
                     <div class="formCampo itemCentered">
                         <label class="labelFormAdmin" for="descrizione">Descrizione:</label>
+                        [erroreDescrizioneIns]
                         <textarea id="descrizione" name="descrizione" cols="100" rows="8" required></textarea>
                     </div>
                     <div class="itemCentered">
@@ -128,9 +136,9 @@
             <div class="divForm" id="divAreaRimozione">
                 <h2>Area Rimozione Gioco</h2>
                 <form id="rimozione-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('rimozione');">
-                    [messaggioRimozione]
                     <div class="formCampo itemCentered">
                         <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
+                        [erroreCodiceDel]
                         <input type="text" id="codice-rimozione" name="codice-rimozione" required/>
                     </div>
                     <div class="itemCentered">
@@ -141,7 +149,6 @@
             <div class="divForm" id="divAreaModifica">
                 <h2>Area Modifica Prezzi Abbonamenti</h2>
                 <form id="modifica-prezzi" method="post" action="admin.php" onsubmit="return validazioneForm('modifica');">
-                    [messaggioModifica]
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="abbonamento">Abbonamento:</label>
@@ -151,6 +158,7 @@
                         </div>
                         <div class="formCampo itemCentered">
                             <label class="labelFormAdmin" for="nuovo-costo">Nuovo prezzo:</label>
+                            [errorePrezzoMod]
                             <input type="number" id="nuovo-costo" name="nuovo-costo" step="1.0" required />
                         </div>
                     </div>

@@ -104,9 +104,18 @@ $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
 $paginaHTML = str_replace('[listaPiattaforme]', $listaPiattaforme, $paginaHTML);
 
-$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati in cima al form su cui stavi lavorando.</p></div>";
+$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati all'interno del <span lang='en'>form</span> su cui stavi lavorando.</p></div>";
 
-$messaggiInserimento = "";
+
+$erroreCodiceIns = "";
+$erroreTitoloIns = "";
+$erroreDataIns = "";
+$errorePrezzoIns = "";
+$erroreProduttoreIns = "";
+$erroreDescrizioneIns = "";
+$erroreImmagineIns = "";
+$errorePiattaformeIns = "";
+$erroreCategorieIns = "";
 
 if (isset($_POST['inserisciVideogioco'])) {
 	$piat = array();
@@ -122,8 +131,6 @@ if (isset($_POST['inserisciVideogioco'])) {
         }
     }
 
-    $messaggiInserimento .= "<ul class=\"itemCentered errorFormAdmin\">";
-
     $codice = pulisciInput($_POST['codice']);
     $titolo = pulisciInput($_POST['titolo']);
     $pegi = $_POST['pegi'];
@@ -135,45 +142,45 @@ if (isset($_POST['inserisciVideogioco'])) {
     $abb = $_POST['abbonamentoMin'];
 
     if(strlen($codice) == 0)
-		$messaggiPerForm .= "<li>Inserire il codice</li>";
+		$erroreCodiceIns .= "<strong class='errorFormAdmin'>Inserire il codice</strong>";
 	else if(!preg_match("/^[0-9]{8,8}$/",$codice))
-		$messaggiInserimento .= "<li>Il codice contiene solo numeri e deve essere di 8 caratteri</li>";
+		$erroreCodiceIns .= "<strong class='errorFormAdmin'>Il codice contiene solo numeri e deve essere di 8 caratteri</strong>";
 
     if(strlen($titolo) == 0)
-		$messaggiPerForm .= "<li>Inserire il titolo</li>";
+		$erroreTitoloIns .= "<strong class='errorFormAdmin'>Inserire il titolo</strong>";
     else if(!preg_match("/^[A-Za-z0-9\ \']{2,20}$/",$titolo))
-        $messaggiInserimento .= "<li>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e massimo 20</li>";
+        $erroreTitoloIns .= "<strong class='errorFormAdmin'>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e massimo 20</strong>";
 
     if(strlen($dataUscita) == 0)
-        $messaggiPerForm .= "<li>Inserire la data di uscita</li>";
+        $erroreDataIns .= "<strong class='errorFormAdmin'>Inserire la data di uscita</strong>";
 	
     if(strlen($prezzo) == 0)
-		$messaggiPerForm .= "<li>Inserire il prezzo</li>";
+		$errorePrezzoIns .= "<strong class='errorFormAdmin'>Inserire il prezzo</strong>";
 	else if(!preg_match("/^([0-9]{1,3})$/",$prezzo))
-		$messaggiInserimento .= "<li>Il prezzo deve essere compreso tra 0 e 999</li>";
+		$errorePrezzoIns .= "<strong class='errorFormAdmin'>Il prezzo deve essere compreso tra 0 e 999</strong>";
    
     if(strlen($casaSviluppatrice) == 0)
-		$messaggiPerForm .= "<li>Inserire la casa sviluppatrice</li>";
+		$erroreProduttoreIns .= "<strong class='errorFormAdmin'>Inserire la casa sviluppatrice</strong>";
 	else if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
-        $messaggiInserimento .= "<li>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 30</li>";
+        $erroreProduttoreIns .= "<strong class='errorFormAdmin'>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 30</strong>";
 
     if($img == "")
-        $messaggiInserimento .= "<li>Nessun immagine selezionata</li>";
+        $erroreImmagineIns .= "<strong class='errorFormAdmin'>Nessun immagine selezionata</strong>";
     
     if(strlen($descrizione) == 0)
-		$messaggiPerForm .= "<li>Inserire la descrizione</li>";
+		$erroreDescrizioneIns .= "<strong class='errorFormAdmin'>Inserire la descrizione</strong>";
 	else if(!preg_match("/^[\s\S]{20,1000}$/",$descrizione))
-        $messaggiInserimento .= "<li>La descrizione deve essere di almeno 20 caratteri max 1000</li>";
+        $erroreDescrizioneIns .= "<strong class='errorFormAdmin'>La descrizione deve essere di almeno 20 caratteri e massimo 1000</strong>";
 
     if(count($piat) == 0)
-        $messaggiInserimento .= "<li>Selezionare almeno una piattaforma</li>";
+        $errorePiattaformeIns .= "<strong class='errorFormAdmin itemCentered'>Selezionare almeno una piattaforma</strong>";
 
     if(count($cat) == 0)
-        $messaggiInserimento .= "<li>Selezionare almeno una categoria</li>";
+        $erroreCategorieIns .= "<strong class='errorFormAdmin'>Selezionare almeno una categoria</strong>";
 
-	$messaggiInserimento .= "</ul>";
+    $erroriIns = $erroreCodiceIns . $erroreTitoloIns . $erroreDataIns . $errorePrezzoIns . $erroreProduttoreIns . $erroreDescrizioneIns . $erroreImmagineIns . $errorePiattaformeIns . $erroreCategorieIns;
 
-	if($messaggiInserimento == "<ul class=\"itemCentered errorFormAdmin\"></ul>"){
+	if($erroriIns == ""){  //se non ci sono errori
         try{
             $connectionOK = $connection->openDBConnection();
             if($connectionOK){
@@ -185,7 +192,7 @@ if (isset($_POST['inserisciVideogioco'])) {
                     $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);
                 }       
                 else{
-                    $messaggiInserimento = "<p class=\"itemCentered errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</p>";
+                    $erroreCodiceIns = "<strong class=\"errorFormAdmin\">Codice gioco già utilizzato, si prega di usarne un altro</strong>";
                     $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
                 }
             }
@@ -204,20 +211,31 @@ if (isset($_POST['inserisciVideogioco'])) {
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
 
 }
-$paginaHTML = str_replace('[messaggiInserimento]', $messaggiInserimento, $paginaHTML);
 
-$messaggioRimozione = "";
+$paginaHTML = str_replace('[erroreCodiceIns]', $erroreCodiceIns, $paginaHTML);
+$paginaHTML = str_replace('[erroreTitoloIns]', $erroreTitoloIns, $paginaHTML);
+$paginaHTML = str_replace('[erroreDataIns]', $erroreDataIns, $paginaHTML);
+$paginaHTML = str_replace('[errorePrezzoIns]', $errorePrezzoIns, $paginaHTML);
+$paginaHTML = str_replace('[erroreProduttoreIns]', $erroreProduttoreIns, $paginaHTML);
+$paginaHTML = str_replace('[erroreDescrizioneIns]', $erroreDescrizioneIns, $paginaHTML);
+$paginaHTML = str_replace('[erroreImmagineIns]', $erroreImmagineIns, $paginaHTML);
+$paginaHTML = str_replace('[errorePiattaformeIns]', $errorePiattaformeIns, $paginaHTML);
+$paginaHTML = str_replace('[erroreCategorieIns]', $erroreCategorieIns, $paginaHTML);
+
+
+
+$erroreCodiceDel = "";
 if (isset($_POST['rimuoviVideogioco'])) {
     $codice = pulisciInput($_POST['codice-rimozione']);
 
 	if(strlen($codice) == 0)
-		$messaggiPerForm .= "<li>Inserire il codice</li>";
+		$erroreCodiceDel .= "<li>Inserire il codice</li>";
 	else if(!preg_match("/^[0-9]{8,8}$/",$codice)){
-        $messaggioRimozione .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
+        $erroreCodiceDel .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
     }
 
-	if($messaggioRimozione == ""){
+	if($erroreCodiceDel == ""){
         try{
             $connectionOK = $connection->openDBConnection();
             if($connectionOK){
@@ -227,7 +245,7 @@ if (isset($_POST['rimuoviVideogioco'])) {
                         $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Rimozione avvenuta con successo</p></div>", $paginaHTML);
                 }
                 else{   //se il codice non è presente non è possibile rimuoverlo
-                    $messaggioRimozione = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
+                    $erroreCodiceDel = "<p class=\"itemCentered errorFormAdmin\">Codice gioco non presente</p>";
                     $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
                 }
             }
@@ -243,22 +261,23 @@ if (isset($_POST['rimuoviVideogioco'])) {
         }
 	}
 }
-$paginaHTML = str_replace('[messaggioRimozione]', $messaggioRimozione, $paginaHTML);
+$paginaHTML = str_replace('[erroreCodiceDel]', $erroreCodiceDel, $paginaHTML);
 
-$messaggioModifica = "";
+
+$errorePrezzoMod = "";
 if (isset($_POST['modificaAbbonamento'])) {
 
     $prezzo = pulisciInput($_POST['nuovo-costo']);
     $abb = pulisciInput($_POST['abbonamento']);
 
 	if(strlen($prezzo) == 0)
-		$messaggiPerForm .= "<li>Inserire il prezzo</li>";
+		$errorePrezzoMod .= "<strong class=\"errorFormAdmin\">Inserire il prezzo</strong>";
 	else if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
-		$messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</p>";
+		$errorePrezzoMod = "<strong class=\"errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</strong>";
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
     }
 
-    if($messaggioModifica == ""){
+    if($errorePrezzoMod == ""){
         try{
             $connectionOK = $connection->openDBConnection();
             if($connectionOK){
@@ -266,7 +285,7 @@ if (isset($_POST['modificaAbbonamento'])) {
                     $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
                 }
                 else{   //se il prezzo è già quello impostato
-                    $messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</p>";
+                    $errorePrezzoMod = "<strong class=\"errorFormAdmin\">Il nuovo prezzo dell'abbonamento è già quello impostato</strong>";
                     $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
                 }
             }
@@ -282,7 +301,7 @@ if (isset($_POST['modificaAbbonamento'])) {
         }
     }       
 }
-$paginaHTML = str_replace('[messaggioModifica]', $messaggioModifica, $paginaHTML);
+$paginaHTML = str_replace('[errorePrezzoMod]', $errorePrezzoMod, $paginaHTML);
 $paginaHTML = str_replace('[messaggioOutput]', "", $paginaHTML);
 echo $paginaHTML;
 ?>
