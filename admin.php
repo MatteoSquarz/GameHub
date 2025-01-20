@@ -134,25 +134,35 @@ if (isset($_POST['inserisciVideogioco'])) {
     $img = $_POST['immagine'];
     $abb = $_POST['abbonamentoMin'];
 
-	if(!preg_match("/^[0-9]{8,8}$/",$codice))
+    if(strlen($codice) == 0)
+		$messaggiPerForm .= "<li>Inserire il codice</li>";
+	else if(!preg_match("/^[0-9]{8,8}$/",$codice))
 		$messaggiInserimento .= "<li>Il codice contiene solo numeri e deve essere di 8 caratteri</li>";
 
-    if(!preg_match("/^[A-Za-z0-9\ \']{2,20}$/",$titolo))
+    if(strlen($titolo) == 0)
+		$messaggiPerForm .= "<li>Inserire il titolo</li>";
+    else if(!preg_match("/^[A-Za-z0-9\ \']{2,20}$/",$titolo))
         $messaggiInserimento .= "<li>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e massimo 20</li>";
 
     if(strlen($dataUscita) == 0)
-        $messaggiPerForm .= "<li>La data di uscita non può essere vuota, formato dd/mm/yyyy</li>";
+        $messaggiPerForm .= "<li>Inserire la data di uscita</li>";
 	
-	if(!preg_match("/^([0-9]{1,3})$/",$prezzo))
+    if(strlen($prezzo) == 0)
+		$messaggiPerForm .= "<li>Inserire il prezzo</li>";
+	else if(!preg_match("/^([0-9]{1,3})$/",$prezzo))
 		$messaggiInserimento .= "<li>Il prezzo deve essere compreso tra 0 e 999</li>";
    
-	if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
+    if(strlen($casaSviluppatrice) == 0)
+		$messaggiPerForm .= "<li>Inserire la casa sviluppatrice</li>";
+	else if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
         $messaggiInserimento .= "<li>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 30</li>";
 
     if($img == "")
         $messaggiInserimento .= "<li>Nessun immagine selezionata</li>";
     
-	if(!preg_match("/^[\s\S]{20,1000}$/",$descrizione))
+    if(strlen($descrizione) == 0)
+		$messaggiPerForm .= "<li>Inserire la descrizione</li>";
+	else if(!preg_match("/^[\s\S]{20,1000}$/",$descrizione))
         $messaggiInserimento .= "<li>La descrizione deve essere di almeno 20 caratteri max 1000</li>";
 
     if(count($piat) == 0)
@@ -200,7 +210,9 @@ $messaggioRimozione = "";
 if (isset($_POST['rimuoviVideogioco'])) {
     $codice = pulisciInput($_POST['codice-rimozione']);
 
-	if(!preg_match("/^[0-9]{8,8}$/",$codice)){
+	if(strlen($codice) == 0)
+		$messaggiPerForm .= "<li>Inserire il codice</li>";
+	else if(!preg_match("/^[0-9]{8,8}$/",$codice)){
         $messaggioRimozione .= "<p class=\"itemCentered errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</p>";
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
     }
@@ -239,7 +251,9 @@ if (isset($_POST['modificaAbbonamento'])) {
     $prezzo = pulisciInput($_POST['nuovo-costo']);
     $abb = pulisciInput($_POST['abbonamento']);
 
-	if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
+	if(strlen($prezzo) == 0)
+		$messaggiPerForm .= "<li>Inserire il prezzo</li>";
+	else if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
 		$messaggioModifica = "<p class=\"itemCentered errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</p>";
         $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
     }

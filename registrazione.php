@@ -33,22 +33,32 @@ if (isset($_POST['registrati'])) {
 	$username = pulisciInput($_POST['username']);
 	$password = pulisciInput($_POST['password']);
 	
-	if(!preg_match("/^[A-Za-z\ ]{2,20}$/",$nome))
+	if(strlen($nome) == 0)
+		$messaggiPerForm .= "<li>Inserire il nome</li>";
+	else if(!preg_match("/^[A-Za-z\ ]{2,20}$/",$nome))
 		$messaggiPerForm .= "<li>Il nome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri massimo 20</li>";
-   
-	if(!preg_match("/^[A-Za-z\ \']{2,20}$/",$cognome))
+    
+	if(strlen($cognome) == 0)
+		$messaggiPerForm .= "<li>Inserire il cognome</li>";
+	else if(!preg_match("/^[A-Za-z\ \']{2,20}$/",$cognome))
         $messaggiPerForm .= "<li>Il cognome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri massimo 20</li>";
 
 	if(strlen($dataNascita) == 0)
-        $messaggiPerForm .= "<li>La data di nascita non può essere vuota, formato dd/mm/yyyy</li>";
+        $messaggiPerForm .= "<li>Inserire la data di nascita</li>";
 	
-	if(!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/",$email))
+	if(strlen($email) == 0)
+		$messaggiPerForm .= "<li>Inserire l'email</li>";
+	else if(!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/",$email))
 		$messaggiPerForm .= "<li>Formato dell'email non corretto</li>";
     
-	if(!preg_match("/^[A-Za-z0-9]{2,20}$/",$username))
+	if(strlen($username) == 0)
+		$messaggiPerForm .= "<li>Inserire lo username</li>";
+	else if(!preg_match("/^[A-Za-z0-9]{2,20}$/",$username))
         $messaggiPerForm .= "<li>Lo username contiene solo lettere o numeri, la lunghezza minima è di almeno 2 caratteri massimo 20</li>";
    
-	if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{8,20}$/",$password))
+	if(strlen($password) == 0)
+		$messaggiPerForm .= "<li>Inserire la password</li>";
+	else if(!preg_match("/^[A-Za-z0-9\!\@\#\%]{8,20}$/",$password))
         $messaggiPerForm .= "<li>La password contiene solo numeri lettere o i caratteri !@#%, la lunghezza minima è di almeno 8 caratteri massimo 20</li>";
 
 	$messaggiPerForm .= "</ul>";
