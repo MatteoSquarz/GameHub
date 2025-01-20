@@ -126,18 +126,22 @@ if (isset($_POST['inserisciVideogioco'])) {
 
     $codice = pulisciInput($_POST['codice']);
     $titolo = pulisciInput($_POST['titolo']);
+    $pegi = $_POST['pegi'];
     $dataUscita = pulisciInput($_POST['data-uscita']);
     $prezzo = pulisciInput($_POST['prezzo']);
     $casaSviluppatrice = pulisciInput($_POST['casa-sviluppatrice']);
     $descrizione = pulisciInput($_POST['descrizione']);
+    $img = $_POST['immagine'];
+    $abb = $_POST['abbonamentoMin'];
 
 	if(!preg_match("/^[0-9]{8,8}$/",$codice))
 		$messaggiInserimento .= "<li>Il codice contiene solo numeri e deve essere di 8 caratteri</li>";
 
     if(!preg_match("/^[A-Za-z0-9\ \']{2,20}$/",$titolo))
-        $messaggiInserimento .= "<li>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e maassimo 20</li>";
+        $messaggiInserimento .= "<li>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e massimo 20</li>";
 
-    $pegi = $_POST['pegi'];
+    if(strlen($dataUscita) == 0)
+        $messaggiPerForm .= "<li>La data di uscita non può essere vuota, formato dd/mm/yyyy</li>";
 	
 	if(!preg_match("/^([0-9]{1,3})$/",$prezzo))
 		$messaggiInserimento .= "<li>Il prezzo deve essere compreso tra 0 e 999</li>";
@@ -145,11 +149,8 @@ if (isset($_POST['inserisciVideogioco'])) {
 	if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
         $messaggiInserimento .= "<li>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 30</li>";
 
-    $img = $_POST['immagine'];
     if($img == "")
         $messaggiInserimento .= "<li>Nessun immagine selezionata</li>";
-
-    $abb = $_POST['abbonamentoMin'];
     
 	if(!preg_match("/^[\s\S]{20,1000}$/",$descrizione))
         $messaggiInserimento .= "<li>La descrizione deve essere di almeno 20 caratteri max 1000</li>";
