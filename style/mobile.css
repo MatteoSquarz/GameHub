@@ -62,6 +62,7 @@ header #profile{
     font-weight: bold;
     color: var(--txtcolor);
     text-transform: uppercase;
+    text-decoration: underline;
 }
 
 .socialIcons {

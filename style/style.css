@@ -142,6 +142,7 @@ header .menuList a{
     font-weight: bold;
     color: var(--txtcolor);
     text-transform: uppercase;
+    text-decoration: underline;
 }
 
 header .menuList a:hover{

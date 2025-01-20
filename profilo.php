@@ -3,10 +3,12 @@ require_once "templatedbConnection.php";
 use DB\DBAccess;
 $paginaHTML = file_get_contents('template/profilo.html');
 
-$menuLoginProfilo = "<li class=\"login\"><a href=\"login.php\">Accedi</a></li>";
+
 session_start();
-if (isset($_SESSION['username'])) 
+if (isset($_SESSION['username'])){ 
     $menuLoginProfilo = "<li id=\"currentMenu\" class=\"profile\">Profilo</li>";
+    $menuMobileLoginProfilo = "<li id=\"currentMenuMobile\" class=\"profile\">Profilo</li>";
+}
 
 if(isset($_GET['logout'])){
     unset($_SESSION['username']);
@@ -121,5 +123,6 @@ if($utente){
 
 $paginaHTML = str_replace('[lista Giochi]', $listaGiochi, $paginaHTML);
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
+$paginaHTML = str_replace('[mobileLoginProfilo]', $menuMobileLoginProfilo, $paginaHTML);
 echo $paginaHTML;
 ?>
