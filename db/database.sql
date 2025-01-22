@@ -156,13 +156,13 @@ INSERT INTO Categoria (nome) VALUES
 ('Azione'),
 ('Avventura'),
 ('Strategia'),
-('RPG'),
-('FPS'),
-('Platform'),
-('Puzzle'),
+('Rompicapo'),
+('Sparatutto'),
+('Simulazione'),
+('Passatempo'),
 ('Corsa'),
-('MOBA'),
-('Sandbox');
+('Gestionale'),
+('Sopravvivenza');
 
 INSERT INTO Admin (username) VALUES
 ('admin');
@@ -179,15 +179,15 @@ INSERT INTO Vendita (utente, data, totale, videogioco) VALUES
 INSERT INTO CategoriaVideogioco (categoria, videogioco) VALUES
 ('Avventura', '00000001'),
 ('Strategia', '00000002'),
-('Platform', '00000003'),
-('FPS', '00000004'),
-('RPG', '00000005'),
+('Simulazione', '00000003'),
+('Sparatutto', '00000004'),
+('Rompicapo', '00000005'),
 ('Azione', '00000001'),
 ('Azione', '00000004'),
 ('Corsa', '00000006'),
-('Sandbox', '00000007'),
-('Puzzle', '00000008'),
-('MOBA', '00000009'),
+('Sopravvivenza', '00000007'),
+('Passatempo', '00000008'),
+('Gestionale', '00000009'),
 ('Azione', '00000010');
 
 INSERT INTO PiattaformaVideogioco (piattaforma, videogioco) VALUES

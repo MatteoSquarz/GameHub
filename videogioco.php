@@ -124,7 +124,7 @@ $paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
 
 if(isset($_GET['acquisto'])){
     if (!isset($_SESSION['username']))  //se non è loggato
-        $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare il login prima di acquistare</p>", $paginaHTML);
+        $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare l'accesso prima di acquistare</p>", $paginaHTML);
     else{   //se è loggato
         try{
             $connectionOK = $connection->openDBConnection();
