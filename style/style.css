@@ -187,9 +187,9 @@ header #profile {
 }
 
 
-/* SEZIONE BREADCUMB */
+/* SEZIONE BREADCRUMB */
 
-#breadcumb{
+#breadcrumb{
     background-color: var(--breadcolor);
     color: var(--txtcolor);
     padding: 0.5em;
@@ -1053,6 +1053,38 @@ hr{
     font-weight: bold;
 }
 
+.pulsantiTornaIndietro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tornaACatalogo{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.3em;
+    padding: 1.5em 0.7em;
+    border-radius: 15px;
+    background-color: var(--boxcolor);
+    margin-bottom: 1.5em;
+}
+
+.tornaACatalogo a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+.tornaACatalogo a:visited{
+    background-color: var(--bgvisitedcolor);
+    color: var(--linktxtcolor);
+}
 
 /* ============================
         PAGINA PROFILO
