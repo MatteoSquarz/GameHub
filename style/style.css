@@ -142,7 +142,7 @@ header .menuList a{
     font-weight: bold;
     color: var(--txtcolor);
     text-transform: uppercase;
-    text-decoration: underline;
+    font-style: italic;
 }
 
 header .menuList a:hover{
