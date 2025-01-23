@@ -48,10 +48,12 @@
                 <p>Immergiti in nuove avventure con un <strong>catalogo</strong> di <strong>videogiochi</strong> in costante aggiornamento!</p>
             </div>
             <div class="search-section">
-                <form action="catalogo.php" method="get">
-                    <input type="text" id="search" name="search" aria-label="Cerca il nome di un gioco" />
-                    <input type="submit" value="Cerca" />
-                    <input type="submit" id="reset" name="reset" value="Annulla" aria-label="Annulla ricerca" />
+                <form action="catalogo.php" method="get" id="searchForm">
+                    <input type="text" id="search" name="search" placeholder="Cerca il nome di un gioco" aria-label="Cerca il nome di un gioco" />
+                    <div>
+                        <input type="submit" id="ricerca" value="Cerca" />
+                        <input type="submit" id="reset" name="reset" value="Annulla" aria-label="Annulla ricerca" />
+                    </div>
                 </form>
             </div>
             <div class="allgames-section">

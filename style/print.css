@@ -166,7 +166,9 @@ h1, h2 {
     margin-bottom: 0;
 }
 
-
+.search-section {
+    display: none;
+}
 /*==============================
         PAGINA CHI SIAMO
 ==============================*/

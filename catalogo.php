@@ -1,4 +1,5 @@
 <?php
+require_once "utility.php";
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
@@ -54,7 +55,7 @@ else
 
 
 if(isset($_GET['search'])){
-    $query = $_GET['search'];
+    $query = pulisciInput($_GET['search']);
     $ricerca = strtolower($query);
     $cnt = 0;
     $listaGiochiCercati = "";
@@ -75,16 +76,20 @@ if(isset($_GET['search'])){
         }
     }
     $listaGiochiCercati .= "</div>";
-    if($cnt == 0)
-        $paginaHTML = str_replace("[risultati]", "Nessun risultato trovato", $paginaHTML);
-    else
-        $paginaHTML = str_replace("[risultati]", "Risultati", $paginaHTML);
+    if($query == "")
+        $paginaHTML = str_replace("[risultati]", "Tutti i giochi", $paginaHTML);
+    else{
+        if($cnt == 0)
+            $paginaHTML = str_replace("[risultati]", "Nessun risultato trovato", $paginaHTML);
+        else
+            $paginaHTML = str_replace("[risultati]", "Risultati", $paginaHTML);
+    }
     $paginaHTML = str_replace("[listaGiochi]", $listaGiochiCercati, $paginaHTML);
 }
 
 
 if(isset($_GET['reset'])){
-    header("Location: catalogo.php");
+    unset($_GET['search']);
 }
 
 

@@ -1,20 +1,8 @@
 <?php
+require_once "utility.php";
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
-function pulisciInput($value){
-    $value = trim($value);
-    $value = strip_tags($value);
-    $value = htmlentities($value);
-    return $value;
-}
-
-function pulisciNoHtml($value){
-    $tagPermessi ='<span>';
- 	$value = trim($value); 
-  	$value = strip_tags($value,$tagPermessi);
-  	return $value;
-}
 
 $paginaHTML = file_get_contents('template/admin.html');
 
@@ -137,12 +125,12 @@ if (isset($_POST['inserisciVideogioco'])) {
     }
 
     $codice = pulisciInput($_POST['codice']);
-    $titolo = pulisciNoHtml($_POST['titolo']);
+    $titolo = pulisciCampiAdmin($_POST['titolo']);
     $pegi = $_POST['pegi'];
     $dataUscita = pulisciInput($_POST['data-uscita']);
     $prezzo = pulisciInput($_POST['prezzo']);
-    $casaSviluppatrice = pulisciNoHtml($_POST['casa-sviluppatrice']);
-    $descrizione = pulisciNoHtml($_POST['descrizione']);
+    $casaSviluppatrice = pulisciCampiAdmin($_POST['casa-sviluppatrice']);
+    $descrizione = pulisciCampiAdmin($_POST['descrizione']);
     $img = $_POST['immagine'];
     $abb = $_POST['abbonamentoMin'];
 

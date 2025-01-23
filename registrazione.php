@@ -1,21 +1,9 @@
 <?php
+require_once "utility.php";
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
 $paginaHTML = file_get_contents('template/registrazione.html');
-
-function pulisciInput($value){
-    $value = trim($value);
-    $value = strip_tags($value);
-    $value = htmlentities($value);
-    return $value;
-}
-
-function pulisciCognome($value){
-    $value = trim($value);
-    $value = strip_tags($value);
-    return $value;
-}
 
 $messaggiPerForm = "";
 $erroreNome = "";
