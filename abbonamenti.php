@@ -87,8 +87,8 @@ if(isset($_GET['abbonamento']))
     }
 }
 
-$paginaHTML = str_replace('[messaggioBase]', "", $paginaHTML);
-$paginaHTML = str_replace('[messaggioDeluxe]', "", $paginaHTML);
-$paginaHTML = str_replace('[messaggioPremium]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioBronzo]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioArgento]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioOro]', "", $paginaHTML);
 echo $paginaHTML;
 ?>

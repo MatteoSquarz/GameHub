@@ -1,8 +1,8 @@
 var dettagli_registrazione = {
     "nome":["Es: Leonardo", /^[A-Za-z\ ]{2,}$/, "Non sono ammessi numeri o caratteri speciali, la lunghezza minima consentita è di almeno 2 caratteri"],
     "cognome":["Es: Rossi", /^[A-Za-z\ \']{2,}$/,"Non sono ammessi numeri o caratteri speciali, la lunghezza minima consentita è di almeno 2 caratteri"],
-    "dataNascita":["", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
-    "email":["Es: leo.rossi24@gmail.com", /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,"Non sono ammessi caratteri speciali o lettere maiuscole oppure il formato non corretto"],
+    "dataNascita":["Formato: gg/mm/aaaa", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
+    "email":["Es: leo.rossi24@gmail.com", /^([a-z0-9_\.\-])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,4})+$/,"Non sono ammessi caratteri speciali o lettere maiuscole oppure il formato non corretto"],
     "username":["Es: LeoRossii23", /^[a-zA-Z0-9]{2,}$/,"Sono ammessi solo numeri e lettere, la lunghezza minima consentita è di almeno 2 caratteri"],
     "password":["Caratteri consentiti: tutte le lettere, numeri e i seguenti caratteri speciali !@#%", /^[A-Za-z0-9\!\@\#\%]{8,}$/,"Sono ammessi solo numeri, lettere e i seguenti caratteri speciali !@#%, la lunghezza minima consentita è di 8 caratteri"]
 };
@@ -10,10 +10,10 @@ var dettagli_registrazione = {
 var dettagli_inserimento = {
     "codice":["Es: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
     "titolo":["Es: La casa degli incubi", /^[A-Za-z0-9\ \']{2,20}$/,"Il titolo non può contenere caratteri speciali, deve contenere minimo 2 caratteri e massimo 20"],
-    "data-uscita":["Formato: dd/mm/yyyy", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
+    "data-uscita":["Formato: gg/mm/aaaa", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
     "pegi":["Età consigliata", , ],
     "prezzo":["Es: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
-    "casa-sviluppatrice":["Es: Nightmare House", /^[A-Za-z0-9\ \']{2,30}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 30"],
+    "casa-sviluppatrice":["Es: <span lang='en'>Nightmare House</span>", /^[A-Za-z0-9\ \']{2,30}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 30"],
     "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri e massimo 1000"]
 }
 

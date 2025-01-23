@@ -11,6 +11,12 @@ function pulisciInput($value){
     return $value;
 }
 
+function pulisciCognome($value){
+    $value = trim($value);
+    $value = strip_tags($value);
+    return $value;
+}
+
 $messaggiPerForm = "";
 $erroreNome = "";
 $erroreCognome = "";
@@ -31,7 +37,7 @@ $connectionOK = false;
 
 if (isset($_POST['registrati'])) {
 	$nome = pulisciInput($_POST['nome']);
-	$cognome = pulisciInput($_POST['cognome']);
+	$cognome = pulisciCognome($_POST['cognome']);
 	$dataNascita = pulisciInput($_POST['dataNascita']);
 	$email = pulisciInput($_POST['email']);
 	$username = pulisciInput($_POST['username']);
@@ -44,7 +50,7 @@ if (isset($_POST['registrati'])) {
     
 	if(strlen($cognome) == 0)
 		$erroreCognome .= "<strong class='errorFormRegistrazione'>Inserire il cognome</strong>";
-	else if(!preg_match("/^[A-Za-z\ \']{2,20}$/",$cognome))
+	else if(!preg_match("/^[a-zA-Z\ \']{2,20}$/",$cognome))
         $erroreCognome .= "<strong class='errorFormRegistrazione'>Il cognome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri e massimo 20</strong>";
 
 	if(strlen($dataNascita) == 0)

@@ -70,11 +70,10 @@ foreach($abbonamenti as $abbonamento){
 
 foreach($piattaforme as $piattaforma){
     $nome = $piattaforma['nome'];
-    $value = $nome;
-    $nome = str_replace(' ', '-', $nome);
+    $value = strip_tags($nome);
     $listaPiattaforme .= "<div class=\"sceltaPiattaforma\">";
-    $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Piattaforma$value\" />";
-    $listaPiattaforme .= "<label for=\"$nome\"> $value</label>";
+    $listaPiattaforme .= "<input type='checkbox' id=\"$value\" name=\"$value\" value='Piattaforma$nome' />";
+    $listaPiattaforme .= "<label for=\"$value\"> $nome</label>";
     $listaPiattaforme .= "</div>";
 }
 
@@ -84,11 +83,10 @@ foreach($categorie as $categoria){
         $listaCategorie .= "<div class=\"gruppoScelteCategoria\">";
     }
     $nome = $categoria['nome'];
-    $value = $nome;
-    $nome = str_replace(' ', '-', $nome);
+    $value = strip_tags($nome);
     $listaCategorie .= "<div>";
-    $listaCategorie .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Categoria$value\" />";
-    $listaCategorie .= "<label for=\"$nome\"> $value</label>";
+    $listaCategorie .= "<input type=\"checkbox\" id=\"$value\" name=\"$value\" value='Categoria$nome' />";
+    $listaCategorie .= "<label for=\"$value\"> $nome</label>";
     $listaCategorie .= "</div>";
     if($count % 5 == 4) { //chiude il gruppo di 5 categorie
         $listaCategorie .= "</div>";

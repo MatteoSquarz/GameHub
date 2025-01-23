@@ -362,14 +362,14 @@ class DBAccess{
 		$valori = "";
 		switch($abbonamento)
 		{
-			case "Base":
-				$valori = "('Base', '$codice'), ('Deluxe', '$codice'), ('Premium', '$codice');";
+			case "Bronzo":
+				$valori = "('Bronzo', '$codice'), ('Argento', '$codice'), ('Oro', '$codice');";
 			break;
-			case "Deluxe":
-				$valori = "('Deluxe', '$codice'), ('Premium', '$codice');";
+			case "Argento":
+				$valori = "('Argento', '$codice'), ('Oro', '$codice');";
 			break;
-			case "Premium":
-				$valori = "('Premium', '$codice');";
+			case "Oro":
+				$valori = "('Oro', '$codice');";
 			break;
 		}
 		$query = "INSERT INTO AbbonamentoVideogioco (abbonamento, videogioco) VALUES $valori;";
