@@ -16,7 +16,7 @@ $connectionOK = false;
 
 $giochi = "";
 $listaGiochi = "";
-
+$listaGiochiCercati = "";
 try{
     $connectionOK = $connection->openDBConnection();
     if($connectionOK){
@@ -53,6 +53,43 @@ else
     $listaGiochi .= "<p>Non ci sono giochi da visualizzare</p>";
 
 
-echo str_replace("[listaGiochi]", $listaGiochi, $paginaHTML);
+if(isset($_GET['search'])){
+    $query = $_GET['search'];
+    $ricerca = strtolower($query);
+    $cnt = 0;
+    $listaGiochiCercati = "";
+    $listaGiochiCercati .= "<div class=\"card-container\">";
+    foreach($giochi as $gioco){
+        $titolo = $gioco['titolo'];
+        if(strpos(strip_tags(strtolower($titolo)), $ricerca) !== false){
+            $listaGiochiCercati .= "<div class=\"game-card\">";
+            $img = $gioco['immagine'];
+            $listaGiochiCercati .= "<img class=\"game-card-image\" src=\"assets/game-covers/$img\" alt=\"\">";
+            $listaGiochiCercati .= "<div class=\"game-info\">";
+            $listaGiochiCercati .= "<h3>$titolo</h3>";
+            $codice = $gioco['codice'];
+            $listaGiochiCercati .= "<a class=\"game-page-link\" href=\"videogioco.php?codice=$codice\">Vai alla pagina dedicata</a>";
+            $listaGiochiCercati .= "</div>";
+            $listaGiochiCercati .= "</div>";
+            $cnt++;
+        }
+    }
+    $listaGiochiCercati .= "</div>";
+    if($cnt == 0)
+        $paginaHTML = str_replace("[risultati]", "Nessun risultato trovato", $paginaHTML);
+    else
+        $paginaHTML = str_replace("[risultati]", "Risultati", $paginaHTML);
+    $paginaHTML = str_replace("[listaGiochi]", $listaGiochiCercati, $paginaHTML);
+}
+
+
+if(isset($_GET['reset'])){
+    header("Location: catalogo.php");
+}
+
+
+$paginaHTML = str_replace("[risultati]", "Tutti i giochi", $paginaHTML);
+$paginaHTML = str_replace("[listaGiochi]", $listaGiochi, $paginaHTML);
+echo $paginaHTML;
 
 ?>

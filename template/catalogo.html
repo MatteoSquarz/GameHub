@@ -47,8 +47,15 @@
                 <h1>Esplora il nostro catalogo!</h1>
                 <p>Immergiti in nuove avventure con un <strong>catalogo</strong> di <strong>videogiochi</strong> in costante aggiornamento!</p>
             </div>
+            <div class="search-section">
+                <form action="catalogo.php" method="get">
+                    <input type="text" id="search" name="search" aria-label="Cerca il nome di un gioco" />
+                    <input type="submit" value="Cerca" />
+                    <input type="submit" id="reset" name="reset" value="Annulla" aria-label="Annulla ricerca" />
+                </form>
+            </div>
             <div class="allgames-section">
-                <h2>Tutti i giochi</h2>
+                <h2>[risultati]</h2>
                 [listaGiochi]
             </div>
             <div class="tornaSuButton">
@@ -57,7 +64,7 @@
         </main>
         <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
             <ul class="menuListMobile">
-                <li><a href="index.php"><span lang="en">Home<span></a></li>
+                <li><a href="index.php"><span lang="en">Home</span></a></li>
                 <li id="currentMenuMobile">Catalogo</li>
                 <li><a href="abbonamenti.php">Abbonamenti</a></li>
                 <li><a href="chiSiamo.php">Chi siamo</a></li>
