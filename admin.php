@@ -141,7 +141,7 @@ if (isset($_POST['inserisciVideogioco'])) {
 
     if(strlen($titolo) == 0)
 		$erroreTitoloIns .= "<strong class='errorFormAdmin'>Inserire il titolo</strong>";
-    else if(!preg_match("/^[A-Za-z0-9<>=\ \'\/]{2,50}$/",$titolo))
+    else if(!preg_match("/^[A-Za-z0-9<>=\"\ \'\/]{2,50}$/",$titolo))
         $erroreTitoloIns .= "<strong class='errorFormAdmin'>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e massimo 50</strong>";
 
     if(strlen($dataUscita) == 0)
@@ -154,7 +154,7 @@ if (isset($_POST['inserisciVideogioco'])) {
    
     if(strlen($casaSviluppatrice) == 0)
 		$erroreProduttoreIns .= "<strong class='errorFormAdmin'>Inserire la casa sviluppatrice</strong>";
-	else if(!preg_match("/^[A-Za-z0-9<>=\ \'\/]{2,50}$/",$casaSviluppatrice))
+	else if(!preg_match("/^[A-Za-z0-9<>=\"\ \'\/]{2,50}$/",$casaSviluppatrice))
         $erroreProduttoreIns .= "<strong class='errorFormAdmin'>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 50</strong>";
 
     if($img == "")

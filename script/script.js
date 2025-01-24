@@ -9,11 +9,11 @@ var dettagli_registrazione = {
 
 var dettagli_inserimento = {
     "codice":["Es: 00000010", /^[0-9]{8,8}$/, "Il codice contiene solo numeri e deve essere di 8 caratteri"],
-    "titolo":["Es: La casa degli incubi", /^[A-Za-z0-9<>=\ \'\/]{2,50}$/,"Il titolo non può contenere caratteri speciali, deve contenere minimo 2 caratteri e massimo 50"],
+    "titolo":["Es: La casa degli incubi", /^[A-Za-z0-9<>="\ \'\/]{2,50}$/,"Il titolo non può contenere caratteri speciali, deve contenere minimo 2 caratteri e massimo 50"],
     "data-uscita":["Formato: gg/mm/aaaa", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
     "pegi":["Età consigliata", , ],
     "prezzo":["Es: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
-    "casa-sviluppatrice":["Es: <span lang='en'>Nightmare House</span>", /^[A-Za-z0-9<>=\ \'\/]{2,50}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 50"],
+    "casa-sviluppatrice":["Es: <span lang='en'>Nightmare House</span>", /^[A-Za-z0-9<>="\ \'\/]{2,50}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 50"],
     "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri e massimo 1000"]
 }
 
