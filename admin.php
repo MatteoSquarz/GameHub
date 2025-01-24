@@ -97,7 +97,7 @@ $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
 $paginaHTML = str_replace('[listaPiattaforme]', $listaPiattaforme, $paginaHTML);
 
-$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati all'interno del <span lang='en'>form</span> su cui stavi lavorando.</p></div>";
+$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p id='outputErrore' class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati all'interno del <span lang='en'>form</span> su cui stavi lavorando.</p></div>";
 
 
 $erroreCodiceIns = "";

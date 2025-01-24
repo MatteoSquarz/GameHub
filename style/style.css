@@ -1571,6 +1571,13 @@ fieldset{
     text-align: center;
 }
 
+p#outputErrore{
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
 ul[class ~= "errorFormAdmin"] {
     color: var(--errortxtonboxcolor);
     font-size: 1em;
