@@ -178,6 +178,9 @@ if (isset($_POST['inserisciVideogioco'])) {
             $connectionOK = $connection->openDBConnection();
             if($connectionOK){
                 if($connection->getGiocoByCodice($codice) == null){  //se il codice non è già presente
+                    $titolo = str_replace('"','\"',$titolo);
+                    $casaSviluppatrice = str_replace('"','\"',$casaSviluppatrice);
+                    $descrizione = str_replace('"','\"',$descrizione);
                     $connection->insertGioco($codice,$titolo,$descrizione,$prezzo,$dataUscita,$pegi,$casaSviluppatrice,$img);
                     $connection->insertCategorieGioco($codice, $cat);
                     $connection->insertPiattaformeGioco($codice, $piat);
