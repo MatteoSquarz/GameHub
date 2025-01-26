@@ -3,6 +3,8 @@ require_once "templatedbConnection.php";
 use DB\DBAccess;
 $paginaHTML = file_get_contents('template/profilo.html');
 
+$menuLoginProfilo = "";
+$menuMobileLoginProfilo = "";
 
 session_start();
 if (isset($_SESSION['username'])){ 
