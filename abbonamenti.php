@@ -61,7 +61,7 @@ if(isset($_GET['abbonamento']))
 {
     $abb = $_GET['abbonamento'];
     if (!isset($_SESSION['username']))   //se utente non è loggato
-        $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Si prega di effettuare il login prima di abbonarsi</p>", $paginaHTML);
+        $paginaHTML = str_replace("[messaggio$abb]", "<p class=\"warningAbbonamento\">Si prega di effettuare l'accesso prima di abbonarsi</p>", $paginaHTML);
     else{   //se utente è loggato
         try{
             $connectionOK = $connection->openDBConnection();
@@ -87,8 +87,8 @@ if(isset($_GET['abbonamento']))
     }
 }
 
-$paginaHTML = str_replace('[messaggioBase]', "", $paginaHTML);
-$paginaHTML = str_replace('[messaggioDeluxe]', "", $paginaHTML);
-$paginaHTML = str_replace('[messaggioPremium]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioBronzo]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioArgento]', "", $paginaHTML);
+$paginaHTML = str_replace('[messaggioOro]', "", $paginaHTML);
 echo $paginaHTML;
 ?>

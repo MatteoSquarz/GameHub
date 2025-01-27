@@ -151,7 +151,7 @@ class DBAccess{
 	}
 
     public function getAbbonamentoByCodiceGioco($codice){
-		$query = "SELECT * from AbbonamentoVideogioco WHERE videogioco = '$codice'";
+		$query = "SELECT * from AbbonamentoVideogioco, Abbonamento WHERE Abbonamento.nome = AbbonamentoVideogioco.abbonamento and videogioco = '$codice' ORDER BY livello ASC";
 
 		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
@@ -362,14 +362,14 @@ class DBAccess{
 		$valori = "";
 		switch($abbonamento)
 		{
-			case "Base":
-				$valori = "('Base', '$codice'), ('Deluxe', '$codice'), ('Premium', '$codice');";
+			case "Bronzo":
+				$valori = "('Bronzo', '$codice'), ('Argento', '$codice'), ('Oro', '$codice');";
 			break;
-			case "Deluxe":
-				$valori = "('Deluxe', '$codice'), ('Premium', '$codice');";
+			case "Argento":
+				$valori = "('Argento', '$codice'), ('Oro', '$codice');";
 			break;
-			case "Premium":
-				$valori = "('Premium', '$codice');";
+			case "Oro":
+				$valori = "('Oro', '$codice');";
 			break;
 		}
 		$query = "INSERT INTO AbbonamentoVideogioco (abbonamento, videogioco) VALUES $valori;";

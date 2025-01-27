@@ -1,13 +1,8 @@
 <?php
+require_once "utility.php";
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
-function pulisciInput($value){
-    $value = trim($value);
-    $value = strip_tags($value);
-    $value = htmlentities($value);
-    return $value;
-}
 
 $paginaHTML = file_get_contents('template/admin.html');
 
@@ -70,11 +65,10 @@ foreach($abbonamenti as $abbonamento){
 
 foreach($piattaforme as $piattaforma){
     $nome = $piattaforma['nome'];
-    $value = $nome;
-    $nome = str_replace(' ', '-', $nome);
+    $value = strip_tags($nome);
     $listaPiattaforme .= "<div class=\"sceltaPiattaforma\">";
-    $listaPiattaforme .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Piattaforma$value\" />";
-    $listaPiattaforme .= "<label for=\"$nome\"> $value</label>";
+    $listaPiattaforme .= "<input type='checkbox' id=\"$value\" name=\"$value\" value='Piattaforma$nome' />";
+    $listaPiattaforme .= "<label for=\"$value\"> $nome</label>";
     $listaPiattaforme .= "</div>";
 }
 
@@ -84,11 +78,10 @@ foreach($categorie as $categoria){
         $listaCategorie .= "<div class=\"gruppoScelteCategoria\">";
     }
     $nome = $categoria['nome'];
-    $value = $nome;
-    $nome = str_replace(' ', '-', $nome);
+    $value = strip_tags($nome);
     $listaCategorie .= "<div>";
-    $listaCategorie .= "<input type=\"checkbox\" id=\"$nome\" name=\"$nome\" value=\"Categoria$value\" />";
-    $listaCategorie .= "<label for=\"$nome\"> $value</label>";
+    $listaCategorie .= "<input type=\"checkbox\" id=\"$value\" name=\"$value\" value='Categoria$nome' />";
+    $listaCategorie .= "<label for=\"$value\"> $nome</label>";
     $listaCategorie .= "</div>";
     if($count % 5 == 4) { //chiude il gruppo di 5 categorie
         $listaCategorie .= "</div>";
@@ -104,7 +97,7 @@ $paginaHTML = str_replace('[listaAbbonamenti]', $listaAbbonamenti, $paginaHTML);
 $paginaHTML = str_replace('[listaCategorie]', $listaCategorie, $paginaHTML);
 $paginaHTML = str_replace('[listaPiattaforme]', $listaPiattaforme, $paginaHTML);
 
-$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati all'interno del <span lang='en'>form</span> su cui stavi lavorando.</p></div>";
+$messaggioErroreOutput = "<div class=\"divForm\"><h2>Risultato</h2><p id='outputErrore' class=\"itemCentered errorFormAdmin\">Qualcosa è andato storto! Gli errori rilevati sono stati stampati all'interno del <span lang='en'>form</span> su cui stavi lavorando.</p></div>";
 
 
 $erroreCodiceIns = "";
@@ -132,12 +125,12 @@ if (isset($_POST['inserisciVideogioco'])) {
     }
 
     $codice = pulisciInput($_POST['codice']);
-    $titolo = pulisciInput($_POST['titolo']);
+    $titolo = pulisciCampiAdmin($_POST['titolo']);
     $pegi = $_POST['pegi'];
     $dataUscita = pulisciInput($_POST['data-uscita']);
     $prezzo = pulisciInput($_POST['prezzo']);
-    $casaSviluppatrice = pulisciInput($_POST['casa-sviluppatrice']);
-    $descrizione = pulisciInput($_POST['descrizione']);
+    $casaSviluppatrice = pulisciCampiAdmin($_POST['casa-sviluppatrice']);
+    $descrizione = pulisciCampiAdmin($_POST['descrizione']);
     $img = $_POST['immagine'];
     $abb = $_POST['abbonamentoMin'];
 
@@ -148,11 +141,14 @@ if (isset($_POST['inserisciVideogioco'])) {
 
     if(strlen($titolo) == 0)
 		$erroreTitoloIns .= "<strong class='errorFormAdmin'>Inserire il titolo</strong>";
-    else if(!preg_match("/^[A-Za-z0-9\ \']{2,20}$/",$titolo))
-        $erroreTitoloIns .= "<strong class='errorFormAdmin'>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e massimo 20</strong>";
+    else if(!preg_match("/^[A-Za-z0-9<>=\"\ \'\/]{2,50}$/",$titolo))
+        $erroreTitoloIns .= "<strong class='errorFormAdmin'>Il titolo non può contenere caratteri speciali, deve contenere almeno 2 caratteri e massimo 50</strong>";
 
     if(strlen($dataUscita) == 0)
         $erroreDataIns .= "<strong class='errorFormAdmin'>Inserire la data di uscita</strong>";
+    else if (!preg_match("/^\d{4}\-\d{2}\-\d{2}$/", $dataUscita)) {
+        $erroreDataIns .= "<strong class='errorFormAdmin'>Formato data non corretto</strong>";
+    }
 	
     if(strlen($prezzo) == 0)
 		$errorePrezzoIns .= "<strong class='errorFormAdmin'>Inserire il prezzo</strong>";
@@ -161,8 +157,8 @@ if (isset($_POST['inserisciVideogioco'])) {
    
     if(strlen($casaSviluppatrice) == 0)
 		$erroreProduttoreIns .= "<strong class='errorFormAdmin'>Inserire la casa sviluppatrice</strong>";
-	else if(!preg_match("/^[A-Za-z0-9\ \']{2,30}$/",$casaSviluppatrice))
-        $erroreProduttoreIns .= "<strong class='errorFormAdmin'>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 30</strong>";
+	else if(!preg_match("/^[A-Za-z0-9<>=\"\ \'\/]{2,50}$/",$casaSviluppatrice))
+        $erroreProduttoreIns .= "<strong class='errorFormAdmin'>La casa sviluppatrice contiene solo lettere o numeri, deve contenere almeno 2 caratteri e massimo 50</strong>";
 
     if($img == "")
         $erroreImmagineIns .= "<strong class='errorFormAdmin'>Nessun immagine selezionata</strong>";
@@ -185,6 +181,9 @@ if (isset($_POST['inserisciVideogioco'])) {
             $connectionOK = $connection->openDBConnection();
             if($connectionOK){
                 if($connection->getGiocoByCodice($codice) == null){  //se il codice non è già presente
+                    $titolo = str_replace('"','\"',$titolo);
+                    $casaSviluppatrice = str_replace('"','\"',$casaSviluppatrice);
+                    $descrizione = str_replace('"','\"',$descrizione);
                     $connection->insertGioco($codice,$titolo,$descrizione,$prezzo,$dataUscita,$pegi,$casaSviluppatrice,$img);
                     $connection->insertCategorieGioco($codice, $cat);
                     $connection->insertPiattaformeGioco($codice, $piat);
@@ -232,7 +231,6 @@ if (isset($_POST['rimuoviVideogioco'])) {
 		$erroreCodiceDel .= "<strong class=\"errorFormAdmin\">Inserire il codice</strong>";
 	else if(!preg_match("/^[0-9]{8,8}$/",$codice)){
         $erroreCodiceDel .= "<strong class=\"errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</strong>";
-        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
     }
 
 	if($erroreCodiceDel == ""){
@@ -260,6 +258,8 @@ if (isset($_POST['rimuoviVideogioco'])) {
                 $connection->closeDBConnection();
         }
 	}
+    else
+        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
 }
 $paginaHTML = str_replace('[erroreCodiceDel]', $erroreCodiceDel, $paginaHTML);
 
@@ -274,7 +274,6 @@ if (isset($_POST['modificaAbbonamento'])) {
 		$errorePrezzoMod .= "<strong class=\"errorFormAdmin\">Inserire il prezzo</strong>";
 	else if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
 		$errorePrezzoMod = "<strong class=\"errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</strong>";
-        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
     }
 
     if($errorePrezzoMod == ""){
@@ -299,7 +298,9 @@ if (isset($_POST['modificaAbbonamento'])) {
             if($connectionOK)
                 $connection->closeDBConnection();
         }
-    }       
+    } 
+    else
+        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);      
 }
 $paginaHTML = str_replace('[errorePrezzoMod]', $errorePrezzoMod, $paginaHTML);
 $paginaHTML = str_replace('[messaggioOutput]', "", $paginaHTML);

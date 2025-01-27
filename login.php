@@ -1,15 +1,9 @@
 <?php
+require_once "utility.php";
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
 $paginaHTML = file_get_contents('template/login.html');
-
-function pulisciInput($value){
-    $value = trim($value);
-    $value = strip_tags($value);
-    $value = htmlentities($value);
-    return $value;
-}
 
 session_start();
 if (isset($_SESSION['registrazione']))

@@ -1,15 +1,9 @@
 <?php
+require_once "utility.php";
 require_once "templatedbConnection.php";
 use DB\DBAccess;
 
 $paginaHTML = file_get_contents('template/registrazione.html');
-
-function pulisciInput($value){
-    $value = trim($value);
-    $value = strip_tags($value);
-    $value = htmlentities($value);
-    return $value;
-}
 
 $messaggiPerForm = "";
 $erroreNome = "";
@@ -31,7 +25,7 @@ $connectionOK = false;
 
 if (isset($_POST['registrati'])) {
 	$nome = pulisciInput($_POST['nome']);
-	$cognome = pulisciInput($_POST['cognome']);
+	$cognome = pulisciCognome($_POST['cognome']);
 	$dataNascita = pulisciInput($_POST['dataNascita']);
 	$email = pulisciInput($_POST['email']);
 	$username = pulisciInput($_POST['username']);
@@ -44,11 +38,14 @@ if (isset($_POST['registrati'])) {
     
 	if(strlen($cognome) == 0)
 		$erroreCognome .= "<strong class='errorFormRegistrazione'>Inserire il cognome</strong>";
-	else if(!preg_match("/^[A-Za-z\ \']{2,20}$/",$cognome))
+	else if(!preg_match("/^[a-zA-Z\ \']{2,20}$/",$cognome))
         $erroreCognome .= "<strong class='errorFormRegistrazione'>Il cognome non può contenere numeri o caratteri speciali, la lunghezza minima è di almeno 2 caratteri e massimo 20</strong>";
 
 	if(strlen($dataNascita) == 0)
         $erroreDataNascita .= "<strong class='errorFormRegistrazione'>Inserire la data di nascita</strong>";
+	else if (!preg_match("/^\d{4}\-\d{2}\-\d{2}$/", $dataNascita)) {
+		$erroreDataNascita .= "<strong class='errorFormRegistrazione'>Formato data non corretto</strong>";
+	}
 	
 	if(strlen($email) == 0)
 		$erroreEmail .= "<strong class='errorFormRegistrazione'>Inserire l'email</strong>";

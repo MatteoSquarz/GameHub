@@ -62,7 +62,7 @@ header #profile{
     font-weight: bold;
     color: var(--txtcolor);
     text-transform: uppercase;
-    text-decoration: underline;
+    font-style: italic;
 }
 
 .socialIcons {
@@ -193,6 +193,12 @@ header #profile{
 .infoVideogioco{
     padding: 0em;
     gap: 1em;
+}
+.search-section{
+    margin: 1em 2em 0em 2em;
+}
+#searchForm input[type="text"]{
+    width: 10em;
 }
 
 /* ============================

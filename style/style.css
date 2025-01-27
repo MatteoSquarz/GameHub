@@ -142,7 +142,7 @@ header .menuList a{
     font-weight: bold;
     color: var(--txtcolor);
     text-transform: uppercase;
-    text-decoration: underline;
+    font-style: italic;
 }
 
 header .menuList a:hover{
@@ -187,9 +187,9 @@ header #profile {
 }
 
 
-/* SEZIONE BREADCUMB */
+/* SEZIONE BREADCRUMB */
 
-#breadcumb{
+#breadcrumb{
     background-color: var(--breadcolor);
     color: var(--txtcolor);
     padding: 0.5em;
@@ -295,6 +295,7 @@ header #profile {
     text-align: center;
     border-radius: 15px;
     text-decoration: none;
+    font-size: 1em;
 }
 
 .infoVideogames a:visited{
@@ -353,6 +354,7 @@ header #profile {
     text-align: center;
     border-radius: 15px;
     text-decoration: none;
+    font-size: 1em;
 }
 
 .infoAbbonamenti a:visited{
@@ -636,7 +638,7 @@ footer {
         PAGINA CATALOGO
 ============================ */
 
-.catalogo-cantainer {
+.catalogo-container {
     display: flex;
     flex-direction: column;
 }
@@ -723,6 +725,64 @@ footer {
 
 .game-page-link:visited{
     background-color: var(--bgvisitedcolor);
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: var(--boxcolor);
+    border-radius: 15px;
+    margin-top: 1em;
+}
+
+#searchForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    gap: 0.5em;
+    flex-wrap: wrap;
+}
+
+#searchForm input[type="text"] {
+    padding: 0.5em;
+    width: 15em;
+    border-radius: 10px;
+    border: #000 solid 2px;
+    font-size: 1em;
+}
+
+#searchForm input[type="submit"]#ricerca {
+    text-indent: -999em;
+    background-color: var(--buttoncolor);
+    border-radius: 50%;
+    padding: 1em 1.5em;
+    background-image: url('../assets/search-icon.png');
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.2em;
+    color: var(--buttontxtcolor);
+}
+
+#searchForm input[type="submit"]#reset {
+    text-indent: -999em;
+    background-color: var(--buttoncolor);
+    border-radius: 50%;
+    padding: 1em 1.5em;
+    background-image: url('../assets/refresh-icon.png');
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    color: var(--buttontxtcolor);
 }
 
 /*=============================
@@ -1053,6 +1113,38 @@ hr{
     font-weight: bold;
 }
 
+.pulsantiTornaIndietro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tornaACatalogo{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.3em;
+    padding: 1.5em 0.7em;
+    border-radius: 15px;
+    background-color: var(--boxcolor);
+    margin-bottom: 1.5em;
+}
+
+.tornaACatalogo a{
+    background-color: var(--bglinkcolor);
+    color: var(--linktxtcolor);
+    width: 9em;
+    padding: 0.6em;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+}
+.tornaACatalogo a:visited{
+    background-color: var(--bgvisitedcolor);
+    color: var(--linktxtcolor);
+}
 
 /* ============================
         PAGINA PROFILO
@@ -1360,6 +1452,8 @@ hr{
 
 .divForm form{
     width: 40em;
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 1024px){
@@ -1475,6 +1569,13 @@ fieldset{
 .errorFormAdmin {
     color: var(--errortxtonboxcolor);
     font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+}
+
+p#outputErrore{
+    color: var(--errortxtonboxcolor);
+    font-size: 1em;
     font-weight: bold;
     text-align: center;
 }

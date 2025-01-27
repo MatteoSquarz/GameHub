@@ -48,6 +48,7 @@ if($gioco){  //se il gioco esiste
     $img = $gioco['immagine'];
     $paginaGioco .= "<img src=\"assets/game-covers/$img\" alt=\"\" class=\"copertinaVideogioco\">";
     $titolo = $gioco['titolo'];
+    $titolo_pagina = strip_tags($titolo);
     $paginaGioco .= "<h1>$titolo</h1>";
     $paginaGioco .= "</div>";
     $paginaGioco .= "</div>";
@@ -119,12 +120,13 @@ if($gioco){  //se il gioco esiste
 else  //se il gioco non esiste
     header("Location: 404.php");
 
+$paginaHTML = str_replace('[titoloPagina]', $titolo_pagina, $paginaHTML);
 $paginaHTML = str_replace('[videogioco]', $titolo, $paginaHTML);
 $paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
 
 if(isset($_GET['acquisto'])){
     if (!isset($_SESSION['username']))  //se non è loggato
-        $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare il login prima di acquistare</p>", $paginaHTML);
+        $paginaHTML = str_replace("[messaggio]", "<p class=\"itemCentered warningAcquisto\">Si prega di effettuare l'accesso prima di acquistare</p>", $paginaHTML);
     else{   //se è loggato
         try{
             $connectionOK = $connection->openDBConnection();
