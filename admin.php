@@ -146,7 +146,7 @@ if (isset($_POST['inserisciVideogioco'])) {
 
     if(strlen($dataUscita) == 0)
         $erroreDataIns .= "<strong class='errorFormAdmin'>Inserire la data di uscita</strong>";
-    else if (!preg_match("/^\d{4}\-\d{2}\-\d{2}$/", $dataNascita)) {
+    else if (!preg_match("/^\d{4}\-\d{2}\-\d{2}$/", $dataUscita)) {
         $erroreDataIns .= "<strong class='errorFormAdmin'>Formato data non corretto</strong>";
     }
 	

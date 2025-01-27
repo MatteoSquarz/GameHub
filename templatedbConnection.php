@@ -151,7 +151,7 @@ class DBAccess{
 	}
 
     public function getAbbonamentoByCodiceGioco($codice){
-		$query = "SELECT * from AbbonamentoVideogioco WHERE videogioco = '$codice'";
+		$query = "SELECT * from AbbonamentoVideogioco, Abbonamento WHERE Abbonamento.nome = AbbonamentoVideogioco.abbonamento and videogioco = '$codice' ORDER BY livello ASC";
 
 		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
 
