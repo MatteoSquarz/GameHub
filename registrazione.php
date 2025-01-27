@@ -43,6 +43,9 @@ if (isset($_POST['registrati'])) {
 
 	if(strlen($dataNascita) == 0)
         $erroreDataNascita .= "<strong class='errorFormRegistrazione'>Inserire la data di nascita</strong>";
+	else if (!preg_match("/^\d{4}\-\d{2}\-\d{2}$/", $dataNascita)) {
+		$erroreDataNascita .= "<strong class='errorFormRegistrazione'>Formato data non corretto</strong>";
+	}
 	
 	if(strlen($email) == 0)
 		$erroreEmail .= "<strong class='errorFormRegistrazione'>Inserire l'email</strong>";

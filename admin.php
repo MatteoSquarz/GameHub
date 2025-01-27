@@ -146,6 +146,9 @@ if (isset($_POST['inserisciVideogioco'])) {
 
     if(strlen($dataUscita) == 0)
         $erroreDataIns .= "<strong class='errorFormAdmin'>Inserire la data di uscita</strong>";
+    else if (!preg_match("/^\d{4}\-\d{2}\-\d{2}$/", $dataNascita)) {
+        $erroreDataIns .= "<strong class='errorFormAdmin'>Formato data non corretto</strong>";
+    }
 	
     if(strlen($prezzo) == 0)
 		$errorePrezzoIns .= "<strong class='errorFormAdmin'>Inserire il prezzo</strong>";
@@ -228,7 +231,6 @@ if (isset($_POST['rimuoviVideogioco'])) {
 		$erroreCodiceDel .= "<strong class=\"errorFormAdmin\">Inserire il codice</strong>";
 	else if(!preg_match("/^[0-9]{8,8}$/",$codice)){
         $erroreCodiceDel .= "<strong class=\"errorFormAdmin\">Il codice contiene solo numeri e deve essere di 8 caratteri</strong>";
-        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);	
     }
 
 	if($erroreCodiceDel == ""){
@@ -256,6 +258,8 @@ if (isset($_POST['rimuoviVideogioco'])) {
                 $connection->closeDBConnection();
         }
 	}
+    else
+        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
 }
 $paginaHTML = str_replace('[erroreCodiceDel]', $erroreCodiceDel, $paginaHTML);
 
@@ -270,7 +274,6 @@ if (isset($_POST['modificaAbbonamento'])) {
 		$errorePrezzoMod .= "<strong class=\"errorFormAdmin\">Inserire il prezzo</strong>";
 	else if(!preg_match("/^[0-9]{1,3}$/",$prezzo)){
 		$errorePrezzoMod = "<strong class=\"errorFormAdmin\">Il prezzo deve essere compreso tra 0 e 999</strong>";
-        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);
     }
 
     if($errorePrezzoMod == ""){
@@ -295,7 +298,9 @@ if (isset($_POST['modificaAbbonamento'])) {
             if($connectionOK)
                 $connection->closeDBConnection();
         }
-    }       
+    } 
+    else
+        $paginaHTML = str_replace('[messaggioOutput]', $messaggioErroreOutput, $paginaHTML);      
 }
 $paginaHTML = str_replace('[errorePrezzoMod]', $errorePrezzoMod, $paginaHTML);
 $paginaHTML = str_replace('[messaggioOutput]', "", $paginaHTML);
