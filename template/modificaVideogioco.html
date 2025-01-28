@@ -25,7 +25,7 @@
                 <nav id="menu" aria-label="menu di navigazione">
                     <ul class="menuList">
                         <li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
-                        <li><a id="currentMenu" href="catatolo.php">Catalogo</li>
+                        <li><a id="currentMenu" href="catalogo.php">Catalogo</li>
                         <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
                     </ul>
                 </nav>
@@ -38,11 +38,14 @@
                 </a>
             </header>
             <nav id="breadcrumb" aria-label="percorso pagina">
-                <p>Ti trovi in: Catalogo &rightarrow; Modifica videogioco</p>
+                <p>Ti trovi in: Sezione <span lang="en">admin</span> &rightarrow; Catalogo &rightarrow; Modifica videogioco</p>
             </nav>
         </div>
     
         <main id="contentModificaGioco" class="background">
+            <div class="tornaAdAccedi">
+                <p>Torna quando vuoi al <a href="catalogo.php">catalogo</a> per vedere tutti i giochi.</p>
+            </div>
             [messaggioOutput]
             <div class="divForm" id="divAreaInserimento">
                 <h1>Area Modifica Gioco</h1>
@@ -87,7 +90,7 @@
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="abbonamentoMin">Abbonamento minimo:</label>
-                            <select id="abbonamentoMin" name="abbonamentoMin" required>
+                            <select id="abbonamentoMinModifica" name="abbonamentoMin" required>
                                 [listaAbbonamenti]
                             </select>
                         </div>

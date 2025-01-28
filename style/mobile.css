@@ -298,3 +298,7 @@ header #profile{
 .divForm form{
     width: 90%;
 }
+
+.formCampo select#abbonamentoMinModifica{
+    width: 95%;
+}

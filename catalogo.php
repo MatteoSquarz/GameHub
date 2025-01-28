@@ -30,7 +30,9 @@ finally{  //chiudo la connessione in ogni caso
 }
 $menu = "";
 $menuMobile = "";
+$breadcrumb = "";
 if(!$isAdmin){
+    $breadcrumb = "<span lang='en'>Home</span>";
     $menu = '<li><a href="index.php"><span lang="en">Home</span></a></li>
             <li id="currentMenu">Catalogo</li>
             <li><a href="abbonamenti.php">Abbonamenti</a></li>
@@ -40,6 +42,7 @@ if(!$isAdmin){
             <li><a href="abbonamenti.php">Abbonamenti</a></li>
             <li><a href="chiSiamo.php">Chi siamo</a></li>';
 } else{
+    $breadcrumb = "Sezione <span lang='en'>admin</span>";
     $menuLoginProfilo = "";
     $menu = '<li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
             <li id="currentMenu">Catalogo</li>
@@ -51,6 +54,7 @@ if(!$isAdmin){
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 $paginaHTML = str_replace('[menu]', $menu, $paginaHTML);
 $paginaHTML = str_replace('[menuMobile]', $menuMobile, $paginaHTML);
+$paginaHTML = str_replace('[paginaBreadcrumb]', $breadcrumb, $paginaHTML);
 
 $giochi = "";
 $listaGiochi = "";
