@@ -13,7 +13,7 @@ var dettagli_inserimento = {
     "data-uscita":["Formato: gg/mm/aaaa", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
     "pegi":["Età consigliata", , ],
     "prezzo":["Es: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
-    "casa-sviluppatrice":["Es: <span lang='en'>Nightmare House</span>", /^[A-Za-z0-9<>="\ \'\/]{2,50}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 50"],
+    "casa-sviluppatrice":["Es: Nightmare House", /^[A-Za-z0-9<>="\ \'\/]{2,50}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 50"],
     "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri e massimo 1000"]
 }
 

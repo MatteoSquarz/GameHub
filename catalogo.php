@@ -140,7 +140,7 @@ if(isset($_GET['reset'])){
 }
 
 if(isset($_GET['modifica'])){
-    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
+    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\" id='successoModifica'><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
 }
 $paginaHTML = str_replace('[messaggioOutput]', "", $paginaHTML);    
 

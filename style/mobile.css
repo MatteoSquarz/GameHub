@@ -195,7 +195,7 @@ header #profile{
     gap: 1em;
 }
 .search-section{
-    margin: 1em 2em 0em 2em;
+    margin: 1em 2em;
 }
 #searchForm input[type="text"]{
     width: 10em;

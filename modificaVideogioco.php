@@ -199,7 +199,7 @@ if (isset($_POST['modificaVideogioco'])) {
     $prezzo = pulisciInput($_POST['prezzo']);
     $casaSviluppatrice = pulisciCampiAdmin($_POST['casa-sviluppatrice']);
     $descrizione = pulisciCampiAdmin($_POST['descrizione']);
-    $abb = $_POST['abbonamentoMin'];
+    $abb = $_POST['abbonamentoMinModifica'];
 
 
     if(strlen($titolo) == 0)
