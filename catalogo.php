@@ -100,7 +100,10 @@ if(isset($_GET['search'])){
             $listaGiochiCercati .= "<div class=\"game-info\">";
             $listaGiochiCercati .= "<h3>$titolo</h3>";
             $codice = $gioco['codice'];
-            $listaGiochiCercati .= "<a class=\"game-page-link\" href=\"videogioco.php?codice=$codice\">Vai alla pagina dedicata</a>";
+            if($isAdmin)
+                $listaGiochiCercati .= "<a class=\"game-page-link\" href=\"modificaVideogioco.php?codice=$codice\">Modifica gioco</a>";
+            else
+                $listaGiochiCercati .= "<a class=\"game-page-link\" href=\"videogioco.php?codice=$codice\">Vai alla pagina dedicata</a>";
             $listaGiochiCercati .= "</div>";
             $listaGiochiCercati .= "</div>";
             $cnt++;
@@ -122,6 +125,11 @@ if(isset($_GET['search'])){
 if(isset($_GET['reset'])){
     unset($_GET['search']);
 }
+
+if(isset($_GET['modifica'])){
+    $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Modifica avvenuta con successo</p></div>", $paginaHTML);
+}
+$paginaHTML = str_replace('[messaggioOutput]', "", $paginaHTML);    
 
 
 $paginaHTML = str_replace("[risultati]", "Tutti i giochi", $paginaHTML);

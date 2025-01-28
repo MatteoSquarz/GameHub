@@ -244,7 +244,7 @@ if (isset($_POST['modificaVideogioco'])) {
                 $casaSviluppatrice = str_replace('"','\"',$casaSviluppatrice);
                 $descrizione = str_replace('"','\"',$descrizione);
                 $connection->modificaGioco($codice,$titolo,$descrizione,$prezzo,$dataUscita,$pegi,$casaSviluppatrice,$cat,$piat,$abb);
-                $paginaHTML = str_replace('[messaggioOutput]', "<div class=\"divForm\"><h2>Risultato</h2><p class=\"itemCentered confermaOperazioneAdmin\">Inserimento avvenuto con successo</p></div>", $paginaHTML);       
+                header("Location: catalogo.php?modifica=1");       
             }
             else
                 header("Location: 500.php");
