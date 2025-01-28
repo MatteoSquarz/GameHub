@@ -31,6 +31,7 @@ finally{  //chiudo la connessione in ogni caso
 $menu = "";
 $menuMobile = "";
 $breadcrumb = "";
+$intestazioneH1 = "Esplora il nostro catalogo!";
 if(!$isAdmin){  //se non è loggato come admin
     $breadcrumb = "<span lang='en'>Home</span>";
     $menu = '<li><a href="index.php"><span lang="en">Home</span></a></li>
@@ -43,6 +44,7 @@ if(!$isAdmin){  //se non è loggato come admin
             <li><a href="chiSiamo.php">Chi siamo</a></li>';
 } else{   //se è loggato come admin
     $breadcrumb = "Sezione <span lang='en'>admin</span>";
+    $intestazioneH1 = "Seleziona un gioco da modificare!";
     $menuLoginProfilo = "";
     $menu = '<li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
             <li id="currentMenu">Catalogo</li>
@@ -55,6 +57,7 @@ $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 $paginaHTML = str_replace('[menu]', $menu, $paginaHTML);
 $paginaHTML = str_replace('[menuMobile]', $menuMobile, $paginaHTML);
 $paginaHTML = str_replace('[paginaBreadcrumb]', $breadcrumb, $paginaHTML);
+$paginaHTML = str_replace('[intestazioneH1]', $intestazioneH1, $paginaHTML);
 
 $giochi = "";
 $listaGiochi = "";
