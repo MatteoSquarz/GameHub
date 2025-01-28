@@ -11,9 +11,9 @@
         <link rel="stylesheet" href="style/print.css" media="print">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <script src="script/script.js"></script>
-        <title>Pagina Admin - GameHub</title>
+        <title>Modifica videogioco - GameHub</title>
     </head>
-    <body onload="caricamento('inserimento'); caricamento('rimozione'); caricamento('modifica');">
+    <body onload="caricamento('inserimento');">
         <div class="stickyScroll">
             <header>
                 <div class="logoName">
@@ -24,8 +24,8 @@
                 </nav>
                 <nav id="menu" aria-label="menu di navigazione">
                     <ul class="menuList">
-                        <li id="currentMenu">Sezione <span lang="en">admin</span></li>
-                        <li><a href="catalogo.php">Catalogo</a></li>
+                        <li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
+                        <li id="currentMenu">Catalogo</li>
                         <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
                     </ul>
                 </nav>
@@ -38,48 +38,37 @@
                 </a>
             </header>
             <nav id="breadcrumb" aria-label="percorso pagina">
-                <p>Ti trovi in: Sezione <span lang="en">admin</span></p>
+                <p>Ti trovi in: Catalogo &rightarrow; Modifica videogioco</p>
             </nav>
         </div>
     
         <main id="contentAdmin" class="background">
-            <div class="hero blur">
-                <h1>Ecco la tua <span lang="en">dashboard admin</span></h1>
-                <p>In questa pagina l'<span lang="en">admin</span> può aggiungere e rimuovere i giochi in catalogo, 
-                  inoltre è possibile modificare i prezzi degli abbonamenti.
-                </p>
-            </div>
             [messaggioOutput]
             <div class="divForm" id="divAreaInserimento">
-                <h2>Area Inserimento Gioco</h2>
-                <form id="inserimento-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('inserimento');">
+                <h1>Area Modifica Gioco</h1>
+                <form id="modifica-gioco" method="post" action='[modificaVideogioco]' onsubmit="return validazioneForm('inserimento');">
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="codice">Codice:</label>
-                            [erroreCodiceIns]
-                            <input type="text" id="codice" name="codice" required />
+                            <input type="text" id="codice" name="codice" value='[codiceGioco]' disabled />
                         </div>
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="titolo">Titolo:</label>
                             [erroreTitoloIns]
-                            <input type="text" id="titolo" name="titolo" required />
+                            <input type="text" id="titolo" name="titolo" value='[titoloGioco]' required />
                         </div>
                     </div>
                     <div class="formRiga">
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="data-uscita">Data uscita:</label>
                             [erroreDataIns]
-                            <input type="date" id="data-uscita" name="data-uscita" required />
+                            <input type="date" id="data-uscita" name="data-uscita" value='[dataUscitaGioco]' required />
                         </div>
                         
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="pegi"><span lang="en">Pegi:</span></label>
                             <select id="pegi" name="pegi" required>
-                                <option value="3">3</option>
-                                <option value="7">7</option>
-                                <option value="12">12</option>
-                                <option value="16">16</option>
-                                <option value="18">18</option>
+                                [listaPegi]
                             </select>
                         </div>
                     </div>
@@ -87,20 +76,15 @@
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="prezzo">Prezzo:</label>
                             [errorePrezzoIns]
-                            <input type="number" id="prezzo" name="prezzo" step="1.0" required />
+                            <input type="number" id="prezzo" name="prezzo" step="1.0" value=[prezzoGioco] required />
                         </div>
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="casa-sviluppatrice">Casa Sviluppatrice:</label>
                             [erroreProduttoreIns]
-                            <input type="text" id="casa-sviluppatrice" name="casa-sviluppatrice" required />
+                            <input type="text" id="casa-sviluppatrice" name="casa-sviluppatrice" value='[produttoreGioco]' required />
                         </div>
                     </div>
                     <div class="formRiga">
-                        <div class="formCampo">
-                            <label class="labelFormAdmin" for="immagine">Immagine:</label>
-                            [erroreImmagineIns]
-                            <input type="file" id="immagine" name="immagine" accept="image/*"  required />
-                        </div>
                         <div class="formCampo">
                             <label class="labelFormAdmin" for="abbonamentoMin">Abbonamento minimo:</label>
                             <select id="abbonamentoMin" name="abbonamentoMin" required>
@@ -127,49 +111,12 @@
                     <div class="formCampo itemCentered">
                         <label class="labelFormAdmin" for="descrizione">Descrizione:</label>
                         [erroreDescrizioneIns]
-                        <textarea id="descrizione" name="descrizione" cols="100" rows="8" required></textarea>
+                        <textarea id="descrizione" name="descrizione" cols="100" rows="8" value='[descrizioneGioco]' required></textarea>
                     </div>
                     <div class="itemCentered">
-                        <button type="submit" class="buttonAdminForm" name="inserisciVideogioco" id="inserisciVideogioco">Inserisci gioco</button>                        
+                        <button type="submit" class="buttonAdminForm" name="modificaVideogioco" id="modificaVideogioco">Modifica gioco</button>                        
                     </div>   
                 </form>
-            </div>
-            <div class="divForm" id="divAreaRimozione">
-                <h2>Area Rimozione Gioco</h2>
-                <form id="rimozione-gioco" method="post" action="admin.php" onsubmit="return validazioneForm('rimozione');">
-                    <div class="formCampo itemCentered">
-                        <label class="labelFormAdmin" for="codice-rimozione">Inserisci codice del gioco:</label>
-                        [erroreCodiceDel]
-                        <input type="text" id="codice-rimozione" name="codice-rimozione" required/>
-                    </div>
-                    <div class="itemCentered">
-                        <button type="submit" class="buttonAdminForm" name="rimuoviVideogioco" id="rimuoviVideogioco">Rimuovi gioco</button>
-                    </div>
-                </form>
-            </div>
-            <div class="divForm" id="divAreaModifica">
-                <h2>Area Modifica Prezzi Abbonamenti</h2>
-                <form id="modifica-prezzi" method="post" action="admin.php" onsubmit="return validazioneForm('modifica');">
-                    <div class="formRiga">
-                        <div class="formCampo">
-                            <label class="labelFormAdmin" for="abbonamento">Abbonamento:</label>
-                            <select id="abbonamento" name="abbonamento">
-                                [listaAbbonamenti]
-                            </select>
-                        </div>
-                        <div class="formCampo itemCentered">
-                            <label class="labelFormAdmin" for="nuovo-costo">Nuovo prezzo:</label>
-                            [errorePrezzoMod]
-                            <input type="number" id="nuovo-costo" name="nuovo-costo" step="1.0" required />
-                        </div>
-                    </div>
-                    <div class="itemCentered">
-                        <button type="submit" class="buttonAdminForm" name="modificaAbbonamento" id="modificaAbbonamento">Modifica prezzo</button>
-                    </div>
-                </form>
-            </div>
-            <div class="tornaSuButton">
-                <a href="#contentAdmin" class="tornaSuHelper">Torna su</a>
             </div>
         </main>
         <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
@@ -182,13 +129,13 @@
         <footer>
             <div class="footerContent">
                 <div class="contactInfo">
-                    <h3 class="footerHeader">Contattaci</h3>
+                    <h2 class="footerHeader">Contattaci</h2>
                     <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
                     <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
                     <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
                 </div>
                 <div class="socialLinks">
-                    <h3 class="footerHeader">Seguici</h3>
+                    <h2 class="footerHeader">Seguici</h2>
                     <div class="socialIcons">
                         <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> <span lang="en">Facebook</span></a>
                         <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> <span lang="en">Twitter</span></a>

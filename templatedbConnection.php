@@ -380,6 +380,18 @@ class DBAccess{
 			return false;
 	}
 
+	public function modificaGioco($codice, $titolo, $descrizione, $prezzo, $dataUscita, $pegi, $casaSviluppatrice, $categorie, $piattaforme, $abbonamento){
+		$query = "UPDATE Videogioco SET titolo = '$titolo', descrizione = '$descrizione', prezzo = '$prezzo', dataUscita = '$dataUscita', pegi = '$pegi', casaSviluppatrice = '$casaSviluppatrice' WHERE codice = '$codice'";
+		$queryResult = mysqli_query($this->connection, $query) or throw new mysqli_sql_exception(mysqli_error($this->connection));
+		mysqli_query($this->connection, "DELETE FROM AbbonamentoVideogioco WHERE videogioco = '$codice'") or throw new mysqli_sql_exception(mysqli_error($this->connection));
+		mysqli_query($this->connection, "DELETE FROM CategoriaVideogioco WHERE videogioco = '$codice'") or throw new mysqli_sql_exception(mysqli_error($this->connection));
+		mysqli_query($this->connection, "DELETE FROM PiattaformaVideogioco WHERE videogioco = '$codice'") or throw new mysqli_sql_exception(mysqli_error($this->connection));
+
+		$this->insertCategorieGioco($codice, $categorie);
+		$this->insertPiattaformeGioco($codice, $piattaforme);
+		$this->insertAbbonamentiGioco($codice, $abbonamento);
+	}
+
 }
 
 ?>

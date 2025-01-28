@@ -6,14 +6,42 @@ use DB\DBAccess;
 $paginaHTML = file_get_contents('template/catalogo.html');
 
 $menuLoginProfilo = "<li class=\"login\"><a href=\"login.php\">Accedi</a></li>";
+$isAdmin = false;
+$connection = new DBAccess();
+$connectionOK = false;
 session_start();
 if (isset($_SESSION['username'])) 
     $menuLoginProfilo = "<li class=\"profile\"><a href=\"profilo.php\">Profilo</a></li>";
-
+try{
+    $connectionOK = $connection->openDBConnection();
+    if($connectionOK){
+        if(isset($_SESSION['username']) && $connection->verifyAdmin($_SESSION['username']))   //se è loggato come admin
+            $isAdmin = true;
+    }
+    else
+        header("Location: 500.php");
+}
+catch(mysqli_sql_exception $e){   //se c'è un errore a livello database
+    header("Location: 500.php");
+}
+finally{  //chiudo la connessione in ogni caso
+    if($connectionOK)
+        $connection->closeDBConnection();
+}
+$menu = "";
+if(!$isAdmin){
+    $menu = '<li><a href="index.php"><span lang="en">Home</span></a></li>
+    <li id="currentMenu">Catalogo</li>
+    <li><a href="abbonamenti.php">Abbonamenti</a></li>
+    <li><a href="chiSiamo.php">Chi siamo</a></li>';
+} else{
+    $menuLoginProfilo = "";
+    $menu = '<li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
+    <li id="currentMenu">Catalogo</li>
+    <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>';
+}
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
-
-$connection = new DBAccess();
-$connectionOK = false;
+$paginaHTML = str_replace('[menu]', $menu, $paginaHTML);
 
 $giochi = "";
 $listaGiochi = "";
@@ -44,7 +72,10 @@ if($giochi){
         $titolo = $gioco['titolo'];
         $listaGiochi .= "<h3>$titolo</h3>";
         $codice = $gioco['codice'];
-        $listaGiochi .= "<a class=\"game-page-link\" href=\"videogioco.php?codice=$codice\">Vai alla pagina dedicata</a>";
+        if($isAdmin)
+            $listaGiochi .= "<a class=\"game-page-link\" href=\"modificaVideogioco.php?codice=$codice\">Modifica gioco</a>";
+        else
+            $listaGiochi .= "<a class=\"game-page-link\" href=\"videogioco.php?codice=$codice\">Vai alla pagina dedicata</a>";
         $listaGiochi .= "</div>";
         $listaGiochi .= "</div>";
     }
