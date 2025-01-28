@@ -534,7 +534,7 @@ footer {
     text-decoration: none;
     border-radius: 10px;
     margin-top: 1em;
-
+    font-size: 1em;
 }
 
 .targhettaAbb button:hover {
@@ -1219,6 +1219,7 @@ hr{
     border-radius: 10px;
     margin-top: 1em;
     margin-bottom: 1em;
+    font-size: 1em;
 }
 
 .subscriptionDetailsItem{
@@ -1557,7 +1558,7 @@ fieldset{
 }
 
 .buttonAdminForm{
-    font-size: 0.9em;
+    font-size: 1em;
     display: inline-block;
     padding: 0.5em 1em;
     background: var(--buttoncolor);
