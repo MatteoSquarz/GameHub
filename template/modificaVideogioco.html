@@ -20,12 +20,12 @@
                     <h1 id="logo"><span lang="en">GameHub</span></h1>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
-                    <a href="#contentAdmin" class="navHelper">Vai al contenuto</a>
+                    <a href="#contentModificaGioco" class="navHelper">Vai al contenuto</a>
                 </nav>
                 <nav id="menu" aria-label="menu di navigazione">
                     <ul class="menuList">
                         <li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
-                        <li id="currentMenu">Catalogo</li>
+                        <li><a id="currentMenu" href="catatolo.php">Catalogo</li>
                         <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
                     </ul>
                 </nav>
@@ -42,7 +42,7 @@
             </nav>
         </div>
     
-        <main id="contentAdmin" class="background">
+        <main id="contentModificaGioco" class="background">
             [messaggioOutput]
             <div class="divForm" id="divAreaInserimento">
                 <h1>Area Modifica Gioco</h1>
@@ -121,11 +121,12 @@
         </main>
         <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
             <ul class="menuListMobile">
-                <li id="currentMenuMobile">Sezione <span lang="en">admin</span></li>
+                <li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
+                <li><a id="currentMenuMobile" href="catalogo.php">Catalogo</a></li>
                 <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>
-                <li><a href=#contentAdmin>Torna su</a></li>
+                <li><a href=#contentModificaGioco>Torna su</a></li>
             </ul>
-        </nav>  
+        </nav> 
         <footer>
             <div class="footerContent">
                 <div class="contactInfo">

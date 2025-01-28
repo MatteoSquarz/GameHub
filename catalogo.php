@@ -29,19 +29,28 @@ finally{  //chiudo la connessione in ogni caso
         $connection->closeDBConnection();
 }
 $menu = "";
+$menuMobile = "";
 if(!$isAdmin){
     $menu = '<li><a href="index.php"><span lang="en">Home</span></a></li>
-    <li id="currentMenu">Catalogo</li>
-    <li><a href="abbonamenti.php">Abbonamenti</a></li>
-    <li><a href="chiSiamo.php">Chi siamo</a></li>';
+            <li id="currentMenu">Catalogo</li>
+            <li><a href="abbonamenti.php">Abbonamenti</a></li>
+            <li><a href="chiSiamo.php">Chi siamo</a></li>';
+    $menuMobile = '<li><a href="index.php"><span lang="en">Home</span></a></li>
+            <li id="currentMenuMobile">Catalogo</li>
+            <li><a href="abbonamenti.php">Abbonamenti</a></li>
+            <li><a href="chiSiamo.php">Chi siamo</a></li>';
 } else{
     $menuLoginProfilo = "";
     $menu = '<li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
-    <li id="currentMenu">Catalogo</li>
-    <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>';
+            <li id="currentMenu">Catalogo</li>
+            <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>';
+    $menuMobile = '<li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
+                <li id="currentMenuMobile">Catalogo</li>
+                <li><a role="button" href="admin.php?logout=1">Disconnettiti</a></li>';
 }
 $paginaHTML = str_replace('[loginProfilo]', $menuLoginProfilo, $paginaHTML);
 $paginaHTML = str_replace('[menu]', $menu, $paginaHTML);
+$paginaHTML = str_replace('[menuMobile]', $menuMobile, $paginaHTML);
 
 $giochi = "";
 $listaGiochi = "";
