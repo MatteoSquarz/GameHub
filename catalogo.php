@@ -31,7 +31,7 @@ finally{  //chiudo la connessione in ogni caso
 $menu = "";
 $menuMobile = "";
 $breadcrumb = "";
-if(!$isAdmin){
+if(!$isAdmin){  //se non è loggato come admin
     $breadcrumb = "<span lang='en'>Home</span>";
     $menu = '<li><a href="index.php"><span lang="en">Home</span></a></li>
             <li id="currentMenu">Catalogo</li>
@@ -41,7 +41,7 @@ if(!$isAdmin){
             <li id="currentMenuMobile">Catalogo</li>
             <li><a href="abbonamenti.php">Abbonamenti</a></li>
             <li><a href="chiSiamo.php">Chi siamo</a></li>';
-} else{
+} else{   //se è loggato come admin
     $breadcrumb = "Sezione <span lang='en'>admin</span>";
     $menuLoginProfilo = "";
     $menu = '<li><a href="admin.php">Sezione <span lang="en">admin</span></a></li>
