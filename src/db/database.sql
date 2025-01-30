@@ -8,6 +8,8 @@
 
 */
 
+USE msquarzo;
+
 DROP TABLE IF EXISTS AbbonamentoVideogioco;
 DROP TABLE IF EXISTS PiattaformaVideogioco;
 DROP TABLE IF EXISTS CategoriaVideogioco;
