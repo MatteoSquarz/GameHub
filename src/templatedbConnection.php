@@ -5,10 +5,10 @@ use mysqli;
 use mysqli_sql_exception;
 
 class DBAccess{
-    private const HOST = 'mariadb';
-    private const DB_NAME = 'my_database';
-    private const USERNAME = 'my_user';
-    private const PASSWORD = 'my_password';
+    private const HOST = 'localhost';
+    private const DB_NAME = 'msquarzo';
+    private const USERNAME = 'msquarzo';
+    private const PASSWORD = 'IuThe7OochiMeCae';
 
     private $connection;
 
