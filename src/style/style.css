@@ -534,7 +534,7 @@ footer {
     text-decoration: none;
     border-radius: 10px;
     margin-top: 1em;
-
+    font-size: 1em;
 }
 
 .targhettaAbb button:hover {
@@ -661,7 +661,7 @@ footer {
 
 .allgames-section{
     padding: 1em;
-    margin: 3em 5%;
+    margin: 1em 5% 3em 5%;
 }
 
 .game-card {
@@ -735,6 +735,7 @@ footer {
     background-color: var(--boxcolor);
     border-radius: 15px;
     margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 #searchForm {
@@ -971,7 +972,7 @@ hr{
 }
 
 .backgroundPannelloVideogioco{
-    background: url('../assets/istockphoto-1334436084-612x612.png') no-repeat center center/cover;
+    background: url('../assets/futuristic-video-game-equipment-illuminated-nightclub-generative-ai_188544-32105.png') no-repeat center center/cover;
     background-color: var(--bgcolor);
     width: 100%;
     border-radius: 10px;
@@ -1218,6 +1219,7 @@ hr{
     border-radius: 10px;
     margin-top: 1em;
     margin-bottom: 1em;
+    font-size: 1em;
 }
 
 .subscriptionDetailsItem{
@@ -1456,6 +1458,10 @@ hr{
     flex-direction: column;
 }
 
+div#successoModifica{
+    margin: 0em 15%;
+}
+
 @media screen and (max-width: 1024px){
     .divForm form{
         width: 35em;
@@ -1540,6 +1546,10 @@ fieldset{
     background-color: #FFF;
 }
 
+.formCampo select#abbonamentoMinModifica{
+    width: 55%;
+}
+
 .labelFormAdmin{
     margin-top: 1em;
     margin-bottom: 0.2em;
@@ -1548,7 +1558,7 @@ fieldset{
 }
 
 .buttonAdminForm{
-    font-size: 0.9em;
+    font-size: 1em;
     display: inline-block;
     padding: 0.5em 1em;
     background: var(--buttoncolor);
@@ -1592,4 +1602,10 @@ ul[class ~= "errorFormAdmin"] {
     color: var(--successtxtonboxcolor);
     font-size: 1em;
     font-weight: bold;
+}
+.divForm h1{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
 }

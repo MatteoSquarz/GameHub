@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Questa pagina è dedicata ad un gioco presente nel catalogo del sito GameHub">
-        <meta name="keywords" content="videogioco, GameHub, negozio, dettagli, acquisto, gioco, videogame, piattaforma, xbox, playstation, nintendo, pc, produttore, categorie">
-        <meta name="author" content="Alessandro Damiani">    
+        <meta name="description" content="Questa pagina è dedicata al catalogo dei videogiochi di GameHub">
+        <meta name="keywords" content="videogiochi, giochi, videogioco, playstation, nintendo, pc, xbox, mobile, catalogo, gioco, videogame, negozio, GameHub">
+        <meta name="author" content="Francesco Lapenna">  
         <link rel="stylesheet" href="style/style.css" media="screen">
-        <link rel="stylesheet" href="style/mobile.css" media="only screen and (max-width: 768px)">
+        <link rel="stylesheet" href="style/mobile.css" media="screen and (max-width:768px)">
         <link rel="stylesheet" href="style/print.css" media="print">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <title>[titoloPagina] - GameHub</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <title>Catalogo - GameHub</title>
     </head>
     <body>
         <div class="stickyScroll">
@@ -19,14 +19,11 @@
                     <h1 id="logo"><span lang="en">GameHub</span></h1>
                 </div>
                 <nav aria-label = "aiuti alla navigazione" class="listHelp">
-                    <a href="#mainVideogioco" class="navHelper">Vai al contenuto</a>
+                    <a href="#catalogo-main" class="navHelper">Vai al contenuto</a>
                 </nav>
-                <nav id="menu">
-                    <ul class="menuList" aria-label="menu principale">
-                        <li><a href="index.php"><span lang="en">Home</span></a></li>
-                        <li><a href="catalogo.php" id="currentMenu">Catalogo</a></li>
-                        <li><a href="abbonamenti.php">Abbonamenti</a></li>
-                        <li><a href="chiSiamo.php">Chi siamo</a></li>
+                <nav id="menu" aria-label="menu di navigazione">
+                    <ul class="menuList">
+                        [menu]
                         [loginProfilo]
                     </ul>
                 </nav>
@@ -39,40 +36,49 @@
                 </a>
             </header>
             <nav id="breadcrumb" aria-label="percorso pagina">
-                <p>Ti trovi in: <span lang="en">Home</span> &rightarrow; Catalogo &rightarrow; [videogioco]</p>
+                <p>Ti trovi in: [paginaBreadcrumb] &rightarrow; Catalogo</p>
             </nav>
         </div>
-        <main id="mainVideogioco">
-            [paginaGioco]
-            <div class="pulsantiTornaIndietro">
-                <div class="tornaACatalogo">
-                    <a href="catalogo.php">Torna al catalogo</a>
-                </div>
-                <div class="tornaSuButton">
-                    <a href="#mainVideogioco" class="tornaSuHelper">Torna su</a>
-                </div>
+        <main id="catalogo-main" class="catalogo-container background">
+            <div class="hero blur">
+                <h1>[intestazioneH1]</h1>
+                <p>Immergiti in nuove avventure con un <strong>catalogo</strong> di <strong>videogiochi</strong> in costante aggiornamento!</p>
+            </div>
+            <div class="search-section">
+                <form action="catalogo.php" method="get" id="searchForm">
+                    <input type="text" id="search" name="search" placeholder="Cerca il nome di un gioco" aria-label="Cerca il nome di un gioco" />
+                    <div>
+                        <input type="submit" id="ricerca" name="ricerca" value="Cerca" aria-label="Cerca"/>
+                        <input type="submit" id="reset" name="reset" value="Annulla" aria-label="Annulla ricerca" />
+                    </div>
+                </form>
+            </div>
+            [messaggioOutput]
+            <div class="allgames-section">
+                <h2>[risultati]</h2>
+                [listaGiochi]
+            </div>
+            <div class="tornaSuButton">
+                <a href="#catalogo-main" class="tornaSuHelper">Torna su</a>
             </div>
         </main>
         <nav id="hamburgerMobileMenu" aria-label="menu di navigazione mobile">
             <ul class="menuListMobile">
-                <li><a href="index.php"><span lang="en">Home</span></a></li>
-                <li><a href="catalogo.php" id="currentMenuMobile">Catalogo</a></li>
-                <li><a href="abbonamenti.php">Abbonamenti</a></li>
-                <li><a href="chiSiamo.php">Chi siamo</a></li>
+                [menuMobile]
                 [loginProfilo]
-                <li><a href=#mainVideogioco>Torna su</a></li>
+                <li><a href=#catalogo-main>Torna su</a></li>
             </ul>
-        </nav>   
+        </nav>
         <footer>
             <div class="footerContent">
                 <div class="contactInfo">
-                    <h3 class="footerHeader">Contattaci</h3>
+                    <h4 class="footerHeader">Contattaci</h4>
                     <p><span class="fa-solid fa-envelope"></span> info@gamehub.it</p>
                     <p><span class="fa-solid fa-phone"></span> +39 123 456 7890</p>
                     <p><span class="fa-solid fa-location-dot"></span> Via Roma 123, Bologna</p>
                 </div>
                 <div class="socialLinks">
-                    <h3 class="footerHeader">Seguici</h3>
+                    <h4 class="footerHeader">Seguici</h4>
                     <div class="socialIcons">
                         <a href="https://www.facebook.com/"><span class="fa-brands fa-facebook iconSize"></span> <span lang="en">Facebook</span></a>
                         <a href="https://x.com/"><span class="fa-brands fa-twitter iconSize"></span> <span lang="en">Twitter</span></a>

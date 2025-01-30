@@ -15,6 +15,7 @@ $connection = new DBAccess();
 $connectionOK = false;
 
 $gioco = null;
+$titolo_pagina = "";
 $categorie = "";
 $piattaforme = "";
 $paginaGioco = "";
@@ -120,7 +121,16 @@ if($gioco){  //se il gioco esiste
 else  //se il gioco non esiste
     header("Location: 404.php");
 
+$keywords = $titolo_pagina . ", " . strip_tags($produttore) . ", ";
+foreach($categorie as $categoria)
+    $keywords .= strip_tags($categoria['categoria']) . ", ";
+foreach($piattaforme as $piattaforma)
+    $keywords .= strip_tags($piattaforma['piattaforma']) . ", ";
+foreach($abbonamenti as $abbonamento)
+    $keywords .= $abbonamento['abbonamento'] . ", ";
+$keywords = substr($keywords, 0, -2);  //toglie l'ultima virgola
 $paginaHTML = str_replace('[titoloPagina]', $titolo_pagina, $paginaHTML);
+$paginaHTML = str_replace('[keywordsVideogioco]', $keywords, $paginaHTML);
 $paginaHTML = str_replace('[videogioco]', $titolo, $paginaHTML);
 $paginaHTML = str_replace('[paginaGioco]', $paginaGioco, $paginaHTML);
 

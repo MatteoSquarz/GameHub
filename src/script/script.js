@@ -2,7 +2,7 @@ var dettagli_registrazione = {
     "nome":["Es: Leonardo", /^[A-Za-z\ ]{2,20}$/, "Non sono ammessi numeri o caratteri speciali, la lunghezza minima consentita è di almeno 2 caratteri massima 20"],
     "cognome":["Es: Rossi", /^[A-Za-z\ \']{2,20}$/,"Non sono ammessi numeri o caratteri speciali, la lunghezza minima consentita è di almeno 2 caratteri massima 20"],
     "dataNascita":["Formato: gg/mm/aaaa", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
-    "email":["Es: leo.rossi24@gmail.com", /^([a-z0-9_\.\-])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,4})+$/,"Non sono ammessi caratteri speciali o lettere maiuscole oppure il formato non corretto"],
+    "email":["Es: leo.rossi24@gmail.com", /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/,"Non sono ammessi caratteri speciali o lettere maiuscole oppure il formato non è corretto"],
     "username":["Es: LeoRossii23", /^[a-zA-Z0-9]{2,20}$/,"Sono ammessi solo numeri e lettere, la lunghezza minima consentita è di almeno 2 caratteri massima 20"],
     "password":["Caratteri consentiti: tutte le lettere, numeri e i seguenti caratteri speciali !@#%", /^[A-Za-z0-9\!\@\#\%]{8,20}$/,"Sono ammessi solo numeri, lettere e i seguenti caratteri speciali !@#%, la lunghezza minima consentita è di 8 caratteri massima 20"]
 };
@@ -13,7 +13,7 @@ var dettagli_inserimento = {
     "data-uscita":["Formato: gg/mm/aaaa", /^\d{4}\-\d{2}\-\d{2}$/, "Formato data non corretto"],
     "pegi":["Età consigliata", , ],
     "prezzo":["Es: 25", /^([0-9]{1,3})$/,"Il prezzo è compreso tra 0 e 999"],
-    "casa-sviluppatrice":["Es: <span lang='en'>Nightmare House</span>", /^[A-Za-z0-9<>="\ \'\/]{2,50}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 50"],
+    "casa-sviluppatrice":["Es: Nightmare House", /^[A-Za-z0-9<>="\ \'\/]{2,50}$/,"La casa sviluppatrice contiene solo lettere o numeri, deve contenere minimo 2 caratteri e massimo 50"],
     "descrizione":["", /^[\s\S]{20,1000}$/,"La descrizione deve essere di almeno 20 caratteri e massimo 1000"]
 }
 
