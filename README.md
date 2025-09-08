@@ -8,3 +8,7 @@ Per provare il sito è necessario avviare il docker compose con il seguente coma
 ```
 docker compose up -d
 ```
+Successivamente è possibile connettersi a questo indirizzo:
+```
+http://localhost/index.php
+```
