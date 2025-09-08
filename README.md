@@ -12,3 +12,4 @@ Successivamente è possibile connettersi a questo indirizzo:
 ```
 http://localhost/index.php
 ```
+<img width="1901" height="968" alt="image" src="https://github.com/user-attachments/assets/91a562bc-f03f-4b38-9703-3215e6b39976" />
