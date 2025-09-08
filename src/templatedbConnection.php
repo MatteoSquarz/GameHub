@@ -5,10 +5,10 @@ use mysqli;
 use mysqli_sql_exception;
 
 class DBAccess{
-    private const HOST = 'localhost';
+    private const HOST = 'db';
     private const DB_NAME = 'msquarzo';
-    private const USERNAME = 'msquarzo';
-    private const PASSWORD = 'IuThe7OochiMeCae';
+    private const USERNAME = 'root';
+    private const PASSWORD = '';
 
     private $connection;
 
@@ -17,6 +17,7 @@ class DBAccess{
 		try {
 			$this->connection = new mysqli(DBAccess::HOST, DBAccess::USERNAME, DBAccess::PASSWORD, DBAccess::DB_NAME);
 		} catch (mysqli_sql_exception $e) {
+			print("Errore di connessione al DBMS: " . $e->getMessage());
 			throw $e;
 		}
 
