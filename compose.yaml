@@ -1,0 +1,41 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM php:8.1-apache
+        RUN apt-get update && apt-get install -y libpq-dev \
+            && docker-php-ext-install mysqli
+    container_name: php-apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html:ro
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.6.7
+    container_name: mariadb
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=msquarzo
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql:rw
+      - ./src/db/database.sql:/docker-entrypoint-initdb.d/init.sql
+
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  mariadb_data:
